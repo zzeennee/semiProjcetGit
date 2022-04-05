@@ -62,7 +62,7 @@
 		</div>
 		<!-- /.card-header -->
 		<!-- form start -->
-		<form class="form-horizontal" action="login.do" method='post'>
+		<form class="form-horizontal" action="loginCheck.do" method='post'>
 			<div class="card-body">
 				<div class="form-group row">
 					<label for="userid" class="col-md-8 col-form-label">아이디</label>

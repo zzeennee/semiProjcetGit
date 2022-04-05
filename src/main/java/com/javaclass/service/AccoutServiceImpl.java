@@ -1,5 +1,7 @@
 package com.javaclass.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,19 @@ public class AccoutServiceImpl implements AccountService{
 		accountDAOImpl.insertAccount(vo);
 	}
 	
-	//public AccountVO idCheck_Login(AccountVO vo) {
-		//return AccountDAO.idCheck(vo);
-	//}
+	public AccountVO loginCheck(AccountVO vo) {
+		return accountDAOImpl.loginCheck(vo);
+	}
+	
+	public void updateAccount(AccountVO vo) {
+		accountDAOImpl.updateAccount(vo);
+	}
+	
+	public AccountVO myHomePageView(AccountVO vo) {
+		return accountDAOImpl.myHomePageView(vo);
+	}
+	
+	public List<AccountVO> accountList(AccountVO vo){
+		return accountDAOImpl.accountList(vo);
+	};
 }

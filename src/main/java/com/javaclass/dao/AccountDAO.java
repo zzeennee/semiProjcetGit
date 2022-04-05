@@ -1,16 +1,22 @@
 package com.javaclass.dao;
 
+import java.util.List;
+
 import com.javaclass.domain.AccountVO;
 
 public interface AccountDAO {
 	
-	//id 중복체크 기능 구현
-	AccountVO accountIdCheck(AccountVO vo);
 	
 	//회원가입 기능 구현
 	public void insertAccount(AccountVO vo);
 	
-	//로그인
-	AccountVO accountLogin(AccountVO vo);
+	public AccountVO loginCheck(AccountVO vo);
+	
+	public void updateAccount(AccountVO vo);
+	
+	public AccountVO myHomePageView(AccountVO vo);
+	
+	public List<AccountVO> accountList(AccountVO vo);
+	
 	
 }
