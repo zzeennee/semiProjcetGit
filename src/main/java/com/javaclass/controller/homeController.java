@@ -12,9 +12,9 @@ public class homeController {
 	
 	//home.jsp 에서 페이지 접속을 위해서 만든 컨트롤러
 	// 관리자페이지 접속
-	@RequestMapping("admin/adminHome.do")
-	public void adminHome() {
-	}
+	//@RequestMapping("admin/adminHome.do")
+	//public void adminHome() {
+	//}
 	
 	//---------------------------------------------------------
 
