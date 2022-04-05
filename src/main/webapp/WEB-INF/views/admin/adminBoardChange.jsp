@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">삭제 및 수정 비밀번호</label>
-                <input type="password" id="inputProjectLeader" class="form-control" name="board_Password" placeholder="수정 및 삭제시 비밀번호 입력">
+                <input type="password" id="inputProjectLeader" class="form-control" name="board_Password">
               </div>
               <div class="form-group">
               	<label for="inputCategory">게시글 카테고리</label>
