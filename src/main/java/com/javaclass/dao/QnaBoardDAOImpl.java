@@ -33,10 +33,9 @@ public class QnaBoardDAOImpl implements QnaBoardDAO{
 	
 	/* 삭제 */
 	@Override
-	public void QnaDeleteBoard(int board_Seq) {
-		System.out.println("===> Mybatis productDeleteBoard() 호출");
-		mybatis.delete("QnaBoardDAO.QnaDeleteBoard", board_Seq);
-		
+	public void QnaDeleteBoard(QnaBoardVO bao) {
+		System.out.println("===> Mybatis QnaDeleteBoard() 호출");
+		mybatis.delete("QnaBoardDAO.QnaDeleteBoard", bao);	
 	}
 
 	/* 상세보기 */

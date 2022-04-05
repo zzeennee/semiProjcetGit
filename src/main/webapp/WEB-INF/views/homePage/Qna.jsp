@@ -75,7 +75,7 @@ margin: 0px auto;
 					<!-- 카테고리 -->	
 					<td>${board.board_Category }</td>
 					<!-- 제목 -->
-					<td><a href="QnaGetBoard.do?board_Seq=${board.board_Seq }">${board.board_Title }</a></td>
+					<td><a href="/homePage/QnaGetBoard.do?board_Seq=${board.board_Seq }">${board.board_Title }</a></td>
 					<!-- 글쓴이 -->
 					<td>${board.account_Id }</td>
 					<!-- 작성일 -->
@@ -97,7 +97,7 @@ margin: 0px auto;
         </table>
         <br><br>
         <div class="containar">
-	        <form action='QnaBoard.do' method="get">
+	        <form action='Qna.do' method="get">
 			<select name='searchCondition'>
 				<option value=''>전체</option>
 				<option value='자주묻는 질문'>자주묻는 질문</option>

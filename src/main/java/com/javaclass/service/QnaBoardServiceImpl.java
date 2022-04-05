@@ -37,9 +37,19 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	}
 	
 	@Override
-	public void QnaDeleteBoard(int board_Seq) {
+	public void QnaDeleteBoard(QnaBoardVO bao) {
 		System.out.println();
-		QnaBoardDAO.QnaDeleteBoard(board_Seq);
+		QnaBoardDAO.QnaDeleteBoard(bao);
+	}
+	@Override
+	public List<QnaBoardVO> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public QnaBoardVO view(int bno) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

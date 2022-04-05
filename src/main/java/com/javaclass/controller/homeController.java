@@ -60,29 +60,26 @@ public class homeController {
 	
 	//---------------------------------------------------------
 	// 홈 페이지 접속
-	@RequestMapping("homePage/blank.do")
-	public void blank() {
-	}
-	@RequestMapping("homePage/product.do")
-	public void product() {
-	}
-	@RequestMapping("homePage/productDeleteBoard.do")
-	public void productDeleteBoard() {
-	}
-	@RequestMapping("homePage/productgetBoard.do")
-	public void productgetBoard() {
-	}
-	@RequestMapping("homePage/productgetBoardList.do")
-	public void productgetBoardList() {
-	}
-	@RequestMapping("homePage/productInsertBoard.do")
-	public void productInsertBoard() {
-	}
-	@RequestMapping("homePage/productUpdateBoard.do")
-	public void productUpdateBoard() {
-	}
-	@RequestMapping("homePage/store.do")
-	public void store() {
-	}
+	/*
+	 * @RequestMapping("homePage/Qna.do") public void blank() { }
+	 * 
+	 * @RequestMapping("homePage/product.do") public void product() { }
+	 * 
+	 * @RequestMapping("homePage/QnaDeleteBoard.do") public void
+	 * productDeleteBoard() { }
+	 * 
+	 * @RequestMapping("homePage/QnaGetBoard.do") public void productgetBoard() { }
+	 * 
+	 * @RequestMapping("homePage/QnaGetBoardList.do") public void
+	 * productgetBoardList() { }
+	 * 
+	 * @RequestMapping("homePage/QnaInsertBoard.do") public void
+	 * productInsertBoard() { }
+	 * 
+	 * @RequestMapping("homePage/QnaUpdateBoard.do") public void
+	 * productUpdateBoard() { }
+	 * 
+	 * @RequestMapping("homePage/store.do") public void store() { }
+	 */
 
 }

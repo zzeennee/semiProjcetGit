@@ -82,7 +82,7 @@
 			, board_realmainimg   	as board_realMainImg
 			, board_content2      	as board_Content2 
 			, board_date          	as board_Date 
-			, account_id          	as account_id
+			, account_id          	as account_Id
 		FROM qna
 		WHERE board_Seq = #{board_Seq}
 		]]>
@@ -97,10 +97,10 @@
 			board_Category = #{board_Category},
 			board_Content = #{board_Content},
 			board_Content2 = #{board_Content2},
-<!-- 		<if test="board_MainImg != null "> -->
-<!-- 			board_MainImg = #{board_MainImg},  -->
-<!-- 			board_RealMainImg = #{board_RealMainImg}, -->
-<!-- 		</if> -->
+		<if test="board_MainImg != null "> 
+ 			board_MainImg = #{board_MainImg},  
+ 			board_RealMainImg = #{board_RealMainImg},
+		</if> 
 			board_Date = SYSDATE
 		WHERE 
 			board_Seq = #{board_Seq} 
@@ -110,7 +110,7 @@
 	</update>
 	
 	<!-- 게시글 삭제 -->
-	<delete id="QnaDeleteBoard" parameterType="Integer">
+	<delete id="QnaDeleteBoard" parameterType="QnaBoardVO">
 	
 		DELETE FROM qna
 		WHERE board_Seq = #{board_Seq} AND board_Password = #{board_Password}
