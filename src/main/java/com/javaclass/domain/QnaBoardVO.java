@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class ProductBoardVO {
+public class QnaBoardVO {
 
 	int board_Seq;
 	String board_Title;
@@ -125,13 +125,5 @@ public class ProductBoardVO {
 	public void setAccount_Id(String account_Id) {
 		this.account_Id = account_Id;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

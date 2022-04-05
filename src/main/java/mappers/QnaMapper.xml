@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ProductBoardDAO">
+<mapper namespace="QnaBoardDAO">
 
-	<insert id="productInsertBoard" parameterType="ProductBoardVO">
+	<insert id="QnaInsertBoard" parameterType="QnaBoardVO">
 		<!-- INSERT INTO 
 				admin_Board (board_Seq , board_Title, account_id, board_Password, board_Category, board_Content,board_Date)
 	    VALUES (board_Seq.nextval, #{board_Title }, #{account_id} ,#{board_Password }, #{board_Category }, #{board_Content },sysdate)     -->     
 	    
 	    INSERT INTO
-		admin_Board (board_Seq , board_Title, board_Password, board_Category,
+		qna (board_Seq , board_Title, board_Password, board_Category,
 		board_Content,
 		<if test="board_MainImg != null ">
 			board_MainImg, board_RealMainImg,
@@ -25,7 +25,7 @@
 		)          
 	</insert>
 	
-	<select id="productgetBoardList" resultType="ProductBoardVO">
+	<select id="QnaGetBoardList" resultType="QnaBoardVO" parameterType="hashmap">
 		
 		<!--  SELECT 
 			board_seq           	as board_Seq 
@@ -38,34 +38,39 @@
 			, board_content2      	as board_Content2 
 			, board_date          	as board_Date 
 			, account_id          	as account_id
-		FROM ADMIN_BOARD  --> 
+		FROM Qna  --> 
 		
-		 SELECT * FROM admin_Board  
+		 SELECT * FROM qna  
+		 <where>
+			<if test="searchCondition != null">
+				 board_Category LIKE '%${searchCondition}%'
+				 and board_Title LIKE '%${searchKeyword}%'
+			</if>
+		</where>
 		ORDER BY board_Seq DESC
 		
 	</select>
 	
-	<!-- 검색 -->
-	<!-- <select id="productgetBoardList" parameterType="ProductBoardVO" resultType="ProductBoardVO">
-		SELECT *
-		FROM (SELECT result1.*, ROWNUM AS rnum FROM (SELECT * FROM admin_Board		
-		<choose>
-			<when test="board_Title != null">
-				WHERE title LIKE '%'||#{board_Title}||'%'
-			</when>	
-			#은 set하는거고	
-			<when test="board_Title != null">
-				WHERE board_Title LIKE '%${board_Title}%'  
-			$는 미리만들ㄹ어놓고 실행한다 이엘아님..마이바티스문임!
-			</when>
-			<when test="board_Title !=null">
-				WHERE account_id LIKE '%${account_id}%'
-			</when>
-		</choose>
-	</select> -->
+	<!-- 페이징 
+	<select id="getListPaging" resultType="ProductBoardVO">
+    
+    <![CDATA[
+        
+        SELECT board_Seq , board_Title, board_Password, board_Category,
+		board_Content, board_MainImg, board_RealMainImg, board_Content2, board_Date, account_Id
+		FROM(
+        		SELECT  rownum  as rn, board_Seq , board_Title, board_Password, board_Category,
+						board_Content, board_MainImg, board_RealMainImg, board_Content2, board_Date, account_Id
+	            FROM Qna 
+	            WHERE rownum <= #{pageNum} * #{amount})          
+        WHERE rn > (#{pageNum} -1) * #{amount}
+    
+    ]]>
+    
+    </select>-->
 	
 	
-	<select id="productgetBoard" parameterType="ProductBoardVO" resultType="ProductBoardVO">
+	<select id="QnaGetBoard" parameterType="QnaBoardVO" resultType="QnaBoardVO">
 		<![CDATA[
 		SELECT 
 			board_seq           	as board_Seq 
@@ -78,32 +83,36 @@
 			, board_content2      	as board_Content2 
 			, board_date          	as board_Date 
 			, account_id          	as account_id
-		FROM ADMIN_BOARD
+		FROM qna
 		WHERE board_Seq = #{board_Seq}
 		]]>
 	</select>
 	
 	<!-- 수정 -->
-	<update id="productUpdateBoard" parameterType="ProductBoardVO">
-		UPDATE admin_Board SET
-		board_Title = #{board_Title},
-		board_Category =
-		#{board_Category},
-		board_Content = #{board_Content},
-		board_Content2 =
-		#{board_Content2},
-		<if test="board_MainImg != null ">
-			board_MainImg = #{board_MainImg}, board_RealMainImg = #{board_RealMainImg},
-		</if>
-		board_Date = sysdate
-		WHERE board_Seq = #{board_Seq} AND board_Password
-		= #{board_Password}
+	<update id="QnaUpdateBoard" parameterType="QnaBoardVO">
+		UPDATE 
+			qna SET
+			board_Title = #{board_Title},
+			account_Id = #{account_Id},
+			board_Category = #{board_Category},
+			board_Content = #{board_Content},
+			board_Content2 = #{board_Content2},
+<!-- 		<if test="board_MainImg != null "> -->
+<!-- 			board_MainImg = #{board_MainImg},  -->
+<!-- 			board_RealMainImg = #{board_RealMainImg}, -->
+<!-- 		</if> -->
+			board_Date = SYSDATE
+		WHERE 
+			board_Seq = #{board_Seq} 
+		AND 
+			board_Password = #{board_Password}
+		
 	</update>
 	
 	<!-- 게시글 삭제 -->
-	<delete id="productDeleteBoard" parameterType="ProductBoardVO">
+	<delete id="QnaDeleteBoard" parameterType="Integer">
 	
-		DELETE FROM admin_Board
+		DELETE FROM qna
 		WHERE board_Seq = #{board_Seq} AND board_Password = #{board_Password}
 	
 	</delete>
