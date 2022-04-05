@@ -74,7 +74,7 @@ position: absolute;
         <h1>글 등록</h1>		
 		<hr>
 		<!-- 1. 폼태그에 속성 추가  -->
-		<form id="main_blank" action="productBoardSave.do" method='post' enctype="multipart/form-data"> 	 
+		<form id="main_blank" action="QnaBoardSave.do" method='post' enctype="multipart/form-data"> 	 
         <table class="table table-hover">
             
                 <tr>
@@ -87,17 +87,15 @@ position: absolute;
                     <th id="boardt">카테고리</th>
                     <td align="left">
 					<select name="board_Category">
-					    <option value="미분류">카테고리</option>
-					    <option value="공지사항">공지사항</option>
-					    <option value="이벤트">이벤트</option>
-					    <option value="기타">기타</option>
+					    <option value="자주묻는 질문">자주묻는 질문</option>
+					    <option value="문의">문의</option>
 					</select>
 					</td>
                     <th id="boardt">작성자</th>
                     <td align="left"><input type="text" size="10" name="account_Id"/></td>
                 </tr>
                 <tr >
-                    <th id="boardt">내용</th>
+                    <th id="boardt">문의 내용</th>
                     <td align="left" colspan="3"><textarea cols="40" rows="10" name="board_Content"></textarea></td>
                 </tr>
                 <tr >
@@ -120,7 +118,7 @@ position: absolute;
 			</table>
 		</form>
         <br>
-        <a href="blank.do"><button type="button" id="fbutton" class="btn btn-info" >목록</button></a>
+        <a href="Qna.do"><button type="button" id="fbutton" class="btn btn-info" >목록</button></a>
 		<br><br><br>
 </div>
 

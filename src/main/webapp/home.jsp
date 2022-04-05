@@ -11,13 +11,8 @@
 <h1>페이지 연결링크</h1>
 
 <h2>홈페이지</h2>
-<a href='/homePage/blank.do'>고객센터</a><br/><br/>
+<a href='/homePage/Qna.do'>고객센터</a><br/><br/>
 <a href='/homePage/product.do'>상품상세페이지</a><br/><br/> 
-<a href='/homePage/productDeleteBoard.do'>글삭제</a><br/><br/>
-<a href='/homePage/productgetBoard.do'>글상세보기</a><br/><br/>
-<a href='/homePage/productgetBoardList.do'>글목록</a><br/><br/>
-<a href='/homePage/productInsertBoard.do'>글등록</a><br/><br/>
-<a href='/homePage/productUpdateBoard.do'>글업데이트</a><br/><br/>
 <a href='/homePage/store.do'>상품페이지</a><br/><br/>
 <hr/>
 <hr/>

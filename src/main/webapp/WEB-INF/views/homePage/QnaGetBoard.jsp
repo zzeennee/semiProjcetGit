@@ -3,6 +3,15 @@
     <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
+<script>
+	function del(seq) {
+		var chk = confirm("정말 삭제하시겠습니까?");
+		if (chk) {
+			location.href='QnaDeleteBoard.do?board_Seq='+board_Seq;
+			//productDeleteBoard.do?board_Seq=${board.board_Seq }"
+		}
+	}	
+</script>
 <style type="text/css">
 
 #main_blank{
@@ -61,9 +70,9 @@ height: 500px;
 
 
 <div id="main_blank">
-        <button type="button" class="btn btn-primary">전체글</button>
-        <button type="button" class="btn btn-info">공지사항</button>
-        <button type="button" class="btn btn-info">이벤트</button>
+        <!-- <a herf='blank.do'><button type="button" class="btn btn-primary">전체글</button></a>
+        <button type="button" class="btn btn-info">자주묻는 질문</button>
+        <button type="button" class="btn btn-info">문의</button> -->
         <br><br>
         
         <h1>글 상세</h1>		
@@ -104,9 +113,9 @@ height: 500px;
         </table>
 </form>
         <br><br><br><br>
-        <a href="blank.do"><button type="button" id="fbutton" class="btn btn-info float-right" >목록</button></a>&nbsp;
-        <a href="productInsertBoard.do"><button type="button"  id="fbutton"class="btn btn-info" >글등록</button></a>&nbsp; 
-		<a href="productDeleteBoard.do?b_id=${board.board_Seq }"><button type="button" id="fbutton" class="btn btn-info" >글삭제</button></a>
+        <a href="Qna.do"><button type="button" id="fbutton" class="btn btn-info float-right" >목록</button></a>&nbsp;
+        <a href="QnaUpdateBoardForm.do?board_Seq=${board.board_Seq }"><button type="button"  id="fbutton"class="btn btn-info" >글수정</button></a>&nbsp; 
+		<a href="QnaDeleteBoardForm.do?board_Seq=${board.board_Seq }"><button type="button" id="fbutton" class="btn btn-info" >글삭제</button></a>
 
     </div>
 
