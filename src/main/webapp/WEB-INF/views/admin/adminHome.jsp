@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- DONUT CHART -->
             <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">월별 회원가입 차트</h3>
+                <h3 class="card-title">2022년 월별 회원가입 차트</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -117,7 +117,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- DONUT CHART -->
             <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">주간 판맬</h3>
+                <h3 class="card-title">월 매출</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">

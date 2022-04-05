@@ -66,9 +66,9 @@ for(var i = 0; i<jDataAccount.length; i++) {
 }
 		
 var data = {
-				labels: labelListAccount,
+				labels: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
 				datasets: [{
-					label: '월별 회원가입 수',
+					label: '2022년 월별 회원가입 수',
 					backgroundColor: colorList,
 					data : valueListAccount
 				}],
