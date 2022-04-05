@@ -18,6 +18,11 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <span class="navbar-text">
+      	관리자 ????님 로그인중입니다.
+    	</span>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
