@@ -12,9 +12,34 @@
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="login" resultType="AccountVO">
-		SELECT account_Id, account_Password
-		FROM account
-		WHERE account_Id=#{account_Id} AND account_Password=#{account_Password}
+	<select id="loginCheck" resultType="AccountVO">
+		SELECT * FROM account
+		<where>
+			account_Id=#{account_Id} AND account_Password=#{account_Password}
+		</where>
 	</select>
+	
+	<update id="updateAccount" parameterType="AccountVO">
+		UPDATE account SET
+		account_Tel = #{account_Tel},
+		account_Email = #{account_Email},
+		account_Addr1 = #{account_Addr1},
+		account_Addr2 = #{account_Addr2},
+		account_Addr3 = #{account_Addr3},
+		WHERE account_Id = #{account_Id}
+	</update>
+	
+	<select id="myHomePageView" resultType="AccountVO">
+		SELECT *
+		FROM account
+		WHERE account_Id=#{account_Id}
+	</select>
+	
+	<!-- 계정불러오기 -->
+	<select id="accountList" resultType="AccountVO">
+		<![CDATA[
+		SELECT * FROM account
+		]]>
+	</select>
+
 </mapper>
