@@ -73,8 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="#"
-												var="#">
+											<c:forEach items="${admin_PayList }" var="admin_payList">
 												<!-- 프라퍼티이름 변경 -->
 												<tr>
 													<td></td>
