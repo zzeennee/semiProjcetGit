@@ -59,7 +59,7 @@ AdminChartServiceImpl adminchartService;
 		while(accountit.hasNext()) {
 			AdminChartVO accountMonthVO = accountit.next();
 			JsonObject object = new JsonObject();
-			int accountMonth = accountMonthVO.getAccountMonth();
+			String accountMonth = accountMonthVO.getAccountMonth();
 			int accountCnt = accountMonthVO.getAccountCnt();
 		    object.addProperty("accountMonth", accountMonth);
 			object.addProperty("accountCnt", accountCnt);
