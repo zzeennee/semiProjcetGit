@@ -20,14 +20,14 @@ public class homeController {
 
 	// 마이페이지 접속
 	// 1.마이페이지
-	@RequestMapping("myPage/myPageHome.do")
-	public void myPageHome() {
-	}
+	//@RequestMapping("myPage/myPageHome.do")
+	//public void myPageHome() {
+	//}
 
 	// 2.회원정보수정
-	@RequestMapping("myPage/myPageUpdate.do")
-	public void myPageUpdate() {
-	}
+	//@RequestMapping("myPage/myPageUpdate.do")
+	//public void myPageUpdate() {
+	//}
 
 	// 3.회원탈퇴
 	@RequestMapping("myPage/myPageLeave.do")
