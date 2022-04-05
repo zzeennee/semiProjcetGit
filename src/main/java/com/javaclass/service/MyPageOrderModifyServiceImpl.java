@@ -46,5 +46,20 @@ public class MyPageOrderModifyServiceImpl implements MyPageOrderModifyService{
 		 return orderModifyDAOImpl.selectModify(vo); 
 	}	
 	
+	//취소/교환/반품 페이지 
+	public MyPageOrderModifyVO selectDelete(String vo) {
+		return orderModifyDAOImpl.selectDelete(vo);
+	}
+	
+	//cancle 페이지에서 option 값 가져오기
+	public MyPageOrderModifyVO getSelect() {
+		return orderModifyDAOImpl.getSelect();
+	}
+	
+	//cancleload 페이지에 취소/교환/반품 상태 표시
+	public void updateCancle(MyPageOrderModifyVO vo) {
+		orderModifyDAOImpl.updateCancle(vo);
+		
+	}
 	
 }	
