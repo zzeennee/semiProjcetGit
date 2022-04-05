@@ -12,6 +12,7 @@ public class AdminChartVO {
 	int productCnt;
 	String product_Category;
 	
+
 	String accountMonth;
 	int accountCnt;
 	
@@ -42,6 +43,24 @@ public class AdminChartVO {
 	
 	
 	
+	
+
+	
+	
+	
+	
+	public int getAccountMonth() {
+		return accountMonth;
+	}
+	public void setAccountMonth(int accountMonth) {
+		this.accountMonth = accountMonth;
+	}
+	public int getAccountCnt() {
+		return accountCnt;
+	}
+	public void setAccountCnt(int accountCnt) {
+		this.accountCnt = accountCnt;
+	}
 	
 
 	
