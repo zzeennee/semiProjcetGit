@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="chartjs-size-monitor-shrink">
               </div>
-               <canvas id="bar-chart" height="100"></canvas>
+               <canvas id="accountChart" height="100"></canvas>
               </div>
               <!-- /.card-body -->
             </div>
@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                <canvas id="pie-chart2" width="250" height="250"></canvas>
+                <canvas id="productPiechart" width="250" height="250"></canvas>
               </div>
               <!-- /.card-body -->
             </div>
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                <canvas id="pie-chart3" width="250" height="250"></canvas>
+                <canvas id="22" width="250" height="250"></canvas>
               </div>
               <!-- /.card-body -->
             </div>

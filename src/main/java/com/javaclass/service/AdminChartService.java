@@ -7,5 +7,7 @@ import com.javaclass.domain.AdminChartVO;
 public interface AdminChartService {
 
 	public List<AdminChartVO> adminChartProductCategory(AdminChartVO vo);
+	
+	public List<AdminChartVO> accountChart(AdminChartVO vo);
 		
 }

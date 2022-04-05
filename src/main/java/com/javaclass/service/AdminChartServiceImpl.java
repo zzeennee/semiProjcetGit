@@ -19,4 +19,9 @@ public class AdminChartServiceImpl implements AdminChartService {
 		return adminchartDAO.adminChartProductCategory(vo);
 	};
 	
+	public List<AdminChartVO> accountChart(AdminChartVO vo){
+		return adminchartDAO.accountChart(vo);
+	};
+	
+	
 }
