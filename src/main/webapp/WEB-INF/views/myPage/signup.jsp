@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,6 +95,8 @@ h2 {
 
 
 </style>
+
+
 </head>
 <body>
 
@@ -118,6 +121,7 @@ h2 {
 				<div class="form-group" >
 					<label for="userid"  class="col-md-8 col-form-label">아이디</label>
 					<input type="text" class="form-control" id="userid" placeholder="아이디" name="account_Id">
+					
 				</div>
 				<div class="form-group"> 
 					<label class="col-md-8 col-form-label">비밀번호</label>
@@ -233,6 +237,7 @@ h2 {
 
 </body>
 
+<script src="../resources/plugins/jquery/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 window.onload = function(){
@@ -247,6 +252,8 @@ window.onload = function(){
     });
     
 }
+
+
 </script>
 
 </html>
