@@ -160,7 +160,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											for="inputFile2">상품 추가 이미지</label> <input type="file"
 											id="inputFile2" class="form-control" name="product3_File">
 									</div>
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label>추가 상품 선택</label><br /> <label><input
 											type="checkbox" name="addProduct" value="as1"
 											name="product_PlusProduct"> AS 1년 연장 : 15,000원</label> <label><input
@@ -172,7 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											name="product_PlusProduct">보조 배터리</label> <label><input
 											type="checkbox" name="addProduct" value="etc"
 											name="product_PlusProduct">etc</label>
-									</div>
+									</div> -->
 									<div class="form-group">
 										<label for="inputEstimatedDuration">추가 작성내용</label>
 										<textarea id="inputEstimatedDuration" class="form-control"
@@ -207,16 +207,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<%@ include
 		file="../include/adminInclude/adminPageScript/adminScript.jsp"%>
 	<!-- Page specific script -->
-	<script type="text/javascript">
-		$(function() {
-			$("#frm").submit(function() {
-				if ($("#inputStatus").val() == null) {
-					alert('카테고리를 선택하세요.')
-					return false
-				}
-			});
-		});
-	</script>
 	<%@ include
 		file="../include/adminInclude/adminPageScript/adminChange.jsp"%>
 

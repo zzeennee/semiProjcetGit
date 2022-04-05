@@ -77,7 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="form-group">
                 <label for="inputStatus">상품 카테고리</label>
-                <select id="inputStatus" class="form-control custom-select" name="product_Category" required>
+                <select id="inputStatus" class="form-control custom-select" name="product_Category">
                   <option selected disabled>카테고리 선택</option>
                   <option>스마트폰</option>
                   <option>데스크탑</option>
@@ -92,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <input type="number" id="inputNum" class="form-control" name="product_Vol"  pattern="^[0-9]+$" placeholder="숫자만 입력" required>
               </div>
               <div class="form-group">
-                <label for="inputDescription">게시글 내용</label>
+                <label for="inputDescription">상품 내용</label>
                 <textarea id="inputDescription" class="form-control" rows="21" name="product_Content"></textarea>
               </div>
 
