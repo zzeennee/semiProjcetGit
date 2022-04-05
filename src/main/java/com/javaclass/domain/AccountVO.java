@@ -11,7 +11,6 @@ public class AccountVO {
 	private String account_Status;
 	private String account_Leave;
 	
-	
 	public AccountVO() {
 		super();
 	}

@@ -4,7 +4,7 @@
 <mapper namespace="MainDAO">
 	<select id="adminGetCustomerList" resultType="AdminListVO">
 		<![CDATA[
-		SELECT * FROM account ORDER BY account_Data DESC
+		SELECT * FROM account
 		]]>
 	</select>
 	<!-- ************************************************************************** -->
