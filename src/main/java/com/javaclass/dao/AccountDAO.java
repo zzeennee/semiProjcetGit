@@ -27,6 +27,6 @@ public interface AccountDAO {
 	public void deleteAccount(AccountVO vo);
 
 	//관리자 로그인
-	public void adminLogin(AccountVO vo);
+	public void adminLogin(String account_Id);
 }
 

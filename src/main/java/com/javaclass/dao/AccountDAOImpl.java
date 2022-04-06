@@ -61,8 +61,9 @@ public class AccountDAOImpl implements AccountDAO{
 	}
 
 	//관리자 로그인
-	public void adminLogin(AccountVO vo) {
-		sqlSession.selectOne("accountMapper.adminloginCheck", vo);
+	public void adminLogin(String account_Id) {
+		System.out.println("adminLogin호출");
+		sqlSession.selectOne("accountMapper.adminloginCheck", account_Id);
 	};
 
 }

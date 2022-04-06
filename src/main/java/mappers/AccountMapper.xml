@@ -31,8 +31,7 @@
 		SELECT * FROM account
 		<where>
 			account_Id=#{account_Id} AND
-			account_Status = 0 AND
-			account_Leave =1
+			account_Status = 0
 		</where>
 	</select>
 
