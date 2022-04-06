@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.javaclass.domain.QnaBoardVO;
-import com.javaclass.domain.QnaReplyVO;
+//import com.javaclass.domain.QnaReplyVO;
 
 public interface QnaBoardService {
 	// CRUD 기능의 메소드 구현
