@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -158,10 +157,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</div>
 										<!-- 테이블1 끝 -->
 
-<a href="myPageUpdate.do?account_Id=${account.account_Id}">
+										<a href="myPageUpdate.do?account_Id=${account.account_Id}">
 										<button class='btn btn-primary' id='myPagebtn'
 											style="float: right;">회원정보수정</button> 
 											</a>
+											
+											
+											[님 로그인중입니다. / ${sessionScope.logname} /
 									</div>
 
 								<!-- </form> -->

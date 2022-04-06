@@ -20,7 +20,7 @@
     <ul class="navbar-nav ml-auto">
     <li class="nav-item">
         <span class="navbar-text">
-      	관리자 ????님 로그인중입니다.
+       [	${sessionScope.logname2} 님 로그인중입니다. / ${sessionScope.logname} /
     	</span>
       </li>
       <li class="nav-item">

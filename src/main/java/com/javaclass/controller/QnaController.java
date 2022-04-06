@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.javaclass.domain.QnaBoardVO;
-import com.javaclass.domain.QnaReplyVO;
+//import com.javaclass.domain.QnaReplyVO;
 import com.javaclass.service.QnaBoardService;
-import com.javaclass.service.ReplyService;
+//import com.javaclass.service.ReplyService;
 
 
 @Controller
@@ -35,7 +35,7 @@ public class QnaController {
 	
 
 	@Inject
-	private ReplyService replyService;
+	//private ReplyService replyService;
 	
 	@RequestMapping("/QnaInsertBoard.do")
 	public void QnaInsertPage() {
@@ -114,16 +114,16 @@ public class QnaController {
 	}
 	
 	//댓글 조회
-		@RequestMapping(value="/view",method = RequestMethod.GET)
-		public void getView(@RequestParam("bno") int bno , Model model) throws Exception {
-			
-			QnaBoardVO vo = QnaBoardService.view(bno);
-			model.addAttribute("view", vo);
-			
-			// 댓글 조회
-			List<QnaReplyVO> reply = null;
-			reply = replyService.list(bno);
-			model.addAttribute("reply", reply);		
-		}
+//		@RequestMapping(value="/view",method = RequestMethod.GET)
+//		public void getView(@RequestParam("bno") int bno , Model model) throws Exception {
+//			
+//			QnaBoardVO vo = QnaBoardService.view(bno);
+//			model.addAttribute("view", vo);
+//			
+//			// 댓글 조회
+//			List<QnaReplyVO> reply = null;
+//			reply = replyService.list(bno);
+//			model.addAttribute("reply", reply);		
+//		}
 
 }
