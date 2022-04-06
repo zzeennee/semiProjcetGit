@@ -40,7 +40,7 @@ public class QnaBoardVO {
 			// ***********************************************
 			// 해당 경로로 변경
 			// 저장 : File - 자바에서 파일과 디렉토리를 생성, 삭제, 관리하는 클래스
-			File f = new File("C:\\spring\\webwork\\05_semiProject_basic\\src\\main\\webapp\\resources\\upload\\"
+			File f = new File("C:\\spring\\webwork\\semiProjcetGit\\src\\main\\webapp\\resources\\upload\\"
 					+ board_RealMainImg);
 
 			try {

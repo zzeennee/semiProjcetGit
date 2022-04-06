@@ -15,7 +15,7 @@ public interface QnaBoardDAO {
 	public void QnaUpdateBoard(QnaBoardVO bao);
 	
 	/* 글 삭제 */
-	public void QnaDeleteBoard(int board_Seq);
+	public void QnaDeleteBoard(QnaBoardVO bao);
 	
 	/* 글 상세보기 */
 	public QnaBoardVO QnaGetBoard(QnaBoardVO bao);

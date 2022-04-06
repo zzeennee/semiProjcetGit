@@ -3,7 +3,7 @@
     <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<script>
+<!-- <script>
 	function del(seq) {
 		var chk = confirm("정말 삭제하시겠습니까?");
 		if (chk) {
@@ -11,7 +11,7 @@
 			//productDeleteBoard.do?board_Seq=${board.board_Seq }"
 		}
 	}	
-</script>
+</script> -->
 <style type="text/css">
 
 #main_blank{
@@ -22,6 +22,12 @@ margin: 0px auto;
 form{
 border: 1px solid #E4E7ED;
 
+}
+ul{
+text-align:center;
+}
+#reply{
+text-align:center;
 }
 
 #boardt{
@@ -114,10 +120,63 @@ height: 500px;
 </form>
         <br><br><br><br>
         <a href="Qna.do"><button type="button" id="fbutton" class="btn btn-info float-right" >목록</button></a>&nbsp;
-        <a href="QnaUpdateBoardForm.do?board_Seq=${board.board_Seq }"><button type="button"  id="fbutton"class="btn btn-info" >글수정</button></a>&nbsp; 
-		<a href="QnaDeleteBoardForm.do?board_Seq=${board.board_Seq }"><button type="button" id="fbutton" class="btn btn-info" >글삭제</button></a>
-
+        <a href="/homePage/QnaUpdateBoardForm.do?board_Seq=${board.board_Seq }"><button type="button"  id="fbutton"class="btn btn-info" >글수정</button></a>&nbsp; 
+		<a href="/homePage/QnaDeleteBoardForm.do?board_Seq=${board.board_Seq }"><button type="button" id="fbutton" class="btn btn-info" >글삭제</button></a>
     </div>
+<!-- 댓글		--------------------------------------------------- -->
+	  <hr />
+	
+	<ul>
+   <!--  <li>
+        <div>
+            <p>첫번째 댓글 작성자</p>
+            <p>첫번째 댓글</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p>두번째 댓글 작성자</p>
+            <p>두번째 댓글</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p>세번째 댓글 작성자</p>
+            <p>세번째 댓글</p>
+        </div>
+    </li> -->
+    
+    <c:forEach items="${reply }" var="reply">
+	    <li>
+	        <div>
+	            <p>${reply.writer } / ${reply.regDate }</p>
+	            <p>${reply.content }</p>
+	        </div>
+	    </li>
+    </c:forEach>    
+</ul>
+  
+  <br><br>
+   <div id="reply">
+
+    <form method="post" action="/reply/write">
+    <br><br>
+    
+        <p>
+            <label>댓글 작성자</label> <input type="text" name="writer">
+        </p>
+        <p>
+            <textarea rows="5" cols="50" name="content"></textarea>
+        </p>
+        <p>
+        	<input type="hidden" name="bno" value="${QnaGetBoard.bno}">
+            <button type="submit">댓글 작성</button>
+        </p>
+        <br><br>
+    </form>
+    
+</div>
+<!-- 댓글 끝--------------------------------------------------- -->
 
 
 		<!-- SECTION -->
@@ -138,4 +197,5 @@ height: 500px;
 	<!-- js -->
 	<%@ include file="../include/homeInclude/js.jsp" %>
 </body>
+
 </html>
