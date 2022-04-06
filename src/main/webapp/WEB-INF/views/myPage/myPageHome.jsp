@@ -116,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<%-- <form action="myPageUpdate.do?account_Id=${account.account_Id}"
 									method="post"> --%>
 									<input name="account_Id" type="hidden"
-										value="${account.account_Id}" />
+										value="${sessionScope.logname }" />
 									<div class="card-body">
 										<!-- <input type="text"> -->
 
@@ -130,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<label for="exampleInputPassword1">아이디</label> <input
 												type="text" class="form-control" id="exampleInputPassword1"
 												placeholder="아이디"
-												value='${account.account_Id }' readonly>
+												value='${sessionScope.logname }' readonly>
 										</div>
 										<div class="form-group">
 											<label for="exampleInputEmail1">전화번호</label> <input
@@ -163,7 +163,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											</a>
 											
 											
-											[님 로그인중입니다. / ${sessionScope.logname} /
 									</div>
 
 								<!-- </form> -->

@@ -38,10 +38,10 @@ public class homeController {
 	public void myPageLeave() {
 	}
 
-	// 4.마이홈
-	@RequestMapping("myPage/myhome.do")
-	public void myhome() {
-	}
+	// 4.마이홈 필요없음 삭제처리 요망
+	//@RequestMapping("myPage/myhome.do")
+	//public void myhome() {
+	//}
 
 	// 5.주문페이지
 	//@RequestMapping("myPage/orderpage.do")

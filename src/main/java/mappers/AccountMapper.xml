@@ -22,8 +22,7 @@
 	<select id="loginCheck" resultType="AccountVO">
 		SELECT * FROM account
 		<where>
-			account_Id=#{account_Id} AND
-			account_Password=#{account_Password}
+			account_Id=#{account_Id} AND account_Password=#{account_Password} AND account_Leave=1
 		</where>
 	</select>
 
@@ -37,13 +36,14 @@
 		</where>
 	</select>
 
+  <!-- 회원정보 수정 -->
 	<update id="updateAccount" parameterType="AccountVO">
 		UPDATE account SET
 		account_Tel = #{account_Tel},
 		account_Email = #{account_Email},
 		account_Addr1 = #{account_Addr1},
 		account_Addr2 = #{account_Addr2},
-		account_Addr3 = #{account_Addr3},
+		account_Addr3 = #{account_Addr3}
 		WHERE account_Id = #{account_Id}
 	</update>
 
@@ -73,8 +73,21 @@
 		parameterType="AccountVO">
 		SELECT * FROM account
 		WHERE account_Id=#{account_Id}
-	</select>
-
-
+ 	</select>
+ 	
+ 	<!-- 비밀번호 확인-->
+    <select id="checkPassword" resultType="int">
+        SELECT 
+            COUNT(*) 
+        FROM account
+        WHERE account_Id = #{account_Id} AND account_Password = #{account_Password}
+    </select>
+ 	
+ 	<!-- 회원탈퇴 -->
+ 	<update id="deleteAccount" parameterType="AccountVO">
+ 		UPDATE account 
+		SET account_Leave=0
+		WHERE account_Id=#{account_Id} and account_Password=#{account_Password}
+ 	</update>
 
 </mapper>
