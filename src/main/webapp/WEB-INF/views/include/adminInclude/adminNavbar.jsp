@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -21,7 +20,7 @@
     <li class="nav-item">
         <span class="navbar-text">
 
-      	관리자 ${sessionScope.logname }님 로그인중입니다.
+      	관리자 [${sessionScope.logname }]님 로그인중입니다.
 
     	</span>
       </li>
