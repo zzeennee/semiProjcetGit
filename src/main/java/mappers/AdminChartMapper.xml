@@ -3,15 +3,21 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace='adminChartMapper'>
-	
-	<!-- 상품 카테고리별 등록 갯수 차트  -->
+
+	<!-- 상품 카테고리별 등록 갯수 차트 -->
 	<select id="countProductCategory" resultType="AdminChartVO">
-		SELECT product_Category, COUNT(*) AS productCnt 
+		SELECT
+		product_Category, COUNT(*) AS productCnt
 		FROM product_Info
-		GROUP BY product_Category ORDER BY productCnt
+		GROUP BY
+		product_Category ORDER BY productCnt
 	</select>
 	<select id="accountChart" resultType="AdminChartVO">
-	SELECT SUBSTR(account_date, 4,2 )||'월' accountMonth, COUNT(*) accountCnt FROM account GROUP BY SUBSTR(account_date, 4,2) ORDER BY accountMonth ASC
+		SELECT SUBSTR(account_date, 4,2 )||'월' accountMonth, COUNT(*) accountCnt
+		FROM account
+		WHERE account_Status=1
+		GROUP BY SUBSTR(account_date, 4,2)
+		ORDER BY accountMonth ASC
 	</select>
-	
+
 </mapper>
