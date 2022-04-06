@@ -49,8 +49,9 @@ public class AccountServiceImpl implements AccountService{
 	}
 	
 	public void deleteAccount(AccountVO vo) {
-		accountDAOImpl.deleteAccount(vo);
-
+	 	accountDAOImpl.deleteAccount(vo);
+	}
+	
 	public void adminLogin(AccountVO vo) {
 		accountDAOImpl.adminLogin(vo);
 	}
