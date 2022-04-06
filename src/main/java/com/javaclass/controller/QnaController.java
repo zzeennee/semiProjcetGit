@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.javaclass.domain.QnaBoardVO;
+
+//import com.javaclass.domain.QnaReplyVO;
 import com.javaclass.service.QnaBoardService;
+//import com.javaclass.service.ReplyService;
+
 
 
 @Controller
@@ -24,10 +28,17 @@ public class QnaController {
 	private QnaBoardService QnaBoardService;
 	
 	// localhost:8080/index.do
+
+	
+
+	@Inject
+	//private ReplyService replyService;
+
 	@RequestMapping("index.do")
 	public String main() {
 		return "index";
 	}
+
 	
 	// 
 	@RequestMapping("/{step}.do")
@@ -95,5 +106,29 @@ public class QnaController {
 		//QnaBoardService.QnaDeleteBoard(board_Seq);
 		return "redirect:Qna.do";
 	} 
+
+	
+	//게시물조회
+	@RequestMapping(value="/list",method = RequestMethod.GET)
+	public void getList(Model model) throws Exception {
+		// 댓글 조회
+		List<QnaBoardVO> list = null;
+		list = QnaBoardService.list();
+		model.addAttribute("list", list);			
+	}
+	
+	//댓글 조회
+//		@RequestMapping(value="/view",method = RequestMethod.GET)
+//		public void getView(@RequestParam("bno") int bno , Model model) throws Exception {
+//			
+//			QnaBoardVO vo = QnaBoardService.view(bno);
+//			model.addAttribute("view", vo);
+//			
+//			// 댓글 조회
+//			List<QnaReplyVO> reply = null;
+//			reply = replyService.list(bno);
+//			model.addAttribute("reply", reply);		
+//		}
+
 
 }

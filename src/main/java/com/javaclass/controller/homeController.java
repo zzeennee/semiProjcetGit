@@ -1,5 +1,7 @@
 package com.javaclass.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +15,10 @@ public class homeController {
 	//home.jsp 에서 페이지 접속을 위해서 만든 컨트롤러
 	// 관리자페이지 접속
 	@RequestMapping("admin/adminHome.do")
-	public void adminHome() {
+	public void adminHome(HttpSession session, Model m) {
+		 System.out.println("관리자 로그인 : "+ session.getAttribute("logname"));
+		 session.setAttribute("logname2", session.getAttribute("logname"));
+		 m.addAttribute("logname", session.getAttribute("logname"));
 	}
 	
 	//---------------------------------------------------------
