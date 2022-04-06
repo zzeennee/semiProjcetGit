@@ -11,14 +11,14 @@
 		<if test="board_MainImg != null ">
 			board_MainImg, board_RealMainImg,
 		</if>
-		board_Content2, board_Date
+		board_Content2, board_Date, account_Id
 		)
 		VALUES (board_Seq.nextval, #{board_Title }, #{board_Password },
 		#{board_Category }, #{board_Content },
 		<if test="board_MainImg != null ">
 			#{board_MainImg}, #{board_RealMainImg},
 		</if>
-		#{board_Content2}, sysdate
+		#{board_Content2}, sysdate, #{account_Id}
 		)
 	</insert>
 	

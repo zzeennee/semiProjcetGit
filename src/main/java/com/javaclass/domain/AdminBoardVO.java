@@ -13,8 +13,8 @@ public class AdminBoardVO {
 	String board_Password;
 	String board_Category;
 	String board_Content;
-	String board_MainImg;
-	String board_RealMainImg;
+	String board_MainImg;//원래의 파일명
+	String board_RealMainImg;//파일명 + 변수명
 	String board_Content2;
 	String board_Date;
 	String account_Id;
