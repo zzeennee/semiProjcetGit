@@ -9,7 +9,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="adminHome.do" class="nav-link">Home</a>
+        <a href="adminHome.do" class="nav-link">차트 보기</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link"></a>
@@ -18,6 +18,11 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <span class="navbar-text">
+      	관리자 ????님 로그인중입니다.
+    	</span>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
