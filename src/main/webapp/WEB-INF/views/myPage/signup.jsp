@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,10 +91,15 @@ h2 {
 	border:#00c2cb;
 }
 
+#id {
+
+}
 
 
 
 </style>
+
+
 </head>
 <body>
 
@@ -115,10 +121,16 @@ h2 {
 					<label for="username" class="col-md-8 col-form-label">이름</label>
 					<input type="text" class="form-control" id="username" placeholder="이름" name="account_Name">
 				</div>
-				<div class="form-group" >
-					<label for="userid"  class="col-md-8 col-form-label">아이디</label>
-					<input type="text" class="form-control" id="userid" placeholder="아이디" name="account_Id">
+				<div class="form-group" id='id' >
+					<label for="userid" class="col-md-8 col-form-label">아이디&nbsp;&nbsp;&nbsp;&nbsp;<span class='error_box'></span></label>
+					<input type="text" class="form-control" style="width: 65%;  display: inline;" id="userid" placeholder="아이디" name="account_Id">
+					<button type="button" class="btn btn-default" id='idCheck' onclick="execPostCode();">
+						<i class="fa fa-search"></i>중복확인
+					</button>
+					<p id='useridid'><span class='error_box2'></span><span class='error_box1'></span></p>
+					
 				</div>
+
 				<div class="form-group"> 
 					<label class="col-md-8 col-form-label">비밀번호</label>
 					<input type="password" class="form-control" id="userpassword" placeholder="비밀번호" name="account_Password">
@@ -233,9 +245,11 @@ h2 {
 
 </body>
 
+<script src="../resources/plugins/jquery/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 window.onload = function(){
+	
     document.getElementById("first_addrbtn").addEventListener("click", function(){ //주소입력칸을 클릭하면
         //발신자 주소검색 발생
         new daum.Postcode({
@@ -246,7 +260,44 @@ window.onload = function(){
         }).open();
     });
     
+    
+    $('#idCheck').click(function(){
+    	var userid = $.trim($('#userid').val());
+    	if(userid=="") {
+    		$('#useridid .error_box1').html('필수 입력 사항입니다.');  //자식을 찾을 때에는 한 칸 띄우고 입력하기
+        		//$('#userid').val('필수 입력 사항입니다.');
+    		return false;
+    	} else {
+    		$('#useridid .error_box2').html('');
+    		$('#useridid .error_box1').html('');
+    	}
+    	
+    	$.ajax({
+    	       type : 'post',
+    	       url : 'idCheck.do',
+    	       data : { account_Id : $('#userid').val() },
+    	       contentType : 'application/x-www-form-urlencoded;charset=utf-8',  //한글로 넘어감
+    	       success : function(result){
+    	          
+    	          // 중복 검사 후 나오는 결과 에러박스에 출력
+    	          if(result == 'yes'){
+    	                 $('#useridid .error_box2').css('color','#28a745');
+    	                 $('#useridid .error_box2').html('사용 가능한 아이디입니다.');
+    	            }else{
+    	            	$('#useridid .error_box1').html('사용할 수 없는 아이디입니다.');
+    	                 //emailCheak = true;
+    	            }
+    	       },
+    	       error : function(err){
+    	         alert('실패');
+    	          console.log(err);
+    	       }
+    	    }); //end of ajax
+    })
+    
 }
+
+
 </script>
 
 </html>

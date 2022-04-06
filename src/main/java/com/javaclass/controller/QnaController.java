@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,7 +21,8 @@ import com.javaclass.domain.PageMaker;
 import com.javaclass.domain.QnaBoardVO;
 import com.javaclass.domain.ReplyVO;
 import com.javaclass.service.QnaBoardService;
-import com.javaclass.service.ReplyService;
+//import com.javaclass.service.ReplyService;
+
 
 import com.javaclass.domain.*;
 
@@ -33,14 +35,22 @@ public class QnaController {
 	@Autowired
 	private QnaBoardService QnaBoardService;
 	
+	// localhost:8080/index.do
+
+	
+
 	@Inject
 	ReplyService replyService;
+
+	@RequestMapping("index.do")
+	public String main() {
+		return "index";
+	}
 	
-	
-	
-	@RequestMapping("/QnaInsertBoard.do")
-	public void QnaInsertPage() {
-		System.out.println("인서트보드접속");
+	// 
+	@RequestMapping("/{step}.do")
+	public String viewPage(@PathVariable String step) {
+		return step;
 	}
 	//글작성
 	@RequestMapping(value = "/QnaBoardSave.do")
@@ -87,7 +97,7 @@ public class QnaController {
 	@RequestMapping("/QnaUpdateBoardForm.do")
 	public String QnaUpdateBoardForm(QnaBoardVO bao, Model m){
 		m.addAttribute("board",QnaBoardService.QnaGetBoard(bao));
-		return "homePage/QnaUpdateBoardForm";
+		return "QnaUpdateBoardForm";
 		
 	}
 	//수정
@@ -102,19 +112,17 @@ public class QnaController {
 	@RequestMapping(value ="/QnaDeleteBoardForm.do")
 	public String QnaDeleteBoardForm(QnaBoardVO bao, Model m)throws IOException {
 		m.addAttribute("board",QnaBoardService.QnaGetBoard(bao));
-		return "homePage/QnaDeleteBoardForm";
+		return "QnaDeleteBoardForm";
 	}
 	
 	//삭제
 	@RequestMapping(value ="/QnaDeleteBoard.do", method=RequestMethod.GET)
-	public String QnaDeleteBoard(QnaBoardVO bao) { 
-		System.out.println("board_Seq :: " + bao.getBoard_Seq() + "  board_Password :: " +bao.getBoard_Password());
-		QnaBoardService.QnaDeleteBoard(bao);
+	public String QnaDeleteBoard(int board_Seq) { 
+		System.out.println("board_Seq" + board_Seq);
+		//QnaBoardService.QnaDeleteBoard(board_Seq);
 		return "redirect:Qna.do";
 	} 
-	
-	
-	
+
 	//댓글 작성 **************************************************
 	
 	 @RequestMapping(value="/replyWrite.do", method = RequestMethod.POST) 

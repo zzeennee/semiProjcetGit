@@ -7,7 +7,6 @@ import com.javaclass.domain.Criteria;
 import com.javaclass.domain.QnaBoardVO;
 import com.javaclass.domain.SearchCriteria;
 
-
 public interface QnaBoardService {
 	// CRUD 기능의 메소드 구현
 	
