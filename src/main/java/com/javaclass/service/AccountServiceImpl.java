@@ -52,7 +52,8 @@ public class AccountServiceImpl implements AccountService{
 	 	accountDAOImpl.deleteAccount(vo);
 	}
 	
-	public void adminLogin(AccountVO vo) {
-		accountDAOImpl.adminLogin(vo);
+	//관리자 어드민 로그인조건파악
+	public void adminLogin(String account_Id) {
+		accountDAOImpl.adminLogin(account_Id);
 	}
 }
