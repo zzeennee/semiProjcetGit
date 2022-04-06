@@ -58,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <h3 class="card-title">회원탈퇴</h3>
 
               </div>
-              <form action="deleteAccount.do">
+              <form id="accountBoard" action='deleteAccount.do' method="post">
               <div class="card-body">
                 <!-- <input type="text"> -->
                 	
@@ -104,7 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   	</div>
                   <!-- 테이블1 끝 -->
 					
-				<input type="submit" onclick='checkPassword' class="btn btn-primary" id="deletebtn" style="float: right;" value='회원탈퇴'>
+				<input type="button" onclick='checkPassword' class="btn btn-primary" id="deletebtn" style="float: right;" value='회원탈퇴'>
 				</div>
 				
 				
@@ -141,17 +141,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <%@ include file="../include/myPageInclude/myPageScript/myPageHomeScript.jsp" %>
 
 <script type="text/javascript">
-	function checkPassword() {
-		var account_Password1 = doucment.getElementById('account_Password1').value;
-		var account_Password2 = doucment.getElementById('account_Password2').value;
-		if(account_Password1 != account_Password2) {
-			alert("비밀번호가 일치하지 않습니다.")
-			return false;
-		} else {
-			alert("비밀번호가 일치합니다.")
-			return true;
-		}
-	}
+$("#deletebtn").click(function(){
+	var account_Id = ${sessionScope.logname }
+	var account_Password = $('#account_Password').val();
+    // 확인 대화상자    
+    if(confirm("탈퇴하시겠습니까?")){
+        location.href = "deleteAccount.do?account_Id=" + account_Id + "&account_Password=" + account_Password;
+        document.accountBoard.submit();
+    }
+});
 </script>
 </body>
 
