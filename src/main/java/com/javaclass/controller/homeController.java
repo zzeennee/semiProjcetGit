@@ -20,14 +20,14 @@ public class homeController {
 
 	// 마이페이지 접속
 	// 1.마이페이지
-	@RequestMapping("myPage/myPageHome.do")
-	public void myPageHome() {
-	}
+	//@RequestMapping("myPage/myPageHome.do")
+	//public void myPageHome() {
+	//}
 
 	// 2.회원정보수정
-	@RequestMapping("myPage/myPageUpdate.do")
-	public void myPageUpdate() {
-	}
+	//@RequestMapping("myPage/myPageUpdate.do")
+	//public void myPageUpdate() {
+	//}
 
 	// 3.회원탈퇴
 	@RequestMapping("myPage/myPageLeave.do")
@@ -60,29 +60,26 @@ public class homeController {
 	
 	//---------------------------------------------------------
 	// 홈 페이지 접속
-	@RequestMapping("homePage/blank.do")
-	public void blank() {
-	}
-	@RequestMapping("homePage/product.do")
-	public void product() {
-	}
-	@RequestMapping("homePage/productDeleteBoard.do")
-	public void productDeleteBoard() {
-	}
-	@RequestMapping("homePage/productgetBoard.do")
-	public void productgetBoard() {
-	}
-	@RequestMapping("homePage/productgetBoardList.do")
-	public void productgetBoardList() {
-	}
-	@RequestMapping("homePage/productInsertBoard.do")
-	public void productInsertBoard() {
-	}
-	@RequestMapping("homePage/productUpdateBoard.do")
-	public void productUpdateBoard() {
-	}
-	@RequestMapping("homePage/store.do")
-	public void store() {
-	}
-
+	/*
+	 * @RequestMapping("homePage/blank.do") public void blank() { }
+	 * 
+	 * @RequestMapping("homePage/product.do") public void product() { }
+	 * 
+	 * @RequestMapping("homePage/productDeleteBoard.do") public void
+	 * productDeleteBoard() { }
+	 * 
+	 * @RequestMapping("homePage/productgetBoard.do") public void productgetBoard()
+	 * { }
+	 * 
+	 * @RequestMapping("homePage/productgetBoardList.do") public void
+	 * productgetBoardList() { }
+	 * 
+	 * @RequestMapping("homePage/productInsertBoard.do") public void
+	 * productInsertBoard() { }
+	 * 
+	 * @RequestMapping("homePage/productUpdateBoard.do") public void
+	 * productUpdateBoard() { }
+	 * 
+	 * @RequestMapping("homePage/store.do") public void store() { }
+	 */
 }
