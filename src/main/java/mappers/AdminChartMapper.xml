@@ -11,7 +11,7 @@
 		GROUP BY product_Category ORDER BY productCnt
 	</select>
 	<select id="accountChart" resultType="AdminChartVO">
-	SELECT SUBSTR(account_data, 4,2 )||'월' accountMonth, COUNT(*) accountCnt FROM account GROUP BY SUBSTR(account_data, 4,2) ORDER BY accountMonth ASC
+	SELECT SUBSTR(account_date, 4,2 )||'월' accountMonth, COUNT(*) accountCnt FROM account GROUP BY SUBSTR(account_date, 4,2) ORDER BY accountMonth ASC
 	</select>
 	
 </mapper>

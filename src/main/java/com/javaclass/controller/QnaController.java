@@ -1,30 +1,35 @@
 package com.javaclass.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.mariadb.jdbc.internal.logging.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.javaclass.domain.PageMaker;
 import com.javaclass.domain.QnaBoardVO;
-
-//import com.javaclass.domain.QnaReplyVO;
+import com.javaclass.domain.ReplyVO;
 import com.javaclass.service.QnaBoardService;
 //import com.javaclass.service.ReplyService;
-
-
+import com.javaclass.service.ReplyService;
+import com.javaclass.domain.*;
 
 @Controller
 @RequestMapping("/homePage")
 public class QnaController {
+	
+	private static final org.mariadb.jdbc.internal.logging.Logger logger = LoggerFactory.getLogger(QnaController.class);
 
 	@Autowired
 	private QnaBoardService QnaBoardService;
@@ -34,13 +39,12 @@ public class QnaController {
 	
 
 	@Inject
-	//private ReplyService replyService;
+	ReplyService replyService;
 
 	@RequestMapping("index.do")
 	public String main() {
 		return "index";
 	}
-
 	
 	// 
 	@RequestMapping("/{step}.do")
@@ -55,28 +59,35 @@ public class QnaController {
 	}
 	
 	// 글 목록 검색
-	@RequestMapping("/Qna.do")
-	public void QnaGetBoardList(String searchCondition, String searchKeyword, Model m) {
-		HashMap map = new HashMap();
-		map.put("searchCondition", searchCondition);
-		map.put("searchKeyword", searchKeyword);
+	@RequestMapping(value="/Qna.do", method = RequestMethod.GET)
+	public String QnaGetBoardList(Model model, @ModelAttribute("scri") com.javaclass.domain.SearchCriteria scri) throws Exception{
+		logger.info("QnaGetBoardList");
 		
-		System.out.println("searchCondition :: " + searchCondition);
-		System.out.println("searchKeyword :: " + searchKeyword);
+		model.addAttribute("QnaGetBoardList", QnaBoardService.QnaGetBoardList(scri));
 		
-		List<QnaBoardVO> list = QnaBoardService.QnaGetBoardList(map);
-		m.addAttribute("QnaGetBoardList", list);
-		System.out.println("QnaGetBoardList.do 요청됨.");  
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(QnaBoardService.listCount(scri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "homePage/Qna";
 	}
 	
 	//상세조회
 	@RequestMapping("/QnaGetBoard.do")
-	public ModelAndView QnaGetBoard(QnaBoardVO bao, Model model){
+	public ModelAndView QnaGetBoard(QnaBoardVO bao, Model model) throws Exception{
+		logger.info("read");
+		
 		ModelAndView mav = new ModelAndView();
 		System.out.println("QnaBoardVO : " + bao.getBoard_Seq());
 		QnaBoardVO board = QnaBoardService.QnaGetBoard(bao);
 		mav.addObject("board",board);
-		mav.setViewName("QnaGetBoard");
+		mav.setViewName("homePage/QnaGetBoard");
+		
+		List<ReplyVO> replyList = replyService.readReply(bao.getBoard_Seq());
+		model.addAttribute("replyList", replyList);
+		
 		return mav;
 	}
 	//수정폼
@@ -109,28 +120,22 @@ public class QnaController {
 		return "redirect:Qna.do";
 	} 
 
+	//댓글 작성 **************************************************
 	
-	//게시물조회
-	@RequestMapping(value="/list",method = RequestMethod.GET)
-	public void getList(Model model) throws Exception {
-		// 댓글 조회
-		List<QnaBoardVO> list = null;
-		list = QnaBoardService.list();
-		model.addAttribute("list", list);			
-	}
-	
-	//댓글 조회
-//		@RequestMapping(value="/view",method = RequestMethod.GET)
-//		public void getView(@RequestParam("bno") int bno , Model model) throws Exception {
-//			
-//			QnaBoardVO vo = QnaBoardService.view(bno);
-//			model.addAttribute("view", vo);
-//			
-//			// 댓글 조회
-//			List<QnaReplyVO> reply = null;
-//			reply = replyService.list(bno);
-//			model.addAttribute("reply", reply);		
-//		}
-
+	 @RequestMapping(value="/replyWrite", method = RequestMethod.POST) public
+	 String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr)throws Exception { logger.info("reply Write");
+	 
+	 replyService.writeReply(vo);
+	  
+	 rttr.addAttribute("bno", vo.getBno()); 
+	 rttr.addAttribute("page",scri.getPage()); 
+	 rttr.addAttribute("perPageNum", scri.getPerPageNum());
+	 rttr.addAttribute("searchType", scri.getSearchType());
+	 rttr.addAttribute("keyword", scri.getKeyword());
+	  
+	  return "redirect:/homePage/Qna"; 
+	  
+	 }
+	 
 
 }

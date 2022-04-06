@@ -44,7 +44,7 @@ public class AccountDAOImpl implements AccountDAO{
 	public AccountVO idCheck(AccountVO vo) {
 		return sqlSession.selectOne("accountMapper.idCheck", vo);
 	}
-	
+  
 	public boolean checkPassword(String account_Id, String account_Password) {
 		boolean result = false;
 		Map<String, String> map = new HashMap<String, String>(); 
@@ -59,4 +59,10 @@ public class AccountDAOImpl implements AccountDAO{
 	public void deleteAccount(AccountVO vo) {
 		sqlSession.selectOne("accountMapper.deleteAccount", vo);
 	}
+
+	//관리자 로그인
+	public void adminLogin(AccountVO vo) {
+		sqlSession.selectOne("accountMapper.adminloginCheck", vo);
+	};
+
 }

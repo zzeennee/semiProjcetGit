@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ProductDAO">
-	<!-- 상품목록  -->
+	<!-- 상품목록 -->
 	<select id="adminGetProductList" resultType="AdminProductVO">
 		<![CDATA[
 		SELECT * FROM product_Info ORDER BY product_Seq DESC
 		]]>
 	</select>
-	
+
 	<!-- 상품 입력 -->
 	<insert id="adminInsertProduct" parameterType="AdminProductVO">
 		INSERT INTO
@@ -22,9 +22,12 @@
 		<if test="product_SubImg != null ">
 			product_SubImg, product_realSubImg,
 		</if>
-		product_Category, product_Vol,product_ModelName, product_ShortContent,product_Price, product_Content2, product_Date
+		product_Category, product_Vol,product_ModelName,
+		product_ShortContent,product_Price, product_Content2, product_Date,
+		account_Id
 		)
-		VALUES (product_Seq.nextval, #{product_Name }, #{product_Password },
+		VALUES (product_Seq.nextval, #{product_Name },
+		#{product_Password },
 		<if test="product_MainImg != null ">
 			#{product_MainImg}, #{product_realMainImg},
 		</if>
@@ -34,7 +37,9 @@
 		<if test="product_SubImg != null ">
 			#{product_SubImg}, #{product_realSubImg},
 		</if>
-		#{product_Category}, #{product_Vol}, #{product_ModelName}, #{product_ShortContent},#{product_Price}, #{product_Content2}, sysdate
+		#{product_Category}, #{product_Vol}, #{product_ModelName},
+		#{product_ShortContent},#{product_Price}, #{product_Content2},
+		sysdate, #{account_Id}
 		)
 	</insert>
 	<!-- 상품 수정 -->
@@ -42,46 +47,54 @@
 		UPDATE product_Info SET
 		product_Name = #{product_Name},
 		<if test="product_MainImg != null ">
-			product_MainImg = #{product_MainImg}, product_realMainImg = #{product_realMainImg},
+			product_MainImg = #{product_MainImg}, product_realMainImg
+			= #{product_realMainImg},
 		</if>
 		<if test="product_BrandImg != null ">
-			product_BrandImg = #{product_BrandImg}, product_realBrandImg = #{product_realBrandImg},
+			product_BrandImg = #{product_BrandImg},
+			product_realBrandImg = #{product_realBrandImg},
 		</if>
 		<if test="product_SubImg != null ">
-			product_SubImg = #{product_SubImg}, product_realSubImg = #{product_realSubImg},
+			product_SubImg = #{product_SubImg}, product_realSubImg =
+			#{product_realSubImg},
 		</if>
 		product_Category = #{product_Category},
 		product_Vol = #{product_Vol},
 		product_ModelName = #{product_ModelName},
-		product_ShortContent = #{product_ShortContent},
+		product_ShortContent =
+		#{product_ShortContent},
 		product_Price = #{product_Price},
 		product_Content2 = #{product_Content2},
 		product_Date = sysdate
-		WHERE product_Seq = #{product_Seq} AND product_Password = #{product_Password}
+		WHERE
+		product_Seq = #{product_Seq} AND product_Password =
+		#{product_Password}
 	</update>
-	
+
 	<!-- 상품 상세보기 -->
 	<select id="adminGetProduct" parameterType="AdminProductVO"
 		resultType="AdminProductVO">
-		
+
 		SELECT *
 		FROM product_Info
 		WHERE product_Seq = #{product_Seq}
-		
+
 	</select>
 	<!-- 상품 삭제 -->
 	<delete id="adminDeleteProduct" parameterType="AdminProductVO">
-		
+
 		DELETE FROM product_Info
-		WHERE product_Seq = #{product_Seq} AND product_Password = #{product_Password}
+		WHERE product_Seq = #{product_Seq} AND
+		product_Password = #{product_Password}
 	</delete>
-	<!-- 비밀번호 확인-->
-    <select id="checkProduct" resultType="int">
-        SELECT 
-            COUNT(*) 
-        FROM product_Info
-        WHERE product_Seq = #{product_Seq} AND product_Password = #{product_Password}
-    </select>
-	
+	<!-- 비밀번호 확인 -->
+	<select id="checkProduct" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM product_Info
+		WHERE product_Seq = #{product_Seq} AND product_Password =
+		#{product_Password}
+	</select>
+
 	<!-- ************************************************************************** -->
 </mapper>

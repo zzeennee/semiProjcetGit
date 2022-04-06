@@ -28,8 +28,10 @@ public class MyPageOrderModifyController {
 	  return "redirect:orderpage.do"; 
 	  }
 	
+	  
 	//db값 주문내역페이지에 가져오기 ***************************************************************
-	@RequestMapping("/myPage/orderpage.do")
+	
+	  @RequestMapping("/myPage/orderpage.do")
 	public void getOrderList(MyPageOrderModifyVO vo,Model m) {
 		/*
 		 * HashMap map= new HashMap(); map.put("searchCondition", searchCondition);
@@ -44,16 +46,20 @@ public class MyPageOrderModifyController {
 		
 	}
 	
+	
 	//주문내역페이지에서 주문상세보기 페이지 db값 가지고 오는거 설정**********************************
-	@RequestMapping("/myPage/orderload.do")
+	
+	  @RequestMapping("/myPage/orderload.do")
 	public void getOrderLoadList(MyPageOrderModifyVO vo,Model m) {
 		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getOrderLoadList();
 		m.addAttribute("orderloadList",list);
 		
 	}
 	
+	
     //주문수정페이지 수정완성하기****************************************************************
-	@RequestMapping("updateMember.do") 
+	
+	  @RequestMapping("updateMember.do") 
 	public String updateMember(MyPageOrderModifyVO vo) {
 
 		ordermodifyServiceImpl.updateMember(vo); //return "redirect:orderpage.do";
@@ -67,39 +73,46 @@ public class MyPageOrderModifyController {
 		
 	}
 	
+	
 	//주문 내역페이지 값들 수정페이지에 데이터 값 보여주기************************************************
+	
 	@RequestMapping("/myPage/ordermodify.do")
 	public void selectModify(MyPageOrderModifyVO vo, Model m) {
 		m.addAttribute("board",ordermodifyServiceImpl.selectModify(vo));
 		 
 	}
 	
+	
 	//취소/교환/반품 페이지 ***********************************************************************
+	
 	@RequestMapping("/myPage/canclepage.do")
 	public void selectDelete(HttpServletRequest  req, MyPageOrderModifyVO vo, Model m) {
 		String account_id = req.getParameter("account_id");
 		vo.setAccount_id(account_id);
-		System.out.println(account_id);
 		m.addAttribute("board",ordermodifyServiceImpl.selectDelete(account_id));
 		
 	}
 	
 	
+	
 	//cancle 페이지에서 option 값 가져오기 ***********************************************************
-	@GetMapping("/myPage/canclepage2.do")
-	public String trainerMyPage(Model m, HttpServletRequest req,String inputStatus) {
-		 inputStatus= req.getParameter("inputStatus");
-		System.out.println(inputStatus);
-		m.addAttribute("inputStatus",ordermodifyServiceImpl.getSelect());
-		return "/cancleload.do";
+	
+	@RequestMapping("/myPage/canclepage2.do")
+	public String trainerMyPage(MyPageOrderModifyVO vo) {
+		 ordermodifyServiceImpl.updateCancle(vo);
+        return "redirect:/myPage/cancleload.do";
 	}
 	
 
 	//cancleload 페이지에 취소/교환/반품 상태 표시해주기 **************************************************
-	@RequestMapping("updateCancle.do") 
-	public String updateCancle(MyPageOrderModifyVO vo) {
-     ordermodifyServiceImpl.updateCancle(vo); 
-		return "/cancleload.do"; 
+	
+	@RequestMapping("/myPage/cancleload.do") 
+	public void getCancleList(MyPageOrderModifyVO vo,Model m) {
+		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getCancleList();
+		m.addAttribute("cancleList",list);
 	}
+		
 	
 }
+	
+

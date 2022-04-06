@@ -3,14 +3,21 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace='accountMapper'>
-	
+
 	<!-- 회원정보 입력 -->
 	<insert id='insertAccount' parameterType="AccountVO">
 		INSERT INTO account(
-		account_Seq, account_Id, account_Password, account_Name, account_Email, account_Tel, account_Addr1, account_Addr2, account_Addr3, account_Status, account_Leave, account_Date)
-		VALUES(account_Seq.nextval, #{account_Id}, #{account_Password}, #{account_Name}, #{account_Email}, #{account_Tel}, #{account_Addr1}, #{account_Addr2}, #{account_Addr3}, 1, 1, sysdate)
+		account_Seq, account_Id, account_Password, account_Name,
+		account_Email,
+		account_Tel, account_Addr1, account_Addr2,
+		account_Addr3,
+		account_Status, account_Leave, account_Date)
+		VALUES(account_Seq.nextval, #{account_Id}, #{account_Password},
+		#{account_Name}, #{account_Email}, #{account_Tel}, #{account_Addr1},
+		#{account_Addr2}, #{account_Addr3}, 1, 1, sysdate)
 	</insert>
-	
+
+
 	<!-- 로그인 -->
 	<select id="loginCheck" resultType="AccountVO">
 		SELECT * FROM account
@@ -18,8 +25,18 @@
 			account_Id=#{account_Id} AND account_Password=#{account_Password} AND account_Leave=1
 		</where>
 	</select>
-	
-	<!-- 회원정보 수정 -->
+
+	<!-- 관리자 로그인 -->
+	<select id="adminloginCheck" resultType="AccountVO">
+		SELECT * FROM account
+		<where>
+			account_Id=#{account_Id} AND
+			account_Status = 0 AND
+			account_Leave =1
+		</where>
+	</select>
+
+  <!-- 회원정보 수정 -->
 	<update id="updateAccount" parameterType="AccountVO">
 		UPDATE account SET
 		account_Tel = #{account_Tel},
@@ -29,28 +46,31 @@
 		account_Addr3 = #{account_Addr3}
 		WHERE account_Id = #{account_Id}
 	</update>
-	
-	<select id="myHomePageView" parameterType="AccountVO" resultType="AccountVO">
+
+	<select id="myHomePageView" parameterType="AccountVO"
+		resultType="AccountVO">
 		SELECT *
 		FROM account
 		WHERE account_Id=#{account_Id}
 	</select>
-	
-	<select id="myHomePageUpdate" parameterType="string" resultType="AccountVO">
+
+	<select id="myHomePageUpdate" parameterType="string"
+		resultType="AccountVO">
 		SELECT *
 		FROM account
 		WHERE account_Id=#{account_Id}
 	</select>
-	
+
 	<!-- 계정불러오기 -->
 	<select id="accountList" resultType="AccountVO">
 		<![CDATA[
 		SELECT * FROM account
 		]]>
 	</select>
-	
+
 	<!-- 아이디 중복체크 -->
-	<select id="idCheck" resultType="AccountVO" parameterType="AccountVO">
+	<select id="idCheck" resultType="AccountVO"
+		parameterType="AccountVO">
 		SELECT * FROM account
 		WHERE account_Id=#{account_Id}
  	</select>

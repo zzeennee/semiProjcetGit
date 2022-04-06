@@ -25,4 +25,8 @@ public interface AccountDAO {
 	public boolean checkPassword(String account_Id, String account_Password);
 	
 	public void deleteAccount(AccountVO vo);
+
+	//관리자 로그인
+	public void adminLogin(AccountVO vo);
 }
+

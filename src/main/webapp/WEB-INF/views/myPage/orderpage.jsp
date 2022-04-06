@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -63,6 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<tr>
 												<th>주문번호</th>
 												<th>상품명</th>
+												<th>수량</th>
 												<th>금액</th>
 												<th>주소</th>
 												<th>수정/취소</th>
@@ -75,6 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 													<td><a href="orderload.do">${board.order_payselect}</a></td>
 													<td>${board.order_uesrreq}</td>
 													<td>${board.coupon_number}</td>
+													<td></td>
 													<td align="left"><a
 														href="ordermodify.do?account_id=${board.account_id }"><input
 															type="submit" value="수정"

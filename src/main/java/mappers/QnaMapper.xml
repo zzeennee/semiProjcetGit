@@ -25,7 +25,33 @@
 		)          
 	</insert>
 	
-	<select id="QnaGetBoardList" resultType="QnaBoardVO" parameterType="hashmap">
+	<select id="QnaGetBoardList" resultType="QnaBoardVO" parameterType="Criteria">
+		<!--SELECT  board_Seq, 
+				board_Title, 
+				board_Password, 
+				board_Category, 
+				board_Content, 
+				board_MainImg,
+				board_realMainImg,
+				board_Content2,
+				board_Date,
+				account_id
+		FROM ( 
+				SELECT board_Seq, 
+				board_Title, 
+				board_Password, 
+				board_Category, 
+				board_Content, 
+				board_MainImg,
+				board_realMainImg,
+				board_Content2,
+				board_Date,
+				account_id,
+				ROW_NUMBER() OVER(ORDER BY board_Seq DESC) AS RNUM
+				FROM qna 
+				) MP
+		WHERE RNUM BETWEEN #{rowStart, jdbcType=VARCHAR} AND #{rowEnd, jdbcType=VARCHAR}
+		ORDER BY board_Seq DESC-->
 		
 		<!--  SELECT 
 			board_seq           	as board_Seq 
@@ -38,7 +64,7 @@
 			, board_content2      	as board_Content2 
 			, board_date          	as board_Date 
 			, account_id          	as account_id
-		FROM Qna  --> 
+		FROM Qna  
 		
 		 SELECT * FROM qna  
 		 <where>
@@ -47,27 +73,33 @@
 				 and board_Title LIKE '%${searchKeyword}%'
 			</if>
 		</where>
-		ORDER BY board_Seq DESC
+		ORDER BY board_Seq DESC--> 
 		
+		 SELECT * FROM qna  
+		 <include refid="search"></include>
+		ORDER BY board_Seq DESC
 	</select>
 	
-	<!-- 페이징 
-	<select id="getListPaging" resultType="ProductBoardVO">
-    
-    <![CDATA[
-        
-        SELECT board_Seq , board_Title, board_Password, board_Category,
-		board_Content, board_MainImg, board_RealMainImg, board_Content2, board_Date, account_Id
-		FROM(
-        		SELECT  rownum  as rn, board_Seq , board_Title, board_Password, board_Category,
-						board_Content, board_MainImg, board_RealMainImg, board_Content2, board_Date, account_Id
-	            FROM Qna 
-	            WHERE rownum <= #{pageNum} * #{amount})          
-        WHERE rn > (#{pageNum} -1) * #{amount}
-    
-    ]]>
-    
-    </select>-->
+	<!-- 페이징 -->
+	<select id="listPage" resultType="QnaBoardVO" parameterType="Criteria">
+		SELECT  *
+		FROM ( 
+				SELECT board_Seq, 
+				board_Title, 
+				board_Password, 
+				board_Category, 
+				board_Content, 
+				board_MainImg,
+				board_realMainImg,
+				board_Content2,
+				board_Date,
+				account_id,
+				ROW_NUMBER() OVER(ORDER BY board_Seq DESC) AS RNUM
+				FROM qna 
+				) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY board_Seq DESC
+	</select>
 	
 	
 	<select id="QnaGetBoard" parameterType="QnaBoardVO" resultType="QnaBoardVO">
@@ -116,5 +148,25 @@
 		WHERE board_Seq = #{board_Seq} AND board_Password = #{board_Password}
 	
 	</delete>
+	
+	<!-- 게시물 총 갯수 -->
+	<select id="listCount" parameterType="SearchCriteria" resultType="int">
+		
+			SELECT COUNT(board_Seq)
+			FROM qna
+			WHERE 1=1
+		<include refid="search"></include>	
+		   AND board_Seq > 0
+	</select>
+	
+	<!-- 검색 -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchCondition != null">
+				 board_Category LIKE '%${searchType}%'
+				 and board_Title LIKE '%${keyword}%'
+			</if>
+		</if>
+	</sql>
 
 </mapper>
