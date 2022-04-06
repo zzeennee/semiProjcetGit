@@ -24,8 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<!-- Sidebar -->
 		<%@ include file="../include/adminInclude/adminSidebar.jsp"%>
 
-		<form id="frm" name="formBoard" id="formBoard" enctype="multipart/form-data"
-			method="post">
+		<form id="frm" name="formBoard" id="formBoard"
+			enctype="multipart/form-data" method="post">
 			<input name="product_Seq" type="hidden"
 				value="${admin_Product.product_Seq}" />
 			<!-- main -->
@@ -128,6 +128,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								</div>
 								<div class="card-body">
 									<div class="form-group">
+										<label for="inputEstimatedBudget">작성자</label> <input
+											type="text" id="inputEstimatedBudget"
+											value="${admin_Product.account_Id }" class="form-control"
+											readOnly>
+									</div>
+									<div class="form-group">
 										<label for="inputModel">상세 모델명</label> <input type="text"
 											id="inputModel" class="form-control" name="product_ModelName"
 											value="${admin_Product.product_ModelName}" required>
@@ -142,7 +148,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<label for="inputModelPrice">상품 가격</label> <input
 											type="number" id="inputModelPrice" class="form-control"
 											name="product_Price" pattern="^[0-9]+$"
-											value="${admin_Product.product_Price}" placeholder="숫자만 입력" required>
+											value="${admin_Product.product_Price}" placeholder="숫자만 입력"
+											required>
 									</div>
 									<!--<div class="form-group">
                 <label for="inputEstimatedBudget">상품 담당자</label>
