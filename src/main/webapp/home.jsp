@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로긴</title>
+<title>22로긴2222222222222</title>
 </head>
 <body>
 
@@ -50,4 +51,5 @@
 <a href='/paymentOrder/refund.do'>환불하기</a><br/><br/>
 
 </body>
+
 </html>

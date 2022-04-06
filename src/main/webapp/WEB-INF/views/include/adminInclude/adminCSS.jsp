@@ -16,6 +16,6 @@
   <link rel="stylesheet" href="../resources/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
  <style>
   input:invalid {
-  border: 3px solid red;
+  border: 1px solid red;
 }
 </style>

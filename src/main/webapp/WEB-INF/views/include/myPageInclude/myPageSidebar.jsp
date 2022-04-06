@@ -61,10 +61,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/adminBoardRegister.do" class="nav-link">
+            <a href="../admin/adminHome.do?account_Id=${sessionScope.logname }" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                게시글 등록
+                관리자 페이지
               </p>
             </a>
           </li>

@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -59,11 +58,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">게시글 제목</label>
-                <input type="text" id="inputName" class="form-control" name="board_Title" placeholder="제목">
+                <input type="text" id="inputName" class="form-control" name="board_Title" placeholder="제목" required>
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">삭제 및 수정 비밀번호</label>
-                <input type="password" id="inputProjectLeader" class="form-control" name="board_Password" placeholder="비밀번호">
+                <input type="password" id="inputProjectLeader" class="form-control" name="board_Password" required>
               </div>
               <div class="form-group">
                 <label for="inputStatus">게시글 카테고리</label>
@@ -76,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="form-group">
                 <label for="inputDescription">게시글 내용</label>
-                <textarea id="inputDescription" class="form-control" rows="15" name="board_Content"></textarea>
+                <textarea id="inputDescription" class="form-control" rows="15" name="board_Content" required></textarea>
               </div>
               <div class="form-group">
                 <label for="inputFile">파일 추가</label>
@@ -99,8 +98,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputEstimatedBudget">담당자</label>
-                <input type="text" id="inputEstimatedBudget" class="form-control">
+                <label for="inputEstimatedBudget">작성자</label>
+                <input type="text" id="inputEstimatedBudget" value="${sessionScope.logname }" class="form-control" readOnly>
               </div>
               <div class="form-group">
                 <label for="inputEstimatedDuration">추가 작성내용</label>
@@ -115,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="row">
         <div class="col-6">
           <a href="adminBoardList.do" class="btn btn-secondary">취소</a>
-          <input type="submit" value="작성" class="btn btn-success float-right" id="boardinput" required >
+          <input type="submit" value="작성" class="btn btn-success float-right" id="boardinput">
         </div>
       </div>
     </section>
@@ -131,6 +130,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 <%@ include file="../include/adminInclude/adminPageScript/adminScript.jsp" %> 
 <!-- Page specific script -->
-<%@ include file="../include/adminInclude/adminPageScript/adminChange.jsp" %> 
+<script type="text/javascript">
+		$(function() {
+			$("#boardForm").submit(function() {
+				if ($("#inputStatus").val() == null) {
+					alert('카테고리를 선택하세요.')
+					return false
+				}
+			});
+		});
+	</script>
 </body>
 </html>
