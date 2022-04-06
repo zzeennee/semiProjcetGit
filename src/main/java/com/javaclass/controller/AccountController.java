@@ -113,6 +113,7 @@ public class AccountController {
 	//마이페이지- 회원정보수정페이지
 	@RequestMapping("/myPage/myPageUpdate.do")
 	public void myHomeUpdatePage(String account_Id, Model m){
+		System.out.println("<"+account_Id+">");
 	m.addAttribute("account", accountServiceImpl.myHomePageUpdate(account_Id));
 	System.out.println("??");
 	
