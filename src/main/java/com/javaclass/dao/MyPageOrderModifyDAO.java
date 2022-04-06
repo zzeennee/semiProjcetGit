@@ -23,9 +23,12 @@ public interface MyPageOrderModifyDAO {
     //주문취소/반품/교환 페이지
     public MyPageOrderModifyVO selectDelete(String vo);
     
-  //cancle 페이지에서 option 값 가져오기
+    //cancle 페이지에서 option 값 가져오기
     public MyPageOrderModifyVO getSelect();
     
     //cancleload 페이지에 취소/교환/반품 상태 표시
     public void updateCancle(MyPageOrderModifyVO vo);
+    
+    //select 취소/교환/반품 상태 표시 리스트 나타내기
+    public List<MyPageOrderModifyVO> getCancleList();
 }

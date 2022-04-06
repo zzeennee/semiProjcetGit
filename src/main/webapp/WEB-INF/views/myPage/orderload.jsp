@@ -59,24 +59,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<!-- /.card -->
 							<div class="card">
 								<div class="card-header">
-									<h3 class="card-title">상품명 선택시 수정 및 삭제 페이지로 이동합니다.</h3>
 								</div>
 								<!-- /.card-header -->
 								 <div class="card-body">
         <table class="table table-bordered table-hover">
         <thead>
         <tr>
-        <th>상품번호</th>
-        <th>회원이름</th>
-        <th>배송일</th>
-        <th>상태</th>
+        <th>주문번호</th>
+        <th>상품명</th>
+        <th>수량</th>
         <th>금액</th>
+        <th>주소</th>
         
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${orderloadList}"  var="board">
-        <tr data-widget="expandable-table" aria-expanded="true">
+        <tr data-widget="expandable-table" aria-expanded="false">
         <td>${board.account_id}</td>
         <td>${board.order_payselect}</td>
         <td>${board.order_uesrreq}</td>
