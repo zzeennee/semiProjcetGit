@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -99,8 +98,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputEstimatedBudget">담당자</label>
-                <input type="text" id="inputEstimatedBudget" class="form-control">
+                <label for="inputEstimatedBudget">작성자</label>
+                <input type="text" id="inputEstimatedBudget" value="${sessionScope.logname }" class="form-control" readOnly>
               </div>
               <div class="form-group">
                 <label for="inputEstimatedDuration">추가 작성내용</label>

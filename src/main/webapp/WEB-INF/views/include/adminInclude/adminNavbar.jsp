@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -20,8 +19,13 @@
     <ul class="navbar-nav ml-auto">
     <li class="nav-item">
         <span class="navbar-text">
-      	관리자 ????님 로그인중입니다.
+      	관리자 ${sessionScope.logname } 님
     	</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="adminLogout.do">
+    		로그아웃
+    	</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">

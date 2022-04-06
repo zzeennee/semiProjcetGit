@@ -42,4 +42,9 @@ public class AccountServiceImpl implements AccountService{
 	public AccountVO idCheck(AccountVO vo) {
 		return accountDAOImpl.idCheck(vo);
 	}
+	
+	//관리자 로그인
+	public void adminLogin(AccountVO vo) {
+		accountDAOImpl.adminLogin(vo);
+	}
 }

@@ -9,15 +9,17 @@ import javax.inject.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.javaclass.domain.QnaBoardVO;
-import com.javaclass.domain.QnaReplyVO;
+
+//import com.javaclass.domain.QnaReplyVO;
 import com.javaclass.service.QnaBoardService;
-import com.javaclass.service.ReplyService;
+//import com.javaclass.service.ReplyService;
+
 
 
 @Controller
@@ -27,21 +29,24 @@ public class QnaController {
 	@Autowired
 	private QnaBoardService QnaBoardService;
 	
-
 	// localhost:8080/index.do
-	/*
-	 * @RequestMapping("index.do") public String main() { return "index"; }
-	 */
+
 	
 
 	@Inject
-	private ReplyService replyService;
-	
-	@RequestMapping("/QnaInsertBoard.do")
-	public void QnaInsertPage() {
-		System.out.println("인서트보드접속");
+	//private ReplyService replyService;
+
+	@RequestMapping("index.do")
+	public String main() {
+		return "index";
 	}
 
+	
+	// 
+	@RequestMapping("/{step}.do")
+	public String viewPage(@PathVariable String step) {
+		return step;
+	}
 	//글작성
 	@RequestMapping(value = "/QnaBoardSave.do")
 	public String QnaInsertBoard(QnaBoardVO bao) throws IOException {
@@ -71,14 +76,14 @@ public class QnaController {
 		System.out.println("QnaBoardVO : " + bao.getBoard_Seq());
 		QnaBoardVO board = QnaBoardService.QnaGetBoard(bao);
 		mav.addObject("board",board);
-		mav.setViewName("homePage/QnaGetBoard");
+		mav.setViewName("QnaGetBoard");
 		return mav;
 	}
 	//수정폼
 	@RequestMapping("/QnaUpdateBoardForm.do")
 	public String QnaUpdateBoardForm(QnaBoardVO bao, Model m){
 		m.addAttribute("board",QnaBoardService.QnaGetBoard(bao));
-		return "homePage/QnaUpdateBoardForm";
+		return "QnaUpdateBoardForm";
 		
 	}
 	//수정
@@ -93,16 +98,17 @@ public class QnaController {
 	@RequestMapping(value ="/QnaDeleteBoardForm.do")
 	public String QnaDeleteBoardForm(QnaBoardVO bao, Model m)throws IOException {
 		m.addAttribute("board",QnaBoardService.QnaGetBoard(bao));
-		return "homePage/QnaDeleteBoardForm";
+		return "QnaDeleteBoardForm";
 	}
 	
 	//삭제
 	@RequestMapping(value ="/QnaDeleteBoard.do", method=RequestMethod.GET)
-	public String QnaDeleteBoard(QnaBoardVO bao) { 
-		System.out.println("board_Seq :: " + bao.getBoard_Seq() + "  board_Password :: " +bao.getBoard_Password());
-		QnaBoardService.QnaDeleteBoard(bao);
+	public String QnaDeleteBoard(int board_Seq) { 
+		System.out.println("board_Seq" + board_Seq);
+		//QnaBoardService.QnaDeleteBoard(board_Seq);
 		return "redirect:Qna.do";
 	} 
+
 	
 	//게시물조회
 	@RequestMapping(value="/list",method = RequestMethod.GET)
@@ -114,16 +120,17 @@ public class QnaController {
 	}
 	
 	//댓글 조회
-		@RequestMapping(value="/view",method = RequestMethod.GET)
-		public void getView(@RequestParam("bno") int bno , Model model) throws Exception {
-			
-			QnaBoardVO vo = QnaBoardService.view(bno);
-			model.addAttribute("view", vo);
-			
-			// 댓글 조회
-			List<QnaReplyVO> reply = null;
-			reply = replyService.list(bno);
-			model.addAttribute("reply", reply);		
-		}
+//		@RequestMapping(value="/view",method = RequestMethod.GET)
+//		public void getView(@RequestParam("bno") int bno , Model model) throws Exception {
+//			
+//			QnaBoardVO vo = QnaBoardService.view(bno);
+//			model.addAttribute("view", vo);
+//			
+//			// 댓글 조회
+//			List<QnaReplyVO> reply = null;
+//			reply = replyService.list(bno);
+//			model.addAttribute("reply", reply);		
+//		}
+
 
 }

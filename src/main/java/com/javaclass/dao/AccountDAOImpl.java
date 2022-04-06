@@ -43,4 +43,8 @@ public class AccountDAOImpl implements AccountDAO{
 	public AccountVO idCheck(AccountVO vo) {
 		return sqlSession.selectOne("accountMapper.idCheck", vo);
 	}
+	//관리자 로그인
+	public void adminLogin(AccountVO vo) {
+		sqlSession.selectOne("accountMapper.adminloginCheck", vo);
+	};
 }

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaclass.domain.AccountVO;
 import com.javaclass.service.AccountService;
-import com.javaclass.service.AccountServiceImpl;
 
 @Controller
 //@RequestMapping("/myPage")
@@ -62,7 +61,7 @@ public class AccountController {
 			  return "/myPage/login";
 		  	} else { 
 			  session.setAttribute("logname", result.getAccount_Id());
-			  System.out.println("로그인성공"+ session.getAttribute("logname"));
+			  System.out.println("로그인성공 : "+ session.getAttribute("logname"));
 			  model.addAttribute("account_list", accountServiceImpl.accountList(vo));
 			  return "/myPage/login_ok"; 
 			  } 
@@ -113,6 +112,7 @@ public class AccountController {
 	//마이페이지- 회원정보수정페이지
 	@RequestMapping("/myPage/myPageUpdate.do")
 	public void myHomeUpdatePage(String account_Id, Model m){
+		System.out.println("<"+account_Id+">");
 	m.addAttribute("account", accountServiceImpl.myHomePageUpdate(account_Id));
 	System.out.println("??");
 	
