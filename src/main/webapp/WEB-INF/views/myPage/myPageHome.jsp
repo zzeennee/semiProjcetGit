@@ -114,8 +114,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </button> -->
 									</div>
 								</div>
-								<form action="myPageUpdate.do?account_Id=${account.account_Id}"
-									method="post">
+								<%-- <form action="myPageUpdate.do?account_Id=${account.account_Id}"
+									method="post"> --%>
 									<input name="account_Id" type="hidden"
 										value="${account.account_Id}" />
 									<div class="card-body">
@@ -158,11 +158,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</div>
 										<!-- 테이블1 끝 -->
 
-										<button type="submit" class='btn btn-primary' id='myPagebtn'
-											style="float: right;">회원정보수정</button>
+<a href="myPageUpdate.do?account_Id=${account.account_Id}">
+										<button class='btn btn-primary' id='myPagebtn'
+											style="float: right;">회원정보수정</button> 
+											</a>
 									</div>
 
-								</form>
+								<!-- </form> -->
 								<!-- /.card-body -->
 
 								<!-- /.card-footer-->

@@ -35,7 +35,7 @@
 		WHERE account_Id=#{account_Id}
 	</select>
 	
-	<select id="myHomePageUpdate" parameterType="AccountVO" resultType="AccountVO">
+	<select id="myHomePageUpdate" parameterType="string" resultType="AccountVO">
 		SELECT *
 		FROM account
 		WHERE account_Id=#{account_Id}
