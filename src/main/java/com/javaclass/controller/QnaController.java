@@ -24,16 +24,15 @@ public class QnaController {
 	private QnaBoardService QnaBoardService;
 	
 	// localhost:8080/index.do
-	@RequestMapping("index.do")
-	public String main() {
-		return "index";
-	}
+	/*
+	 * @RequestMapping("index.do") public String main() { return "index"; }
+	 */
 	
 	// 
-	@RequestMapping("/{step}.do")
-	public String viewPage(@PathVariable String step) {
-		return step;
-	}
+//	@RequestMapping("/{step}.do")
+//	public String viewPage(@PathVariable String step) {
+//		return step;
+//	}
 	//글작성
 	@RequestMapping(value = "/QnaBoardSave.do")
 	public String QnaInsertBoard(QnaBoardVO bao) throws IOException {
