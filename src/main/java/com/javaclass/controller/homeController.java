@@ -12,22 +12,22 @@ public class homeController {
 	
 	//home.jsp 에서 페이지 접속을 위해서 만든 컨트롤러
 	// 관리자페이지 접속
-	@RequestMapping("admin/adminHome.do")
-	public void adminHome() {
-	}
+	//@RequestMapping("admin/adminHome.do")
+	//public void adminHome() {
+	//}
 	
 	//---------------------------------------------------------
 
 	// 마이페이지 접속
 	// 1.마이페이지
-	@RequestMapping("myPage/myPageHome.do")
-	public void myPageHome() {
-	}
+	//@RequestMapping("myPage/myPageHome.do")
+	//public void myPageHome() {
+	//}
 
 	// 2.회원정보수정
-	@RequestMapping("myPage/myPageUpdate.do")
-	public void myPageUpdate() {
-	}
+	//@RequestMapping("myPage/myPageUpdate.do")
+	//public void myPageUpdate() {
+	//}
 
 	// 3.회원탈퇴
 	@RequestMapping("myPage/myPageLeave.do")
@@ -58,11 +58,11 @@ public class homeController {
 	//public void ordermodify() {
 	//}
 	
-	//9.취소/교환/반품 상태표시 페이지
-	@RequestMapping("myPage/cancleload.do")
-	public void cancleload() {
-		
-	}
+//	9.취소/교환/반품 상태표시 페이지
+//	@RequestMapping("myPage/cancleload.do")
+//	public void cancleload() {
+//		
+//	}
 	
 	//---------------------------------------------------------
 	// 홈 페이지 접속
