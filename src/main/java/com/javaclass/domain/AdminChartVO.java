@@ -12,7 +12,6 @@ public class AdminChartVO {
 	int productCnt;
 	String product_Category;
 	
-
 	String accountMonth;
 	int accountCnt;
 	
@@ -40,5 +39,5 @@ public class AdminChartVO {
 	public void setAccountCnt(int accountCnt) {
 		this.accountCnt = accountCnt;
 	}
-	
+
 }
