@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" contentType = "text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -20,6 +22,8 @@ width : 55%;
 display: block; 
 margin: 0px auto;
 }
+
+li {list-style: none; float: left; padding: 6px;}
 
 </style>
 	<!-- 여기에 헤드 -->
@@ -96,24 +100,31 @@ margin: 0px auto;
             </tbody>
         </table>
         <br><br>
-        <div class="containar">
+        <div class="search">
 	        <form action='Qna.do' method="get">
-			<select name='searchCondition'>
+			<select name='searchType'>
 				<option value=''>전체</option>
 				<option value='자주묻는 질문'>자주묻는 질문</option>
 				<option value='문의'>문의</option>
 				
 			</select>
-			<input type='text' name='searchKeyword'>
-			<button type="submit" class="btn btn-info float-right">검색</button>
+			<input type='text' name='keyword' id="keywordInput" value="${scri.keyword}">
+			<button type="submit" id="searchBtn" class="btn btn-info float-right">검색</button>
 		</form>	
+			<script>
+		      $(function(){
+		        $('#searchBtn').click(function() {
+		          self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+		        });
+		      });   
+		    </script>
 		</div><!-- container -->
         <br><br>
         <a href="QnaInsertBoard.do"><button type="button" class="btn btn-info float-right">글쓰기</button></a>
 
         <br><br>
         
-        <nav aria-label="Page navigation example">
+        <%-- <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
               <li class="page-item"><a class="page-link" href="#">Previous</a></li>
               <% for(int i=1; i<=5; i++){%><!-- 5자리에 마지막 페이지번호를 넣어야한다. -->
@@ -121,7 +132,23 @@ margin: 0px auto;
               <%} %>
               <li class="page-item"><a class="page-link" href="#">Next</a></li>
             </ul>
-        </nav>
+        </nav> --%>
+        <!-- 페이지 버튼 -->
+        <div>
+		  <ul>
+		    <c:if test="${pageMaker.prev}">
+		    	<li><a href="Qna.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+		    </c:if> 
+		
+		    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+		    	<li><a href="Qna.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+		    </c:forEach>
+		
+		    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+		    	<li><a href="Qna.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+		    </c:if> 
+		  </ul>
+		</div>
         
     </div>
 		

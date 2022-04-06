@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ page isELIgnored="false" contentType = "text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <!-- <script>
@@ -21,8 +23,12 @@ margin: 0px auto;
 }
 form{
 border: 1px solid #E4E7ED;
-
 }
+
+#replyForm{
+border: 1px solid #E4E7ED;
+}
+
 ul{
 text-align:center;
 }
@@ -123,61 +129,40 @@ height: 500px;
         <a href="/homePage/QnaUpdateBoardForm.do?board_Seq=${board.board_Seq }"><button type="button"  id="fbutton"class="btn btn-info" >글수정</button></a>&nbsp; 
 		<a href="/homePage/QnaDeleteBoardForm.do?board_Seq=${board.board_Seq }"><button type="button" id="fbutton" class="btn btn-info" >글삭제</button></a>
     </div>
-<!-- 댓글		--------------------------------------------------- -->
-	  <hr />
+<!-- 댓글	 목록	--------------------------------------------------- -->
+	<div id="main_blank">
+	  <ol class="table table-hover">
+	    <c:forEach items="${replyList}" var="replyList">
+	      <li>
+	        <p>
+	        작성자 : ${replyList.writer}<br />
+	        작성 날짜 :  <fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" />
+	        </p>
 	
-	<ul>
-   <!--  <li>
-        <div>
-            <p>첫번째 댓글 작성자</p>
-            <p>첫번째 댓글</p>
-        </div>
-    </li>
-    <li>
-        <div>
-            <p>두번째 댓글 작성자</p>
-            <p>두번째 댓글</p>
-        </div>
-    </li>
-    <li>
-        <div>
-            <p>세번째 댓글 작성자</p>
-            <p>세번째 댓글</p>
-        </div>
-    </li> -->
-    
-    <c:forEach items="${reply }" var="reply">
-	    <li>
-	        <div>
-	            <p>${reply.writer } / ${reply.regDate }</p>
-	            <p>${reply.content }</p>
-	        </div>
-	    </li>
-    </c:forEach>    
-</ul>
-  
-  <br><br>
-   <div id="reply">
-
-    <form method="post" action="/reply/write">
-    <br><br>
-    
-        <p>
-            <label>댓글 작성자</label> <input type="text" name="writer">
-        </p>
-        <p>
-            <textarea rows="5" cols="50" name="content"></textarea>
-        </p>
-        <p>
-        	<input type="hidden" name="bno" value="${QnaGetBoard.bno}">
-            <button type="submit">댓글 작성</button>
-        </p>
-        <br><br>
-    </form>
-    
-</div>
-<!-- 댓글 끝--------------------------------------------------- -->
-
+	        <p>${replyList.content}</p>
+	      </li>
+	    </c:forEach>   
+	  </ol>
+	</div>	
+<!-- 댓글 목록끝--------------------------------------------------- -->
+<!-- 댓글작성 시작 -->
+	<form name="replyForm" id="replyForm" method="get">
+	  <input type="hidden" id="bno" name="bno" value="${read.bno}" />
+	  <input type="hidden" id="page" name="page" value="${scri.page}"> 
+	  <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
+	  <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+	  <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
+	
+	  <div>
+	    <label for="writer">댓글 작성자</label><input type="text" id="writer" name="writer" />
+	    <br/>
+	    <label for="content">댓글 내용</label><input type="text" id="content" name="content" />
+	  </div>
+	  <div>
+	 	 <button type="button" class="replyWriteBtn">작성</button>
+	  </div>
+	</form>
+<!--댓글 작성 끝-->
 
 		<!-- SECTION -->
 		<div class="section">
@@ -197,5 +182,11 @@ height: 500px;
 	<!-- js -->
 	<%@ include file="../include/homeInclude/js.jsp" %>
 </body>
-
+<script>
+$(".replyWriteBtn").on("click", function(){
+	  var formObj = $("form[name='replyForm']");
+	  formObj.attr("action", "/board/replyWrite");
+	  formObj.submit();
+	});
+</script>
 </html>

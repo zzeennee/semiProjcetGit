@@ -126,4 +126,5 @@ public class QnaBoardVO {
 		this.account_Id = account_Id;
 	}
 
+
 }
