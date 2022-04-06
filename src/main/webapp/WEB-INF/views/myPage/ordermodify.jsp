@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -69,6 +68,7 @@ window.onload = function(){
 
 			<!--******************** form 액션주고 값불려오도록 설정 **************************************-->
 			<form action='modi.do'>
+			<input type="hidden" name="account_id" value="${board.account_id}">
 				<!-- Content Header (Page header) -->
 				<div class="content-header">
 					<div class="container-fluid">
@@ -100,8 +100,8 @@ window.onload = function(){
 					<div class="card-body" style="display: block;">
 						<div class="form-group">
 							<label for="inputName">주문번호</label> <input type="text"
-								id="inputName" class="form-control" name="account_id"
-								value="${board.account_id}">
+								id="inputName" class="form-control" name="order_seq"
+								value="${board.order_seq}">
 						</div>
 
 						<div class="form-group">

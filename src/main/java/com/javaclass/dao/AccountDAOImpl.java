@@ -1,5 +1,8 @@
 package com.javaclass.dao;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,11 +20,27 @@ public class AccountDAOImpl implements AccountDAO{
 		//"": mapper의 별칭
 	}
 	
-	public AccountVO accountIdCheck(AccountVO vo) {
-		return sqlSession.selectOne("accountMapper.accountIdCheck", vo);
+	public AccountVO loginCheck(AccountVO vo) {
+		return sqlSession.selectOne("accountMapper.loginCheck", vo);
 	}
 	
-	public AccountVO accountLogin(AccountVO vo) {
-		return sqlSession.selectOne("accountMapper.accountIdCheck", vo);
+	public void updateAccount(AccountVO vo) {
+		sqlSession.update("accountMapper.updateAccount", vo);
+	}
+	
+	public AccountVO myHomePageView(String account_Id) {
+		return sqlSession.selectOne("accountMapper.myHomePageView", account_Id);
+	}
+	
+	public AccountVO myHomePageUpdate(String account_Id) {
+		return sqlSession.selectOne("accountMapper.myHomePageUpdate", account_Id);
+	}
+	
+	public List<AccountVO> accountList(AccountVO vo){
+		return sqlSession.selectList("accountMapper.accountList", vo);
+	};
+	
+	public AccountVO idCheck(AccountVO vo) {
+		return sqlSession.selectOne("accountMapper.idCheck", vo);
 	}
 }

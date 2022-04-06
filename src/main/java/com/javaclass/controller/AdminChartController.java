@@ -27,27 +27,47 @@ AdminChartServiceImpl adminchartService;
 //@RequestMapping("admin/adminHome.do")
 //public void adminHome() {}
 	
-	@RequestMapping("admin/adminHome.do")
-	public void adminChart(AdminChartVO chartVO, Model model) {
-		List<AdminChartVO> adminChartProductCategory = adminchartService.adminChartProductCategory(chartVO);
-
-		Gson gson = new Gson();
-		JsonArray jArray = new JsonArray();
-				
-		Iterator<AdminChartVO> it = adminChartProductCategory.iterator();
-		while(it.hasNext()) {
-			AdminChartVO productCategoryVO = it.next();
-			JsonObject object = new JsonObject();
-			String product_Category = productCategoryVO.getProduct_Category();
-			int cnt = productCategoryVO.getCnt();
-			
-		    object.addProperty("product_Category", product_Category);
-			object.addProperty("cnt", cnt);
-			jArray.add(object);
-		}
-				
-		String json = gson.toJson(jArray);
-		model.addAttribute("prdouct", json);	
-	}
+//	@RequestMapping("admin/adminHome.do")
+//	public void adminChart(AdminChartVO chartVO, Model model) {
+//		// 상품 카테고리 차트
+//		List<AdminChartVO> adminChartProductCategory = adminchartService.adminChartProductCategory(chartVO);
+//
+//		Gson productgson = new Gson();
+//		JsonArray productjArray = new JsonArray();
+//				
+//		Iterator<AdminChartVO> productit = adminChartProductCategory.iterator();
+//		while(productit.hasNext()) {
+//			AdminChartVO productCategoryVO = productit.next();
+//			JsonObject object = new JsonObject();
+//			String product_Category = productCategoryVO.getProduct_Category();
+//			int productCnt = productCategoryVO.getProductCnt();
+//		    object.addProperty("product_Category", product_Category);
+//			object.addProperty("productCnt", productCnt);
+//			productjArray.add(object);
+//		}
+//				
+//		String productjson = productgson.toJson(productjArray);
+//		model.addAttribute("prdouct", productjson);	
+//		
+//		// 월별 회원가입 차트
+//		List<AdminChartVO> accountChart = adminchartService.accountChart(chartVO);
+//
+//		Gson accountgson = new Gson();
+//		JsonArray accountjArray = new JsonArray();
+//				
+//		Iterator<AdminChartVO> accountit = accountChart.iterator();
+//		while(accountit.hasNext()) {
+//			AdminChartVO accountMonthVO = accountit.next();
+//			JsonObject object = new JsonObject();
+//			String accountMonth = accountMonthVO.getAccountMonth();
+//			int accountCnt = accountMonthVO.getAccountCnt();
+//		    object.addProperty("accountMonth", accountMonth);
+//			object.addProperty("accountCnt", accountCnt);
+//			accountjArray.add(object);
+//		}
+//				
+//		String accountjson = accountgson.toJson(accountjArray);
+//		model.addAttribute("account", accountjson);
+//	}
 	
 }

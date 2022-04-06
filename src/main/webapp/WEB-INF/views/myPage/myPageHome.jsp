@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,6 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </head>
 <body class="hold-transition sidebar-mini">
+
+
 	<div class="wrapper">
 
 		<!-- Navbar -->
@@ -112,51 +113,60 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </button> -->
 									</div>
 								</div>
-								<div class="card-body">
-									<!-- <input type="text"> -->
+								<%-- <form action="myPageUpdate.do?account_Id=${account.account_Id}"
+									method="post"> --%>
+									<input name="account_Id" type="hidden"
+										value="${account.account_Id}" />
+									<div class="card-body">
+										<!-- <input type="text"> -->
 
-									<!-- /프로필 사진 업로드 -->
-									<div class="form-group">
-										<label for="exampleInputFile">프로필 사진 수정</label>
-										<div class="input-group">
-											<div class="custom-file">
-												<input type="file" class="custom-file-input" id="exampleInputFile"> 
-													<label class="custom-file-label" for="exampleInputFile">이미지를 선택해주세요.</label>
-											</div>
-											<div class="input-group-append">
-												<span class="input-group-text">upload</span>
-											</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">이름</label> <input type="text"
+												class="form-control" id="exampleInputEmail1"
+												placeholder="이름" name="account_Name"
+												value='${account.account_Name }' readonly>
 										</div>
-									</div>
-									<!-- /프로필 사진 업로드 -->
+										<div class="form-group">
+											<label for="exampleInputPassword1">아이디</label> <input
+												type="text" class="form-control" id="exampleInputPassword1"
+												placeholder="아이디"
+												value='${account.account_Id }' readonly>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">전화번호</label> <input
+												type="tel" class="form-control" id="exampleInputEmail1"
+												name="account_Tel" value='${account.account_Tel }'
+												placeholder="전화번호" readonly>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">주소</label> <input type="text"
+												class="form-control" id="exampleInputEmail1"
+												value='${account.account_Addr1 }' name="addr1" readonly>
+										</div>
+										<div class="form-group">
 
-									<div class="form-group">
-										<label for="exampleInputEmail1">이름</label> <input type="email"
-											class="form-control" id="exampleInputEmail1" placeholder="이름"
-											readonly>
-									</div>
-									<div class="form-group">
-										<label for="exampleInputPassword1">아이디</label> <input
-											type="password" class="form-control"
-											id="exampleInputPassword1" placeholder="아이디" readonly>
-									</div>
-									<div class="form-group">
-										<label for="exampleInputEmail1">전화번호</label> <input
-											type="email" class="form-control" id="exampleInputEmail1"
-											placeholder="전화번호" readonly>
-									</div>
-									<div class="form-group">
-										<label for="exampleInputEmail1">주소</label> <input type="email"
-											class="form-control" id="exampleInputEmail1" placeholder="주소"
-											readonly>
-									</div>
-									<!-- 테이블1 끝 -->
+											<input type="text" class="form-control"
+												id="exampleInputEmail2" value='${account.account_Addr2 }'
+												name="addr2" readonly>
+										</div>
+										<div class="form-group">
 
-									<button type="button" class='btn btn-primary' id='myPagebtn'
-										onclick="location.href='myPageUpdate.do'" style="float: right;">회원정보수정</button>
-								</div>
+											<input type="text" class="form-control"
+												id="exampleInputEmail3" value='${account.account_Addr3 }'
+												name="addr3" readonly>
+										</div>
+										<!-- 테이블1 끝 -->
 
+										<a href="myPageUpdate.do?account_Id=${account.account_Id}">
+										<button class='btn btn-primary' id='myPagebtn'
+											style="float: right;">회원정보수정</button> 
+											</a>
+											
+											
+											[님 로그인중입니다. / ${sessionScope.logname} /
+									</div>
 
+								<!-- </form> -->
 								<!-- /.card-body -->
 
 								<!-- /.card-footer-->
@@ -167,50 +177,50 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 						<!-- 테이블2 시작 -->
 						<!-- <div class="row"> -->
-								<div class="col-md-6">
+						<div class="col-md-6">
 							<div class="card">
-									<div class="card-header">
-										<h3 class="card-title">주문내역</h3>
+								<div class="card-header">
+									<h3 class="card-title">주문내역</h3>
 
-										<div class="card-tools">
-											<div class="input-group input-group-sm" style="width: 150px;">
-												<input type="text" name="table_search"
-													class="form-control float-right" placeholder="검색">
+									<div class="card-tools">
+										<div class="input-group input-group-sm" style="width: 150px;">
+											<input type="text" name="table_search"
+												class="form-control float-right" placeholder="검색">
 
-												<div class="input-group-append">
-													<button type="submit" class="btn btn-default">
-														<i class="fas fa-search"></i>
-													</button>
-												</div>
+											<div class="input-group-append">
+												<button type="submit" class="btn btn-default">
+													<i class="fas fa-search"></i>
+												</button>
 											</div>
 										</div>
 									</div>
-									<!-- /.card-header -->
-									<div class="card-body table-responsive p-0"
-										style="height: 511px;">
-										<table class="table table-hover text-nowrap">
-											<thead>
-												<tr>
-													<th>상품정보</th>
-													<th>주문일자</th>
-													<th>주문번호</th>
-													<th>주문수량</th>
-													<th>주문상태</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>183</td>
-													<td>John Doe</td>
-													<td>11-7-2014</td>
-													<td><span class="tag tag-success">Approved</span></td>
-													<td>배송중</td>
-												</tr>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body table-responsive p-0"
+									style="height: 530px;">
+									<table class="table table-hover text-nowrap">
+										<thead>
+											<tr>
+												<th>상품정보</th>
+												<th>주문일자</th>
+												<th>주문번호</th>
+												<th>주문수량</th>
+												<th>주문상태</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>183</td>
+												<td>John Doe</td>
+												<td>11-7-2014</td>
+												<td><span class="tag tag-success">Approved</span></td>
+												<td>배송중</td>
+											</tr>
 
-											</tbody>
-										</table>
-									</div>
-									<!-- /.card-body -->
+										</tbody>
+									</table>
+								</div>
+								<!-- /.card-body -->
 								<!-- </div> -->
 								<!-- /.card -->
 							</div>
@@ -218,9 +228,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						<!-- 테이블2 끝 -->
 					</div>
 					<!-- /.container-fluid -->
-					</div><!-- row의 끝 -->
+				</div>
+				<!-- row의 끝 -->
 			</section>
 			<!-- /.content -->
+
 		</div>
 		<!-- /.content-wrapper -->
 

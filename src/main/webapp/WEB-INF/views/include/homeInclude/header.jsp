@@ -32,7 +32,7 @@
 						<!-- LOGO -->
 						<div class="col-md-3 ">
 							<div class="header-logo">
-								<a href="#" class="logo">
+								<a href="index.jsp" class="logo">
 									<img width='70' src="../resources/dist/img/logo.png" alt="">
 								</a>
 							</div>
