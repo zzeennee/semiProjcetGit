@@ -21,4 +21,8 @@ public interface AccountDAO {
 	public List<AccountVO> accountList(AccountVO vo);
 	
 	public AccountVO idCheck(AccountVO vo);
+	
+	public boolean checkPassword(String account_Id, String account_Password);
+	
+	public void deleteAccount(AccountVO vo);
 }

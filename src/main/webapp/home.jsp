@@ -11,6 +11,7 @@
 
 <h1>페이지 연결링크</h1>
 
+
 <h2>홈페이지</h2>
 <a href='/homePage/blank.do'>고객센터</a><br/><br/>
 <a href='/homePage/product.do'>상품상세페이지</a><br/><br/> 
