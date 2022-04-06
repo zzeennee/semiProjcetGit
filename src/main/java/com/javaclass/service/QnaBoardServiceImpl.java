@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaclass.dao.QnaBoardDAO;
+import com.javaclass.domain.Criteria;
 import com.javaclass.domain.QnaBoardVO;
+import com.javaclass.domain.SearchCriteria;
 
 
 
@@ -31,26 +33,33 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	public QnaBoardVO QnaGetBoard(QnaBoardVO bao) {
 		return QnaBoardDAO.QnaGetBoard(bao);
 	}
-	@Override
+	/*@Override
 	public List<QnaBoardVO> QnaGetBoardList(HashMap map) {
 		return QnaBoardDAO.QnaGetBoardList(map);
-	}
+	}*/
 	
 	@Override
 	public void QnaDeleteBoard(QnaBoardVO bao) {
 		System.out.println();
 		QnaBoardDAO.QnaDeleteBoard(bao);
 	}
+	
+	//게시물 목록 조회
 	@Override
-	public List<QnaBoardVO> list() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<QnaBoardVO> QnaGetBoardList(SearchCriteria scri) throws Exception {
+		return QnaBoardDAO.QnaGetBoardList(scri);
 	}
+	
+	//게시물 총 갯수
 	@Override
-	public QnaBoardVO view(int bno) {
-		// TODO Auto-generated method stub
-		return null;
+	public int listCount(SearchCriteria scri) throws Exception {
+		return QnaBoardDAO.listCount(scri);
 	}
+	
+	
+	
+	
+	
 	
 	
 

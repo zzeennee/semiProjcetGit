@@ -17,7 +17,7 @@
 						<li><a href="#"> 회원가입</a></li>
 						<li><a href="#"> 주문배송</a></li>
 						<li><a href="#"> 공지사항</a></li>
-						<li><a href="/blank.do"> 고객센터</a></li>
+						<li><a href="/homePage/Qna.do"> 고객센터</a></li>
 					</ul>
 				</div>
 			</div>
