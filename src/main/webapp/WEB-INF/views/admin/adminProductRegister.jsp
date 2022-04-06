@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Sidebar -->
 <%@ include file="../include/adminInclude/adminSidebar.jsp" %> 
 
-<form action="adminProductSave.do" enctype="multipart/form-data" method="post">
+<form id="frm" action="adminProductSave.do" enctype="multipart/form-data" method="post">
 <!-- main -->
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -59,9 +59,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">상품명</label>
-                <input type="text" id="inputName" class="form-control" name="product_Name">
+                <input type="text" id="inputName" class="form-control" name="product_Name" required>
                 <label for="inputPssword">비밀번호</label>
-                <input type="Password" id="inputPssword" class="form-control" name="product_Password">
+                <input type="Password" id="inputPssword" class="form-control" name="product_Password" required>
               </div>
               <!--<div class="form-group">
                 <label for="inputProjectLeader">삭제 및 수정 비밀번호</label>
@@ -89,10 +89,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="form-group">
                 <label for="inputNum">재고량</label>
-                <input type="number" id="inputNum" class="form-control" name="product_Vol" placeholder="숫자만 입력">
+                <input type="number" id="inputNum" class="form-control" name="product_Vol"  pattern="^[0-9]+$" placeholder="숫자만 입력" required>
               </div>
               <div class="form-group">
-                <label for="inputDescription">게시글 내용</label>
+                <label for="inputDescription">상품 내용</label>
                 <textarea id="inputDescription" class="form-control" rows="21" name="product_Content"></textarea>
               </div>
 
@@ -114,15 +114,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card-body">
               <div class="form-group">
                 <label for="inputModel">상세 모델명</label>
-                <input type="text" id="inputModel" class="form-control" name="product_ModelName">
+                <input type="text" id="inputModel" class="form-control" name="product_ModelName" required>
               </div>
               <div class="form-group">
                 <label for="inputModel2">상품 요약 설명</label>
-                <input type="text" id="inputModel2" class="form-control" name="product_ShortContent">
+                <input type="text" id="inputModel2" class="form-control" name="product_ShortContent" required>
               </div>
               <div class="form-group">
                 <label for="inputModelPrice">상품 가격</label>
-                <input type="number" id="inputModelPrice" class="form-control" name="product_Price" placeholder="숫자만 입력">
+                <input type="number" id="inputModelPrice" class="form-control" name="product_Price"  pattern="^[0-9]+$" placeholder="숫자만 입력" required>
               </div>
               <!--<div class="form-group">
                 <label for="inputEstimatedBudget">상품 담당자</label>
@@ -136,14 +136,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <label for="inputFile3">상품 추가 이미지</label>
                 <input type="file" id="inputFile3" class="form-control" name="product3_File">
               </div>
-              <div class="form-group">
+             <!--  <div class="form-group">
                 <label>추가 상품 선택</label><br/>
                 <label><input type="checkbox" name="addProduct" value="as1" name="product_PlusProduct"> AS 1년 연장 : 15,000원</label>
                 <label><input type="checkbox" name="addProduct" value="as2" name="product_PlusProduct"> AS 2년 연장 : 25,000원</label>
                 <label><input type="checkbox" name="addProduct" value="as3" name="product_PlusProduct"> AS 3년 연장 : 35,000원</label>
                 <label><input type="checkbox" name="addProduct" value="bty" name="product_PlusProduct">보조 배터리</label>
                 <label><input type="checkbox" name="addProduct" value="etc" name="product_PlusProduct">etc</label>
-              </div>
+              </div> -->
               <div class="form-group">
                 <label for="inputEstimatedDuration">추가 작성내용</label>
                 <textarea id="inputEstimatedDuration" class="form-control" rows="20" name="product_Content2"></textarea>
@@ -157,7 +157,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="row">
         <div class="col-6">
           <a href="adminProductList.do" class="btn btn-secondary">취소</a>
-          <input type="submit" value="작성" class="btn btn-success float-right">
+          <input type="submit" value="작성" id="productInsertBtn" class="btn btn-success float-right">
         </div>
       </div>
     </section>
@@ -173,5 +173,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 <%@ include file="../include/adminInclude/adminPageScript/adminScript.jsp" %> 
 <!-- Page specific script -->
+<script type="text/javascript">
+$(function () {
+    $("#frm").submit(function() {
+        if($("#inputStatus").val() == null) {
+            alert('카테고리를 선택하세요.')
+           return false
+        }
+    });
+});
+</script>
+
+
 </body>
 </html>

@@ -18,5 +18,10 @@ public class AdminChartDAOImpl {
 		System.out.println("===> Mybatis adminChartProductCategory() 호출");
 		return mybatis.selectList("adminChartMapper.countProductCategory");
 	};
+	
+	public List<AdminChartVO> accountChart(AdminChartVO vo){
+		System.out.println("===> Mybatis accountChart() 호출");
+		return mybatis.selectList("adminChartMapper.accountChart");
+	};
 
 }

@@ -60,11 +60,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">게시글 제목</label>
-                <input type="text" id="inputName" class="form-control" name="board_Title" value=${admin_Board.board_Title } >
+                <input type="text" id="inputName" class="form-control" name="board_Title" value=${admin_Board.board_Title } required>
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">삭제 및 수정 비밀번호</label>
-                <input type="password" id="inputProjectLeader" class="form-control" name="board_Password" placeholder="수정 및 삭제시 비밀번호 입력">
+                <input type="password" id="inputProjectLeader" class="form-control" name="board_Password" required>
               </div>
               <div class="form-group">
               	<label for="inputCategory">게시글 카테고리</label>
@@ -77,7 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="form-group">
                 <label for="inputDescription">게시글 내용</label>
-                <textarea id="inputDescription" class="form-control" rows="15" name="board_Content">${admin_Board.board_Content }</textarea>
+                <textarea id="inputDescription" class="form-control" rows="15" name="board_Content" required>${admin_Board.board_Content }</textarea>
               </div>
               <div class="form-group">
               <label for="inputFile">기존 파일</label>

@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- DONUT CHART -->
             <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">월별 회원가입 차트</h3>
+                <h3 class="card-title">2022년 월별 회원가입 차트</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="chartjs-size-monitor-shrink">
               </div>
-               <canvas id="bar-chart" height="100"></canvas>
+               <canvas id="accountChart" height="100"></canvas>
               </div>
               <!-- /.card-body -->
             </div>
@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                <canvas id="pie-chart2" width="250" height="250"></canvas>
+                <canvas id="productPiechart" width="250" height="250"></canvas>
               </div>
               <!-- /.card-body -->
             </div>
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                <canvas id="pie-chart3" width="250" height="250"></canvas>
+                <canvas id="22" width="250" height="250"></canvas>
               </div>
               <!-- /.card-body -->
             </div>
@@ -117,7 +117,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- DONUT CHART -->
             <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">주간 판맬</h3>
+                <h3 class="card-title">월 매출</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
