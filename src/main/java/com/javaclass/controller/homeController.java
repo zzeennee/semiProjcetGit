@@ -14,11 +14,12 @@ public class homeController {
 	
 	//home.jsp 에서 페이지 접속을 위해서 만든 컨트롤러
 	// 관리자페이지 접속
-	@RequestMapping("admin/adminHome.do")
-	public void adminHome(HttpSession session) {
-		 System.out.println("관리자 로그인 : "+ session.getAttribute("logname"));
-	}
-	
+
+//	@RequestMapping("admin/adminHome.do")
+//	public void adminHome(HttpSession session) {
+//		 
+//	}
+
 	//---------------------------------------------------------
 
 	// 마이페이지 접속
@@ -61,11 +62,11 @@ public class homeController {
 	//public void ordermodify() {
 	//}
 	
-	//9.취소/교환/반품 상태표시 페이지
-	@RequestMapping("myPage/cancleload.do")
-	public void cancleload() {
-		
-	}
+//	9.취소/교환/반품 상태표시 페이지
+//	@RequestMapping("myPage/cancleload.do")
+//	public void cancleload() {
+//		
+//	}
 	
 	//---------------------------------------------------------
 	// 홈 페이지 접속

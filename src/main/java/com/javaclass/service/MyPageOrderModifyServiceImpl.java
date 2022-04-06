@@ -62,4 +62,9 @@ public class MyPageOrderModifyServiceImpl implements MyPageOrderModifyService{
 		
 	}
 	
+	//select 취소/교환/반품 상태 표시 리스트 나타내기
+	public List<MyPageOrderModifyVO> getCancleList() {
+		return orderModifyDAOImpl.getCancleList();
+	}
+	
 }	

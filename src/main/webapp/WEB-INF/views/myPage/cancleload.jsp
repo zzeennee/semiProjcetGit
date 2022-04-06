@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-<title>마이페이지-취소/교환/반품 페이지</title>
+<title>취소/교환/반품 상태표시 페이지</title>
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
 
@@ -34,7 +34,7 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">취소/교환/반품 페이지</h1>
+							<h1 class="m-0">취소/교환/반품 상태표시 페이지</h1>
 						</div>
 						<!-- /.col -->
 						<!-- /.col -->
@@ -53,7 +53,7 @@
 							<!-- /.card -->
 							<div class="card">
 								<div class="card-header">
-									<h3 class="card-title">취소/교환/반품</h3>
+									<h3 class="card-title">취소/교환/반품 표시</h3>
 								</div>
 								<!-- /.card-header -->
 								<form class="form-horizontal" action="cancle.do" method='get'>
@@ -63,21 +63,20 @@
 											<tr>
 												<th>주문번호</th>
 												<th>상품명</th>
-												<th>금액</th>
-												<th>수량</th>
 												<th>상태</th>
-											</tr>
+												<th>사유</th>
+										   </tr>
 										</thead>
 										<tbody>
-											
+											<c:forEach items="${cancleList }" var="board">
 												<tr>
 													<td>${board.account_id}</td>
 													<td>${board.order_payselect}</td>
+													<td>${board.product_seq}</td>
 													<td>${board.order_uesrreq}</td>
-													<td>${board.coupon_number}</td>
 						
 												</tr>
-										
+										</c:forEach>
 										</tbody>
 									</table>
 								</div>
