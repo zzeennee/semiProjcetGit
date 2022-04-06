@@ -22,8 +22,7 @@ import com.javaclass.domain.QnaBoardVO;
 import com.javaclass.domain.ReplyVO;
 import com.javaclass.service.QnaBoardService;
 //import com.javaclass.service.ReplyService;
-
-
+import com.javaclass.service.ReplyService;
 import com.javaclass.domain.*;
 
 @Controller
