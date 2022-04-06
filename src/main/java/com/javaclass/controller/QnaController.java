@@ -27,6 +27,13 @@ public class QnaController {
 	@Autowired
 	private QnaBoardService QnaBoardService;
 	
+
+	// localhost:8080/index.do
+	/*
+	 * @RequestMapping("index.do") public String main() { return "index"; }
+	 */
+	
+
 	@Inject
 	private ReplyService replyService;
 	
@@ -34,6 +41,7 @@ public class QnaController {
 	public void QnaInsertPage() {
 		System.out.println("인서트보드접속");
 	}
+
 	//글작성
 	@RequestMapping(value = "/QnaBoardSave.do")
 	public String QnaInsertBoard(QnaBoardVO bao) throws IOException {

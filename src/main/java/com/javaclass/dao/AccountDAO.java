@@ -14,9 +14,11 @@ public interface AccountDAO {
 	
 	public void updateAccount(AccountVO vo);
 	
-	public AccountVO myHomePageView(AccountVO vo);
+	public AccountVO myHomePageView(String account_Id);
+	
+	public AccountVO myHomePageUpdate(String account_Id);
 	
 	public List<AccountVO> accountList(AccountVO vo);
 	
-	
+	public AccountVO idCheck(AccountVO vo);
 }

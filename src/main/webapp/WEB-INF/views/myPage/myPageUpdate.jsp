@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 			<!-- Main content -->
 			<form action="updateAccount.do?account_Id=${account.account_Id}"  method="post">
-			<input name="account_Id" type="hidden" value="${account.account_Id}"/>
+			<input name="account_Id" type="hidden"/>
 			<section class="content">
 				<div class="container-fluid">
 					<div class="row">
@@ -86,14 +86,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<!-- <input type="text"> -->
 
 									<div class="form-group">
-										<label for="exampleInputEmail1">이름</label> <input type="text"
-											class="form-control" id="exampleInputEmail1"
+										<label for="exampleInputEmail1">이름</label> 
+										<input type="text" class="form-control" id="exampleInputEmail1"
 											name="account_Name" value='${account.account_Name }' readonly>
 									</div>
 									<div class="form-group">
 										<label for="exampleInputPassword1">아이디</label> <input
 											type="text" class="form-control" id="exampleInputPassword1"
-											name="account_Id" value='${account.account_Id }' readonly>
+											value='${account.account_Id }' readonly>
 									</div>
 									<div class="form-group">
 										<label for="exampleInputEmail1">전화번호</label> <input type="tel"
@@ -110,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<label for="useraddr" class="col-md-8 col-form-label">주소</label>
 										<input class="form-control"
 											style="width: 40%; display: inline;" placeholder="우편번호"
-											name="addr1" id="second_addr" type="text" readonly>
+											name="addr1" id="second_addr" type="text" value='${account.account_Addr1 }' readonly>
 										<button type="button" class="btn btn-default"
 											id='second_addrbtn' onclick="execPostCode();">
 											<i class="fa fa-search"></i> 우편번호 찾기
@@ -119,19 +119,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<div class="form-group">
 										<input class="form-control" style="top: 5px;"
 											placeholder="도로명 주소" name="addr2" id="second_addr2"
-											type="text" readonly />
+											type="text" value='${account.account_Addr2 }' readonly />
 									</div>
 									<div class="form-group">
 										<input class="form-control" placeholder="상세주소" name="addr3"
-											id="second_addr3" type="text" />
+											id="second_addr3" value='${account.account_Addr3 }' type="text" />
 									</div>
 									<!-- 테이블1 끝 -->
 
 
 									<!-- <button type="submit" class="btn btn-primary" id="updatebtn" style="float: right;">회원수정</button> -->
 									<div style="float: right;">
-										<a class='btn btn-primary btn-sm' id='updatebtn'>회원수정</a> <a
-											class='btn btn-primary btn-sm' id='deletebtn'>회원탈퇴</a>
+										<a type="submit" class='btn btn-primary btn-sm' id='updatebtn'>회원수정</a> 
+										<a type="submit" class='btn btn-primary btn-sm' id='deletebtn'>회원탈퇴</a>
 									</div>
 								</div>
 

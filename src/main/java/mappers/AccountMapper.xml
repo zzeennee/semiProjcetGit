@@ -29,7 +29,13 @@
 		WHERE account_Id = #{account_Id}
 	</update>
 	
-	<select id="myHomePageView" resultType="AccountVO">
+	<select id="myHomePageView" parameterType="AccountVO" resultType="AccountVO">
+		SELECT *
+		FROM account
+		WHERE account_Id=#{account_Id}
+	</select>
+	
+	<select id="myHomePageUpdate" parameterType="AccountVO" resultType="AccountVO">
 		SELECT *
 		FROM account
 		WHERE account_Id=#{account_Id}
@@ -41,5 +47,11 @@
 		SELECT * FROM account
 		]]>
 	</select>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="idCheck" resultType="AccountVO" parameterType="AccountVO">
+		SELECT * FROM account
+		WHERE account_Id=#{account_Id}
+ 	</select>
 
 </mapper>
