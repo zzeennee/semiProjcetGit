@@ -18,6 +18,16 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <span class="navbar-text">
+      	안녕하세요:) ${sessionScope.logname } 님
+    	</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout.do">
+    		로그아웃
+    	</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
