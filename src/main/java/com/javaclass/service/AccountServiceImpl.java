@@ -10,36 +10,40 @@ import com.javaclass.dao.AccountDAOImpl;
 import com.javaclass.domain.AccountVO;
 
 @Service("accountServiceImpl")
-public class AccountServiceImpl implements AccountService{
+public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private AccountDAO accountDAOImpl;
-	
-	
+
 	public void insertAccount(AccountVO vo) {
 		accountDAOImpl.insertAccount(vo);
 	}
-	
+
 	public AccountVO loginCheck(AccountVO vo) {
 		return accountDAOImpl.loginCheck(vo);
 	}
-	
+
+	// 관리자 어드민 로그인조건파악
+	public AccountVO adminLogin(AccountVO vo) {
+		return accountDAOImpl.adminLogin(vo);
+	}
+
 	public void updateAccount(AccountVO vo) {
 		accountDAOImpl.updateAccount(vo);
 	}
-	
+
 	public AccountVO myHomePageView(String account_Id) {
 		return accountDAOImpl.myHomePageView(account_Id);
 	}
-	
+
 	public AccountVO myHomePageUpdate(String account_Id) {
 		return accountDAOImpl.myHomePageUpdate(account_Id);
 	}
-	
-	public List<AccountVO> accountList(AccountVO vo){
+
+	public List<AccountVO> accountList(AccountVO vo) {
 		return accountDAOImpl.accountList(vo);
 	};
-	
+
 	public AccountVO idCheck(AccountVO vo) {
 		return accountDAOImpl.idCheck(vo);
 	}
@@ -47,13 +51,9 @@ public class AccountServiceImpl implements AccountService{
 	public boolean checkPassword(String account_Id, String account_Password) {
 		return accountDAOImpl.checkPassword(account_Id, account_Password);
 	}
-	
+
 	public void deleteAccount(AccountVO vo) {
-	 	accountDAOImpl.deleteAccount(vo);
+		accountDAOImpl.deleteAccount(vo);
 	}
-	
-	//관리자 어드민 로그인조건파악
-	public void adminLogin(String account_Id) {
-		accountDAOImpl.adminLogin(account_Id);
-	}
+
 }

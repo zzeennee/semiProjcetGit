@@ -13,7 +13,7 @@
 
 
 <h2>홈페이지</h2>
-<a href='/homePage/blank.do'>고객센터</a><br/><br/>
+<a href='/homePage/Qna.do'>고객센터</a><br/><br/>
 <a href='/homePage/product.do'>상품상세페이지</a><br/><br/> 
 <a href='/homePage/productDeleteBoard.do'>글삭제</a><br/><br/>
 <a href='/homePage/productgetBoard.do'>글상세보기</a><br/><br/>

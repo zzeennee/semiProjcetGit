@@ -8,7 +8,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="adminHome.do?account_Id=${sessionScope.logname }" class="nav-link">차트 보기</a>
+        <a href="adminHome.do" class="nav-link">차트 보기</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link"></a>
