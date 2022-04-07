@@ -88,6 +88,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												<th>취소/교환/반품</th>
 											</tr>
 										</thead>
+										
+						<!-- ******************** 취소/교환 페이지 ************************************************************-->				
 										<tbody>
 
 											<tr>
@@ -97,8 +99,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												<td>${board.coupon_number}</td>
 												<!-- form action 주고 account_id 값 주기 ************************************** -->
 												<form action="canclepage2.do?account_id=${board.account_id}">
+												
 												<!-- input 타입에 hidden 값을 불려오도록 설정 ************************************* -->
+												
 												<input type="hidden" name="account_id" value="${board.account_id }">
+												
+						<!--**********************옵션 취소/교환 선택주기 ******************************************************* -->						
+												
 												<td><select id="inputStatus" name="product_seq">
 														<option selected>${board.product_seq }</option>
 														<option>1</option>

@@ -63,20 +63,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<tr>
 												<th>주문번호</th>
 												<th>상품명</th>
-												<th>수량</th>
-												<th>금액</th>
 												<th>주소</th>
+												<th>금액</th>
+												<th>수량</th>
+												<th>상태</th>
 												<th>수정/취소</th>
 											</tr>
 										</thead>
 										<tbody>
+										
+									<!--************* 주문내역 보여주기***************************************************  -->	
 											<c:forEach items="${orderList}" var="board">
 												<tr>
 													<td>${board.account_id}</td>
-													<td><a href="orderload.do">${board.order_payselect}</a></td>
+													<td><a href="orderload.do?account_id=${board.account_id }">${board.order_payselect}</a></td>
+													<td>주소</td>
 													<td>${board.order_uesrreq}</td>
 													<td>${board.coupon_number}</td>
-													<td></td>
+													<td>${board.product_seq}</td>
+									<%-- 주소값 받아오기******<td>${ }, ${ },${ }</td> ***********************************--%>
 													<td align="left"><a
 														href="ordermodify.do?account_id=${board.account_id }"><input
 															type="submit" value="수정"

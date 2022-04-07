@@ -66,8 +66,11 @@
 												<th>상품명</th>
 												<th>상태</th>
 												<th>사유</th>
+												<th>취소</th>
 										   </tr>
 										</thead>
+										
+						<!--*********************** 취소/교환 보여주기 ********************************************************** -->				
 										<tbody>
 											<c:forEach items="${cancleList }" var="board">
 												<tr>
@@ -75,6 +78,7 @@
 													<td>${board.order_payselect}</td>
 													<td>${board.product_seq}</td>
 													<td>${board.order_uesrreq}</td>
+													<td></td>
 						
 												</tr>
 										</c:forEach>
@@ -95,7 +99,7 @@
 			<!-- /.content -->
 		</div>
 		<!-- main end -->
-</form>
+
 		<!-- Main Footer -->
 		<%@ include file="../include/myPageInclude/myPageFooter.jsp"%>
 	</div>
