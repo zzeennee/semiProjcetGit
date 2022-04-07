@@ -28,13 +28,23 @@ public class AccountDAOImpl implements AccountDAO{
 		sqlSession.update("accountMapper.updateAccount", vo);
 	}
 	
-	public AccountVO myHomePageView(AccountVO vo) {
-		return sqlSession.selectOne("accountMapper.myHomePageView", vo);
+	public AccountVO myHomePageView(String account_Id) {
+		return sqlSession.selectOne("accountMapper.myHomePageView", account_Id);
+	}
+	
+	public AccountVO myHomePageUpdate(String account_Id) {
+		return sqlSession.selectOne("accountMapper.myHomePageUpdate", account_Id);
 	}
 	
 	public List<AccountVO> accountList(AccountVO vo){
 		return sqlSession.selectList("accountMapper.accountList", vo);
 	};
 	
-	
+	public AccountVO idCheck(AccountVO vo) {
+		return sqlSession.selectOne("accountMapper.idCheck", vo);
+	}
+	//관리자 로그인
+	public void adminLogin(AccountVO vo) {
+		sqlSession.selectOne("accountMapper.adminloginCheck", vo);
+	};
 }

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.javaclass.dao.AccountDAO;
 import com.javaclass.domain.AccountVO;
 
-@Service("accoutServiceImpl")
-public class AccoutServiceImpl implements AccountService{
+@Service("accountServiceImpl")
+public class AccountServiceImpl implements AccountService{
 
 	@Autowired
 	private AccountDAO accountDAOImpl;
@@ -27,11 +27,24 @@ public class AccoutServiceImpl implements AccountService{
 		accountDAOImpl.updateAccount(vo);
 	}
 	
-	public AccountVO myHomePageView(AccountVO vo) {
-		return accountDAOImpl.myHomePageView(vo);
+	public AccountVO myHomePageView(String account_Id) {
+		return accountDAOImpl.myHomePageView(account_Id);
+	}
+	
+	public AccountVO myHomePageUpdate(String account_Id) {
+		return accountDAOImpl.myHomePageUpdate(account_Id);
 	}
 	
 	public List<AccountVO> accountList(AccountVO vo){
 		return accountDAOImpl.accountList(vo);
 	};
+	
+	public AccountVO idCheck(AccountVO vo) {
+		return accountDAOImpl.idCheck(vo);
+	}
+	
+	//관리자 로그인
+	public void adminLogin(AccountVO vo) {
+		accountDAOImpl.adminLogin(vo);
+	}
 }
