@@ -14,7 +14,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>AdminLTE 3 | Starter</title>
 
 <!-- Google Font: Source Sans Pro -->
@@ -26,9 +25,73 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Theme style -->
 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
 
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript">
 
+window.onload = function(){	 
+	
+	//장바구니 제거
+    $("#sDelete").click(function(){
+	    var chk_arr = [];
+	    $(".deleteCheck:checked").each(function(){
+	       var chk = $(this).val();
+	       chk_arr.push(chk);
+	    });
+	    
+	    for( var snum of chk_arr ){
+	       $(location).attr('href', "bdelete.do?sname="+snum);
+	    }	
+	    
+	   
+	});
+    
+    //변경 버튼 클릭시 변경 금액 보여주기
+    $(".sChange").click(function(){
+	   	
+    	total();
+	   	
+	});
+	
+    //홈페이지 진입시 총 결제금액 보여주기
+    total();
+}
+
+function total(){
+	
+	var amount = [];
+	var price = [];
+	var sum = 0;    	
+	
+	
+	 $(".w").each(function(){
+		var w = $(this).text();
+	      	 price.push(w);
+	    });
+	 
+	 $(".pay").each(function(){
+	       var pa = $(this).val();
+	       amount.push(pa);
+	    });
+	
+		for(let i=0; i<amount.length; i++){
+			sum = sum+(amount[i]*price[i]);
+		}
+		
+		 var count = 0;
+	    	$(".sum").each(function(){	    		
+	    		$(this).text(amount[count]*price[count]);
+	    		
+	    		count = count+1;
+	   		});
+		
+   	$("#result").text((sum+2500));
+   	$("#total").text(sum);
+	
+}
+
+
+
+
+</script>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -202,203 +265,125 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		</aside>
 
 		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
-			<div class="content-header">
+		<div class="content-wrapper" style="min-height: 1604.55px;">
+
+			<section class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">주문/결제</h1>
+							<h1>장바구니</h1>
 						</div>
-						<!-- /.col -->
 
 					</div>
-					<!-- /.row -->
 				</div>
-				<!-- /.container-fluid -->
-			</div>
-			<!-- /.content-header -->
+			</section>
 
-			<!-- Main content -->
-			<div class="content">
-				<div class="container-fluid">
-					<!-- Input addon -->
+			<section class="content">
 
-					<form action="savePayment.do" method="post">
-						<div class="card card-info">
-							<div class="card-header">
-								<h3 class="card-title">결제정보</h3>
-							</div>
-							<div class="card-body">
-								<label>주문자</label>
-								<div class="input-group mb-3">							
-									<input type="text" class="form-control" id="sender_name"
-										name="sender_name" placeholder="보내는 사람 이름" required>
-								</div>
+				<div class="card">
 
-								<div class="input-group mb-3">
+					<div class="card-body p-0">
+						<table id="listtable" class="table table-striped projects">
+							<thead>
+								<tr>
+									<th style="width: 1%"></th>
+									<th style="width: 20%">상품명</th>
+									<th style="width: 30%">제품 상세</th>
+									<th>수량</th>
+									<th style="width: 8%" class="text-center">금액</th>
+									<th style="width: 10%" class="text-center">합계</th>
+									<th style="width: 12%"><button type="button"
+											id="sDelete"  class="btn btn-block btn-primary">선택삭제</button>
+									
+								</tr>
+							</thead>
+							<tbody class="listgood">
+								<%
+									int sum = 1;
+								%>
+								<c:forEach items="${bucketList }" var="bucket">
+									<tr>
+										<td><%=sum%></td>
+										<td><a>  ${bucket.sname }  </a></td>
+										<td>
+													${bucket.scontent }
+										</td>
+										<td class="project_progress"><small><input
+												type="text" id="pay" class="pay" style="width: 30%" value="${bucket.samount }"></input></small>
+											<button type="button" class="sChange">변경</button>
+						
+										<td class="project-state" id="won" class="won" value="${bucket.sprice }"><span>
+										 <label class="w" value="${bucket.sprice }">${bucket.sprice }</label><label>원</label>
+												</span></td>
+										<td class="project-state" id="won" class="won" value="${bucket.sprice }"><span>
+										 <label class="sum" value="${bucket.sprice * bucket.samount }">${bucket.sprice * bucket.samount }</label><label>원</label>
+												</span></td>
+										<td class="project-actions text-right"><div
+												class="form-check">
+												<input class="deleteCheck" type="checkbox"  style="width: 50%" value="${bucket.sname }"> 삭제
+											</div> </td>
+									</tr>
+									<%
+										sum++;
+									%>
 
-									<input type="email" class="form-control" id="sender_email"
-										name="sender_email" placeholder="이메일" required>
-								</div>
-
-								<div class="input-group mb-3">
-									<input type="text" class="form-control" id="sender_tel"
-										name="sender_tel" placeholder="전화번호" required>
-								</div>
-
-
-								<div class="input-group">
-									<input type="text" id="sender_zonecode" name="sender_zonecode"
-										placeholder="우편번호" readonly required>
-									<button type="button" id="address_search_sender"
-										class="btn btn-info float-left">주소찾기</button>
-								</div>
-
-								<div class="input-group">
-									<input type="text" id="sender_address" name="sender_address"
-										class="form-control" placeholder="주소" readonly>
-								</div>
-
-								<div class="input-group">
-									<input type="text" id="sender_daddress" name="sender_daddress"
-										class="form-control" placeholder="상세주소" required>
-								</div>
-
-								<br></br> <label>받으시는 분</label>
-								<div class="input-group mb-3">
-									<input type="text" id="receiver_name" name="receiver_name"
-										class="form-control" placeholder="받으시는 분" required>
-								</div>
-
-								<div class="input-group mb-3">
-									<input type="email" id="receiver_email" name="receiver_email"
-										class="form-control" placeholder="이메일" required>
-								</div>
+								</c:forEach>
 
 
-								<div class="input-group mb-3">
-									<input type="text" id="receiver_tel" name="receiver_tel"
-										class="form-control" placeholder="전화번호" required>
-								</div>
 
-								<div class="input-group">
-									<input type="text" id="receiver_zonecode"
-										name="receiver_zonecode" placeholder="우편번호" readonly >
-									<button type="button" id="address_search_receiver"
-										class="btn btn-info float-left">주소찾기</button>
-								</div>
 
-								<div class="input-group">
-									<input type="text" id="receiver_address"
-										name="receiver_address" class="form-control" placeholder="주소"
-										readonly>
-								</div>
-
-								<div class="input-group">
-									<input type="text" id="receiver_daddress"
-										name="receiver_daddress" class="form-control"
-										placeholder="상세주소" required>
-								</div>
-
-								<br />
-								<hr />
-								<br />
-								<div class="form-group">
-									<label for="inputDescription">배송시 요청사항</label>
-									<textarea id="user_require" name="user_require"
-										class="form-control" rows="4" required></textarea>
-								</div>
-								<hr />
-								<br /> <label>상품내역</label>
-
-								<div class="col-12 table-responsive">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>수량</th>
-												<th>상품명</th>
-												<th>상품번호</th>
-												<th>상품상세</th>
-												<th>합계</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${bucketList }" var="bucket">
-												<tr>
-													<td>${bucket.samount }</td>
-													<td>${bucket.sname }</td>
-													<td>455-981-221</td>
-													<td>${bucket.scontent }</td>
-													<td class="project-state"  class="won"
-														value="${bucket.sprice }"><span> <label
-															class="sum" value="${bucket.sprice * bucket.samount }">${bucket.sprice * bucket.samount }</label><label>원</label>
-													</span></td>
-												</tr>
-
-											</c:forEach>
-
-										</tbody>
-									</table>
-								</div>
 
 								<div class="col-6">
-									<div class="table-responsive">
-										<table class="table">
-										</table>
-									</div>
-								</div>
-								<hr />
-								<div class="col-6">
-									<p class="lead">총 결제금액</p>
 									<div class="table-responsive">
 										<table class="table">
 											<tbody>
 												<tr>
-													<th style="width: 50%">제품금액:</th>
+													<th style="width: 50%">총 제품금액:</th>
 													<td><label id="total"></label><label>원</label></td>
-												</tr>
-												<tr>
-													<th>배송비:</th>
-													<td><label>2500원</label></td>
 												</tr>
 
 												<tr>
-													<input type="hidden" id="pricehidden" name="price">
+													<th><label>배송료:</label></th>
+													<td><label>2500원</label></td>
+												</tr>
+												<tr>
 													<th>총 결제금액:</th>
-													<td><label id="price"></label><label>원</label></td>
+													<td><label id="result"></label><label>원</label></td>
 												</tr>
 											</tbody>
 										</table>
 									</div>
+									<div class="card-footer">
+										
+										<a href="/paymentOrder/payment.do"><button type="submit"
+												class="btn btn-info float-right">주문하기</button></a>
+									</div>
 								</div>
+							</tbody>
+						</table>
+					</div>
 
-
-
-
-								<div class="card-footer">
-									<button type="submit" class="btn btn-info float-left">이전</button>
-									<button type="submit"
-											class="btn btn-info float-right">다음</button>
-								</div>
-
-
-								<!-- /.col-lg-6 -->
-
-								<!-- /input-group -->
-							</div>
-
-							
-						</div>
-					</form>
-					<!-- /.card-body -->
 				</div>
-				<!-- /.card -->
-				<!-- /.col-md-6 -->
-			</div>
-			<!-- /.row -->
+
+			</section>
+
 		</div>
-		<!-- /.container-fluid -->
+
+		<!-- /.col-lg-6 -->
+
+		<!-- /input-group -->
+	</div>
+
+
+	</div>
+	<!-- /.card-body -->
+	</div>
+	<!-- /.card -->
+	<!-- /.col-md-6 -->
+	</div>
+	<!-- /.row -->
+	</div>
+	<!-- /.container-fluid -->
 	</div>
 	<!-- /.content -->
 	</div>
@@ -428,82 +413,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 	<!-- REQUIRED SCRIPTS -->
 
-
+	<!-- jQuery -->
+	<script src="../resources/plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../resources/dist/js/adminlte.min.js"></script>
 </body>
-<!-- jQuery -->
-<script src="../resources/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../resources/dist/js/adminlte.min.js"></script>
-
-<!-- 카카오 주소 찾기 API -->
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-	window.onload = function() {
-		document
-				.getElementById("address_search_sender")
-				.addEventListener(
-						"click",
-						function() { //주소입력칸을 클릭하면
-							//발신자 주소검색 발생
-							new daum.Postcode(
-									{
-										oncomplete : function(data) { //선택시 입력값 세팅
-											document
-													.getElementById("sender_zonecode").value = data.zonecode;
-											document
-													.getElementById("sender_address").value = data.address; // 주소 넣기
-										}
-									}).open();
-						});
-
-		document
-				.getElementById("address_search_receiver")
-				.addEventListener(
-						"click",
-						function() { //주소입력칸을 클릭하면
-							//수신자 지도검색 발생
-							new daum.Postcode(
-									{
-										oncomplete : function(data) { //선택시 입력값 세팅
-											document
-													.getElementById("receiver_zonecode").value = data.zonecode;
-											document
-													.getElementById("receiver_address").value = data.address; // 주소 넣기
-										}
-									}).open();
-						});
-		
-		
-		//홈페이지 진입시 총 결제금액 보여주기
-	    total();
-	}
-	
-	function total(){
-		
-		var price = [];
-		var totalSum = 0;  	
-		
-		 
-		//가격 배열에 담기
-		var i=0;
-		 $(".sum").each(function(){
-		       var pa = $(this).text();
-		      	price.push(pa);		      	
-		  });
-		
-		//가격*수량 = 총합
-			for(let i=0; i<price.length; i++){
-				totalSum = totalSum+(price[i]*1);
-				
-			}
-			
-		$("#pricehidden").val((totalSum+2500));
-	   	$("#price").text((totalSum+2500));
-	   	$("#total").text(totalSum);
-		
-	}
-</script>
 </html>

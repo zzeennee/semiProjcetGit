@@ -32,10 +32,18 @@
   		<value>com.javaclass.domain.AccountVO</value>
   		<!-- account end -->
   		
+  		<!-- bucket -->
+  		<value>com.javaclass.domain.BucketVO</value>
+  		<!-- end of bucket -->
+  		
   		<!-- myPage -->
   		<value>com.javaclass.domain.MyPageOrderModifyVO</value>
   		<!-- myPage end -->
   		<value>com.javaclass.domain.PaymentVO</value>
+      
+  		<value>com.javaclass.domain.QnaBoardVO</value>
+  		<value>com.javaclass.domain.PayInfoVO</value>
+
   		
   		<!-- Qna -->
   		<value>com.javaclass.domain.QnaBoardVO</value>
