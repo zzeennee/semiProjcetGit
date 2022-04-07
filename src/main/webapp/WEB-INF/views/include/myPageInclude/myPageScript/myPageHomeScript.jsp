@@ -2,25 +2,64 @@
     pageEncoding="UTF-8"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
-/* $(document).ready(function(){
-	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
-	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
-	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
-		var account_Password1 = document.getElementById('account_Password1');					//비밀번호 
-		var account_Password2 = document.getElementById('account_Password2');	//비밀번호 확인 값
-		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
-		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
-		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
-		
-		
-		  $("#deletebtn").click(function(){
-		        // 확인 대화상자 
-		        alert('비밀번호 일치');
-		      
-		    });
-		    
+/* function joinform_check() {
+	
+	//변수에 담아주기
+	var username = document.getElementById("username");
+	var userid = document.getElementById("userid");
+	var userpassword1 = document.getElementById("userpassword1");
+	var userpassword2 = document.getElementById("userpassword2");
+	var useremail = document.getElementById("useremail");
+	var usertel = document.getElementById("usertel");
+	var first_addr = document.getElementById("first_addr");
+	var first_addr2 = document.getElementById("first_addr2");
+	var first_addr3 = document.getElementById("first_addr3");
+
+	
+	if (username == "") {
+		alert("이름을 입력하세요.")
+		username.focus();  // focus(): 커서가 깜빡이는 현상 , blur(): 커서가 사라지는 현상
+		return false;
+	};
+	
+	if (userid == "") {
+		alert("아이디를 입력하세요.")
+		userid.focus();  // focus(): 커서가 깜빡이는 현상 , blur(): 커서가 사라지는 현상
+		return false;
+	};
+	
+	var passwordCheck = /^[a-zA-z0-9]{4,12}$/;
+	
+	if (!passwordCheck.test(userpassword1.value)) {
+		alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
+		userpassword1.focus();
+		return false;
+	}
+	
+	if (userpassword2.value !== userpassword1.value) {
+		alert("두 비밀번호가 맞지 않습니다.");
+		return false;
+	}
+	
+	if (useremail.value =="") {
+		alert("이메일 주소를 입력하세요.")
+		useremail.focus();
+		return false;
+	}
+	
+	var reg = /^[0-9]+g/;
+	
+	if (!reg.test(usertel.value)) {
+		alert("전화번호는 숫자만 입력할 수 있습니다.");
+		usertel.focus();
+		return false;
 		
 	}
- */
+	return true;
+	
+} */
+
+    
 </script>

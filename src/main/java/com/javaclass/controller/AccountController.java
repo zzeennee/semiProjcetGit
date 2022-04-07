@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaclass.domain.AccountVO;
-import com.javaclass.domain.AdminBoardVO;
 import com.javaclass.service.AccountService;
 
 @Controller
@@ -25,21 +24,20 @@ public class AccountController {
 	// 회원가입페이지
 	@RequestMapping("/myPage/signup.do")
 	public void signup(AccountVO vo) {
-
 	}
 
 	@RequestMapping("/myPage/login.do")
 	public void login(AccountVO vo) {
-
 	}
 
 	// 회원가입
 	@RequestMapping("/myPage/insertAccount.do")
-	public void insertAccount(AccountVO vo) {
+	public String insertAccount(AccountVO vo) {
 		accountServiceImpl.insertAccount(vo);
+		return "redirect:/";
 	}
+	@RequestMapping(value="/myPage/idCheck.do", produces="application/text;charset=utf-8")
 
-	@RequestMapping(value = "/myPage/idCheck.do", produces = "application/text;charset=utf-8")
 	@ResponseBody
 	public String idCheck(AccountVO vo) {
 		AccountVO account = accountServiceImpl.idCheck(vo);
