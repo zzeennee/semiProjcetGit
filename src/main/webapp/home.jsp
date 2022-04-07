@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로긴</title>
+<title>22로긴2222222222222</title>
 </head>
 <body>
 
 <h1>페이지 연결링크</h1>
 
+
 <h2>홈페이지</h2>
-<a href='/homePage/blank.do'>고객센터</a><br/><br/>
+<a href='/homePage/Qna.do'>고객센터</a><br/><br/>
 <a href='/homePage/product.do'>상품상세페이지</a><br/><br/> 
 <a href='/homePage/productDeleteBoard.do'>글삭제</a><br/><br/>
 <a href='/homePage/productgetBoard.do'>글상세보기</a><br/><br/>
@@ -51,4 +53,5 @@
 <a href='/paymentOrder/bucket.do'>장바구니</a><br/><br/>
 
 </body>
+
 </html>

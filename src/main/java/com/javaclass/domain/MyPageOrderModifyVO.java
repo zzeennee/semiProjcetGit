@@ -1,5 +1,11 @@
 package com.javaclass.domain;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class MyPageOrderModifyVO {
 	
 	private int order_seq;
@@ -8,9 +14,40 @@ public class MyPageOrderModifyVO {
 	private String order_uesrreq;
 	private String account_id;
 	private int product_seq;
-	private String coupon_number;
+	private String coupon_number;	
 	
 	
+	//상품 이미지 파일 불려오기 
+	//MultipartFile board_File;
+	
+	//public MultipartFile getBoard_File() {
+	//	return board_File;
+	//}
+	
+	//public void setBoard_File(MultipartFile board_file) {
+	//	this.board_File = board_file;
+	//	if (!board_File.isEmpty()) {
+	//		this.coupon_number = board_File.getOriginalFilename();
+	//		UUID uuid = UUID.randomUUID();
+	//		coupon_number = uuid.toString() + "_" + order_uesrreq;
+			
+	//	File f = new File("C:\\spring\\webwork\\semiProjcetGit\\src\\main\\webapp\\resources\\upload\\"
+	//	+ coupon_number);
+		
+	//	try {
+	//		board_File.transferTo(f);
+	//		
+	//	} catch (IllegalStateException e) {
+	//		e.printStackTrace();
+	//		
+	//	} catch (IOException e) {
+	//		e.printStackTrace();
+	//	}
+	//	
+	//	}
+	//}	
+		
+		
 	public MyPageOrderModifyVO() {
 		super();
 		// TODO Auto-generated constructor stub

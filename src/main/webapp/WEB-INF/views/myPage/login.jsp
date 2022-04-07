@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 화면</title>
+<title>로그인 화면2222</title>
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
 
@@ -81,11 +81,15 @@
 			</div>
 			<!-- /.card-body -->
 			<div class="card-bottom">
-				<button type="submit" class="btn btn-info" id='submit'>로그인</button><br/><br/><br/>
+				<button type="submit" class="btn btn-info" id='submit'>로그인</button><br/><br/>
 			</div>
 			<!-- /.card-footer -->
 			
 		</form>
+		<div>
+		<a href=''>아이디 찾기&nbsp;&nbsp;&nbsp;|</a>
+		<a href=''>&nbsp;&nbsp;비밀번호 찾기</a>
+		</div><br/><br/>
 			<div>
 				<a href='signup.do'>회원가입</a>
 			</div>

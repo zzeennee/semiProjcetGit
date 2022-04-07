@@ -13,8 +13,8 @@ public class AdminBoardVO {
 	String board_Password;
 	String board_Category;
 	String board_Content;
-	String board_MainImg;
-	String board_RealMainImg;
+	String board_MainImg;//원래의 파일명
+	String board_RealMainImg;//파일명 + 변수명
 	String board_Content2;
 	String board_Date;
 	String account_Id;
@@ -42,6 +42,8 @@ public class AdminBoardVO {
 			// 저장 : File - 자바에서 파일과 디렉토리를 생성, 삭제, 관리하는 클래스
 			File f = new File("C:\\springEC\\webwork\\05_semiProject\\src\\main\\webapp\\resources\\upload\\"
 					+ board_RealMainImg);
+//			File f = new File("../../semiProjectGit/src/main/webapp/resources/upload/"
+//					+ board_RealMainImg);
 
 			try {
 				board_File.transferTo(f);

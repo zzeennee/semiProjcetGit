@@ -40,9 +40,18 @@
   		<value>com.javaclass.domain.MyPageOrderModifyVO</value>
   		<!-- myPage end -->
   		<value>com.javaclass.domain.PaymentVO</value>
+      
   		<value>com.javaclass.domain.QnaBoardVO</value>
   		<value>com.javaclass.domain.PayInfoVO</value>
+
   		
+  		<!-- Qna -->
+  		<value>com.javaclass.domain.QnaBoardVO</value>
+  		<value>com.javaclass.domain.ReplyVO</value>
+  		<value>com.javaclass.domain.Criteria</value>
+  		<value>com.javaclass.domain.PageMaker</value>
+  		<value>com.javaclass.domain.SearchCriteria</value>
+  		<!-- Qna END -->
   	</list>
   </property>
  </bean>

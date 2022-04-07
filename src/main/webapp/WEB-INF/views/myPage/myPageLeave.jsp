@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -15,6 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <%@ include file="../include/myPageInclude/myPageCSS.jsp" %> 
 
 </head>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
  
@@ -58,21 +58,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <h3 class="card-title">회원탈퇴</h3>
 
               </div>
+              <form id="accountBoard" action='deleteAccount.do' method="post">
               <div class="card-body">
                 <!-- <input type="text"> -->
                 	
                   <div class="form-group">
                     <label for="exampleInputEmail1">아이디</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="아이디" readonly>
+                    <input type="text" class="form-control" id="exampleInputEmail1" value='${sessionScope.logname }' name='account_Id' readonly>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">비밀번호</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
+                    <input type="password" class="form-control" id="account_Password" name='account_Password' placeholder="비밀번호">
                   </div>
-                  <div class="form-group">
+                 <!--  <div class="form-group">
                     <label for="exampleInputPassword1">비밀번호확인</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호확인">
-                  </div>
+                    <input type="password" class="form-control" id="account_Password2" placeholder="비밀번호확인">
+                  </div> -->
                   <div class="form-group">
                   	<label>탈퇴사유</label>
                   	<div class='form-check'>
@@ -103,7 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   	</div>
                   <!-- 테이블1 끝 -->
 					
-				<button type="submit" class="btn btn-primary" id="deletebtn" style="float: right;">회원탈퇴</button>
+				<input type="button" onclick='checkPassword' class="btn btn-primary" id="deletebtn" style="float: right;" value='회원탈퇴'>
 				</div>
 				
 				
@@ -111,6 +112,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
              
               <!-- /.card-footer-->
             </div>
+            </form>
             <!-- /.card -->
             
             
@@ -136,6 +138,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 <%@ include file="../include/myPageInclude/myPageScript/myPageScript.jsp" %> 
 <!-- Page specific script -->
-<%@ include file="../include/myPageInclude/myPageScript/myPageHomeScript.jsp" %> 
+<%@ include file="../include/myPageInclude/myPageScript/myPageHomeScript.jsp" %>
+
+<script type="text/javascript">
+$("#deletebtn").click(function(){
+	var account_Id = ${sessionScope.logname }
+	var account_Password = $('#account_Password').val();
+    // 확인 대화상자    
+    if(confirm("탈퇴하시겠습니까?")){
+        location.href = "deleteAccount.do?account_Id=" + account_Id + "&account_Password=" + account_Password;
+        document.accountBoard.submit();
+    }
+});
+</script>
 </body>
+
 </html>

@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!-- Page specific script -->
@@ -15,26 +14,26 @@ function colorize() {
 	return color;
 }
 
-var jsonData = ${prdouct};
-var jsonObject = JSON.stringify(jsonData);
-var jData = JSON.parse(jsonObject);
+var jsonDataProduct = ${prdouct};
+var jsonObjectProduct = JSON.stringify(jsonDataProduct);
+var jDataProduct = JSON.parse(jsonObjectProduct);
 		
-var labelList = new Array();
-var valueList = new Array();
+var labelListProduct = new Array();
+var valueListProduct = new Array();
 var colorList = new Array();
 		
-for(var i = 0; i<jData.length; i++) {
-	var d = jData[i];
-	labelList.push(d.product_Category);
-	valueList.push(d.cnt);
+for(var i = 0; i<jDataProduct.length; i++) {
+	var dProduct = jDataProduct[i];
+	labelListProduct.push(dProduct.product_Category);
+	valueListProduct.push(dProduct.productCnt);
 	colorList.push(colorize());
 }
 		
 var data = {
-				labels: labelList,
+				labels: labelListProduct,
 				datasets: [{
 					backgroundColor: colorList,
-					data : valueList
+					data : valueListProduct
 				}],
 				options : {
 						title : {
@@ -44,10 +43,47 @@ var data = {
 				}
 };
 		
-var ctx1 = document.getElementById('pie-chart2').getContext('2d');
-var aaaa = new Chart(ctx1, {
+var ctx1 = document.getElementById('productPiechart').getContext('2d');
+new Chart(ctx1, {
     type: 'pie',
 	data: data
 });
+
+var jsonDataAccount = ${account};
+var jsonObjectAccount = JSON.stringify(jsonDataAccount);
+var jDataAccount = JSON.parse(jsonObjectAccount);
+		
+var labelListAccount = new Array();
+var valueListAccount = new Array();
+var colorList = new Array();
+		
+for(var i = 0; i<jDataAccount.length; i++) {
+	var dAccount = jDataAccount[i];
+	labelListAccount.push(dAccount.accountMonth);
+	valueListAccount.push(dAccount.accountCnt);
+	colorList.push(colorize());
+}
+		
+var data = {
+				labels: labelListAccount,
+				datasets: [{
+					label: '2022년 월별 회원가입 수',
+					backgroundColor: colorList,
+					data : valueListAccount
+				}],
+				options : {
+						title : {
+						display : true,
+						text: '월별 회원가입 수'
+						}
+				}
+};
+		
+var ctx2 = document.getElementById('accountChart').getContext('2d');
+new Chart(ctx2, {
+    type: 'bar',
+	data: data
+});
+
 
 </script>

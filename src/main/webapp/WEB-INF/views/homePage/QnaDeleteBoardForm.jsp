@@ -5,7 +5,7 @@
 <html>
 <style type="text/css">
 
-#main_blank{
+.main_blank{
 width : 55%;
 display: block; 
 margin: 0px auto;
@@ -74,17 +74,17 @@ position: absolute;
         <h1>글 삭제</h1>		
 		<hr>
 		<!-- 1. 폼태그에 속성 추가  -->
-		<form class="main_blank" action="QnaDeleteBoard.do?board_Seq=${board.board_Seq }" method="GET" enctype="multipart/form-data"> 	 
+		<form class="main_blank" name="QnaDeleteForm" action="QnaDeleteBoard.do" method="GET" enctype="multipart/form-data"> 	 
         <input name="board_Seq" type="hidden" value="${board.board_Seq}" />	 
         <table class="table table-hover">              
                 <!-- 추가항목 시작 -->
 				<tr>
 					<th id="boardt">비밀번호</th>
-					<td align="left" colspan="3"><input type="text" name="board_Password"/></td>
+					<td align="left" colspan="3"><input type="password" id="password" name="board_Password"/></td>
 				</tr>
 				<!-- 추가항목 끝 -->
 				<tr>
-					<td colspan="4" align="center"><button type="submit" id="fbutton" class="btn btn-info" >글 삭제</button></td>
+					<td colspan="4" align="center"><button type="submit" onclick="fn_check_password();" id="fbutton" class="btn btn-info" >글 삭제</button></td>
 				</tr>
 			</table>
 		</form>
@@ -98,4 +98,17 @@ position: absolute;
 	<!-- js -->
 	<%@ include file="../include/homeInclude/js.jsp" %>
 </body>
+<script>
+
+function fn_check_password(){
+	var password_val = document.getElementById("password").value.trim(); 
+	if(password_val == ""){
+		alert("비밀번호를 입력해 주세용");
+	} else {
+		//폼전송
+		document.QnaDeleteForm.submit();
+	}
+}
+
+</script>
 </html>

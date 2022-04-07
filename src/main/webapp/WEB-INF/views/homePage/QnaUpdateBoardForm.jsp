@@ -137,7 +137,7 @@ function fn_check_password(){
 		alert("비밀번호를 입력해 주세용");
 	} else {
 		//폼전송
-		document.productUpdateForm.submit();
+		document.QnaUpdateForm.submit();
 	}
 }
 
