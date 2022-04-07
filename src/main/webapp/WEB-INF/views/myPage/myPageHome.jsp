@@ -56,8 +56,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<h3 class="widget-user-username" id='bg-write-color'>내 정보</h3>
 						</div>
 						<div class="widget-user-image">
-							<img class="img-circle elevation-2"
-								src="../resources/img/profile.jpg" alt="User Avatar">
+						<c:set var="ProfileImg" value="${account.account_realProfileImg }"/>			
+						<c:choose>
+							<c:when test="${account.account_realProfileImg eq '0'}">
+						        <img class="img-circle elevation-2"
+								src="../resources/upload/default.jpg"
+								alt="User Avatar">
+						    </c:when>
+						    <c:when test="${account.account_realProfileImg eq ProfileImg}">
+						        <img class="img-circle elevation-2"
+								src="../resources/upload/${account.account_realProfileImg }"
+								alt="User Avatar">
+						    </c:when>
+						</c:choose>
 						</div>
 						<div class="card-footer">
 							<div class="row">
@@ -115,55 +126,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								</div>
 								<%-- <form action="myPageUpdate.do?account_Id=${account.account_Id}"
 									method="post"> --%>
-									<input name="account_Id" type="hidden"
-										value="${sessionScope.logname }" />
-									<div class="card-body">
-										<!-- <input type="text"> -->
+								<input name="account_Id" type="hidden"
+									value="${sessionScope.logname }" />
+								<div class="card-body">
+									<!-- <input type="text"> -->
 
-										<div class="form-group">
-											<label for="exampleInputEmail1">이름</label> <input type="text"
-												class="form-control" id="exampleInputEmail1"
-												placeholder="이름" name="account_Name"
-												value='${account.account_Name }' readonly>
-										</div>
-										<div class="form-group">
-											<label for="exampleInputPassword1">아이디</label> <input
-												type="text" class="form-control" id="exampleInputPassword1"
-												placeholder="아이디"
-												value='${sessionScope.logname }' readonly>
-										</div>
-										<div class="form-group">
-											<label for="exampleInputEmail1">전화번호</label> <input
-												type="tel" class="form-control" id="exampleInputEmail1"
-												name="account_Tel" value='${account.account_Tel }'
-												placeholder="전화번호" readonly>
-										</div>
-										<div class="form-group">
-											<label for="exampleInputEmail1">주소</label> <input type="text"
-												class="form-control" id="exampleInputEmail1"
-												value='${account.account_Addr1 }' name="addr1" readonly>
-										</div>
-										<div class="form-group">
-
-											<input type="text" class="form-control"
-												id="exampleInputEmail2" value='${account.account_Addr2 }'
-												name="addr2" readonly>
-										</div>
-										<div class="form-group">
-
-											<input type="text" class="form-control"
-												id="exampleInputEmail3" value='${account.account_Addr3 }'
-												name="addr3" readonly>
-										</div>
-										<!-- 테이블1 끝 -->
-
-										<a href="myPageUpdate.do?account_Id=${account.account_Id}">
-										<button class='btn btn-primary' id='myPagebtn'
-											style="float: right;">회원정보수정</button> 
-											</a>
-											
-											
+									<div class="form-group">
+										<label for="exampleInputEmail1">이름</label> <input type="text"
+											class="form-control" id="exampleInputEmail1" placeholder="이름"
+											name="account_Name" value='${account.account_Name }' readonly>
 									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">아이디</label> <input
+											type="text" class="form-control" id="exampleInputPassword1"
+											placeholder="아이디" value='${sessionScope.logname }' readonly>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">전화번호</label> <input type="tel"
+											class="form-control" id="exampleInputEmail1"
+											name="account_Tel" value='${account.account_Tel }'
+											placeholder="전화번호" readonly>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">주소</label> <input type="text"
+											class="form-control" id="exampleInputEmail1"
+											value='${account.account_Addr1 }' name="addr1" readonly>
+									</div>
+									<div class="form-group">
+
+										<input type="text" class="form-control"
+											id="exampleInputEmail2" value='${account.account_Addr2 }'
+											name="addr2" readonly>
+									</div>
+									<div class="form-group">
+
+										<input type="text" class="form-control"
+											id="exampleInputEmail3" value='${account.account_Addr3 }'
+											name="addr3" readonly>
+									</div>
+									<!-- 테이블1 끝 -->
+
+									<a href="myPageUpdate.do?account_Id=${account.account_Id}">
+										<button class='btn btn-primary' id='myPagebtn'
+											style="float: right;">회원정보수정</button>
+									</a>
+
+
+								</div>
 
 								<!-- </form> -->
 								<!-- /.card-body -->

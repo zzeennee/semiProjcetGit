@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -10,13 +9,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>관리자 페이지</title>
+<title>회원 정보 수정하기</title>
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
-
-
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -52,104 +47,115 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 			<!-- Main content -->
-			<form action="updateAccount.do"  method="post">
-			<input type="hidden" name="account_Id" value="${sessionScope.logname }"/>
-			<section class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-3"></div>
-						<div class="col-6">
-							<!-- Default box -->
-							<div class="card">
-								<div class="card-header">
-									<h3 class="card-title">회원정보수정</h3>
+			<form action="updateAccount.do" enctype="multipart/form-data"
+				method="post">
+				<input type="hidden" name="account_Id"
+					value="${sessionScope.logname }" />
+				<section class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-3"></div>
+							<div class="col-6">
+								<!-- Default box -->
+								<div class="card">
+									<div class="card-header">
+										<h3 class="card-title">회원정보수정</h3>
 
-								</div>
-								<div class="card-body">
-									<!-- /프로필 사진 업로드 -->
-									<div class="form-group">
-										<label for="exampleInputFile">프로필 사진 수정</label>
-										<div class="input-group">
-											<div class="custom-file">
-												<input type="file" class="custom-file-input"
-													id="exampleInputFile"> <label
-													class="custom-file-label" for="exampleInputFile">이미지를
-													선택해주세요.</label>
-											</div>
-											<div class="input-group-append">
-												<span class="input-group-text">upload</span>
+									</div>
+									<div class="card-body">
+										<!-- /프로필 사진 업로드 -->
+										<div class="form-group">
+											<label for="InputSubject1">파일첨부</label> 
+											<input id="fileInput"
+												filestyle="" type="file" data-class-button="btn btn-default"
+												data-class-input="form-control" data-button-text=""
+												data-icon-name="fa fa-upload" class="form-control"
+												tabindex="-1" name="account_File"
+												style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
+											<div class="bootstrap-filestyle input-group">
+												<input type="text" id="userfile" class="form-control"
+													 disabled=""> <span
+													class="group-span-filestyle input-group-btn" tabindex="0">
+													<label for="fileInput" class="btn btn-default"> <span
+														class="glyphicon fa fa-upload"></span>
+												</label>
+												</span>
 											</div>
 										</div>
-									</div>
-									<!-- /프로필 사진 업로드 -->
-									<!-- <input type="text"> -->
-
-									<div class="form-group">
-										<label for="exampleInputEmail1">이름</label> 
-										<input type="text" class="form-control" id="exampleInputEmail1"
-										   value='${account.account_Name }' readonly>
-									</div>
-									<div class="form-group">
-										<label for="exampleInputPassword1">아이디</label> 
-										<input
-											type="text" class="form-control" id="exampleInputPassword1"
-											value='${sessionScope.logname }' readonly>
-									</div>
-									<div class="form-group">
-										<label for="exampleInputEmail1">전화번호</label> <input type="tel"
-											class="form-control" id="exampleInputEmail1"
-											name="account_Tel" value='${account.account_Tel }'
-											placeholder="전화번호">
-									</div>
-									<div class="form-group">
-										<label for="exampleInputEmail1">이메일</label> <input
-											type="email" class="form-control" id="exampleInputEmail1"
-											name="account_Email" value='${account.account_Email }'>
-									</div>
-									<div class="form-group" id='addrlabel'>
-										<label for="useraddr" class="col-md-8 col-form-label">주소</label>
-										<input class="form-control"
-											style="width: 40%; display: inline;" placeholder="우편번호"
-											name="account_Addr1" id="second_addr" type="text" value='${account.account_Addr1 }' readonly>
-										<button type="button" class="btn btn-default"
-											id='second_addrbtn' onclick="execPostCode();">
-											<i class="fa fa-search"></i> 우편번호 찾기
-										</button>
-									</div>
-									<div class="form-group">
-										<input class="form-control" style="top: 5px;"
-											placeholder="도로명 주소" name="account_Addr2" id="second_addr2"
-											type="text" value='${account.account_Addr2 }' readonly />
-									</div>
-									<div class="form-group">
-										<input class="form-control" placeholder="상세주소" name="account_Addr3"
-											id="second_addr3" value='${account.account_Addr3 }' type="text" />
-									</div>
-									<!-- 테이블1 끝 -->
 
 
-									<!-- <button type="submit" class="btn btn-primary" id="updatebtn" style="float: right;">회원수정</button> -->
-									<div style="float: right;">
-										<input type="submit" class='btn btn-primary btn-sm' id='updatebtn' value='회원수정'> 
-										<a href='myPageLeave.do?account_Id=${account.account_Id}' type="button" class='btn btn-primary btn-sm' id='deletebtn'>회원탈퇴</a>
+										<!-- /프로필 사진 업로드 -->
+										<!-- <input type="text"> -->
+
+										<div class="form-group">
+											<label for="exampleInputEmail1">이름</label> <input type="text"
+												class="form-control" id="exampleInputEmail1"
+												value='${account.account_Name }' readonly>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputPassword1">아이디</label> <input
+												type="text" class="form-control" id="exampleInputPassword1"
+												value='${sessionScope.logname }' readonly>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">전화번호</label> <input
+												type="tel" class="form-control" id="exampleInputEmail1"
+												name="account_Tel" value='${account.account_Tel }'
+												placeholder="전화번호">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">이메일</label> <input
+												type="email" class="form-control" id="exampleInputEmail1"
+												name="account_Email" value='${account.account_Email }'>
+										</div>
+										<div class="form-group" id='addrlabel'>
+											<label for="useraddr" class="col-md-8 col-form-label">주소</label>
+											<input class="form-control"
+												style="width: 40%; display: inline;" placeholder="우편번호"
+												name="account_Addr1" id="second_addr" type="text"
+												value='${account.account_Addr1 }' readonly>
+											<button type="button" class="btn btn-default"
+												id='second_addrbtn' onclick="execPostCode();">
+												<i class="fa fa-search"></i> 우편번호 찾기
+											</button>
+										</div>
+										<div class="form-group">
+											<input class="form-control" style="top: 5px;"
+												placeholder="도로명 주소" name="account_Addr2" id="second_addr2"
+												type="text" value='${account.account_Addr2 }' readonly />
+										</div>
+										<div class="form-group">
+											<input class="form-control" placeholder="상세주소"
+												name="account_Addr3" id="second_addr3"
+												value='${account.account_Addr3 }' type="text" />
+										</div>
+										<!-- 테이블1 끝 -->
+
+
+										<!-- <button type="submit" class="btn btn-primary" id="updatebtn" style="float: right;">회원수정</button> -->
+										<div style="float: right;">
+											<input type="submit" class='btn btn-primary btn-sm'
+												id='updatebtn' value='회원수정'> <a
+												href='myPageLeave.do?account_Id=${account.account_Id}'
+												type="button" class='btn btn-primary btn-sm' id='deletebtn'>회원탈퇴</a>
+										</div>
 									</div>
+
+
+									<!-- /.card-body -->
+
+									<!-- /.card-footer-->
 								</div>
+								<!-- /.card -->
 
 
-								<!-- /.card-body -->
 
-								<!-- /.card-footer-->
+								<div class="card-body"></div>
 							</div>
-							<!-- /.card -->
-
-
-
-							<div class="card-body"></div>
 						</div>
+						<!-- /.container-fluid -->
 					</div>
-					<!-- /.container-fluid -->
-				</div>
-			</section>
+				</section>
 			</form>
 			<!-- /.content -->
 		</div>
@@ -171,19 +177,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-window.onload = function(){
-    document.getElementById("second_addrbtn").addEventListener("click", function(){ //주소입력칸을 클릭하면
-        //발신자 주소검색 발생
-        new daum.Postcode({
-            oncomplete: function(data) { //선택시 입력값 세팅
-               document.getElementById("second_addr").value = data.zonecode;
-                document.getElementById("second_addr2").value = data.address; // 주소 넣기
-            }
-        }).open();
-    });
-    
-}
+	window.onload = function() {
+		document
+				.getElementById("second_addrbtn")
+				.addEventListener(
+						"click",
+						function() { //주소입력칸을 클릭하면
+							//발신자 주소검색 발생
+							new daum.Postcode(
+									{
+										oncomplete : function(data) { //선택시 입력값 세팅
+											document
+													.getElementById("second_addr").value = data.zonecode;
+											document
+													.getElementById("second_addr2").value = data.address; // 주소 넣기
+										}
+									}).open();
+						});
+
+	}
+	$(document).ready(
+			function() {
+				$("#fileInput").on(
+						'change',
+						function() {
+							// 값이 변경되면 
+							if (window.FileReader) { // modern browser 
+								var filename = $(this)[0].files[0].name;
+							} else { // old IE 
+								var filename = $(this).val().split('/').pop()
+										.split('\\').pop(); // 파일명만 추출 
+							} // 추출한 파일명 삽입 
+							$("#userfile").val(filename);
+						});
+			});
 </script>
-
-
 </html>
