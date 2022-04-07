@@ -102,15 +102,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											</div>
 											<div class='form-check'>
 												<input class="form-check-input" type='radio'
-													name='account_Reason'> <label
+													id='textRadio' name='account_Reason' value="etc"> <label
 													class='form-check-label'>기타</label>
-												<div class="col-sm-6">
-													<!-- textarea -->
-													<div class="form-group">
-														<textarea class="form-control" rows="3"
-															placeholder="입력해주세요." id='textbox' name='account_Reason'></textarea>
-													</div>
-												</div>
+											</div>
+											<div class="form-group">
+														<input type="text" class="form-control" id="textEtc"
+															placeholder="입력해주세요." name='account_ReasonText' readonly>
 											</div>
 											<!-- 테이블1 끝 -->
 
@@ -155,29 +152,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		file="../include/myPageInclude/myPageScript/myPageHomeScript.jsp"%>
 
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							$("#deletebtn")
-									.click(
-											function() {
-												alert("asdasd");
-												var account_Id = "${sessionScope.logname }"
-												var account_Password = $(
-														'#account_Password')
-														.val();
-												// 확인 대화상자    
-												if (confirm("탈퇴하시겠습니까?")) {
-													location.href = "deleteAccount.do?account_Id="
-															+ account_Id
-															+ "&account_Password="
-															+ account_Password;
-													document.accountBoard
-															.submit();
-												}
-											});
-						});
+							$("#deletebtn").click(function() {
+								var account_Id = "${sessionScope.logname }"
+									var account_Password = $('#account_Password').val();
+									var account_Reason = $("input[name='account_Reason']:checked").val();
+									var account_ReasonText = $('input[name=account_ReasonText]').val();
+									// 확인 대화상자    
+									if (confirm("탈퇴하시겠습니까?")) {
+										location.href = "deleteAccount.do?account_Id="
+												+ account_Id
+												+ "&account_Password="
+												+ account_Password
+												+ "&account_Reason="
+												+ account_Reason + account_ReasonText;
+										document.accountBoard.submit();
+									} else
+									 {
+										alert("마이페이지로 이동합니다.");
+										location.href = "myPageHome.do?account_Id="+ account_Id
+										 }
+								});
+							$('#textRadio').on('click', function() {
+								if($('#textRadio').val() =='etc'){
+									$('#textEtc').prop('readonly', false);
+									}/*  else if ($('#textRadio').val() !='etc') {
+										$('#textEtc').prop('readonly', true);
+										alert("aaaaqwesdas");
+									} */
+							});
 	</script>
 </body>
-
+	
 </html>
