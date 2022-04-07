@@ -10,9 +10,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마이페이지-주문상세보기</title>
+<title>주문상세보기</title>
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -26,23 +27,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<%@ include file="../include/myPageInclude/myPageSidebar.jsp"%>
 		<!-- Sidebar end -->
 
-
-		<!-- main -->
 		<div class="content-wrapper">
+		
+		
+		<form action="">
+		<input type="hidden" name="account_id" value="${board.account_id}">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">주문상세 페이지</h1>
+							<h1 class="m-0">주문상세 보기</h1>
 						</div>
 						<!-- /.col -->
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a
-									href="/admin/adminProductRegister.do">주문상세 보기</a></li>
-							</ol>
-						</div>
 						<!-- /.col -->
 					</div>
 					<!-- /.row -->
@@ -50,7 +47,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<!-- /.container-fluid -->
 			</div>
 			<!-- /.content-header -->
-
 			<!-- Main content -->
 			<section class="content">
 				<div class="container-fluid">
@@ -59,46 +55,100 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<!-- /.card -->
 							<div class="card">
 								<div class="card-header">
+									<h3 class="card-title">주문정보</h3>
 								</div>
 								<!-- /.card-header -->
-								 <div class="card-body">
-        <table class="table table-bordered table-hover">
-        <thead>
-        <tr>
-        <th>주문번호</th>
-        <th>상품명</th>
-        <th>수량</th>
-        <th>금액</th>
-        <th>주소</th>
-        
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${orderloadList}"  var="board">
-        <tr data-widget="expandable-table" aria-expanded="false">
-        <td>${board.account_id}</td>
-        <td>${board.order_payselect}</td>
-        <td>${board.order_uesrreq}</td>
-        <td>${board.coupon_number}</td>
-        <td>금액</td>
-        </tr>
-        <tr class="expandable-body">
-        <td colspan="5">
-        <p style="">
-        <img src="../resources/dist/img/logo.png"/>
-        dfsdds
-        <!-- <img src="../resources/imgs/a3.jpg"> 상대경로 이미지 파일 -->
-        </p>
-        </td>
-        </tr>
-        </c:forEach>
-      
-        </tbody>
-        </table>
-        </div>
+								<div class="card-body">
+									<table class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>주문번호</th>
+												<th>상품이미지</th>
+												<th>상품명</th>
+												<th>수량</th>
+												<th>금액</th>
+												<th>주소</th>
+												<th>상태</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr>
+													<td>${board.order_payselect}</td>
+													<td>#</td>
+													<td>#</td>
+													<td>#</td>
+													<td>#</td>
+													<td>#</td>
+													<td>#</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
 								<!-- /.card-body -->
 							</div>
 							<!-- /.card -->
+							<!-- /.card -->
+							<div class="card">
+								<div class="card-header">
+									<h3 class="card-title">결제정보</h3>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<table class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>카드명</th>
+												<th>카드번호</th>
+												<th>결제금액</th>
+												
+											</tr>
+										</thead>
+										<tbody>
+												<tr>
+													<td>${board.order_payselect}</td>
+													<td>#</td>
+													<td>#</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- /.card-body -->
+								</div>
+								
+								<!-- /.card -->
+							<div class="card">
+								<div class="card-header">
+									<h3 class="card-title">배송정보</h3>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<table class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												
+												<th>배송정보</th>
+												<th>이름</th>
+												<th>연락처</th>
+												<th>주소</th>
+												<th>배송요청사항</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr>
+													<td>${board.order_payselect}</td>
+													<td>#</td>
+													<td>#</td>
+													<td>#</td>
+													<td>#</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+							<!-- /.card -->
+							
 						</div>
 						<!-- /.col -->
 					</div>
@@ -106,8 +156,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				</div>
 				<!-- /.container-fluid -->
 			</section>
+			<div class="row">
+					<div class="col-6">
+						<a href="orderpage.do"><input type="button" name="submit" id="submit"
+							value="확인" class="btn btn-success float-right"></a>
+					</div>
+				</div>
+			</form>
 			<!-- /.content -->
 		</div>
+		<!-- main end -->
 
 		<!-- Main Footer -->
 		<%@ include file="../include/myPageInclude/myPageFooter.jsp"%>
@@ -115,11 +173,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<!-- ./wrapper -->
 
 	<!-- REQUIRED SCRIPTS -->
-
-	<!-- REQUIRED SCRIPTS -->
 	<%@ include
 		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
-	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp" %> 
+	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp"%>
+
 
 </body>
 </html>
