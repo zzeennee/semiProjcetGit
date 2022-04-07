@@ -13,7 +13,7 @@ public interface MyPageOrderModifyService {
 	List<MyPageOrderModifyVO> getOrderList();
 
 	//주문내역페이지 db 주문상세보기에 값 가져오기 ********************
-	List<MyPageOrderModifyVO> getOrderLoadList();
+	public MyPageOrderModifyVO selectLoad(MyPageOrderModifyVO vo);
 	
 	//주문수정버튼 누르면 db 업데이트 
 	void updateMember(MyPageOrderModifyVO vo);
