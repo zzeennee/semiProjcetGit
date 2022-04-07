@@ -21,9 +21,6 @@ public interface QnaBoardService {
 
 		// 글 상세 조회
 		public QnaBoardVO QnaGetBoard(QnaBoardVO bao);
-
-		// 글 목록 조회
-		//public List<QnaBoardVO> QnaGetBoardList(HashMap map);
 		
 		// 게시물 목록 조회
 		public List<QnaBoardVO> QnaGetBoardList(SearchCriteria scri) throws Exception;

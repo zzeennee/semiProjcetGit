@@ -33,10 +33,6 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	public QnaBoardVO QnaGetBoard(QnaBoardVO bao) {
 		return QnaBoardDAO.QnaGetBoard(bao);
 	}
-	/*@Override
-	public List<QnaBoardVO> QnaGetBoardList(HashMap map) {
-		return QnaBoardDAO.QnaGetBoardList(map);
-	}*/
 	
 	@Override
 	public void QnaDeleteBoard(QnaBoardVO bao) {

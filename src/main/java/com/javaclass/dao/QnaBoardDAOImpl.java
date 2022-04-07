@@ -42,12 +42,6 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 		return (QnaBoardVO) mybatis.selectOne("QnaBoardDAO.QnaGetBoard", bao);
 	}
 
-	/*
-	 * 목록보기 public List<QnaBoardVO> QnaGetBoardList(HashMap map) {
-	 * System.out.println("===> Mybatis QnaGetBoardList(map) 호출 : " + map); return
-	 * mybatis.selectList("QnaBoardDAO.QnaGetBoardList", map); }
-	 */
-
 	/* 게시물 목록조회 */
 	public List<QnaBoardVO> QnaGetBoardList(SearchCriteria scri) throws Exception {
 		return mybatis.selectList("QnaBoardDAO.listPage", scri);
