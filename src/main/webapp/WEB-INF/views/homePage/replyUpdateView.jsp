@@ -23,6 +23,11 @@ height: 100px;
 </style>
 	<%@ include file="../include/homeInclude/head.jsp" %> 
 	<body>
+	<!-- 여기에 헤더 -->	
+	<%@ include file="../include/homeInclude/header.jsp" %>
+	<!-- 여기에 top -->
+	<%@ include file="../include/homeInclude/top.jsp" %>
+	<br/><br/>
 		<div id="root">
 			<section id="container">
 				<form id="updateForm" name="updateForm" role="form" method="post" action="/homePage/replyUpdate">
@@ -48,6 +53,12 @@ height: 100px;
 				</form>
 			</section>
 		</div>
+		<br/><br/>
+		<!-- 여기에 푸터 -->
+	<%@ include file="../include/homeInclude/footer.jsp" %>
+	<!-- js -->
+	<%@ include file="../include/homeInclude/js.jsp" %>	
+	
 	</body>
 	<script type="text/javascript">
 		$(document).ready(function(){
