@@ -27,4 +27,24 @@ public class ReplyDAOImpl implements ReplyDAO {
 		
 	}
 	
+	//댓글 수정
+	@Override
+	public void updateReply(ReplyVO vo) throws Exception {
+		sql.update("replyMapper.updateReply",vo);
+		
+	}
+	
+	//댓글 삭제
+	@Override
+	public void deleteReply(ReplyVO vo) throws Exception {
+		sql.delete("replyMapper.deleteReply",vo);
+		
+	}
+	
+	//선택된 댓글 조회
+	@Override
+	public ReplyVO selectReply(int rno) throws Exception {
+		return sql.selectOne("replyMapper.selectReply", rno);
+	}
+	
 }

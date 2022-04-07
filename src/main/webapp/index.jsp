@@ -70,7 +70,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="../resources/img/shop01.png" alt="">
+								<img src="../resources/dist/img/shop01.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Laptop<br>Collection</h3>
@@ -84,7 +84,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="../resources/img/shop03.png" alt="">
+								<img src="../resources/dist/img/shop03.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Accessories<br>Collection</h3>
@@ -98,7 +98,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="../resources/img/shop02.png" alt="">
+								<img src="../resources/dist/img/shop02.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Cameras<br>Collection</h3>
@@ -147,7 +147,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product01.png" alt="">
+												<img src="../resources/dist/img/product01.png" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>
@@ -179,7 +179,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product02.png" alt="">
+												<img src="../resources/dist/img/product02.png" alt="">
 												<div class="product-label">
 													<span class="new">NEW</span>
 												</div>
@@ -210,7 +210,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product03.png" alt="">
+												<img src="../resources/dist/img/product03.png" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 												</div>
@@ -236,7 +236,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product04.png" alt="">
+												<img src="../resources/dist/img/product04.png" alt="">
 											</div>
 											<div class="product-body">
 												<p class="product-category">Category</p>
@@ -264,7 +264,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product05.png" alt="">
+												<img src="../resources/dist/img/product05.png" alt="">
 											</div>
 											<div class="product-body">
 												<p class="product-category">Category</p>
@@ -338,7 +338,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product06.png" alt="">
+												<img src="../resources/dist/img/product06.png" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>
@@ -370,7 +370,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product07.png" alt="">
+												<img src="../resources/dist/img/product07.png" alt="">
 												<div class="product-label">
 													<span class="new">NEW</span>
 												</div>
@@ -401,7 +401,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product08.png" alt="">
+												<img src="../resources/dist/img/product08.png" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 												</div>
@@ -427,7 +427,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product09.png" alt="">
+												<img src="../resources/dist/img/product09.png" alt="">
 											</div>
 											<div class="product-body">
 												<p class="product-category">Category</p>
@@ -455,7 +455,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="../resources/img/product01.png" alt="">
+												<img src="../resources/dist/img/product01.png" alt="">
 											</div>
 											<div class="product-body">
 												<p class="product-category">Category</p>
@@ -513,7 +513,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product07.png" alt="">
+										<img src="../resources/dist/img/product07.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -526,7 +526,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product08.png" alt="">
+										<img src="../resources/dist/img/product08.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -539,7 +539,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product09.png" alt="">
+										<img src="../resources/dist/img/product09.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -554,7 +554,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product01.png" alt="">
+										<img src="../resources/dist/img/product01.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -567,7 +567,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product02.png" alt="">
+										<img src="../resources/dist/img/product02.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -580,7 +580,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product03.png" alt="">
+										<img src="../resources/dist/img/product03.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -606,7 +606,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product04.png" alt="">
+										<img src="../resources/dist/img/product04.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -619,7 +619,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product05.png" alt="">
+										<img src="../resources/dist/img/product05.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -632,7 +632,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product06.png" alt="">
+										<img src="../resources/dist/img/product06.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -647,7 +647,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product07.png" alt="">
+										<img src="../resources/dist/img/product07.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -660,7 +660,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product08.png" alt="">
+										<img src="../resources/dist/img/product08.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -673,7 +673,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product09.png" alt="">
+										<img src="../resources/dist/img/product09.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -701,7 +701,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product01.png" alt="">
+										<img src="../resources/dist/img/product01.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -714,7 +714,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product02.png" alt="">
+										<img src="../resources/dist/img/product02.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -727,7 +727,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product03.png" alt="">
+										<img src="../resources/dist/img/product03.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -742,7 +742,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product04.png" alt="">
+										<img src="../resources/dist/img/product04.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -755,7 +755,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product05.png" alt="">
+										<img src="../resources/dist/img/product05.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
@@ -768,7 +768,7 @@
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
-										<img src="../resources/img/product06.png" alt="">
+										<img src="../resources/dist/img/product06.png" alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>

@@ -59,9 +59,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <tr>
                     <th>상품 등록 번호</th>
                     <th>상품명</th>
-                    <th>상품 가격</th>
                     <th>상품 카테고리</th>
+                    <th>상품 가격</th>
                     <th>상품 재고량</th>
+                    <th>상품 등록날짜</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -71,9 +72,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						<td>${admin_Product.product_Seq }</td>
 						<td align="left"><a href="adminProductChange.do?product_Seq=${admin_Product.product_Seq }">
 								${admin_Product.product_Name }</a></td>
+						<td>${admin_Product.product_Category }</td>		
 						<td>${admin_Product.product_Price }</td>
-						<td>${admin_Product.product_Category }</td>
 						<td>${admin_Product.product_Vol }</td>
+						<td>${admin_Product.product_Date }</td>
 					</tr>
 					</c:forEach>
                   </tbody>

@@ -18,22 +18,20 @@ import com.google.gson.JsonObject;
 import com.javaclass.domain.AccountVO;
 import com.javaclass.domain.AdminChartVO;
 import com.javaclass.service.AccountService;
+import com.javaclass.service.AccountServiceImpl;
 import com.javaclass.service.AdminBoardService;
 import com.javaclass.service.AdminChartService;
 import com.javaclass.service.AdminChartServiceImpl;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminHomeController {
 
 	@Autowired
 	AdminChartServiceImpl adminchartService;
-	@Autowired
-	private AccountService accountServiceImpl;
 
-	@RequestMapping("admin/adminHome.do")
-	public void adminChart(AdminChartVO chartVO, AccountVO vo, Model model, HttpSession session) {
-		accountServiceImpl.adminLogin(vo);
-		System.out.println("관리자 로그인 : " + session.getAttribute("logname"));
+	@RequestMapping("/adminHome.do")
+	public void adminChart(AdminChartVO chartVO, String account_Id, Model model, HttpSession session) {
 		// 상품 카테고리 차트
 		List<AdminChartVO> adminChartProductCategory = adminchartService.adminChartProductCategory(chartVO);
 
@@ -75,7 +73,7 @@ public class AdminHomeController {
 		model.addAttribute("account", accountjson);
 	}
 
-	@RequestMapping("admin/adminLogout.do")
+	@RequestMapping("/adminLogout.do")
 	public String adminLogout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";// 로그아웃 했을 때 메인페이지로 이동함

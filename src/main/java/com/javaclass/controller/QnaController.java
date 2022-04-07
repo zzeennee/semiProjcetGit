@@ -81,13 +81,15 @@ public class QnaController {
 		
 		ModelAndView mav = new ModelAndView();
 		System.out.println("QnaBoardVO : " + bao.getBoard_Seq());
+		
+		//보드 상세 내역을 가져옴
 		QnaBoardVO board = QnaBoardService.QnaGetBoard(bao);
 		mav.addObject("board",board);
 		mav.setViewName("homePage/QnaGetBoard");
-		
+		//보드에 대한 리플을 가져옴
 		List<ReplyVO> replyList = replyService.readReply(bao.getBoard_Seq());
-		model.addAttribute("replyList", replyList);
-		
+		mav.addObject("replyList", replyList);
+		 
 		return mav;
 	}
 	//수정폼
@@ -122,20 +124,79 @@ public class QnaController {
 
 	//댓글 작성 **************************************************
 	
-	 @RequestMapping(value="/replyWrite", method = RequestMethod.POST) public
-	 String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr)throws Exception { logger.info("reply Write");
+	 @RequestMapping(value="/replyWrite.do", method = RequestMethod.POST) 
+	 public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr)throws Exception { 
+		 logger.info("reply Write");
 	 
-	 replyService.writeReply(vo);
+		 System.out.println("댓글삽입 -------------");
+		 replyService.writeReply(vo);
 	  
-	 rttr.addAttribute("bno", vo.getBno()); 
-	 rttr.addAttribute("page",scri.getPage()); 
-	 rttr.addAttribute("perPageNum", scri.getPerPageNum());
-	 rttr.addAttribute("searchType", scri.getSearchType());
-	 rttr.addAttribute("keyword", scri.getKeyword());
-	  
-	  return "redirect:/homePage/Qna"; 
+//		 rttr.addAttribute("bno", vo.getBno()); 
+//		 rttr.addAttribute("page",scri.getPage()); 
+//		 rttr.addAttribute("perPageNum", scri.getPerPageNum());
+//		 rttr.addAttribute("searchType", scri.getSearchType());
+//		 rttr.addAttribute("keyword", scri.getKeyword());
+
+//		 return "redirect:Qna.do"; 
+		 return "redirect:/homePage/QnaGetBoard.do?board_Seq="+vo.getBno(); 
 	  
 	 }
 	 
+	 //댓글 수정 GET
+	 @RequestMapping(value="/replyUpdateView.do", method = RequestMethod.GET)
+	 public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception{
+		 logger.info("reply Write");
+		 
+		 model.addAttribute("replyUpdate", replyService.selectReply(vo.getBno()));
+		 model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
+			/* model.addAttribute("scri", scri); */
+		 
+		 return "homePage/replyUpdateView";
+	 }
+	 
+	//댓글 수정 POST
+	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply Write");
+			
+		replyService.updateReply(vo);
+		
+		/*
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		*/	
+		return "redirect:/homePage/QnaGetBoard.do?board_Seq="+vo.getBno();
+	}
+	
+	//댓글 삭제 GET
+	@RequestMapping(value="/replyDeleteView.do", method = RequestMethod.GET)
+	public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+		logger.info("reply Write");
+		
+		model.addAttribute("replyDelete", replyService.selectReply(vo.getBno()));	
+		model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
+		/* model.addAttribute("scri", scri); */
+			
+		return "homePage/replyDeleteView";
+	}
+		
+	//댓글 삭제
+	@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
+	public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply Write");
+			
+		replyService.deleteReply(vo);
+		/*	
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		*/	
+		return "redirect:/homePage/QnaGetBoard.do?board_Seq="+vo.getBno();
+	}
 
 }

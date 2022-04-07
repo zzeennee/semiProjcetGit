@@ -11,10 +11,10 @@
 		account_Email,
 		account_Tel, account_Addr1, account_Addr2,
 		account_Addr3,
-		account_Status, account_Leave, account_Date)
+		account_Status, account_Leave, account_Date, account_realProfileImg)
 		VALUES(account_Seq.nextval, #{account_Id}, #{account_Password},
 		#{account_Name}, #{account_Email}, #{account_Tel}, #{account_Addr1},
-		#{account_Addr2}, #{account_Addr3}, 1, 1, sysdate)
+		#{account_Addr2}, #{account_Addr3}, 1, 1, sysdate, 0)
 	</insert>
 
 
@@ -31,14 +31,16 @@
 		SELECT * FROM account
 		<where>
 			account_Id=#{account_Id} AND
-			account_Status = 0 AND
-			account_Leave =1
+			account_Status = 0
 		</where>
 	</select>
 
   <!-- 회원정보 수정 -->
 	<update id="updateAccount" parameterType="AccountVO">
 		UPDATE account SET
+		<if test="account_ProfileImg != null ">
+			account_ProfileImg = #{account_ProfileImg}, account_realProfileImg = #{account_realProfileImg},
+		</if>
 		account_Tel = #{account_Tel},
 		account_Email = #{account_Email},
 		account_Addr1 = #{account_Addr1},

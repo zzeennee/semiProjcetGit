@@ -10,6 +10,9 @@ public interface AccountService {
 	
 	public AccountVO loginCheck(AccountVO vo);
 	
+	//관리자 로그인
+	public AccountVO adminLogin(AccountVO vo);
+	
 	public void updateAccount(AccountVO vo);
 	
 	public AccountVO myHomePageView(String account_Id);
@@ -23,7 +26,6 @@ public interface AccountService {
 	public boolean checkPassword(String account_Id, String account_Password);
 	
 	public void deleteAccount(AccountVO vo);
-	//관리자 로그인
-	public void adminLogin(AccountVO vo);
+	
 
 }
