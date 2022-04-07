@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -60,14 +59,17 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="../admin/adminHome.do?account_Id=${sessionScope.logname }" class="nav-link">
+         <c:if test="${sessionScope.admin eq 'ok'}">
+           <li class="nav-item">
+            <a href="../admin/adminHome.do" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 관리자 페이지
               </p>
             </a>
           </li>
+         </c:if>
+        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

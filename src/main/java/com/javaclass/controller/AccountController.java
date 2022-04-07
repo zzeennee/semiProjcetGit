@@ -19,107 +19,110 @@ import com.javaclass.service.AccountService;
 //@RequestMapping("/myPage")
 public class AccountController {
 
-	
-	
 	@Autowired
 	private AccountService accountServiceImpl;
-	
-		
-	
-	 //회원가입페이지
-	 @RequestMapping("/myPage/signup.do") 
-	 public void signup(AccountVO vo) {
-		 
-	 }
-	 
-	 @RequestMapping("/myPage/login.do")
-	 public void login(AccountVO vo) {
 
-	 }
-	
-	//회원가입 
+	// 회원가입페이지
+	@RequestMapping("/myPage/signup.do")
+	public void signup(AccountVO vo) {
+
+	}
+
+	@RequestMapping("/myPage/login.do")
+	public void login(AccountVO vo) {
+
+	}
+
+	// 회원가입
 	@RequestMapping("/myPage/insertAccount.do")
 	public void insertAccount(AccountVO vo) {
 		accountServiceImpl.insertAccount(vo);
 	}
-	@RequestMapping(value="/myPage/idCheck.do", produces="application/text;charset=utf-8")
+
+	@RequestMapping(value = "/myPage/idCheck.do", produces = "application/text;charset=utf-8")
 	@ResponseBody
 	public String idCheck(AccountVO vo) {
 		AccountVO account = accountServiceImpl.idCheck(vo);
 		String message = "";
-		if(account==null) {
+		if (account == null) {
 			message = "yes";
 		} else {
 			message = "no";
 		}
 		return message;
 	}
-	
-	//로그인
-	
-	  @RequestMapping("/myPage/loginCheck.do") 
-	  public String login(AccountVO vo,HttpSession session, Model model) { 
-		  AccountVO result = accountServiceImpl.loginCheck(vo); 
-		  if(result==null) { 
-			  System.out.println("로그인실패"+ session.getAttribute("logname"));
-			  return "/myPage/login";
-		  	} else { 
-			  session.setAttribute("logname", result.getAccount_Id());
-			  System.out.println("로그인성공 : "+ session.getAttribute("logname"));
-			  model.addAttribute("account_list", accountServiceImpl.accountList(vo));
-			  return "/myPage/login_ok"; 
-			  } 
-		  }
-	 
-	
-	//로그아웃
-	@RequestMapping(value="/myPage/logout.do", method=RequestMethod.GET)
+
+	// 로그인
+
+	@RequestMapping("/myPage/loginCheck.do")
+	public String login(AccountVO vo, HttpSession session, Model model) {
+		AccountVO result = accountServiceImpl.loginCheck(vo);
+		AccountVO resultAdmin = accountServiceImpl.adminLogin(vo);
+		if (result == null) {
+			System.out.println("로그인실패" + session.getAttribute("logname"));
+			System.out.println("로그인실패의 숫자는 null" + result);
+			return "/myPage/login";
+		} else if (result != null & resultAdmin == null) {
+			session.setAttribute("logname", result.getAccount_Id());
+			System.out.println("관리자 로그인 실패" + resultAdmin);
+			System.out.println("로그인성공 : " + session.getAttribute("logname"));
+			model.addAttribute("account_list", accountServiceImpl.accountList(vo));
+			return "/myPage/login_ok";
+		} else {
+			session.setAttribute("logname", result.getAccount_Id());
+			System.out.println("관리자 로그인 성공" + resultAdmin);
+			System.out.println("관리자 로그인성공 : " + session.getAttribute("logname"));
+			model.addAttribute("account_list", accountServiceImpl.accountList(vo));
+			session.setAttribute("admin", "ok");
+			System.out.println("관리자 로그인성공 : " + session.getAttribute("admin"));
+			return "/myPage/login_ok";
+		}
+	}
+
+	// 로그아웃
+	@RequestMapping(value = "/myPage/logout.do", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("logemail") + "님 로그아웃");
+		System.out.println(session.getAttribute("logname") + "님 로그아웃");
 		session.invalidate();
-		return "redirect:/";//로그아웃 했을 때 메인페이지로 이동함
+		return "redirect:/";// 로그아웃 했을 때 메인페이지로 이동함
 	}
-	
 
-	
-	
 	// 마이페이지 불러오기
-	//@RequestMapping(value="/myPage/myPageHome.do", method=RequestMethod.GET)
+	// @RequestMapping(value="/myPage/myPageHome.do", method=RequestMethod.GET)
 	@RequestMapping("/myPage/myPageHome.do")
 	public void myHomePageView(String account_Id, Model m) {
-	m.addAttribute("account", accountServiceImpl.myHomePageView(account_Id));
+		m.addAttribute("account", accountServiceImpl.myHomePageView(account_Id));
 	}
-	
-	//마이페이지- 회원정보수정페이지로 이동
+
+	// 마이페이지- 회원정보수정페이지로 이동
 	@RequestMapping("/myPage/myPageUpdate.do")
-	public void myHomeUpdatePage(String account_Id, Model m){
-		System.out.println("<"+account_Id+">");
-	m.addAttribute("account", accountServiceImpl.myHomePageUpdate(account_Id));
-	System.out.println("??");
-	
+	public void myHomeUpdatePage(String account_Id, Model m) {
+		System.out.println("<" + account_Id + ">");
+		m.addAttribute("account", accountServiceImpl.myHomePageUpdate(account_Id));
+		System.out.println("??");
+
 	}
-	
-	//마이페이지- 회원정보 수정해서 마이홈으로 이동
-		@RequestMapping("/myPage/updateAccount.do")
-		public String updateAccount(@ModelAttribute AccountVO vo, String account_Id) {
-			System.out.println("<"+vo+">");
-			accountServiceImpl.updateAccount(vo);
-			//return "redirect:myPageHome.do";
-			return "redirect:myPageHome.do?account_Id="+account_Id;
+
+	// 마이페이지- 회원정보 수정해서 마이홈으로 이동
+	@RequestMapping("/myPage/updateAccount.do")
+	public String updateAccount(@ModelAttribute AccountVO vo, String account_Id) {
+		System.out.println("<" + vo + ">");
+		accountServiceImpl.updateAccount(vo);
+		// return "redirect:myPageHome.do";
+		return "redirect:myPageHome.do?account_Id=" + account_Id;
+	}
+
+	// 회원탈퇴
+	@RequestMapping("/myPage/deleteAccount.do")
+	public String deleteAccount(@ModelAttribute AccountVO vo, Model model, String account_Id) {
+		boolean result = accountServiceImpl.checkPassword(vo.getAccount_Id(), vo.getAccount_Password());
+		if (result) { // 비밀번호가 일치하면 탈퇴 처리 후, 메인페이지로 이동
+			accountServiceImpl.deleteAccount(vo);
+			return "redirect:/";
+		} else { // 비밀번호가 일치하지 않는다면
+			return "redirect:myPageHomeUpdate.do?account_Id=" + account_Id + "&account_Password=false";
 		}
-	
-		//회원탈퇴
-		@RequestMapping("/myPage/deleteAccount.do")
-		public String deleteAccount(@ModelAttribute AccountVO vo, Model model, String account_Id){
-			boolean result = accountServiceImpl.checkPassword(vo.getAccount_Id(), vo.getAccount_Password());
-			if(result) {  //비밀번호가 일치하면 탈퇴 처리 후, 메인페이지로 이동
-				accountServiceImpl.deleteAccount(vo);
-				return "redirect:/";
-			} else {   //비밀번호가 일치하지 않는다면
-				return "redirect:myPageHomeUpdate.do?account_Id="+ account_Id +"&account_Password=false";
-			}
-		}
-	
-	
+	}
+
 }

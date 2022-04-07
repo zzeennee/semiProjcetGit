@@ -29,13 +29,9 @@ public class AdminHomeController {
 
 	@Autowired
 	AdminChartServiceImpl adminchartService;
-	@Autowired
-	AccountServiceImpl accountServiceImpl;
 
 	@RequestMapping("/adminHome.do")
 	public void adminChart(AdminChartVO chartVO, String account_Id, Model model, HttpSession session) {
-		accountServiceImpl.adminLogin(account_Id);
-		System.out.println("관리자 로그인 : " + session.getAttribute("logname"));
 		// 상품 카테고리 차트
 		List<AdminChartVO> adminChartProductCategory = adminchartService.adminChartProductCategory(chartVO);
 
