@@ -19,6 +19,7 @@ public class AccountVO {
 	private String account_Status;
 	private String account_Leave;
 	private String account_Date;
+	private String account_Reason;
 	//파일저장 
 	private String account_ProfileImg;
 	private String account_realProfileImg;
@@ -144,8 +145,11 @@ public class AccountVO {
 	public void setAccount_Date(String account_Date) {
 		this.account_Date = account_Date;
 	}
-	
-	
-	
+	public String getAccount_Reason() {
+		return account_Reason;
+	}
+	public void setAccount_Reason(String account_Reason) {
+		this.account_Reason = account_Reason;
+	}
 	
 }
