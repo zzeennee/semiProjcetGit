@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 화면2222</title>
+<title>로그인 | 머신킹덤</title>
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
 

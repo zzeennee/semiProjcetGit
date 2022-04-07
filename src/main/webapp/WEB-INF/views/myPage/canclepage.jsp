@@ -27,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<title>마이페이지-취소/교환/반품 페이지</title>
+<title>주문 상태 변경 - 마이페이지 | 머신킹덤</title>
 
 
 

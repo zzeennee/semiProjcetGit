@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-<title>취소/교환/반품 상태표시 페이지</title>
+<title>주문 상태 변경 - 마이페이지 | 머신킹덤</title>
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
 
