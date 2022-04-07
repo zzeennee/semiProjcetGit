@@ -11,7 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마이 페이지-주문수정</title>
+<title>주문수정 - 마이페이지 | 머신킹덤</title>
 
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
@@ -21,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="hold-transition sidebar-mini">
 
-	<!-- ************주소 불러오는 설정 값 ***************************************************************** -->
+	<!-- ************주소 불러오는 설정 값 ****************************************************************************************-->
 
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -66,7 +66,7 @@ window.onload = function(){
 		<div class="content-wrapper">
 
 
-			<!--******************** form 액션주고 값불려오도록 설정 **************************************-->
+			<!--******************** form 액션주고 값불려오도록 설정 *********************************************-->
 			<form action='modi.do'>
 			<input type="hidden" name="account_id" value="${board.account_id}">
 				<!-- Content Header (Page header) -->
@@ -96,11 +96,12 @@ window.onload = function(){
 						</div>
 					</div>
 
+					
 					<!--*********** 값 불려올려고 input 타입에 name 설정해서 값 불려옴 *********************************************  -->
 					<div class="card-body" style="display: block;">
 						<div class="form-group">
 							<label for="inputName">주문번호</label> <input type="text"
-								id="inputName" class="form-control" name="order_seq"
+								id="inputName" class="form-control" name="order_seq" readonly
 								value="${board.order_seq}">
 						</div>
 
@@ -118,27 +119,34 @@ window.onload = function(){
 						<div class="form-group">
 							<label for="inputProjectLeader">전화번호</label> <input type="text"
 								id="inputProjectLeader" class="form-control"
-								name="coupon_number" value="${board.coupon_number}">
+								name="coupon_number" readonly value="${board.coupon_number}">
 						</div>
+						
+						
+						<!--*************** 주소 수정 value값으로 보내고 name 값으로 데이터 받기 ***************************************-->
+						
 						<div class="input-group">
 							<input type="text" id="zonecode_sender" placeholder="우편번호"
-								readonly>
+								readonly value="${board }" name="">
 							<button type="button" id="address_search_sender"
 								class="btn btn-info float-left">주소수정하기</button>
 						</div>
 
 						<div class="input-group">
 							<input type="text" id="address_sender" class="form-control"
-								placeholder="주소" readonly>
+								placeholder="주소" readonly value="${board }" name="">
 						</div>
 
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="상세주소">
+							<input type="text" class="form-control" placeholder="상세주소" value="${board }" name="">
 						</div>
 
 					</div>
 
 				</div>
+				
+				<!-- *******************확인버튼 ********************************************************************* -->
+				
 				<div class="row">
 					<div class="col-6">
 						<a href=""><input type="submit" name="submit" id="submit"

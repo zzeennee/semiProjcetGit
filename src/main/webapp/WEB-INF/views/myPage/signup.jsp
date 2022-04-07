@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Insert title here</title>
+<title>회원가입 | 머신킹덤</title>
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
 

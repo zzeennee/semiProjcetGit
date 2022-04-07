@@ -66,7 +66,8 @@ public class AccountController {
 			System.out.println("로그인성공 : " + session.getAttribute("logname"));
 			model.addAttribute("account_list", accountServiceImpl.accountList(vo));
 			session.setAttribute("login", "loginON");
-			return "/myPage/login_ok";
+			return "redirect:/";
+
 		} else {
 			session.setAttribute("logname", result.getAccount_Id());
 			System.out.println("관리자 로그인 성공" + resultAdmin);
@@ -75,7 +76,7 @@ public class AccountController {
 			session.setAttribute("login", "loginON");
 			session.setAttribute("admin", "ok");
 			System.out.println("관리자 로그인성공 : " + session.getAttribute("admin"));
-			return "/myPage/login_ok";
+			return "redirect:/";
 		}
 	}
 

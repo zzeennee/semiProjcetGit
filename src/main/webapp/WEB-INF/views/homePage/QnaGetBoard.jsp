@@ -17,7 +17,7 @@
 <style type="text/css">
 
 #main_blank{
-width : 55%;
+width : 40%;
 display: block; 
 margin: 0px auto;
 }
@@ -143,6 +143,7 @@ height: 500px;
 	<table class="table table-hover">
 	    <c:forEach items="${replyList}" var="replyList">
 	       
+	        <br/>
 	        <p>
 	        작성자 : ${replyList.writer}&nbsp;&nbsp;&nbsp;
 	        작성 날짜 :  <fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" />
@@ -151,7 +152,6 @@ height: 500px;
 	        <div>
 			  <button type="button" class="replyUpdateBtn btn btn-info float-right" name="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
 			  <button type="button" class="replyDeleteBtn btn btn-info float-right" name="replyDeleteBtn" data-rno="${replyList.rno}">삭제</button>
-			  <button type="button"  id="link" name="link" class="link btn-info" data-rno="${replyList.rno}">링크</button>
 			</div>
 	    </c:forEach> 
 	    </table>  
