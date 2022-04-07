@@ -1,11 +1,14 @@
 package com.javaclass.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaclass.domain.AccountVO;
@@ -35,9 +38,11 @@ public class AccountController {
 	
 	//회원가입 
 	@RequestMapping("/myPage/insertAccount.do")
-	public void insertAccount(AccountVO vo) {
+	public String insertAccount(AccountVO vo) {
 		accountServiceImpl.insertAccount(vo);
+		return "redirect:/";
 	}
+	
 	@RequestMapping(value="/myPage/idCheck.do", produces="application/text;charset=utf-8")
 	@ResponseBody
 	public String idCheck(AccountVO vo) {
@@ -68,39 +73,17 @@ public class AccountController {
 		  }
 	 
 	
-	/*
-	 * private void login(HttpServletRequest request, HttpServletResponse response)
-	 * throws ServletException, IOException { String account_Id =
-	 * request.getParameter("account_Id"); String account_Password =
-	 * request.getParameter("account_Password"); System.out.println(account_Id + " "
-	 * + account_Password); AccountVO vo =
-	 * AccountServiceImpl.getAccountServiceImpl().login(account_Id,
-	 * account_Password); if(vo!=null) { //세션저장 HttpSession session =
-	 * request.getSession(); session.setAttribute("userinfo", vo);
-	 * 
-	 * //아이디저장 확인 String idsave = request.getParameter("idsave");
-	 * System.out.println("idsave" + idsave); if("saveok".equals(idsave)) { Cookie
-	 * cookie = new Cookie("saveid", vo.getAccount_Id()); cookie.setPath("/");
-	 * cookie.setMaxAge(60*60); response.addCookie(cookie); } else { Cookie[]
-	 * cookies = request.getCookies(); for(int i=0; i<cookies.length; i++) {
-	 * if(cookies[i].getName().equals("saveid")) { cookies[i].setMaxAge(0);
-	 * response.addCookie(cookies[i]); break; } } }
-	 * request.getRequestDispatcher("/webapp/home.jsp").forward(request, response);
-	 * return; //화면이동 } else { //에러메시지 출력 } }
-	 */
 	//로그아웃
-	@RequestMapping("/myPage/logout.do")
-	public String logout(HttpSession session) {
+	@RequestMapping(value="/myPage/logout.do", method=RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("logname") + "님 로그아웃");
 		session.invalidate();
 		return "redirect:/";//로그아웃 했을 때 메인페이지로 이동함
 	}
 	
-	//회원정보 수정
-	@RequestMapping("/myPage/updateAccount.do")
-	public String updateAccount(AccountVO vo) {
-		accountServiceImpl.updateAccount(vo);
-		return "myPageHome";
-	}
+
+	
 	
 	// 마이페이지 불러오기
 	//@RequestMapping(value="/myPage/myPageHome.do", method=RequestMethod.GET)
@@ -109,7 +92,7 @@ public class AccountController {
 	m.addAttribute("account", accountServiceImpl.myHomePageView(account_Id));
 	}
 	
-	//마이페이지- 회원정보수정페이지
+	//마이페이지- 회원정보수정페이지로 이동
 	@RequestMapping("/myPage/myPageUpdate.do")
 	public void myHomeUpdatePage(String account_Id, Model m){
 		System.out.println("<"+account_Id+">");
@@ -117,6 +100,27 @@ public class AccountController {
 	System.out.println("??");
 	
 	}
+	
+	//마이페이지- 회원정보 수정해서 마이홈으로 이동
+		@RequestMapping("/myPage/updateAccount.do")
+		public String updateAccount(@ModelAttribute AccountVO vo, String account_Id) {
+			System.out.println("<"+vo+">");
+			accountServiceImpl.updateAccount(vo);
+			//return "redirect:myPageHome.do";
+			return "redirect:myPageHome.do?account_Id="+account_Id;
+		}
+	
+		//회원탈퇴
+		@RequestMapping("/myPage/deleteAccount.do")
+		public String deleteAccount(@ModelAttribute AccountVO vo, Model model, String account_Id){
+			boolean result = accountServiceImpl.checkPassword(vo.getAccount_Id(), vo.getAccount_Password());
+			if(result) {  //비밀번호가 일치하면 탈퇴 처리 후, 메인페이지로 이동
+				accountServiceImpl.deleteAccount(vo);
+				return "redirect:/";
+			} else {   //비밀번호가 일치하지 않는다면
+				return "redirect:myPageHomeUpdate.do?account_Id="+ account_Id +"&account_Password=false";
+			}
+		}
 	
 	
 }

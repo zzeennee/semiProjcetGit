@@ -1,6 +1,7 @@
 package com.javaclass.domain;
 
 public class AccountVO {
+	private int account_Seq;
 	private String account_Id;
 	private String account_Password;
 	private String account_Name;
@@ -11,6 +12,15 @@ public class AccountVO {
 	private String account_Addr3;
 	private String account_Status;
 	private String account_Leave;
+	private String account_Date;
+	
+	
+	public int getAccount_Seq() {
+		return account_Seq;
+	}
+	public void setAccount_Seq(int account_Seq) {
+		this.account_Seq = account_Seq;
+	}
 	public String getAccount_Id() {
 		return account_Id;
 	}
@@ -71,7 +81,14 @@ public class AccountVO {
 	public void setAccount_Leave(String account_Leave) {
 		this.account_Leave = account_Leave;
 	}
-
+	public String getAccount_Date() {
+		return account_Date;
+	}
+	public void setAccount_Date(String account_Date) {
+		this.account_Date = account_Date;
+	}
+	
+	
 	
 	
 }
