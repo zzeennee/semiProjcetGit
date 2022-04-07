@@ -11,11 +11,62 @@
    				 sender_address,sender_daddress,receiver_name,receiver_email,
     			 receiver_tel,receiver_zonecode, receiver_address,receiver_daddress,
     			 user_require, buylist_number, price, state)
-		VALUES(1, 1, 'abc123', #{sender_name}, #{sender_email},
+		VALUES(ORDERDATA_SEQ.NEXTVAL, null , 'dd33', #{sender_name}, #{sender_email},
 				#{sender_tel}, #{sender_zonecode}, #{sender_address}, #{sender_daddress},
 				#{receiver_name}, #{receiver_email}, #{receiver_tel}, #{receiver_zonecode},
-				#{receiver_address}, #{receiver_daddress}, #{user_require}, 1,
-				1, 'null')
+				#{receiver_address}, #{receiver_daddress}, #{user_require}, buylist_number.NEXTVAL,
+				#{price}, '결제 진행중')
 	</insert> 
+	
+	<select id="getPaymentList" resultType="PaymentVO" >
+		SELECT *
+		FROM ORDERDATA	
+	</select>
+	
+	<select id="selectSum" resultType="int" >
+		SELECT SUM(sprice*samount) 
+		FROM BTEST
+	</select>  
+	
+	<select id="selectUserInfo" parameterType="int" resultType="PaymentVO">
+		SELECT *
+		FROM ORDERDATA
+		WHERE order_number = #{order_number}
+	</select>
+	
+	<select id="orderSeq" resultType="int">
+		SELECT MAX(order_number) FROM ORDERDATA
+	</select>
+	
+	<select id="orderListSeq" resultType="int">
+		SELECT MAX(buylist_number) FROM ORDERDATA
+	</select>
+	
+	<insert id="insertBuyList" parameterType="PaymentVO">
+	INSERT INTO BUYLIST(list_number, product_number, product_name, product_content, product_amount, product_price )
+		VALUES(#{buynumber}, 123, #{sname}, #{scontent}, #{samount}, #{sprice})
+	</insert> 
+	
+	<!-- 결제정보 저장하기 -->
+	<insert id="insertPayInfo" parameterType="PayInfoVO">
+	INSERT INTO PAYMENT(pay_number, pay_name, pay_select, pay_email, pay_price, pay_date )
+		VALUES(payment_number.NEXTVAL, #{pay_name}, #{pay_select}, #{pay_email}, #{pay_price}, sysdate)
+	</insert> 
+	
+	<!-- 결제번호 받아오기 -->
+	<select id="selectPayNumber" resultType="int">
+		SELECT MAX(pay_number) FROM PAYMENT 
+	</select>
+	
+	<!-- 결제번호를 주문정보에 업데이트 -->
+	<update id="updatePaymentNumber" parameterType="PaymentVO">
+		UPDATE ORDERDATA SET payment_number = #{payment_number}, state='결제완료'  WHERE order_number = #{order_number}
+	</update>  
+	
+	<!-- 결제 실패시 주문정보 삭제 -->
+	<update id="deleteOrder">
+		DELETE FROM ORDERDATA WHERE STATE = '결제 진행중'
+	</update>  
+	
 	
 </mapper>

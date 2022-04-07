@@ -14,7 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Starter</title>
+  <title>payment_sucess.jsp</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -230,12 +230,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <hr/>
             <div class="input-group mb-3">
               
-              <label>고객명: 보내시는 분</label>
+              <label>고객명: ${reUser.sender_name }</label>
             </div>
             <hr/>
 
             <div class="input-group mb-3">
-              <label>전화번호: 010-1234-5678</label>
+              <label>전화번호: ${reUser.sender_tel }</label>
             </div>
             <hr/>
 
@@ -244,31 +244,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <label>받으시는 분</label>
             <hr/>
             <div class="input-group mb-3">
-              <label>수신자: 받으시는 분</label>
+              <label>수신자: ${reUser.receiver_name }</label>
             </div>
             <hr/>
 
             <div class="input-group mb-3">
-              <label>이메일: 이메일@1234.com</label>
+              <label>이메일: ${reUser.receiver_email }</label>
             </div>
             <hr/>
 
 
             <div class="input-group mb-3">
-                <label>전화번호: 010-1238-4442</label>
+                <label>전화번호: ${reUser.receiver_tel }</label>
             </div>
             <hr/>
 
             
             <div class="input-group">
-               <label>주소: 가산디지털단지 23길 11, 301호</label>
+               <label>주소: ${reUser.receiver_address }, ${reUser.receiver_daddress }</label>
             </div>
             <hr/>
             
             <br></br>
 			<hr/>
             <div class="input-group mb-3">
-              <label>총 결제금액: 60,000원</label>
+              <label>총 결제금액: ${reUser.price}원</label>
             </div>
             
             <div class="card-footer">
