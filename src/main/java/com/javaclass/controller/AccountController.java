@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaclass.domain.AccountVO;
-import com.javaclass.domain.AdminBoardVO;
 import com.javaclass.service.AccountService;
 
 @Controller
@@ -39,9 +38,11 @@ public class AccountController {
 	
 	//회원가입 
 	@RequestMapping("/myPage/insertAccount.do")
-	public void insertAccount(AccountVO vo) {
+	public String insertAccount(AccountVO vo) {
 		accountServiceImpl.insertAccount(vo);
+		return "redirect:/";
 	}
+	
 	@RequestMapping(value="/myPage/idCheck.do", produces="application/text;charset=utf-8")
 	@ResponseBody
 	public String idCheck(AccountVO vo) {
@@ -76,7 +77,7 @@ public class AccountController {
 	@RequestMapping(value="/myPage/logout.do", method=RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("logemail") + "님 로그아웃");
+		System.out.println(session.getAttribute("logname") + "님 로그아웃");
 		session.invalidate();
 		return "redirect:/";//로그아웃 했을 때 메인페이지로 이동함
 	}

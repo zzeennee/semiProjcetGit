@@ -14,6 +14,7 @@ public class AccountVO {
 	private String account_Leave;
 	private String account_Date;
 	
+	
 	public int getAccount_Seq() {
 		return account_Seq;
 	}
