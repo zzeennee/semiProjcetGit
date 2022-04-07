@@ -56,19 +56,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<h3 class="widget-user-username" id='bg-write-color'>내 정보</h3>
 						</div>
 						<div class="widget-user-image">
-						<c:set var="ProfileImg" value="${account.account_realProfileImg }"/>			
-						<c:choose>
-							<c:when test="${account.account_realProfileImg eq '0'}">
-						        <img class="img-circle elevation-2"
-								src="../resources/upload/default.jpg"
-								alt="User Avatar">
-						    </c:when>
-						    <c:when test="${account.account_realProfileImg eq ProfileImg}">
-						        <img class="img-circle elevation-2"
-								src="../resources/upload/${account.account_realProfileImg }"
-								alt="User Avatar">
-						    </c:when>
-						</c:choose>
+							<c:set var="ProfileImg"
+								value="${account.account_realProfileImg }" />
+							<c:choose>
+								<c:when test="${account.account_realProfileImg eq '0'}">
+									<img class="img-circle elevation-2"
+										src="../resources/upload/default.jpg" alt="User Avatar">
+								</c:when>
+								<c:when test="${account.account_realProfileImg eq ProfileImg}">
+									<img class="img-circle elevation-2"
+										src="../resources/upload/${account.account_realProfileImg }"
+										alt="User Avatar">
+								</c:when>
+							</c:choose>
 						</div>
 						<div class="card-footer">
 							<div class="row">
@@ -248,8 +248,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<%@ include file="../include/myPageInclude/myPageFooter.jsp"%>
 	</div>
 	<!-- ./wrapper -->
-
 	<!-- REQUIRED SCRIPTS -->
+	<%@ include
+		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
 	<%@ include
 		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
 </body>
