@@ -11,12 +11,20 @@
 			var formObj = $("form[name='updateForm']");
 			
 			$(".cancel_btn").on("click", function(){
-				location.href = "/board/readView?bno=${replyDelete.bno}"
-					   + "&page=${scri.page}"
+				location.href = "/homePage/QnaGetBoard.do?board_Seq=${replyDelete.bno}";
+					   /* + "&page=${scri.page}"
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"
-					   + "&keyword=${scri.keyword}";
+					   + "&keyword=${scri.keyword}"; */
 			})
+			
+			/* $(".delete_btn").on("click", function(){
+				location.href = "/homePage/QnaGetBoard.do?board_Seq=${replyDelete.bno}";
+					   /* + "&page=${scri.page}"
+					   + "&perPageNum=${scri.perPageNum}"
+					   + "&searchType=${scri.searchType}"
+					   + "&keyword=${scri.keyword}"; */
+			}) */
 			
 		})
 		
@@ -25,17 +33,13 @@
 	
 		<div id="root">
 			<header>
-				<h1> 게시판</h1>
+				<h1>삭제 폼</h1>
 			</header>
-			<hr />
-			 
-			<div>
-				<%-- <%@include file="nav.jsp" %> --%>
-			</div>
+	
 			<hr />
 			
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/board/replyDelete">
+				<form name="updateForm" role="form" method="post" action="/homePage/replyDelete">
 					<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>
 					<input type="hidden" id="rno" name="rno" value="${replyDelete.rno}" />
 					<%-- <input type="hidden" id="page" name="page" value="${scri.page}"> 
@@ -50,7 +54,6 @@
 					</div>
 				</form>
 			</section>
-			<hr />
 		</div>
 	</body>
 </html>

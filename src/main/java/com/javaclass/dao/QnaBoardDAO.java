@@ -21,9 +21,6 @@ public interface QnaBoardDAO {
 	/* 글 상세보기 */
 	public QnaBoardVO QnaGetBoard(QnaBoardVO bao);
 	
-	/* 글 리스트 
-	public List<QnaBoardVO> QnaGetBoardList(HashMap map);*/
-	
 	/* 게시물 목록 조회 */
 	public List<QnaBoardVO> QnaGetBoardList(SearchCriteria scri) throws Exception;
 	

@@ -56,12 +56,8 @@ li {list-style: none; float: left; padding: 6px;}
 
 
 <div id="main_blank">
-      <!--  <button type="button" class="btn btn-primary" name='button' value=''>전체글</button></a>
-        <button type="button" class="btn btn-info"  name='button' value='자주묻는 질문'>자주묻는 질문</button>
-        <button type="button" class="btn btn-info" name='button' value='문의'>문의</button> -->
-        <br><br>
-        <table class="table table-hover">
-            
+	<form action='Qna.do' method="get">
+       	 <table class="table table-hover">    
                 <tr>
                     <th>번호</th>
                     <th>카테고리</th>
@@ -69,8 +65,6 @@ li {list-style: none; float: left; padding: 6px;}
                     <th>작성자</th>
                     <th>작성일</th>
                 </tr>
-            
-            
                <c:forEach items="${QnaGetBoardList }" var="board">
 				<!-- 프라퍼티이름 변경 -->
 				<tr>
@@ -84,56 +78,33 @@ li {list-style: none; float: left; padding: 6px;}
 					<td>${board.account_Id }</td>
 					<!-- 작성일 -->
 					<td>${board.board_Date }</td>
-					<!-- 추가 첨부파일~상세페이지에 들어가야할듯-->
-					<%-- <td>
-					 <c:choose>
-					    <c:when test="${board.b_fsize==0}">첨부파일 없음</c:when>
-					    <c:otherwise>
-					    		<img src="resources/images/disk.gif">${board.b_fname}
-					    </c:otherwise>
-					 </c:choose>					  
-					</td>					
-					<td>${board.b_fsize}byte</td>--%>
 				</tr> 
 			</c:forEach>
-                
             </tbody>
         </table>
         <br><br>
         <div class="search">
-	        <form action='Qna.do' method="get">
-			<select name='searchType'>
-				<option value=''>전체</option>
-				<option value='자주묻는 질문'>자주묻는 질문</option>
-				<option value='문의'>문의</option>
-				
-			</select>
-			<input type='text' name='keyword' id="keywordInput" value="${scri.keyword}">
-			<button type="submit" id="searchBtn" class="btn btn-info float-right">검색</button>
-		</form>	
+			<select name="searchType">
+		      <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+		      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : '제목'}"/>>제목</option>
+		      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : '내용'}"/>>내용</option>
+		      <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : '작성자'}"/>>작성자</option>
+		    </select>
+			<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+			<button id="searchBtn" type="button">검색</button>
 			<script>
 		      $(function(){
 		        $('#searchBtn').click(function() {
-		          self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+		          self.location = "Qna.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 		        });
 		      });   
 		    </script>
 		</div><!-- container -->
+	</form>	
         <br><br>
         <a href="QnaInsertBoard.do"><button type="button" class="btn btn-info float-right">글쓰기</button></a>
 
         <br><br>
-        
-        <%-- <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <% for(int i=1; i<=5; i++){%><!-- 5자리에 마지막 페이지번호를 넣어야한다. -->
-              <li class="page-item"><a class="page-link" href="#"><%out.print(i); %></a></li>
-              <%} %>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav> --%>
-        <!-- 페이지 버튼 -->
         <div>
 		  <ul>
 		    <c:if test="${pageMaker.prev}">

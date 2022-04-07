@@ -25,8 +25,16 @@
 		)          
 	</insert>
 	
+	<!-- 목록조회 및 검색 -->
 	<select id="QnaGetBoardList" resultType="QnaBoardVO" parameterType="Criteria">
-		<!--SELECT  board_Seq, 
+		SELECT * FROM qna  
+		 <include refid="search"></include>
+		ORDER BY board_Seq DESC
+	</select>
+	
+	<!-- 페이징 -->
+	<select id="listPage" resultType="QnaBoardVO" parameterType="Criteria">
+		SELECT  board_Seq, 
 				board_Title, 
 				board_Password, 
 				board_Category, 
@@ -36,72 +44,39 @@
 				board_Content2,
 				board_Date,
 				account_id
-		FROM ( 
-				SELECT board_Seq, 
-				board_Title, 
-				board_Password, 
-				board_Category, 
-				board_Content, 
-				board_MainImg,
-				board_realMainImg,
-				board_Content2,
-				board_Date,
-				account_id,
-				ROW_NUMBER() OVER(ORDER BY board_Seq DESC) AS RNUM
-				FROM qna 
-				) MP
-		WHERE RNUM BETWEEN #{rowStart, jdbcType=VARCHAR} AND #{rowEnd, jdbcType=VARCHAR}
-		ORDER BY board_Seq DESC-->
-		
-		<!--  SELECT 
-			board_seq           	as board_Seq 
-			, board_title         	as board_Title 
-			, board_password 	   	as board_Password 	
-			, board_category      	as board_Category 
-			, board_content 	   	as board_Content 	
-			, board_mainimg       	as board_MainImg 
-			, board_realmainimg   	as board_realMainImg
-			, board_content2      	as board_Content2 
-			, board_date          	as board_Date 
-			, account_id          	as account_id
-		FROM Qna  
-		
-		 SELECT * FROM qna  
-		 <where>
-			<if test="searchCondition != null">
-				 board_Category LIKE '%${searchCondition}%'
-				 and board_Title LIKE '%${searchKeyword}%'
-			</if>
-		</where>
-		ORDER BY board_Seq DESC--> 
-		
-		 SELECT * FROM qna  
-		 <include refid="search"></include>
-		ORDER BY board_Seq DESC
-	</select>
-	
-	<!-- 페이징 -->
-	<select id="listPage" resultType="QnaBoardVO" parameterType="Criteria">
-		SELECT  *
-		FROM ( 
-				SELECT board_Seq, 
-				board_Title, 
-				board_Password, 
-				board_Category, 
-				board_Content, 
-				board_MainImg,
-				board_realMainImg,
-				board_Content2,
-				board_Date,
-				account_id,
-				ROW_NUMBER() OVER(ORDER BY board_Seq DESC) AS RNUM
-				FROM qna 
-				) MP
+		FROM 		( 
+						SELECT board_Seq, 
+						board_Title, 
+						board_Password, 
+						board_Category, 
+						board_Content, 
+						board_MainImg,
+						board_realMainImg,
+						board_Content2,
+						board_Date,
+						account_id,
+						ROW_NUMBER() OVER(ORDER BY board_Seq DESC) AS RNUM
+						FROM qna 
+						WHERE 1=1
+						<include refid="search"></include>
+								) MP
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY board_Seq DESC
+		
 	</select>
 	
+	<!-- 게시물 총 갯수 -->
+	<select id="listCount" parameterType="SearchCriteria" resultType="int">
+		
+		SELECT COUNT(board_Seq)
+			FROM qna
+			WHERE 1=1
+		<include refid="search"></include>	
+		   AND board_Seq > 0
+		   
+	</select>
 	
+	<!-- Qna 게시물 조회 -->
 	<select id="QnaGetBoard" parameterType="QnaBoardVO" resultType="QnaBoardVO">
 		<![CDATA[
 		SELECT 
@@ -149,23 +124,12 @@
 	
 	</delete>
 	
-	<!-- 게시물 총 갯수 -->
-	<select id="listCount" parameterType="SearchCriteria" resultType="int">
-		
-			SELECT COUNT(board_Seq)
-			FROM qna
-			WHERE 1=1
-		<include refid="search"></include>	
-		   AND board_Seq > 0
-	</select>
-	
 	<!-- 검색 -->
 	<sql id="search">
 		<if test="searchType != null">
-			<if test="searchCondition != null">
-				 board_Category LIKE '%${searchType}%'
-				 and board_Title LIKE '%${keyword}%'
-			</if>
+			<if test="searchType == 't'.toString()">AND board_Title LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND board_Content LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND account_id LIKE '%' || #{keyword} || '%'</if>
 		</if>
 	</sql>
 

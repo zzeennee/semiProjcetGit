@@ -22,8 +22,7 @@ import com.javaclass.domain.QnaBoardVO;
 import com.javaclass.domain.ReplyVO;
 import com.javaclass.service.QnaBoardService;
 //import com.javaclass.service.ReplyService;
-
-
+import com.javaclass.service.ReplyService;
 import com.javaclass.domain.*;
 
 @Controller
@@ -148,6 +147,7 @@ public class QnaController {
 	 public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception{
 		 logger.info("reply Write");
 		 
+		 model.addAttribute("replyUpdate", replyService.selectReply(vo.getBno()));
 		 model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
 			/* model.addAttribute("scri", scri); */
 		 
@@ -175,7 +175,8 @@ public class QnaController {
 	@RequestMapping(value="/replyDeleteView.do", method = RequestMethod.GET)
 	public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		logger.info("reply Write");
-			
+		
+		model.addAttribute("replyDelete", replyService.selectReply(vo.getBno()));	
 		model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
 		/* model.addAttribute("scri", scri); */
 			

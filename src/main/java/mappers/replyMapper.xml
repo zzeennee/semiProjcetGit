@@ -9,7 +9,7 @@
     	SELECT
     		  RNO, CONTENT, WRITER, REGDATE
     	 FROM MP_REPLY
-    	WHERE BNO = #{bno}
+    	WHERE BNO = #{bno} 
 	</select>
 	
 	<!-- 댓글 작성 -->	
