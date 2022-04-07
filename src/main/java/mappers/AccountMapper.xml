@@ -38,6 +38,9 @@
   <!-- 회원정보 수정 -->
 	<update id="updateAccount" parameterType="AccountVO">
 		UPDATE account SET
+		<if test="account_ProfileImg != null ">
+			account_ProfileImg = #{account_ProfileImg}, account_realProfileImg = #{account_realProfileImg},
+		</if>
 		account_Tel = #{account_Tel},
 		account_Email = #{account_Email},
 		account_Addr1 = #{account_Addr1},

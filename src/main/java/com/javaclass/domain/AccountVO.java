@@ -1,5 +1,11 @@
 package com.javaclass.domain;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class AccountVO {
 	private int account_Seq;
 	private String account_Id;
@@ -13,7 +19,59 @@ public class AccountVO {
 	private String account_Status;
 	private String account_Leave;
 	private String account_Date;
+	//파일저장 
+	private String account_ProfileImg;
+	private String account_realProfileImg;
+	MultipartFile account_File;
 	
+	public String getAccount_ProfileImg() {
+		return account_ProfileImg;
+	}
+	public void setAccount_ProfileImg(String account_ProfileImg) {
+		this.account_ProfileImg = account_ProfileImg;
+	}
+	
+	public String getAccount_realProfileImg() {
+		return account_realProfileImg;
+	}
+	public void setAccount_realProfileImg(String account_realProfileImg) {
+		this.account_realProfileImg = account_realProfileImg;
+	}
+	
+	public MultipartFile getAccount_File() {
+		return account_File;
+	}
+	public void setAccount_File(MultipartFile account_File) {
+		this.account_File = account_File;
+		// 업로드 파일 접근
+				if (!account_File.isEmpty()) { // 파일이 비어있는게 아니라면
+					this.account_ProfileImg = account_File.getOriginalFilename(); // 파일명
+					// 실제 저장된 파일명 만들기
+					// 사람들이 중복되는 이름을 많이 사용하니까 같은 파일명 저장을 눌러도
+					// 시스템 적으로 다른 이름으로 저장함
+					UUID uuid = UUID.randomUUID();
+					account_realProfileImg = uuid.toString() + "_" + account_ProfileImg;
+
+					// ***********************************************
+					// 해당 경로로 변경
+					// 저장 : File - 자바에서 파일과 디렉토리를 생성, 삭제, 관리하는 클래스
+					File f = new File("C:\\springEC\\webwork\\05_semiProject\\src\\main\\webapp\\resources\\upload\\"
+							+ account_realProfileImg);
+//					File f = new File("../../semiProjectGit/src/main/webapp/resources/upload/"
+//							+ board_RealMainImg);
+
+					try {
+						account_File.transferTo(f);
+
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+
+						e.printStackTrace();
+					}
+				}
+	}
+	//////////////////////////////////////////////////////////////////////////////////////
 	public int getAccount_Seq() {
 		return account_Seq;
 	}
