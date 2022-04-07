@@ -13,10 +13,18 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
 					</ul> -->
 					<ul class="header-links pull-right">
-						<li><a href="#"> 로그인</a></li>
-						<li><a href="#"> 회원가입</a></li>
-						<li><a href="#"> 주문배송</a></li>
+						<c:choose>
+								<c:when test="${sessionScope.logname eq 'loginON'}">
+								<li><a href="../myPage/myPageHome.do">${sessionScope.logname }님</a></li>
+								<li><a href="../myPage/logout.do">로그아웃</a></li>
+								</c:when>
+								<c:otherwise>
+								<li><a href="../myPage/login.do">로그인</a></li>
+								<li><a href="../myPage/signup.do">회원가입</a></li>
+								</c:otherwise>
+						</c:choose>
 						<li><a href="#"> 공지사항</a></li>
+						<li><a href="#"> 이벤트</a></li>
 						<li><a href="/homePage/Qna.do"> 고객센터</a></li>
 					</ul>
 				</div>
@@ -49,7 +57,7 @@
 										<option value="2">브랜드명</option>
 									</select>
 									<input class="input" placeholder="Search here">
-									<button class="search-btn">Search</button>
+									<button class="search-btn">검색</button>
 								</form>
 							</div>
 						</div>
@@ -62,8 +70,7 @@
 								<div>
 									<a href="#">
 										<i class="fa fa-user-o"></i>
-										<span>로그인</span>
-										<div class="qty">2</div>
+										<span></span>				
 									</a>
 								</div>
 								<!-- /Wishlist -->
@@ -73,9 +80,8 @@
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 										<span>장바구니</span>
-										<div class="qty">3</div>
 									</a>
-									<div class="cart-dropdown">
+									<!-- <div class="cart-dropdown">
 										<div class="cart-list">
 											<div class="product-widget">
 												<div class="product-img">
@@ -107,7 +113,7 @@
 											<a href="#">View Cart</a>
 											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
-									</div>
+									</div> -->
 								</div>
 								<!-- /Cart -->
 
