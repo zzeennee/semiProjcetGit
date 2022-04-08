@@ -56,7 +56,7 @@
 			<h3 class="card-title">로그인</h3>
 		</div> -->
 		<div>
-			<a href='home.jsp'>
+			<a href='/'>
 			<img src='../resources/dist/img/logo.png' width='200'>
 			</a>
 		</div>
@@ -95,6 +95,11 @@
 			</div>
 	</div>
 
-
+	<script type="text/javascript">
+	var flag = '${param.password}';
+	 if(flag=='false'){
+		 alert("아이디 또는 비밀번호가 틀립니다.")
+	 }
+	</script>
 </body>
 </html>

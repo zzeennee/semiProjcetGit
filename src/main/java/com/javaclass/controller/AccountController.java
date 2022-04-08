@@ -35,16 +35,6 @@ public class AccountController {
 		System.out.println("회원탈퇴완료페이지호출");
 	}
 
-	//아이디찾기 페이지
-	@RequestMapping("/myPage/idFind.do")
-	public void idFind(AccountVO vo) {
-	}
-	
-	//비밀번호찾기 페이지
-	@RequestMapping("/myPage/pwFind.do")
-	public void pwFind(AccountVO vo) {
-	}
-
 
 	// 회원가입
 	@RequestMapping("/myPage/insertAccount.do")
@@ -75,7 +65,7 @@ public class AccountController {
 		if (result == null) {
 			System.out.println("로그인실패" + session.getAttribute("logname"));
 			System.out.println("로그인실패의 숫자는 null" + result);
-			return "/myPage/login";
+			return "redirect:/myPage/login.do?password=false";
 		} else if (result != null & resultAdmin == null) {
 			session.setAttribute("logname", result.getAccount_Id());
 			System.out.println("관리자 로그인 실패" + resultAdmin);
