@@ -81,9 +81,9 @@ public class MyPageOrderModifyController {
 	
 	@RequestMapping("/myPage/canclepage.do")
 	public void selectDelete(HttpServletRequest  req, MyPageOrderModifyVO vo, Model m) {
-		String account_id = req.getParameter("account_id");
-		vo.setAccount_id(account_id);
-		m.addAttribute("board",ordermodifyServiceImpl.selectDelete(account_id));
+		String account_Id = req.getParameter("account_Id");
+		vo.setAccount_Id(account_Id);
+		m.addAttribute("board",ordermodifyServiceImpl.selectDelete(account_Id));
 		
 	}
 	
