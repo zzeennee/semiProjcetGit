@@ -248,10 +248,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<%@ include file="../include/myPageInclude/myPageFooter.jsp"%>
 	</div>
 	<!-- ./wrapper -->
+
 	<!-- REQUIRED SCRIPTS -->
 	<%@ include
 		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
-	<%@ include
-		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
+	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp"%>
+	
 </body>
 </html>

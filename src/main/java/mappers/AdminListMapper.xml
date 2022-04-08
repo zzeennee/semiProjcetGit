@@ -10,7 +10,7 @@
 	<!-- ************************************************************************** -->
 	<select id="adminGetOrderList" resultType="AdminListVO">
 		<![CDATA[
-		SELECT * FROM order_product ORDER BY orderdata_seq DESC
+		SELECT * FROM orderdata ORDER BY orderdata_seq DESC
 		]]>
 	</select>
 	<!-- ************************************************************************** -->

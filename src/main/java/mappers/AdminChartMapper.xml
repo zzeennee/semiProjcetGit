@@ -15,7 +15,7 @@
 	<select id="accountChart" resultType="AdminChartVO">
 		SELECT SUBSTR(account_date, 4,2 )||'월' accountMonth, COUNT(*) accountCnt
 		FROM account
-		WHERE account_Status=1
+		WHERE account_Status=1 AND account_Leave=1
 		GROUP BY SUBSTR(account_date, 4,2)
 		ORDER BY accountMonth ASC
 	</select>
