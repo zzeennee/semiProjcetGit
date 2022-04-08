@@ -94,7 +94,7 @@
  	</update>
  	
  	<!-- 아이디 찾기 -->
- 	<select id="idFind" resultMap="AccountVO">
+ 	<select id="idFind" resultType="AccountVO">
  		SELECT * FROM account
  		WHERE account_Email = #{account_Email} 
  	</select>
