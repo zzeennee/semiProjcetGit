@@ -66,5 +66,15 @@ public class AccountDAOImpl implements AccountDAO {
 	public void deleteAccount(AccountVO vo) {
 		sqlSession.selectOne("accountMapper.deleteAccount", vo);
 	}
+	
+	//아이디 찾기
+	public List<AccountVO> idFind(String account_Email) {
+		return sqlSession.selectList("accountMApper.idFind", account_Email);
+	}
+	
+	//아이디 찾기 이메일 중복체크
+	public int idFindCheck(String account_Email) {
+		return sqlSession.selectOne("accountMapper.idFindCheck", account_Email);
+	}
 
 }
