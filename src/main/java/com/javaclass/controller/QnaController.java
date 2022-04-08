@@ -46,7 +46,7 @@ public class QnaController {
 		return "index";
 	}
 	
-	// 
+	// Qna.do 경로
 	@RequestMapping("/{step}.do")
 	public String viewPage(@PathVariable String step) {
 		return step;
