@@ -52,9 +52,8 @@ window.onload = function(){
 		        
 		    	$(location).attr('href', 'payment_sucess.do?order_number='+$("#order_number").val());
 		    	
-		        
-		        
 		    } else {
+		    	
 		    	<!-- 결제 실패 -->
 		    	 alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
 		    	 $(location).attr('href', 'payment_fail.do');

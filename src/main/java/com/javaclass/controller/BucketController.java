@@ -16,6 +16,7 @@ public class BucketController {
 	@Autowired //DI 개념
 	private BucketService bucketService;
 	
+	//장바구니 진입시 장바구니 리스트 불러오기
 	@RequestMapping("bucket.do")
 	public void selectBucket(Model m) {
 			  
@@ -24,15 +25,18 @@ public class BucketController {
 			  m.addAttribute("bucketList",list);
 	}
 	
+	//장바구니에서 결제정보 입력으로 넘어갈때 장바구니 리스트 불러옴
 	@RequestMapping("payment.do")
 	public void select(Model m) {
 			  
 			  List<BucketVO> list = bucketService.getBucketList();
 			  System.out.println("정상작동");
+			  
 			  m.addAttribute("bucketList",list);
+			  
 	}
 	 
-	 
+	 //장바구니 선택후 삭제
 	 @RequestMapping("bdelete.do")
 		public String deleteBucket(BucketVO vo) {
 		 	bucketService.selectDelete(vo);

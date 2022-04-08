@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.javaclass.domain.BucketVO;
+import com.javaclass.domain.BuylistVO;
 import com.javaclass.domain.PayInfoVO;
 import com.javaclass.domain.PaymentVO;
 import com.javaclass.service.PaymentService;
@@ -22,35 +23,66 @@ public class PaymentController {
 	@RequestMapping("savePayment.do")
 	public String insertPayment(PaymentVO vo, Model m) {
 		//값 셋팅
-		vo.setPrice((paymentService.selectSum()));
+		vo.setPrice((paymentService.selectSum()+2500));
 		
-		//주문생성
+		//주문정보 생성
 		paymentService.insertPayment(vo);
 		
 		//주문번호 받기
 		int order_number = paymentService.orderSeq();
 		
-		//구매목록 리스트 번호생성
-		int buylist_number = paymentService.orderListSeq(); //리스트 번호
-		List<BucketVO> buylist = paymentService.getBucketList(); ////BucketMapper 사용!!
+		//빈 구매리스트 번호 생성
+		paymentService.insertBuyListNumber();
 		
-		//구매목록 리스트 번호 삽입
-		for(BucketVO list : buylist ) {			
-			list.setBuynumber(buylist_number);			
-			paymentService.insertBuyList(list);
+		//구매리스트 번호 받아오기
+		int buylist_number = paymentService.orderListSeq(); 
+		
+		//BucketMapper 사용!!
+		//장바구니 상품리스트 가져오기!!
+		List<BucketVO> buylist = paymentService.getBucketList(); 
+		
+		//구매목록 리스트 객체생성
+		BuylistVO buylistVO = new BuylistVO();
+		
+		//구매목록 객체생성 후 구매리스트 번호 삽입 //DB저장 아님!!
+		//buylistVO.setList_number(buylist_number);
+		
+		//구매목록 리스트 정보 삽입
+		for(BucketVO list : buylist) {
+			
+				buylistVO.setList_number(buylist_number);
+				buylistVO.setProduct_amount(list.getProduct_amount());
+				buylistVO.setProduct_image(list.getProduct_image());
+				buylistVO.setProduct_name(list.getProduct_name());
+				buylistVO.setProduct_number(list.getProduct_number());
+				buylistVO.setProduct_price(list.getProduct_price());
+				
+				
+				paymentService.BuyListinsert(buylistVO);
 			
 		}		
 		
+		
+		//주문번호에 맞는 주문정보 가져오기
 		PaymentVO user = paymentService.selectUserInfo(order_number);
 		
+		//주문정보에 주문리스트번호 삽입
+		user.setBuylist_number(buylist_number);
+		
+		//주문정보에 주문리스트번호 업데이트(DB저장)
+		paymentService.updateBuylistNumber(user);
 		
 		m.addAttribute("pay", user);
+		
+		//구매번호 생성을 위한 임시 구매리스트 테이블 삭제
+		paymentService.deleteBuyList();
 		
 		return "/paymentOrder/testpay";
 	}
 	
 	@RequestMapping("payment_sucess.do")
 	public void setUser(Model m, PaymentVO vo) {
+		//주문번호에 맞는 주문정보 불러오기
 		PaymentVO user = paymentService.selectUserInfo(vo.getOrder_number());
 				
 		//결제정보 등록 시작
@@ -71,6 +103,9 @@ public class PaymentController {
 		
 		//주문정보에 결제번호 업데이트
 		paymentService.updatePaymentNumber(user);
+		
+		//장바구니 목록 리스트 삭제 (id조건 걸기)
+		paymentService.deleteBucketList();
 		
 		
 		m.addAttribute("reUser", user);		
