@@ -30,8 +30,8 @@
 	<select id="adminloginCheck" resultType="AccountVO">
 		SELECT * FROM account
 		<where>
-			account_Id=#{account_Id}<!--  AND -->
-			<!-- account_Status = 0 -->
+			account_Id=#{account_Id} AND
+			account_Status = 0 
 		</where>
 	</select>
 

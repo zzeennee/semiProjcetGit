@@ -71,8 +71,8 @@
 			<!-- /.card-body -->
 			<div class="card-bottom">
 				<div>
-				<a href='/'>홈으로</a>
-			</div>
+				<a href='/'><button type="button" class="btn btn-info">홈으로</button></a>
+				</div>
 			</div>
 			<!-- /.card-footer -->
 		</form>
