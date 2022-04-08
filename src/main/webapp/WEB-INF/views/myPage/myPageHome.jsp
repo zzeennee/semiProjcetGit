@@ -82,15 +82,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<!-- /.col -->
 								<div class="col-sm-4 border-right">
 									<div class="description-block">
-										<h5 class="description-header">13,000</h5>
-										<span class="description-text">멤버등급</span>
+										<h5 class="description-header"></h5>
+										<span class="description-text"></span>
 									</div>
 									<!-- /.description-block -->
 								</div>
 								<!-- /.col -->
 								<div class="col-sm-4">
 									<div class="description-block">
-										<h5 class="description-header">35</h5>
+										<h5 class="description-header">${account.account_Date }</h5>
 										<span class="description-text">가입날짜</span>
 									</div>
 									<!-- /.description-block -->

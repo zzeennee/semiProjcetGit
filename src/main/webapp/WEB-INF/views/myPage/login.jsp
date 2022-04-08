@@ -42,7 +42,11 @@
 	border: #00c2cb;
 }
 
-
+a:link, a:visited,  a:hover, a:active
+{
+    color: #AAAA99;
+    text-decoration: none;
+}
 
 </style>
 
@@ -81,8 +85,10 @@
 			</div>
 			<!-- /.card-body -->
 			<div class="card-bottom">
-				<button type="submit" class="btn btn-info" id='submit'>로그인</button><br/><br/>
+				<button type="submit" class="btn btn-info" id='submit'>로그인</button><br/>
+				<a href='/'><button type="button" class="btn btn-info">홈으로</button></a>
 			</div>
+			<br/>
 			<!-- /.card-footer -->
 			
 		</form>
