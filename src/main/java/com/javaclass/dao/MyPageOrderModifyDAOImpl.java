@@ -27,11 +27,10 @@ public class MyPageOrderModifyDAOImpl implements MyPageOrderModifyDAO {
 	} 
 
 	//주문상세보기에 db 값 불려오기 
-	public List<MyPageOrderModifyVO> getOrderLoadList(){
-		System.out.println("요청되었습니다.");
-		return sqlSession.selectList("orderMapper.getOrderList");
-	}
-	
+	public MyPageOrderModifyVO selectLoad(MyPageOrderModifyVO vo) {
+		return sqlSession.selectOne("orderMapper.selectLoad", vo);
+			
+		}
 	//주문수정버튼 누르면 db 업데이트 
 	public void updateMember(MyPageOrderModifyVO vo) {
 		sqlSession.update("orderMapper.updateMember",vo);

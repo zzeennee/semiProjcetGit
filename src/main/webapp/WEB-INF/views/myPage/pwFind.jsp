@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 | 머신킹덤</title>
+<title>비밀번호 찾기 | 머신킹덤</title>
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
 
@@ -42,11 +42,7 @@
 	border: #00c2cb;
 }
 
-a:link, a:visited,  a:hover, a:active
-{
-    color: #AAAA99;
-    text-decoration: none;
-}
+
 
 </style>
 
@@ -60,7 +56,7 @@ a:link, a:visited,  a:hover, a:active
 			<h3 class="card-title">로그인</h3>
 		</div> -->
 		<div>
-			<a href='/'>
+			<a href='home.jsp'>
 			<img src='../resources/dist/img/logo.png' width='200'>
 			</a>
 		</div>
@@ -85,27 +81,20 @@ a:link, a:visited,  a:hover, a:active
 			</div>
 			<!-- /.card-body -->
 			<div class="card-bottom">
-				<button type="submit" class="btn btn-info" id='submit'>로그인</button><br/>
-				<a href='/'><button type="button" class="btn btn-info">홈으로</button></a>
+				<button type="submit" class="btn btn-info" id='submit'>로그인</button><br/><br/>
 			</div>
-			<br/>
 			<!-- /.card-footer -->
 			
 		</form>
 		<div>
-		<a href='/myPage/idFind.do'>아이디 찾기&nbsp;&nbsp;&nbsp;|</a>
-		<a href='/myPage/pwFind.do'>&nbsp;&nbsp;비밀번호 찾기</a>
+		<a href=''>아이디 찾기&nbsp;&nbsp;&nbsp;|</a>
+		<a href=''>&nbsp;&nbsp;비밀번호 찾기</a>
 		</div><br/><br/>
 			<div>
 				<a href='signup.do'>회원가입</a>
 			</div>
 	</div>
 
-	<script type="text/javascript">
-	var flag = '${param.password}';
-	 if(flag=='false'){
-		 alert("아이디 또는 비밀번호가 틀립니다.")
-	 }
-	</script>
+
 </body>
 </html>

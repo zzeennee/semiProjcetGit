@@ -8,12 +8,12 @@
 	<!-- 장바구니 목록 불러오기 -->
 	<select id="getBucketList" resultType="BucketVO" >
 		SELECT *
-		FROM BTEST	
+		FROM bucket	
 	</select> 
 	
 	<!-- 장바구니 선택 삭제 -->
 	<delete id="selectDelete" parameterType="BucketVO" >
-		DELETE FROM BTEST WHERE sname = #{sname}
+		DELETE FROM bucket WHERE product_number = #{product_number}
 	</delete>
 	
 </mapper>

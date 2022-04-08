@@ -1,0 +1,169 @@
+/* 계정 1번 */
+CREATE TABLE account (
+    account_Seq number NOT NULL,   /* 회원번호 */
+    account_Id varchar2(250) PRIMARY KEY, /* 아이디 */
+    account_Password varchar2(250) NOT NULL, /* 비밀번호 */
+    account_Name varchar2(250) NOT NULL, /* 이름 */
+    account_Email varchar2(250) NOT NULL, /* 이메일 */
+    account_Tel varchar2(250) NOT NULL, /* 전화번호 */
+    account_Addr1 varchar2(4000) NOT NULL, /* 우편번호 */
+    account_Addr2 varchar2(4000) NOT NULL, /* 도로명주소 */
+    account_Addr3 varchar2(4000) NOT NULL, /* 상세주소 */
+    account_Status  varchar2(250), /* 회원권한 */ -- 1:일반회원 or 0:관리자 
+    account_Leave varchar2(250), /* 회원탈퇴여부 */ -- 1:일반 or 0: 정지
+    account_Date date, -- 회원가입 날짜
+    account_ProfileImg varchar2(4000),  -- 파일 이름
+    account_realProfileImg varchar2(4000), -- 파일 저장되는 이름
+    account_Reason varchar2(1000) --탈퇴사유
+);
+
+
+/* 공지사항/이벤트/광고 2번*/
+CREATE TABLE admin_Board (
+	board_Seq NUMBER PRIMARY KEY, /* 공지사항/이벤트/광고 고유 번호 */
+	board_Title varchar2(250) NOT NULL, /* 제목 */
+	board_Password varchar2(250) NOT NULL, /* 비밀번호 */
+	board_Category varchar2(250), /* 게시글 카테고리 */
+	board_Content varchar2(4000), /* 내용 */
+	board_MainImg varchar2(250), /* 메인 이미지 */
+	board_RealMainImg varchar2(250), /* 변수 추가 메인 이미지 */
+	board_Content2 varchar2(4000), /* 내용2 */
+	board_Date DATE NOT NULL, /* 등록 및 수정날짜 */
+	account_Id varchar2(250) NOT NULL, /* 아이디 */
+    
+    CONSTRAINT fk_admin_Board_account_id FOREIGN KEY (account_Id) REFERENCES account(account_Id)
+);
+
+/* 댓글 리스트 3번*/
+create table reply (
+    	reply_rno number PRIMARY KEY,              --댓글번호 
+   	reply_content varchar2(1000) not null,     --댓글내용
+    	reply_writer varchar2(50) not null,        --댓글작성자
+    	reply_regdate date default sysdate,        --댓글작성시간
+    	board_Seq NUMBER,                --댓글달린 게시글번호 외래키
+	
+	CONSTRAINT fk_reply_board_Seq FOREIGN KEY (board_Seq) REFERENCES admin_Board(board_Seq)
+);
+
+/* 상품 추가 및 상세정보 4번*/
+CREATE TABLE product_Info (
+	product_Seq NUMBER PRIMARY KEY, /* 상품 고유번호 */
+	product_Name varchar2(250) NOT NULL, /* 상품명 */
+    	product_Password varchar2(250) NOT NULL,
+	product_MainImg varchar2(250), /* 메인 이미지 */
+	product_BrandImg varchar2(250), /* 브랜드 이미지 */
+    	product_SubImg varchar2(250),
+	product_realMainImg varchar2(250), /* 변수 추가 메인 이미지 */
+	product_realBrandImg varchar2(250), /* 변수 추가 브랜드 이미지 */
+   	product_realSubImg varchar2(250),
+	product_Category varchar2(250), /* 카테고리 입력 */
+	product_Vol NUMBER NOT NULL, /* 상품재고량 */
+	product_Content varchar2(4000), /* 상품설명 */
+	product_ModelName varchar2(250) NOT NULL, /* 상품모델명 */
+	product_ShortContent varchar2(250) NOT NULL, /* 상품 요약 설명 */
+	product_Price NUMBER NOT NULL, /* 상품가격 */
+	product_Content2 varchar2(4000), /* 상품설명2 */
+	product_Date Date, /* 상품등록 및 수정날짜 */
+	account_Id varchar2(250) NOT NULL, /* 아이디 */
+    
+   	 CONSTRAINT fk_product_Info_account_id FOREIGN KEY (account_Id) REFERENCES account(account_Id)
+);
+/* 상품리스트 5-1번 */
+CREATE TABLE buylist(
+	buylist_number NUMBER PRIMARY KEY, -- 상품 리스트
+	product_Seq NUMBER, --상품 고유번호 
+	product_amount NUMBER, --상품 선택수량
+
+	CONSTRAINT fk_buylist_product_seq FOREIGN KEY (product_Seq) REFERENCES product_Info(product_Seq)
+);
+
+/* 장바구니 5-2번 */
+CREATE TABLE BUCKET(
+	account_Id varchar2(250) NOT NULL, /* 아이디 */
+	product_seq NUMBER NOT NULL, /* 상품 고유번호 */
+    	PRODUCT_AMOUNT NUMBER,
+
+    CONSTRAINT fk_BUCKET_account_id FOREIGN KEY (account_Id) REFERENCES account(account_Id),
+    CONSTRAINT fk_BUCKET_product_seq FOREIGN KEY (product_seq) REFERENCES product_Info(product_seq)
+);
+
+/* 결제 시스템 6번  */
+CREATE TABLE payment(
+	pay_number NUMBER PRIMARY KEY, /* 결제 고유번호 */
+	pay_name VARCHAR2(250), --결제자 이름
+	pay_select VARCHAR2(250), /* 결제 정보 */
+	pay_email VARCHAR2(250), /* 결제자 이메일 */
+	pay_price NUMBER, /* 결제 금액*/
+	pay_date DATE --결제시간
+);
+
+/* 주문 7번 */
+CREATE TABLE orderdata(
+	orderdata_seq  NUMBER PRIMARY KEY, /* 주문 고유번호 */
+	account_Id varchar2(250) NOT NULL, /* 아이디 */
+	buylist_number NUMBER, -- 상품 리스트 고유번호
+	pay_number NUMBER, -- 결제 번호
+	sender_name VARCHAR2(500),
+    	sender_email VARCHAR2(500),
+    	sender_tel VARCHAR2(500),
+    	sender_zonecode VARCHAR2(500),
+    	sender_address VARCHAR2(500),
+   	sender_daddress VARCHAR2(500),
+   	receiver_name VARCHAR2(500),
+   	receiver_email VARCHAR2(500),
+    	receiver_tel VARCHAR2(500),
+   	receiver_zonecode VARCHAR2(500),
+   	receiver_address VARCHAR2(500),
+ 	receiver_daddress VARCHAR2(500),
+	user_require VARCHAR2(500), -- 배송시고객요청사항
+	price NUMBER, --총주문금액
+	order_date date, --주문시간
+	state VARCHAR2(30), --주문상태
+
+    CONSTRAINT FK_payment_number FOREIGN KEY (pay_number) REFERENCES payment(pay_number), --결제번호
+    CONSTRAINT FK_buylist_number FOREIGN KEY (buylist_number) REFERENCES buylist(buylist_number), --상품리스트
+    CONSTRAINT FK_order_account_id FOREIGN KEY (account_Id) REFERENCES account(account_Id) -- 계정
+);
+
+commit;
+--삭제
+--1
+/* 결제 시스템 삭제 */
+DROP TABLE orderdata ;
+DROP TABLE payment ;
+/* 댓글 리스트 */
+DROP TABLE reply;
+/* 장바구니 삭제 */
+DROP TABLE BUCKET;
+--2
+/* 공지사항/이벤트/광고 삭제 */
+DROP TABLE admin_Board;
+/* 상품 구매리스트 */
+DROP TABLE buylist;
+--3
+/* 상품 상세정보 삭제 */
+DROP TABLE product_Info;
+--4
+/* 계정 삭제 */
+DROP TABLE account;
+commit;
+
+--시퀀스 생성
+CREATE SEQUENCE	reply_rno; --댓글번호 시퀀스
+CREATE SEQUENCE account_Seq; --계정번호 시퀀스
+CREATE SEQUENCE board_Seq; --모든글번호 시퀀스
+CREATE SEQUENCE product_seq; --상품번호 시퀀스
+CREATE SEQUENCE order_Seq; --주문번호 시퀀스
+CREATE SEQUENCE pay_number; --결제번호 시퀀스
+CREATE SEQUENCE buylist_number; --구매리스트번호 시퀀스
+commit;
+
+--시퀀스 삭제
+DROP SEQUENCE reply_rno;
+DROP SEQUENCE account_Seq;
+DROP SEQUENCE board_Seq;
+DROP SEQUENCE product_seq;
+DROP SEQUENCE order_Seq;
+DROP SEQUENCE pay_number;
+DROP SEQUENCE buylist_number;
+commit;

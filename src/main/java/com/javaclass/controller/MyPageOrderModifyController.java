@@ -3,12 +3,14 @@ package com.javaclass.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaclass.domain.MyPageOrderModifyVO;
 import com.javaclass.service.MyPageOrderModifyService;
@@ -33,14 +35,6 @@ public class MyPageOrderModifyController {
 	
 	  @RequestMapping("/myPage/orderpage.do")
 	public void getOrderList(MyPageOrderModifyVO vo,Model m) {
-		/*
-		 * HashMap map= new HashMap(); map.put("searchCondition", searchCondition);
-		 * map.put("searchKeyword", searchKeyword);
-		 * 
-		 * System.out.println("searchCondition:"+searchCondition);
-		 * System.out.println("searchKeyword:"+searchKeyword);
-		 */
-		
 		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getOrderList();
 		m.addAttribute("orderList",list);
 		
@@ -50,11 +44,11 @@ public class MyPageOrderModifyController {
 	//주문내역페이지에서 주문상세보기 페이지 db값 가지고 오는거 설정**********************************
 	
 	  @RequestMapping("/myPage/orderload.do")
-	public void getOrderLoadList(MyPageOrderModifyVO vo,Model m) {
-		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getOrderLoadList();
-		m.addAttribute("orderloadList",list);
+	  public void selectLoad(MyPageOrderModifyVO vo, Model m) {
+			m.addAttribute("board",ordermodifyServiceImpl.selectLoad(vo));
+			 
+		}
 		
-	}
 	
 	
     //주문수정페이지 수정완성하기****************************************************************
@@ -87,9 +81,9 @@ public class MyPageOrderModifyController {
 	
 	@RequestMapping("/myPage/canclepage.do")
 	public void selectDelete(HttpServletRequest  req, MyPageOrderModifyVO vo, Model m) {
-		String account_id = req.getParameter("account_id");
-		vo.setAccount_id(account_id);
-		m.addAttribute("board",ordermodifyServiceImpl.selectDelete(account_id));
+		String account_Id = req.getParameter("account_Id");
+		vo.setAccount_Id(account_Id);
+		m.addAttribute("board",ordermodifyServiceImpl.selectDelete(account_Id));
 		
 	}
 	
@@ -111,8 +105,12 @@ public class MyPageOrderModifyController {
 		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getCancleList();
 		m.addAttribute("cancleList",list);
 	}
-		
 	
+	
+	 
+	  
+	 
+	 
 }
 	
 

@@ -11,12 +11,12 @@ window.onload = function(){
         }).open();
     });
     
-    var idCheck = false;
+   
     
     
     
     
-
+ var idCheck = false;
 $('#idCheck').click(function(){
 	var userid = $.trim($('#userid').val());
 	if(userid=="") {
@@ -43,6 +43,7 @@ $('#idCheck').click(function(){
 	            }else{
 	            	$('#useridid .error_box1').html('사용할 수 없는 아이디입니다.');
 	                 //emailCheak = true;
+	                 idCheck = false;
 	            }
 	       },
 	       error : function(err){
@@ -91,11 +92,35 @@ $('#idCheck').click(function(){
         
        
         //이용약관
-        if(!($('#agree1').is(':checked') && $('#agree2').is(':checked') && $('#agree3').is(':checked'))) {
+        if(!($('#agree2').is(':checked') && $('#agree3').is(':checked'))) {
         	//체크가 안 됐을 때
         	alert('필수사항을 모두 체크해주세요.');
         	return false;
         	
+        }else{
+        	$.ajax({
+	       type : 'post',
+	       url : 'idCheck.do',
+	       data : { account_Id : $('#userid').val() },
+	       contentType : 'application/x-www-form-urlencoded;charset=utf-8',  //한글로 넘어감
+	       success : function(result){
+	          
+	          // 중복 검사 후 나오는 결과 에러박스에 출력
+	          if(result == 'yes'){
+	                document.form.submit();  
+ 					alert('회원가입을 축하드립니다.');
+	                 idCheck = true;
+	            }else{
+	            	alert('아이디 중복체크를 해주세요.');
+	            	//idCheck=false;
+	                return;
+	            }
+	       },
+	       error : function(err){
+	         alert('실패');
+	          console.log(err);
+	       }
+	    }); //end of ajax
         } 
        
         if(!idCheck) {
@@ -107,8 +132,7 @@ $('#idCheck').click(function(){
 
  
  
-		document.form.submit();
- 		alert('회원가입을 축하드립니다.');
+		
         return true;
 })
     
@@ -149,9 +173,10 @@ $('#idCheck').click(function(){
         if (!checkExistData(userpassword2, "비밀번호 확인을"))
             return false;
  
-        var password1RegExp = /^[a-zA-z0-9]{4,12}$/; //비밀번호 유효성 검사
+
+       var password1RegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,12}$/;
         if (!password1RegExp.test(userpassword1)) {
-            alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
+            alert("비밀번호는 영문자와 숫자 4~12자리로 입력해야합니다!");
             form.userpassword1.value = "";
             form.userpassword1.focus();
             return false;
@@ -174,6 +199,7 @@ $('#idCheck').click(function(){
             return false;
         }
         return true; //확인이 완료되었을 때
+        
     }
  
     function checkMail(mail) {

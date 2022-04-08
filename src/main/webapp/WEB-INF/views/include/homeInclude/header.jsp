@@ -1,66 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 
-    
-    	<!-- HEADER -->
-		<header>
-			<!-- TOP HEADER -->
-			<div id="top-header">
-				<div class="container">
-					<!-- <ul class="header-links pull-left">
+
+<!-- HEADER -->
+<header>
+	<!-- TOP HEADER -->
+	<div id="top-header">
+		<div class="container">
+			<!-- <ul class="header-links pull-left">
 						<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
 						<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
 						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
 					</ul> -->
-					<ul class="header-links pull-right">
-						<li><a href="#"> 로그인</a></li>
-						<li><a href="#"> 회원가입</a></li>
-						<li><a href="#"> 주문배송</a></li>
-						<li><a href="#"> 공지사항</a></li>
-						<li><a href="/homePage/Qna.do"> 고객센터</a></li>
-					</ul>
+			<ul class="header-links pull-right">
+				<c:choose>
+					<c:when test="${sessionScope.login eq 'loginON'}">
+						<li><a
+							href="../myPage/myPageHome.do?account_Id=${sessionScope.logname }">${sessionScope.logname }님</a></li>
+						<li><a href="../myPage/logout.do">로그아웃</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="../myPage/login.do">로그인</a></li>
+						<li><a href="../myPage/signup.do">회원가입</a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><a href="#"> 공지사항</a></li>
+				<li><a href="#"> 이벤트</a></li>
+				<li><a href="/homePage/Qna.do"> 고객센터</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- /TOP HEADER -->
+	<!-- MAIN HEADER -->
+	<div id="header">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- LOGO -->
+				<div class="col-md-3 ">
+					<div class="header-logo">
+						<a href="index.jsp" class="logo"> <img width='70'
+							src="../resources/dist/img/logo.png" alt="">
+						</a>
+					</div>
 				</div>
-			</div>
-			<!-- /TOP HEADER -->
-			
-			<!-- MAIN HEADER -->
-			<div id="header">
-				<!-- container -->
-				<div class="container">
-					<!-- row -->
-					<div class="row">
-						<!-- LOGO -->
-						<div class="col-md-3 ">
-							<div class="header-logo">
-								<a href="index.jsp" class="logo">
-									<img width='70' src="../resources/dist/img/logo.png" alt="">
-								</a>
-							</div>
-						</div>
-						<!-- /LOGO -->
+				<!-- /LOGO -->
 
-<<<<<<< Updated upstream
-						<!-- SEARCH BAR -->
-						<div class="col-md-6">
-							<div class="header-search">
-								<form>
-									<select class="input-select">
-										<option value="0">All Categories</option>
-										<option value="1">상품명</option>
-										<option value="2">브랜드명</option>
-									</select>
-									<input class="input" placeholder="Search here">
-									<button class="search-btn">Search</button>
-								</form>
-							</div>
-						</div>
-						<!-- /SEARCH BAR -->
-
-						<!-- ACCOUNT -->
-						<div class="col-md-3 clearfix">
-							<div class="header-ctn">
-								<!-- Wishlist -->
-=======
 				<!-- SEARCH BAR -->
 				<div class="col-md-6">
 					<div class="header-search">
@@ -80,24 +66,20 @@
 						<c:choose>
 							<c:when test="${sessionScope.login eq 'loginON'}">
 							<!-- myPage -->
->>>>>>> Stashed changes
 								<div>
-									<a href="#">
-										<i class="fa fa-user-o"></i>
-										<span>로그인</span>
-										<div class="qty">2</div>
+									<a
+										href="../myPage/myPageHome.do?account_Id=${sessionScope.logname }">
+										<i class="fa fa-user-o"></i><span>마이 페이지</span>
 									</a>
 								</div>
-								<!-- /Wishlist -->
-
+								<!-- myPage -->
 								<!-- Cart -->
 								<div class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-										<i class="fa fa-shopping-cart"></i>
+									<a class="dropdown-toggle" data-toggle="dropdown"
+										aria-expanded="true"> <i class="fa fa-shopping-cart"></i>
 										<span>장바구니</span>
-										<div class="qty">3</div>
 									</a>
-									<div class="cart-dropdown">
+									<!-- <div class="cart-dropdown">
 										<div class="cart-list">
 											<div class="product-widget">
 												<div class="product-img">
@@ -129,26 +111,25 @@
 											<a href="#">View Cart</a>
 											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
-									</div>
+									</div> -->
 								</div>
 								<!-- /Cart -->
-
-								<!-- Menu Toogle -->
-								<div class="menu-toggle">
-									<a href="#">
-										<i class="fa fa-bars"></i>
-										<span>Menu</span>
-									</a>
-								</div>
-								<!-- /Menu Toogle -->
-							</div>
+							</c:when>
+						</c:choose>
+						<!-- Menu Toogle -->
+						<div class="menu-toggle">
+							<a href="#"> <i class="fa fa-bars"></i> <span>Menu</span>
+							</a>
 						</div>
-						<!-- /ACCOUNT -->
+						<!-- /Menu Toogle -->
 					</div>
-					<!-- row -->
 				</div>
-				<!-- container -->
+				<!-- /ACCOUNT -->
 			</div>
-			<!-- /MAIN HEADER -->
-		</header>
-		<!-- /HEADER -->
+			<!-- row -->
+		</div>
+		<!-- container -->
+	</div>
+	<!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
