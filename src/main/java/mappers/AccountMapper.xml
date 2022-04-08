@@ -94,15 +94,15 @@
  	</update>
  	
  	<!-- 아이디 찾기 -->
- 	<select id="idFind" resultMap="AccountVO">
+ 	<!-- <select id="idFind" resultMap="AccountVO">
  		SELECT * FROM account
  		WHERE account_Email = #{account_Email} 
- 	</select>
+ 	</select> -->
  	
  	<!-- 아이디 찾기 중복체크 -->
- 	<select id="idFindCheck" resultType="int">
+ 	<!-- <select id="idFindCheck" resultType="int">
  		SELECT count(*) FROM account
  		WHERE account_Email = #{account_Email}
- 	</select>
+ 	</select> -->
 
 </mapper>
