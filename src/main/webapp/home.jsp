@@ -41,7 +41,6 @@
 <a href='/myPage/canclepage.do'>취소/교환/반품 페이지</a><br/><br/>
 <a href='/myPage/ordermodify.do'>주문수정 페이지</a><br/><br/>
 <a href='/myPage/cancleload.do'>취소/교환/반품 상태표시 페이지</a><br/><br/><br/>
-
 <hr/>
 <hr/><br/>
 

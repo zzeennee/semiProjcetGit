@@ -29,12 +29,12 @@ public class AccountController {
 	@RequestMapping("/myPage/login.do")
 	public void login(AccountVO vo) {
 	}
+  
 	//회원탈퇴 완료 후 이동 페이지
 	@RequestMapping("/myPage/accountLeave.do")
 	public void accountLeave(AccountVO vo) {
 	System.out.println("회원 탈퇴됨");
 	}
-
 
 	// 회원가입
 	@RequestMapping("/myPage/insertAccount.do")
