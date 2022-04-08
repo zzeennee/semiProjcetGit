@@ -29,7 +29,18 @@ public class AccountController {
 	@RequestMapping("/myPage/login.do")
 	public void login(AccountVO vo) {
 	}
-  
+
+	
+	//아이디 찾기
+	@RequestMapping("/myPage/idFind.do")
+	public void idFind(AccountVO vo) {
+	}
+	
+	//비밀번호 찾기
+	@RequestMapping("/myPage/pwFind.do")
+	public void pwFind(AccountVO vo) {
+	}
+
 	//회원탈퇴 완료 후 이동 페이지
 	@RequestMapping("/myPage/accountLeave.do")
 	public void accountLeave(AccountVO vo) {
@@ -130,6 +141,12 @@ public class AccountController {
 		} else { // 비밀번호가 일치하지 않는다면
 			return "redirect:myPageLeave.do?account_Id="+account_Id+"&password=false";
 		}
+	}
+	
+	//아이디 찾기
+	@RequestMapping(value="/myPage/idFind.do", method = RequestMethod.POST)
+	public String idFind(String account_Email, Model m) {
+		return "공익";
 	}
 
 }

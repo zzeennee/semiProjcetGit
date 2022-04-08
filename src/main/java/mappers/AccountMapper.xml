@@ -92,5 +92,17 @@
 			account_Reason = #{account_Reason}
 		WHERE account_Id=#{account_Id} and account_Password=#{account_Password}
  	</update>
+ 	
+ 	<!-- 아이디 찾기 -->
+ 	<select id="idFind" resultMap="AccountVO">
+ 		SELECT * FROM account
+ 		WHERE account_Email = #{account_Email} 
+ 	</select>
+ 	
+ 	<!-- 아이디 찾기 중복체크 -->
+ 	<select id="idFindCheck" resultType="int">
+ 		SELECT count(*) FROM account
+ 		WHERE account_Email = #{account_Email}
+ 	</select>
 
 </mapper>

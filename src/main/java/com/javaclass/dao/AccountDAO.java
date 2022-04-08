@@ -27,5 +27,11 @@ public interface AccountDAO {
 	public boolean checkPassword(String account_Id, String account_Password);
 
 	public void deleteAccount(AccountVO vo);
+	
+	//아이디 찾기
+	public List<AccountVO> idFind(String account_Email);
+	
+	//아이디 찾기 이메일 중복체크
+	public int idFindCheck(String account_Email);
 
 }

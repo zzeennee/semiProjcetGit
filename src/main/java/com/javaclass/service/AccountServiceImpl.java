@@ -55,5 +55,15 @@ public class AccountServiceImpl implements AccountService {
 	public void deleteAccount(AccountVO vo) {
 		accountDAOImpl.deleteAccount(vo);
 	}
+	
+	//아이디 찾기
+	public List<AccountVO> idFind(String account_Email) {
+		return accountDAOImpl.idFind(account_Email);
+	}
+	
+	//아이디 찾기 이메일 중복체크
+	public int idFindCheck(String account_Email) {
+		return accountDAOImpl.idFindCheck(account_Email);
+	}
 
 }
