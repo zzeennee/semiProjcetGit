@@ -36,20 +36,18 @@ public class QnaController {
 	
 	// localhost:8080/index.do
 
-	
-
 	@Inject
 	ReplyService replyService;
-
+	
 	@RequestMapping("index.do")
 	public String main() {
 		return "index";
 	}
 	
-	// Qna.do 경로
+	// 
 	@RequestMapping("/{step}.do")
 	public String viewPage(@PathVariable String step) {
-		return step;
+		return "/homePage/"+step;
 	}
 	//글작성
 	@RequestMapping(value = "/QnaBoardSave.do")
@@ -80,14 +78,14 @@ public class QnaController {
 		logger.info("read");
 		
 		ModelAndView mav = new ModelAndView();
-		System.out.println("QnaBoardVO : " + bao.getBoard_Seq());
+		System.out.println("QnaBoardVO : " + bao.getQnaSeq());
 		
 		//보드 상세 내역을 가져옴
 		QnaBoardVO board = QnaBoardService.QnaGetBoard(bao);
 		mav.addObject("board",board);
 		mav.setViewName("homePage/QnaGetBoard");
 		//보드에 대한 리플을 가져옴
-		List<ReplyVO> replyList = replyService.readReply(bao.getBoard_Seq());
+		List<ReplyVO> replyList = replyService.readReply(bao.getQnaSeq());
 		mav.addObject("replyList", replyList);
 		 
 		return mav;
@@ -96,7 +94,7 @@ public class QnaController {
 	@RequestMapping("/QnaUpdateBoardForm.do")
 	public String QnaUpdateBoardForm(QnaBoardVO bao, Model m){
 		m.addAttribute("board",QnaBoardService.QnaGetBoard(bao));
-		return "QnaUpdateBoardForm";
+		return "homePage/QnaUpdateBoardForm";
 		
 	}
 	//수정
@@ -104,21 +102,21 @@ public class QnaController {
 	public String QnaUpdateBoard(QnaBoardVO bao){
 		System.out.println("bao : "+bao);
 		QnaBoardService.QnaUpdateBoard(bao);
-		return "redirect:QnaGetBoard.do?board_Seq="+bao.getBoard_Seq();
+		return "redirect:QnaGetBoard.do?qnaSeq="+bao.getQnaSeq();
 		
 	}
 	//삭제폼
 	@RequestMapping(value ="/QnaDeleteBoardForm.do")
 	public String QnaDeleteBoardForm(QnaBoardVO bao, Model m)throws IOException {
 		m.addAttribute("board",QnaBoardService.QnaGetBoard(bao));
-		return "QnaDeleteBoardForm";
+		return "homePage/QnaDeleteBoardForm";
 	}
 	
 	//삭제
 	@RequestMapping(value ="/QnaDeleteBoard.do", method=RequestMethod.GET)
-	public String QnaDeleteBoard(int board_Seq) { 
-		System.out.println("board_Seq" + board_Seq);
-		//QnaBoardService.QnaDeleteBoard(board_Seq);
+	public String QnaDeleteBoard(int qnaSeq) { 
+		System.out.println("qnaSeq" + qnaSeq);
+		//QnaBoardService.QnaDeleteBoard(qnaSeq);
 		return "redirect:Qna.do";
 	} 
 
@@ -138,7 +136,7 @@ public class QnaController {
 //		 rttr.addAttribute("keyword", scri.getKeyword());
 
 //		 return "redirect:Qna.do"; 
-		 return "redirect:/homePage/QnaGetBoard.do?board_Seq="+vo.getBno(); 
+		 return "redirect:/homePage/QnaGetBoard.do?qnaSeq="+vo.getQnaSeq(); 
 	  
 	 }
 	 
@@ -147,8 +145,8 @@ public class QnaController {
 	 public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception{
 		 logger.info("reply Write");
 		 
-		 model.addAttribute("replyUpdate", replyService.selectReply(vo.getBno()));
-		 model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
+		 model.addAttribute("replyUpdate", replyService.selectReply(vo.getQnaSeq()));
+		 model.addAttribute("replyUpdate", replyService.selectReply(vo.getReply_rno()));
 			/* model.addAttribute("scri", scri); */
 		 
 		 return "homePage/replyUpdateView";
@@ -168,7 +166,7 @@ public class QnaController {
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
 		*/	
-		return "redirect:/homePage/QnaGetBoard.do?board_Seq="+vo.getBno();
+		return "redirect:/homePage/QnaGetBoard.do?qnaSeq="+vo.getQnaSeq();
 	}
 	
 	//댓글 삭제 GET
@@ -176,8 +174,8 @@ public class QnaController {
 	public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		logger.info("reply Write");
 		
-		model.addAttribute("replyDelete", replyService.selectReply(vo.getBno()));	
-		model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
+		model.addAttribute("replyDelete", replyService.selectReply(vo.getQnaSeq()));	
+		model.addAttribute("replyDelete", replyService.selectReply(vo.getReply_rno()));
 		/* model.addAttribute("scri", scri); */
 			
 		return "homePage/replyDeleteView";
@@ -196,7 +194,7 @@ public class QnaController {
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
 		*/	
-		return "redirect:/homePage/QnaGetBoard.do?board_Seq="+vo.getBno();
+		return "redirect:/homePage/QnaGetBoard.do?qnaSeq="+vo.getQnaSeq();
 	}
 
 }

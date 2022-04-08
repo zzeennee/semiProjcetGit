@@ -7,7 +7,7 @@ import com.javaclass.domain.ReplyVO;
 public interface ReplyDAO {
 	
 	//댓글 조회
-	public List<ReplyVO> readReply(int bno) throws Exception;
+	public List<ReplyVO> readReply(int qnaSeq) throws Exception;
 	
 	//댓글 작성
 	public void writdReply(ReplyVO vo) throws Exception;
@@ -19,6 +19,6 @@ public interface ReplyDAO {
 	public void deleteReply(ReplyVO vo)throws Exception;
 	
 	//선택된 댓글 조회
-	public ReplyVO selectReply(int rno)throws Exception;
+	public ReplyVO selectReply(int reply_rno)throws Exception;
 
 }

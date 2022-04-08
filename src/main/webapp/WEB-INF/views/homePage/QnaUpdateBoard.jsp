@@ -5,7 +5,7 @@
 <title>새글등록</title>
 </head>
 <body>
-		<h1>글 등록</h1>		
+		<h1>글 수정</h1>		
 		<hr>
 		<!-- 1. 폼태그에 속성 추가  -->
 		<form action="saveBoard.do" method='post' enctype="multipart/form-data"> 
@@ -13,20 +13,20 @@
 				<!-- 2. 각 항목에  name 맞추기 -->
 				<tr>
 					<td bgcolor="orange" width="70">카테고리</td>
-					<td align="left"><input type="text" name="board_Category"/></td>
+					<td align="left"><input type="text" name="qnaCategory"/></td>
 				</tr>
 				<tr>
 					<td bgcolor="orange">작성자</td>
-					<td align="left"><input type="text" size="10" name="board_Title"/></td>
+					<td align="left"><input type="text" size="10" name="qnaTitle"/></td>
 				</tr>
 				<tr>
 					<td bgcolor="orange">내용</td>
-					<td align="left"><textarea cols="40" rows="10" name="board_Content"></textarea></td>
+					<td align="left"><textarea cols="40" rows="10" name="qnaContent"></textarea></td>
 				</tr>
 				<!-- 추가항목 시작 -->
 				<tr>
 					<td bgcolor="orange">비밀번호</td>
-					<td align="left"><input type="text" name="board_Password"/></td>
+					<td align="left"><input type="text" name="qnaPassword"/></td>
 				</tr>
 				<tr>
 					<td bgcolor="orange" width="70">파일추가</td><td align="left">

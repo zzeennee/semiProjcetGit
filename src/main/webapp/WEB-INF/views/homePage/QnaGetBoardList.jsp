@@ -61,15 +61,15 @@ margin: 0px auto;
 				<!-- 프라퍼티이름 변경 -->
 				<tr>
 					<!-- 번호 -->
-					<td align="left">${board.board_Seq }</td>
+					<td align="left">${board.qnaSeq }</td>
 					<!-- 카테고리 -->	
-					<td>${board.board_Category }</td>
+					<td>${board.qnaCategory }</td>
 					<!-- 제목 -->
-					<td><a href="QnaGetBoard.do?board_Seq=${board.board_Seq }">${board.board_Title }</a></td>
+					<td><a href="QnaGetBoard.do?qnaSeq=${board.qnaSeq }">${board.qnaTitle }</a></td>
 					<!-- 글쓴이 -->
-					<td>${board.account_Id }</td>
+					<td>${board.qnaName }</td>
 					<!-- 작성일 -->
-					<td>${board.board_Date }</td>
+					<td>${board.qnaDate }</td>
 					<!-- 추가 첨부파일~상세페이지에 들어가야할듯-->
 					<%-- <td>
 					 <c:choose>
