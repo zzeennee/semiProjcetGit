@@ -69,21 +69,21 @@ li {list-style: none; float: left; padding: 6px;}
 				<!-- 프라퍼티이름 변경 -->
 				<tr>
 					<!-- 번호 -->
-					<td align="left">${board.board_Seq }</td>
+					<td align="left">${board.qnaSeq }</td>
 					<!-- 카테고리 -->	
-					<td>${board.board_Category }</td>
+					<td>${board.qnaCategory }</td>
 					<!-- 제목 -->
-					<td><a href="/homePage/QnaGetBoard.do?board_Seq=${board.board_Seq }">${board.board_Title }</a></td>
+					<td><a href="/homePage/QnaGetBoard.do?qnaSeq=${board.qnaSeq }">${board.qnaTitle }</a></td>
 					<!-- 글쓴이 -->
-					<td>${board.account_Id }</td>
+					<td>${board.qnaName }</td>
 					<!-- 작성일 -->
-					<td>${board.board_Date }</td>
+					<td>${board.qnaDate }</td>
 				</tr> 
 			</c:forEach>
             </tbody>
         </table>
         <br><br>
-        <div class="search">
+        <div class="qnaSearch">
 			<select name="searchType">
 		      <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
 		      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : '제목'}"/>>제목</option>
@@ -102,7 +102,7 @@ li {list-style: none; float: left; padding: 6px;}
 		</div><!-- container -->
 	</form>	
         <br><br>
-        <a href="QnaInsertBoard.do"><button type="button" class="btn btn-info float-right">글쓰기</button></a>
+         <a href="QnaInsertBoard.do"><button type="button" class="btn btn-info float-right">글쓰기</button></a>
 
         <br><br>
         <div>

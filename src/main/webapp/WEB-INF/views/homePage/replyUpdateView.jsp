@@ -5,7 +5,7 @@
 <style type="text/css">
 #root{
 display: flex;
-justify-content: center;
+justify-reply_content: center;
 }
 
 #updateForm{
@@ -15,7 +15,7 @@ width: 450px;
 padding: 5px; 
 }
 
-input#content{
+input#reply_content{
 width: 200%;
 height: 100px;
 }
@@ -31,16 +31,16 @@ height: 100px;
 		<div id="root">
 			<section id="container">
 				<form id="updateForm" name="updateForm" role="form" method="post" action="/homePage/replyUpdate">
-					<input type="hidden" name="bno" value="${replyUpdate.bno}" readonly="readonly"/>
-					<input type="hidden" id="rno" name="rno" value="${replyUpdate.rno}" />
+					<input type="hidden" name="qnaSeq" value="${replyUpdate.qnaSeq}" readonly="readonly"/>
+					<input type="hidden" id="reply_rno" name="reply_rno" value="${replyUpdate.reply_rno}" />
 					<table>
 						<tbody>
 							<tr>
 								<td>
 									<label for="content">작성자</label><br/>
-									<label for="content">${replyUpdate.writer}</label><br/>
+									<label for="reply_writer">${replyUpdate.reply_writer}</label><br/>
 									<label for="content">댓글 내용</label><br/>
-									<input type="text" id="content" name="content" value="${replyUpdate.content}"/>
+									<input type="text" id="reply_content" name="reply_content" value="${replyUpdate.reply_content}"/>
 								</td>
 							</tr>	
 							
@@ -65,7 +65,7 @@ height: 100px;
 			var formObj = $("form[name='updateForm']");
 			
 			$(".cancel_btn").on("click", function(){
-				location.href = "/homePage/QnaGetBoard.do?board_Seq=${replyUpdate.bno}";
+				location.href = "/homePage/QnaGetBoard.do?qnaSeq=${replyUpdate.qnaSeq}";
 								   /* + "&page=${scri.page}"
 								   + "&perPageNum=${scri.perPageNum}"
 								   + "&searchType=${scri.searchType}"

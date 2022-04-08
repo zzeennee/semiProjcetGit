@@ -16,6 +16,7 @@
 		
 		<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
+		
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
@@ -26,7 +27,7 @@
 							<li><a href="#">All Categories</a></li>
 							<li><a href="#">Accessories</a></li>
 							<li><a href="#">Headphones</a></li>
-							<li class="active">클릭한제품의이름</li>
+							<li class="active">${product_Name }</li>
 						</ul>
 					</div>
 				</div>
@@ -59,7 +60,7 @@
 					<!-- /Product main img -->
 
 					<!-- Product thumb imgs -->
-					<div class="col-md-2  col-md-pull-5">
+					<!-- <div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs" class="slick-initialized slick-slider slick-dotted">
 							
 
@@ -93,13 +94,16 @@
 							</div><div class="product-preview slick-slide slick-cloned" tabindex="-1" style="width: 230px;" data-slick-index="7" aria-hidden="true">
 								<img src="../resources/img/product08.png" alt="">
 							</div></div></div><ul class="slick-dots" style="display: block;" role="tablist"><li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control10" aria-controls="slick-slide10" aria-label="1 of 2" tabindex="0" aria-selected="true">1</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control11" aria-controls="slick-slide11" aria-label="2 of 2" tabindex="-1">2</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control12" aria-controls="slick-slide12" aria-label="3 of 2" tabindex="-1">3</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control13" aria-controls="slick-slide13" aria-label="4 of 2" tabindex="-1">4</button></li></ul></div>
-					</div>
+					</div> -->
 					<!-- /Product thumb imgs -->
 
 					<!-- Product details -->
 					<div class="col-md-5">
+					
 						<div class="product-details">
-							<h2 class="product-name">클릭한 제품의 이름</h2>
+							<form id="frm" method="post" action="#">
+							<input name="product_Seq" type="hidden" value="${admin_Product.product_Seq}" />
+							<h2 class="product-name">${product_Name }</h2>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -111,10 +115,10 @@
 								<a class="review-link" href="#">10 리뷰(s) | 리뷰작성</a>
 							</div>
 							<div>
-								<h3 class="product-price">1,000,000 원 <del class="product-old-price">1,000,000 원</del></h3>
+								<h3 class="product-price">${admin_Product.product_Price } 원 <del class="product-old-price">${admin_Product.product_Price } 원</del></h3>
 								<span class="product-available">In Stock</span>
 							</div>
-							<p>클릭한 제품의 상세정보 ::: 제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.</p>
+							<p>클릭한 제품의 상세정보 ::: ${admin_Product.product_Content} 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.</p>
 
 							<div class="product-options">
 								<label>
@@ -133,7 +137,7 @@
 
 							<div class="add-to-cart">
 								<div class="qty-label">
-									Qty
+									${admin_Product.product_Vol }
 									<div class="input-number">
 										<input type="number">
 										<span class="qty-up">+</span>
@@ -142,6 +146,7 @@
 								</div>
 								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> 장바구니 추가</button>
 							</div>
+							</form>
 						</div>
 					</div>
 					<!-- /Product details -->

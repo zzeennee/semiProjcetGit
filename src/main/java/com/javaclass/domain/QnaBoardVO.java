@@ -8,43 +8,43 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class QnaBoardVO {
 
-	int board_Seq;
-	String board_Title;
-	String board_Password;
-	String board_Category;
-	String board_Content;
-	String board_MainImg;
-	String board_RealMainImg;
-	String board_Content2;
-	String board_Date;
-	String account_Id;
+	int qnaSeq;
+	String qnaTitle;
+	String qnaPassword;
+	String qnaCategory;
+	String qnaContent;
+	String qnaMainImg;
+	String qnaRealMainImg;
+	String qnaContent2;
+	String qnaDate;
+	String qnaName;
 
-	MultipartFile board_File;
+	MultipartFile qnaFile;
 	// *************************************************
 
-	public MultipartFile getBoard_File() {
-		return board_File;
+	public MultipartFile getQnaFile() {
+		return qnaFile;
 	}
 
-	public void setBoard_File(MultipartFile board_file) {
-		this.board_File = board_file;
+	public void setQnaFile(MultipartFile qnaFile) {
+		this.qnaFile = qnaFile;
 		// 업로드 파일 접근
-		if (!board_File.isEmpty()) { // 파일이 비어있는게 아니라면
-			this.board_MainImg = board_File.getOriginalFilename(); // 파일명
+		if (!qnaFile.isEmpty()) { // 파일이 비어있는게 아니라면
+			this.qnaMainImg = qnaFile.getOriginalFilename(); // 파일명
 			// 실제 저장된 파일명 만들기
 			// 사람들이 중복되는 이름을 많이 사용하니까 같은 파일명 저장을 눌러도
 			// 시스템 적으로 다른 이름으로 저장함
 			UUID uuid = UUID.randomUUID();
-			board_RealMainImg = uuid.toString() + "_" + board_MainImg;
+			qnaRealMainImg = uuid.toString() + "_" + qnaMainImg;
 
 			// ***********************************************
 			// 해당 경로로 변경
 			// 저장 : File - 자바에서 파일과 디렉토리를 생성, 삭제, 관리하는 클래스
 			File f = new File("C:\\spring\\webwork\\semiProjcetGit\\src\\main\\webapp\\resources\\upload\\"
-					+ board_RealMainImg);
+					+ qnaRealMainImg);
 
 			try {
-				board_File.transferTo(f);
+				qnaFile.transferTo(f);
 
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
@@ -55,76 +55,100 @@ public class QnaBoardVO {
 		}
 	}
 	// *************************************************
+
+	public int getQnaSeq() {
+		return qnaSeq;
+	}
+
+	public void setQnaSeq(int qnaSeq) {
+		this.qnaSeq = qnaSeq;
+	}
+
+	public String getQnaTitle() {
+		return qnaTitle;
+	}
+
+	public void setQnaTitle(String qnaTitle) {
+		this.qnaTitle = qnaTitle;
+	}
+
+	public String getQnaPassword() {
+		return qnaPassword;
+	}
+
+	public void setQnaPassword(String qnaPassword) {
+		this.qnaPassword = qnaPassword;
+	}
+
+	public String getQnaCategory() {
+		return qnaCategory;
+	}
+
+	public void setQnaCategory(String qnaCategory) {
+		this.qnaCategory = qnaCategory;
+	}
+
+	public String getQnaContent() {
+		return qnaContent;
+	}
+
+	public void setQnaContent(String qnaContent) {
+		this.qnaContent = qnaContent;
+	}
+
+	public String getQnaMainImg() {
+		return qnaMainImg;
+	}
+
+	public void setQnaMainImg(String qnaMainImg) {
+		this.qnaMainImg = qnaMainImg;
+	}
+
+	public String getQnaRealMainImg() {
+		return qnaRealMainImg;
+	}
+
+	public void setQnaRealMainImg(String qnaRealMainImg) {
+		this.qnaRealMainImg = qnaRealMainImg;
+	}
+
+	public String getQnaContent2() {
+		return qnaContent2;
+	}
+
+	public void setQnaContent2(String qnaContent2) {
+		this.qnaContent2 = qnaContent2;
+	}
+
+	public String getQnaDate() {
+		return qnaDate;
+	}
+
+	public void setQnaDate(String qnaDate) {
+		this.qnaDate = qnaDate;
+	}
+
+	public String getQnaName() {
+		return qnaName;
+	}
+
+	public void setQnaName(String qnaName) {
+		this.qnaName = qnaName;
+	}
+
+	public MultipartFile getQnaFile1() {
+		return qnaFile;
+	}
+
+	public void setQnaFile1(MultipartFile qnaFile) {
+		this.qnaFile = qnaFile;
+	}
 	
 
 	
 	//**************************************************
 	
-	public int getBoard_Seq() {
-		return board_Seq;
-	}
-	public void setBoard_Seq(int board_Seq) {
-		this.board_Seq = board_Seq;
-	}
-	public String getBoard_Title() {
-		return board_Title;
-	}
-	public void setBoard_Title(String board_Title) {
-		this.board_Title = board_Title;
-	}
-	public String getBoard_Password() {
-		return board_Password;
-	}
-	public void setBoard_Password(String board_Password) {
-		this.board_Password = board_Password;
-	}
-	public String getBoard_Category() {
-		return board_Category;
-	}
-	public void setBoard_Category(String board_Category) {
-		this.board_Category = board_Category;
-	}
-	public String getBoard_Content() {
-		return board_Content;
-	}
-	public void setBoard_Content(String board_Content) {
-		this.board_Content = board_Content;
-	}
-	public String getBoard_MainImg() {
-		return board_MainImg;
-	}
-	public void setBoard_MainImg(String board_MainImg) {
-		this.board_MainImg = board_MainImg;
-	}
 	
-	public String getBoard_Content2() {
-		return board_Content2;
-	}
-	public void setBoard_Content2(String board_Content2) {
-		this.board_Content2 = board_Content2;
-	}
-	public String getBoard_Date() {
-		return board_Date;
-	}
-	public void setBoard_Date(String board_Date) {
-		this.board_Date = board_Date;
-	}
-
-	public String getBoard_RealMainImg() {
-		return board_RealMainImg;
-	}
-
-	public void setBoard_RealMainImg(String board_RealMainImg) {
-		this.board_RealMainImg = board_RealMainImg;
-	}
-
-	public String getAccount_Id() {
-		return account_Id;
-	}
-
-	public void setAccount_Id(String account_Id) {
-		this.account_Id = account_Id;
-	}
 
 
 }

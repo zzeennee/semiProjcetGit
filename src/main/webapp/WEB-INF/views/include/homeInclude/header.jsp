@@ -31,7 +31,6 @@
 		</div>
 	</div>
 	<!-- /TOP HEADER -->
-
 	<!-- MAIN HEADER -->
 	<div id="header">
 		<!-- container -->
@@ -51,11 +50,11 @@
 				<!-- SEARCH BAR -->
 				<div class="col-md-6">
 					<div class="header-search">
-						<form>
-							<select class="input-select">
-								<option value="0">All Categories</option>
-								<option value="1">상품명</option>
-								<option value="2">브랜드명</option>
+						<form name="frmSelect" method="post" action="/admin/adminProductList.do">
+							<select class="input-select" name="searchOption">
+								<option value="all" <c:out value="${nn.searchOption == 'all'?'selected':''}"/>>All Categories</option>
+								<option value="product_Name" <c:out value="${nn.searchOption == 'product_Name'?'selected':''}"/>>상품명</option>
+								<option value="product_Category" <c:out value="${nn.searchOption == 'product_Category'?'selected':''}"/>>브랜드명</option>
 							</select> <input class="input" placeholder="Search here">
 							<button class="search-btn">검색</button>
 						</form>
