@@ -181,9 +181,6 @@ h2 {
 							<input type='checkbox' id='allcheck' > 
 							<label for='allcheck'>전체동의</label><hr/>
 							
-							<input type='checkbox' id='agree1' name='chk'> 
-							<label for='agree1'>(필수)만14세 이상입니다.</label><br/> 
-							
 							<input type='checkbox' id='agree2' name='chk'> 
 							<label for='agree2'>(필수)이용약관</label><br/>
 							<div style="height: 170px; padding:0 20px 20px 20px; overflow-y : auto; width: 350px;box-sizing: border-box;border: 1px solid #ccc;margin: 10px; line-height: 20px;" tabindex="0">

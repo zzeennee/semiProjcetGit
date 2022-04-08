@@ -35,6 +35,16 @@ public class AccountController {
 		System.out.println("회원탈퇴완료페이지호출");
 	}
 
+	//아이디찾기 페이지
+	@RequestMapping("/myPage/idFind.do")
+	public void idFind(AccountVO vo) {
+	}
+	
+	//비밀번호찾기 페이지
+	@RequestMapping("/myPage/pwFind.do")
+	public void pwFind(AccountVO vo) {
+	}
+
 
 	// 회원가입
 	@RequestMapping("/myPage/insertAccount.do")
