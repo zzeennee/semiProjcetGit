@@ -75,19 +75,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<!--************* 주문내역 보여주기***************************************************  -->	
 											<c:forEach items="${orderList}" var="board">
 												<tr>
-					<!--@@@@ 주문번호 order_Seq @@-->	<td>${board.account_id}</td>
-				<!--@@@ 상품명   product_Name @@-->   <td><a href="orderload.do?account_id=${board.order_payselect }">${board.order_payselect}</a></td>
-				<!--@@@ 주소  account_Addr1,account_Addr2, account_Addr3 @@-->	  <td>주소</td>
-				<!--@@@ 금액   product_Price @@-->   <td>${board.order_uesrreq}</td>
-				<!--@@ 수량  product_Vol-->		    <td>${board.coupon_number}</td>
-				<!-- @@@@상태 accountOrderStatus_Status--> <td>${board.product_seq}</td>
-				<!--@@ 주문시간  pay_Time -->               <td>${board.product_seq}</td>
-									<%-- 주소값 받아오기******<td>${ }, ${ },${ }</td> ***********************************--%>
+					    	  <td>${board.orderdata_seq}</td>
+				       <td><a href="#?product_Seq=${board.product_Seq }">${board.product_Name}</a></td>
+					   <td>${board.account_Addr1},${board.account_Addr2},${board.account_Addr3}</td>
+				       <td>${board.pay_price}</td>
+					   <td>${board.product_amount}</td>
+				       <td>${board.state}</td>
+				        <td>${board.order_date}</td>
+									
 								<!-- 주문번호 가져오기 --> <td align="left"><a
-														href="ordermodify.do?account_id=${board.account_id }">
+														href="#?orderdata_seq=${board.orderdata_seq }">
 														<input type="submit" value="수정"  
 															class="btn btn-block bg-gradient-primary btn-sm"></a>
-									<!-- 주문번호 가져오기 -->	<a href="canclepage.do?account_id=${board.account_id}"><input
+									<!-- 주문번호 가져오기 -->	<a href="#?account_Id=${board.account_Id}"><input
 															value="취소/교환/반품" type="submit"
 															class="btn btn-block bg-gradient-danger btn-sm"></a>
 													</td>

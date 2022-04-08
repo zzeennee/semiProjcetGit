@@ -7,8 +7,15 @@
 	<!--************** 주문내역정보 불려오기 ****************************************************** -->
 	<select id="getOrderList" resultType="MyPageOrderModifyVO">
 		SELECT *
-		FROM orderdata
-		ORDER BY order_seq 
+		FROM orderdata od
+        INNER JOIN buylist buy
+        ON od.buylist_number = buy.buylist_number
+        INNER JOIN product_Info pi
+        ON buy.product_Seq = pi.product_Seq
+        INNER JOIN account a
+        ON pi.account_Id = a.account_Id
+        WHERE a.account_Id = #{account_Id}
+        ORDER BY od.orderdata_seq DESC
 	</select>
 
 	<!-- ****************주문내역 값들 주문상세보기 불려오기 ************************************* -->

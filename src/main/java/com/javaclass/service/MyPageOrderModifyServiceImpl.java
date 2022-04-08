@@ -26,8 +26,8 @@ public class MyPageOrderModifyServiceImpl implements MyPageOrderModifyService{
 	//}
 
 	//주문 내역 조회 ***************************************************************************************
-	public List<MyPageOrderModifyVO> getOrderList() {
-		return orderModifyDAOImpl.getOrderList();
+	public List<MyPageOrderModifyVO> getOrderList(MyPageOrderModifyVO vo) {
+		return orderModifyDAOImpl.getOrderList(vo);
 	}
 	
 	//주문내역 db 값 주문상세 보기 불려오기 

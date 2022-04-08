@@ -35,7 +35,7 @@ public class MyPageOrderModifyController {
 	
 	  @RequestMapping("/myPage/orderpage.do")
 	public void getOrderList(MyPageOrderModifyVO vo,Model m) {
-		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getOrderList();
+		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getOrderList(vo);
 		m.addAttribute("orderList",list);
 		
 	}
@@ -63,7 +63,7 @@ public class MyPageOrderModifyController {
 	
 	@RequestMapping("saveMember.do")
 	public void saveMember(MyPageOrderModifyVO vo) {
-		ordermodifyServiceImpl.getOrderList();
+		ordermodifyServiceImpl.getOrderList(vo);
 		
 	}
 	

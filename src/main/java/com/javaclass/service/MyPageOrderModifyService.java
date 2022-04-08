@@ -10,7 +10,7 @@ public interface MyPageOrderModifyService {
 	//public int insertMember(OrderModifyVO vo);
 	
 	//주문 내역 조회 ***************************************************************************************
-	List<MyPageOrderModifyVO> getOrderList();
+	List<MyPageOrderModifyVO> getOrderList(MyPageOrderModifyVO vo);
 
 	//주문내역페이지 db 주문상세보기에 값 가져오기 ********************
 	public MyPageOrderModifyVO selectLoad(MyPageOrderModifyVO vo);
