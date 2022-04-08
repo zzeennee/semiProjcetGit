@@ -102,18 +102,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											</div>
 											<div class='form-check'>
 												<input class="form-check-input" type='radio'
-													id='textRadio' name='account_Reason' value="etc"> <label
+													name='account_Reason' value="etc"> <label
 													class='form-check-label'>기타</label>
 											</div>
 											<div class="form-group">
-														<input type="text" class="form-control" id="textEtc"
-															placeholder="입력해주세요." name='account_ReasonText' readonly>
+												<input type="text" class="form-control" id="textEtc"
+													placeholder="입력해주세요." name='account_ReasonText' readonly>
 											</div>
 											<!-- 테이블1 끝 -->
-
-											<input type="button" onclick='checkPassword'
-												class="btn btn-primary" id="deletebtn" style="float: right;"
+											<div>
+											<a href="myPageHome.do?account_Id=${sessionScope.logname }"><input type="button" class="btn btn-primary"
+												style="float: right;" value='취소'></a>
+											</div>
+											<div>
+											 <input type="button" onclick='checkPassword'
+												class="btn btn-primary" id="deletebtn" style="float: right; margin-right:5px;"
 												value='회원탈퇴'>
+											</div>
 										</div>
 
 
@@ -172,15 +177,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										location.href = "myPageHome.do?account_Id="+ account_Id
 										 }
 								});
-							$('#textRadio').on('click', function() {
-								if($('#textRadio').val() =='etc'){
+							$("input[name='account_Reason']").on('click', function() {
+								if($("input[name='account_Reason']:checked").val() =='etc'){
 									$('#textEtc').prop('readonly', false);
-									}/*  else if ($('#textRadio').val() !='etc') {
+									} else if ($("input[name='account_Reason']:checked").val() !='etc') {
 										$('#textEtc').prop('readonly', true);
-										alert("aaaaqwesdas");
-									} */
+									}
 							});
+							 var flag = '${param.password}';
+							 if(flag=='false'){
+								 alert("비밀번호가 틀립니다.")
+							 }
+							
 	</script>
 </body>
-	
+
 </html>
