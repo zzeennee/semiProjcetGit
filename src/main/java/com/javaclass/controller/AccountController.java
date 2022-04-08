@@ -30,6 +30,11 @@ public class AccountController {
 	public void login(AccountVO vo) {
 	}
 	
+	@RequestMapping("/myPage/accountLeave.do")
+	public void accountLeave(AccountVO vo) {
+		System.out.println("회원탈퇴완료페이지호출");
+	}
+
 	//아이디찾기 페이지
 	@RequestMapping("/myPage/idFind.do")
 	public void idFind(AccountVO vo) {
@@ -39,6 +44,7 @@ public class AccountController {
 	@RequestMapping("/myPage/pwFind.do")
 	public void pwFind(AccountVO vo) {
 	}
+
 
 	// 회원가입
 	@RequestMapping("/myPage/insertAccount.do")
@@ -126,14 +132,14 @@ public class AccountController {
 
 	// 회원탈퇴
 	@RequestMapping("/myPage/deleteAccount.do")
-	public String deleteAccount(@ModelAttribute AccountVO vo, Model model, String account_Id, HttpSession session) {
+	public String deleteAccount(@ModelAttribute AccountVO vo, Model model, String account_Id, HttpSession session, HttpServletRequest requset) {
 		boolean result = accountServiceImpl.checkPassword(vo.getAccount_Id(), vo.getAccount_Password());
 		if (result) { // 비밀번호가 일치하면 탈퇴 처리 후, 메인페이지로 이동
 			accountServiceImpl.deleteAccount(vo);
 			session.invalidate();
-			return "redirect:/";
+			return "redirect:accountLeave.do";
 		} else { // 비밀번호가 일치하지 않는다면
-			return "redirect:myPageHome.do?account_Id="+account_Id;
+			return "redirect:myPageLeave.do?account_Id="+account_Id+"&password=false";
 		}
 	}
 
