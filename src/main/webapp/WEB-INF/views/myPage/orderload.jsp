@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 		<div class="content-wrapper">
 		
-		
+		<!-- @@@@@@@ 주문번호 order_Seq @@@@@@@@@@@@@@ -->
 		<form action="">
 		<input type="hidden" name="account_id" value="${board.account_id}">
 			<!-- Content Header (Page header) -->
@@ -73,13 +73,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</thead>
 										<tbody>
 												<tr>
-													<td>${board.order_payselect}</td>
-													<td>#</td>
-													<td>#</td>
-													<td>#</td>
-													<td>#</td>
-													<td>#</td>
-													<td>#</td>
+			<!--수정 @@@ order_Seq  -->		             <td>${board.order_payselect}</td>
+			<!--수정 @@@ order_Seq  -->											<td>#</td>
+			<!--수정 @@@ product_Name  -->										<td>#</td>
+			<!--수정 @@@ product_Vol  -->											<td>#</td>
+			<!--수정 @@@  product_Price  -->										<td>#</td>
+			<!--수정 @@@  account_Addr1,account_Addr2,account_Addr3 -->			<td>#</td>
+			<!--수정 @@@ accountOrderStatus_Status  -->											<td>#</td>
 												</tr>
 										</tbody>
 									</table>
@@ -105,8 +105,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</thead>
 										<tbody>
 												<tr>
-													<td>${board.order_payselect}</td>
-													<td>#</td>
+			<!--수정 @@@  pay_CardCop-->			      <td>${board.order_payselect}</td>
+			<!--수정 @@@  pay_Seq-->					<td>#</td>
 													<td>#</td>
 												</tr>
 										</tbody>
@@ -126,11 +126,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<thead>
 											<tr>
 												
-												<th>배송정보</th>
-												<th>이름</th>
-												<th>연락처</th>
-												<th>주소</th>
-												<th>배송요청사항</th>
+								<th>배송정보</th>
+	<!-- @@@수정  account_Name-->												<th>이름</th>
+	<!-- @@@수정  account_Tel-->											<th>연락처</th>
+	<!-- @@@수정  account_Addr-->												<th>주소</th>
+	<!-- @@@수정 accountOrderStatus_Delivery-->								<th>배송요청사항</th>
 											</tr>
 										</thead>
 										<tbody>

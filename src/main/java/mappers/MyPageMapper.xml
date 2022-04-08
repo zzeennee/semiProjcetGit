@@ -4,71 +4,63 @@
 
 <mapper namespace="orderMapper">
 
-	<!-- **************상품정보 입력 ************************************************************* 
-		<insert id='insertMember' parameterType="OrderModifyVO" > INSERT INTO order_product(ORDER_SEQ, 
-		ORDER_TIME, ORDER_PAYSELECT,ORDER_UESRREQ, ACCOUNT_ID , PRODUCT_SEQ,COUPON_NUMBER 
-		) VALUES(order_seq.nextval, sysdate, #{order_payselect},#{order_uesrreq},#{account_id},product_seq.nextval,#{coupon_number}) 
-		</insert> -->
-
 	<!--************** 주문내역정보 불려오기 ****************************************************** -->
 	<select id="getOrderList" resultType="MyPageOrderModifyVO">
 		SELECT *
-		FROM order_product
+		FROM orderdata
 		ORDER BY order_seq 
 	</select>
 
 	<!-- ****************주문내역 값들 주문상세보기 불려오기 ************************************* -->
 	<select id="selectLoad" resultType="MyPageOrderModifyVO">
 		SELECT *
-		FROM order_product
-		WHERE account_id=#{account_id}
+		FROM orderdata
+		WHERE account_Id=#{account_Id}
 
 	</select>
 
-	<!-- ********주문수정버튼 업데이트 ****************************************** -->
+	<!-- ********주문수정버튼 업데이트 미완성 ****************************************** -->
 	<update id="updateMember" parameterType="MyPageOrderModifyVO">
-		UPDATE order_product SET
-		order_payselect = #{order_payselect},
-		order_uesrreq = #{order_uesrreq},
-		coupon_number = #{coupon_number}
-		WHERE account_id = #{account_id}
+		UPDATE orderdata SET
+		order_date = sysdate,
+		user_require = #{user_require}
+		WHERE account_Id = #{account_Id}
 	</update>
 
 
 	<!-- 주문 상세보기 ************************************************************************ -->
 	<select id="selectModify" resultType="MyPageOrderModifyVO">
 		SELECT *
-		FROM order_product
-		WHERE account_id=#{account_id}
+		FROM orderdata
+		WHERE account_Id=#{account_Id}
 
 	</select>
 
 
-	<!-- 주문 취소/반품/교환 페이지 *********************************************************** -->
+	<!-- 주문 취소/반품/교환 리스트 페이지 *********************************************************** -->
 	<select id="selectDelete" parameterType="string" resultType="MyPageOrderModifyVO">
 		SELECT*
-		FROM order_product
-		WHERE account_id = #{account_id}
-
+		FROM orderdata
+		WHERE account_Id = #{account_Id}
 	</select>
 
 
-	<!-- 취소/교환/반품페이지 ********************************************************************* -->
+	<!-- 취소/교환/반품 업데이트 페이지 ********************************************************************* -->
 
 	<update id="updateCancle" parameterType="MyPageOrderModifyVO">
-		UPDATE order_product SET
-		product_seq = #{product_seq},
-		order_uesrreq = #{order_uesrreq}
-		WHERE account_id = #{account_id}
+		UPDATE orderdata SET
+		user_require = #{user_require},
+		state = #{state}
+		WHERE account_Id = #{account_Id}
 	</update>
 
 
 
-	<!-- 취소/교환/반품 리스트 불려오기 *************************************************************** -->
+	<!-- 취소/교환/반품 한 리스트 불려오기 *************************************************************** -->
 	<select id="getCancleList" resultType="MyPageOrderModifyVO">
 		SELECT *
-		FROM order_product
-		WHERE order_uesrreq != '테스트1'
+		FROM orderdata
+		WHERE state != '0'
 	</select>
 
 </mapper>

@@ -29,7 +29,7 @@ public class AccountController {
 	@RequestMapping("/myPage/login.do")
 	public void login(AccountVO vo) {
 	}
-
+	
 	// 회원가입
 	@RequestMapping("/myPage/insertAccount.do")
 	public String insertAccount(AccountVO vo) {
