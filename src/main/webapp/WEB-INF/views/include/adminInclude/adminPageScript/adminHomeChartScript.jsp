@@ -6,6 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <script type="text/javascript">
+/* 랜덤 색상표  */
 function colorize() {
 	var r = Math.floor(Math.random()*200);
 	var g = Math.floor(Math.random()*200);
@@ -13,42 +14,7 @@ function colorize() {
 	var color = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.7)';
 	return color;
 }
-
-var jsonDataProduct = ${prdouct};
-var jsonObjectProduct = JSON.stringify(jsonDataProduct);
-var jDataProduct = JSON.parse(jsonObjectProduct);
-		
-var labelListProduct = new Array();
-var valueListProduct = new Array();
-var colorList = new Array();
-		
-for(var i = 0; i<jDataProduct.length; i++) {
-	var dProduct = jDataProduct[i];
-	labelListProduct.push(dProduct.product_Category);
-	valueListProduct.push(dProduct.productCnt);
-	colorList.push(colorize());
-}
-		
-var data = {
-				labels: labelListProduct,
-				datasets: [{
-					backgroundColor: colorList,
-					data : valueListProduct
-				}],
-				options : {
-						title : {
-						display : true,
-						text: '카테고리별 등롱 갯수'
-						}
-				}
-};
-		
-var ctx1 = document.getElementById('productPiechart').getContext('2d');
-new Chart(ctx1, {
-    type: 'pie',
-	data: data
-});
-
+/* 월별 회원 가입수 차트  */
 var jsonDataAccount = ${account};
 var jsonObjectAccount = JSON.stringify(jsonDataAccount);
 var jDataAccount = JSON.parse(jsonObjectAccount);
@@ -84,6 +50,42 @@ new Chart(ctx2, {
     type: 'bar',
 	data: data
 });
+/* 상품 카테고리별 등록 갯수 차트  */
+var jsonDataProduct = ${prdouct};
+var jsonObjectProduct = JSON.stringify(jsonDataProduct);
+var jDataProduct = JSON.parse(jsonObjectProduct);
+		
+var labelListProduct = new Array();
+var valueListProduct = new Array();
+var colorList = new Array();
+		
+for(var i = 0; i<jDataProduct.length; i++) {
+	var dProduct = jDataProduct[i];
+	labelListProduct.push(dProduct.product_Category);
+	valueListProduct.push(dProduct.productCnt);
+	colorList.push(colorize());
+}
+		
+var data = {
+				labels: labelListProduct,
+				datasets: [{
+					backgroundColor: colorList,
+					data : valueListProduct
+				}],
+				options : {
+						title : {
+						display : true,
+						text: '카테고리별 등롱 갯수'
+						}
+				}
+};
+		
+var ctx1 = document.getElementById('productPiechart').getContext('2d');
+new Chart(ctx1, {
+    type: 'pie',
+	data: data
+});
+
 
 
 </script>
