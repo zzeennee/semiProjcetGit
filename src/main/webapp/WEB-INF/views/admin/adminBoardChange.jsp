@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>관리자 페이지</title>
+  <title>관리자 페이지 | 머신킹덤</title>
 
 <%@ include file="../include/adminInclude/adminCSS.jsp" %> 
  

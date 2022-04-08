@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Insert title here</title>
+<title>회원가입 | 머신킹덤</title>
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
 
@@ -180,9 +180,6 @@ h2 {
 						<div>
 							<input type='checkbox' id='allcheck' > 
 							<label for='allcheck'>전체동의</label><hr/>
-							
-							<input type='checkbox' id='agree1' name='chk'> 
-							<label for='agree1'>(필수)만14세 이상입니다.</label><br/> 
 							
 							<input type='checkbox' id='agree2' name='chk'> 
 							<label for='agree2'>(필수)이용약관</label><br/>

@@ -13,11 +13,15 @@ public class BucketServiceImpl implements BucketService {
 	@Autowired
 	private BucketDAO bucketDAO;
 
+	
+	//장바구니 리스트 불러오기
 	public List<BucketVO> getBucketList(){
 		return bucketDAO.getBucketList();
 	}
 	
+	//장바구니에서 체크한 항목 삭제
 	public void selectDelete(BucketVO vo) {
 		bucketDAO.selectDelete(vo);
 	}
+	
 }

@@ -39,7 +39,10 @@
   		<!-- myPage -->
   		<value>com.javaclass.domain.MyPageOrderModifyVO</value>
   		<!-- myPage end -->
+  		
+  		
   		<value>com.javaclass.domain.PaymentVO</value>
+  		<value>com.javaclass.domain.BuylistVO</value>
       
   		<value>com.javaclass.domain.QnaBoardVO</value>
   		<value>com.javaclass.domain.PayInfoVO</value>

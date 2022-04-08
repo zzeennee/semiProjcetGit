@@ -27,10 +27,10 @@ margin: 0px auto;
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="breadcrumb-header">고객센터</h3>
+						<h3 class="breadcrumb-header">공지사항/이벤트</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="#">Home</a></li>
-							<li class="active">고객센터</li>
+							<li class="active">공지사항/이벤트</li>
 						</ul>
 					</div>
 				</div>
@@ -42,10 +42,6 @@ margin: 0px auto;
 
 
 <div id="main_blank">
-        <button type="button" class="btn btn-primary">전체글</button>
-        <button type="button" class="btn btn-info">자주묻는 질문</button>
-        <button type="button" class="btn btn-info">문의</button>
-        <br><br>
         <table class="table table-hover">
             
                 <tr>
@@ -57,19 +53,19 @@ margin: 0px auto;
                 </tr>
             
             
-               <c:forEach items="${productgetBoardList }" var="board">
+               <c:forEach items="${admin_BoardList }" var="admin_Board">
 				<!-- 프라퍼티이름 변경 -->
 				<tr>
 					<!-- 번호 -->
-					<td align="left">${board.board_Seq }</td>
+					<td align="left">${admin_Board.board_Seq }</td>
 					<!-- 카테고리 -->	
-					<td>${board.board_Category }</td>
+					<td>${admin_Board.board_Category }</td>
 					<!-- 제목 -->
-					<td><a href="productgetBoard.do?board_Seq=${board.board_Seq }">${board.board_Title }</a></td>
+					<td><a href="adminGetBoard.do?board_Seq=${admin_Board.board_Seq }">${admin_Board.board_Title }</a></td>
 					<!-- 글쓴이 -->
-					<td>${board.account_Id }</td>
+					<td>${admin_Board.account_Id }</td>
 					<!-- 작성일 -->
-					<td>${board.board_Date }</td>
+					<td>${admin_Board.board_Date }</td>
 					<!-- 추가 첨부파일~상세페이지에 들어가야할듯-->
 					<%-- <td>
 					 <c:choose>
@@ -87,6 +83,7 @@ margin: 0px auto;
         </table>
 
         <br><br>
+
         <div class="containar">
 	        <form action="blank.do" method="get"> <%-- <c:if test="${condition eq 'board_Category'}">selected</c:if>	 --%>
 					<select name="condition" id="condition">
@@ -101,8 +98,9 @@ margin: 0px auto;
 			</form><!-- condition이라는 파라미터 명으로 넘어간다. -->
 		</div><!-- container -->
         <br><br>
-        <a href="productInsertBoard.do"><button type="button" class="btn btn-info float-right">글쓰기</button></a>
-
+        <c:if test="${sessionScope.admin eq 'ok'}">
+         <a href="adminBoardRegister.do"><button type="button" class="btn btn-info float-right">글쓰기</button></a>
+         </c:if>
         <br><br>
         
         <nav aria-label="Page navigation example">

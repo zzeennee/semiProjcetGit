@@ -31,7 +31,7 @@
 		SELECT * FROM account
 		<where>
 			account_Id=#{account_Id} AND
-			account_Status = 0
+			account_Status = 0 
 		</where>
 	</select>
 
@@ -88,7 +88,8 @@
  	<!-- 회원탈퇴 -->
  	<update id="deleteAccount" parameterType="AccountVO">
  		UPDATE account 
-		SET account_Leave=0
+		SET account_Leave=0,
+			account_Reason = #{account_Reason}
 		WHERE account_Id=#{account_Id} and account_Password=#{account_Password}
  	</update>
 
