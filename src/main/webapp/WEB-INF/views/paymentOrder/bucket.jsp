@@ -66,8 +66,6 @@ window.onload = function(){
     //변경 버튼 클릭시 변경 금액 보여주기
     $(".sChange").click(function(){
 	   	
-    	total();
-	   	
 	});
 	
     //홈페이지 진입시 총 결제금액 보여주기
@@ -196,7 +194,7 @@ function total(){
 							</div>
 							<div class="card-footer">
 								<a href="/paymentOrder/payment.do"><button type="submit"
-										class="btn btn-info float-center">주문하기</button></a>
+										class="btn btn-info" style="margin-left: 180px;">주문하기</button></a>
 							</div>
 						</div>
 					</tbody>
