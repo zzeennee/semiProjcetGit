@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.javaclass.domain.AdminBoardVO;
 import com.javaclass.service.AdminBoardService;
@@ -33,7 +35,7 @@ public class AdminBoardController {
 	}
 
 	// 관리자 게시글 목록 출력
-	@RequestMapping("/adminBoardList.do")
+	@RequestMapping(value={"/adminBoardList.do","/adminBoard.do"})
 	public void getBoardList(AdminBoardVO vo, Model model) {
 		// 뷰 페이지 지정 (1) ModelAndView (2) void (3) String
 		// 뷰로 데이터 전송 (1) ModelAndView (2) /(3) Model
@@ -41,7 +43,7 @@ public class AdminBoardController {
 	}
 
 	// 관리자 게시글 상세 조회
-	@RequestMapping("/adminBoardChange.do")
+	@RequestMapping(value={"/adminBoardChange.do", "/adminGetBoard.do"})
 	public void getBoard(String board_Seq, Model m) {
 		m.addAttribute("admin_Board", boardService.adminGetBoard(board_Seq));
 	}

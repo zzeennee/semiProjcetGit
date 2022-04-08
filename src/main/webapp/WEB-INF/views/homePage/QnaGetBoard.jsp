@@ -5,26 +5,17 @@
     <%@ page isELIgnored="false" contentType = "text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
-<!-- <script>
-	function del(seq) {
-		var chk = confirm("정말 삭제하시겠습니까?");
-		if (chk) {
-			location.href='QnaDeleteBoard.do?board_Seq='+board_Seq;
-			//productDeleteBoard.do?board_Seq=${board.board_Seq }"
-		}
-	}	
-</script> -->
 <style type="text/css">
 
 #main_blank{
-width : 40%;
+width : 50%;
 display: block; 
 margin: 0px auto;
 }
-form{
+#frm{
 border: 1px solid #E4E7ED;
 border-radius: 5px;
-width: 600px;
+width: 800px;
 padding: 5px; 
 }
 
@@ -89,11 +80,7 @@ height: 500px;
 
 
 <div id="main_blank">
-        <!-- <a herf='blank.do'><button type="button" class="btn btn-primary">전체글</button></a>
-        <button type="button" class="btn btn-info">자주묻는 질문</button>
-        <button type="button" class="btn btn-info">문의</button> -->
-        <br><br>
-        
+<br>
         <h1>글 상세</h1>		
 	
 		<form id="frm" method="post" action="replyWrite.do">
@@ -199,7 +186,6 @@ height: 500px;
 <script>
 
 //댓글 수정 View
-
 $(".replyUpdateBtn").on("click", function(){
 	location.href = "/homePage/replyUpdateView.do?bno=${board.board_Seq}"
 					/* + "&page=${scri.page}"
@@ -209,13 +195,6 @@ $(".replyUpdateBtn").on("click", function(){
 					+ "&rno="+$(this).attr("data-rno");
 });
 
-//**************************************test*******************************
-
-//팝업으로 댓글 수정창 띄우기
- $(".link").on("click", function(){
-	var winObj = window.open("/homePage/replyUpdateView.do?bno="+${board.board_Seq}+ "&rno="+$(this).attr("data-rno"), "새창","width = 400, height = 300");//팝업창
-
-});
 //*************************************************************************
 
 //댓글 삭제 View
