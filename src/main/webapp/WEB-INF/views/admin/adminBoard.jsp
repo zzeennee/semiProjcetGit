@@ -98,8 +98,9 @@ margin: 0px auto;
 			</form><!-- condition이라는 파라미터 명으로 넘어간다. -->
 		</div><!-- container -->
         <br><br>
-        <a href="adminBoardRegister.do"><button type="button" class="btn btn-info float-right">글쓰기</button></a>
-
+        <c:if test="${sessionScope.admin eq 'ok'}">
+         <a href="adminBoardRegister.do"><button type="button" class="btn btn-info float-right">글쓰기</button></a>
+         </c:if>
         <br><br>
         
         <nav aria-label="Page navigation example">

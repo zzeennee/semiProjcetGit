@@ -121,7 +121,9 @@ height: 500px;
 	<div>
         <br><br>
         <a href="Qna.do"><button type="button" id="fbutton" class="btn btn-info float-right" >목록</button></a>&nbsp;
-        <a href="/admin/adminBoardChange.do?board_Seq=${admin_Board.board_Seq }"><button type="button"  id="fbutton"class="btn btn-info" >글 수정/삭제</button></a>
+        <c:if test="${sessionScope.admin eq 'ok'}">
+           <a href="/admin/adminBoardChange.do?board_Seq=${admin_Board.board_Seq }"><button type="button"  id="fbutton"class="btn btn-info" >글 수정/삭제</button></a>
+         </c:if>
    		<br><br>
    	</div>
 </div>
