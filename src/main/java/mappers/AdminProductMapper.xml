@@ -97,4 +97,54 @@
 	</select>
 
 	<!-- ************************************************************************** -->
+	<!-- 검색(상품명, 카테고리명) -->
+	<select id="listAll" resultType="AdminProductVO">
+		SELECT 	rownum as rn, 
+				product_Seq , 
+				product_Name, 
+				product_Password, 
+				product_MainImg, 
+				product_BrandImg, 
+				product_SubImg, 
+				product_realMainImg, 
+				product_realBrandImg, 
+				product_realSubImg,
+				product_Category,
+				product_Vol,
+				product_Content,
+				product_ModelName,
+				product_ShortContent,
+				product_Price,
+				product_Content2,
+				product_Date,
+				account_Id
+		FROM 	product_Info
+				<include refid="psearch"></include>
+		ORDER BY product_Seq DESC, product_Date, DESC
+	</select>
+	
+
+	<!-- 게시글 레코드 갯수 -->
+	<select id ="countArticle" resultType="int">
+		SELECT COUNT(*)
+		FROM product_Info
+		<!-- WHERE절을 include 태그로 삽입 -->
+		<include refid="psearch"></include>
+	</select>
+
+	<sql id="psearch">
+		<choose>
+		<!-- 검색 옵션이 전체 검색일 경우 -->
+			<when test="searchOption =='all'">
+				WHERE product_Name LIKE '%'||#{keyword}||'%'
+				OR product_Category LIKE '%'||#{keyword}||'%'
+			</when>
+			<!-- 검색 옵션이 전체 검색이 아닐 경우 -->
+			<otherwise>
+				WHERE ${searchOption} LIKE '%'||#{keyword}||'%'
+			</otherwise>
+		</choose>
+	</sql>
+	
+	
 </mapper>

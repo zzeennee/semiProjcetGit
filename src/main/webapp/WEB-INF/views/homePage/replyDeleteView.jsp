@@ -36,8 +36,8 @@ height: 100px;
 		<div id="root">
 			<section id="container">
 				<form id="updateForm" name="updateForm" role="form" method="post" action="/homePage/replyDelete">
-					<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>
-					<input type="hidden" id="rno" name="rno" value="${replyDelete.rno}" />
+					<input type="hidden" name="qnaSeq" value="${replyDelete.qnaSeq}" readonly="readonly"/>
+					<input type="hidden" id="reply_rno" name="reply_rno" value="${replyDelete.reply_rno}" />
 					<div>
 						<h3>삭제 하시겠습니까?</h3>
 						<button type="submit" class="delete_btn btn btn-info float-right">예 삭제합니다.</button>
@@ -57,7 +57,7 @@ height: 100px;
 			var formObj = $("form[name='updateForm']");
 			
 			$(".cancel_btn").on("click", function(){
-				location.href = "/homePage/QnaGetBoard.do?board_Seq=${replyDelete.bno}";
+				location.href = "/homePage/QnaGetBoard.do?qnaSeq=${replyDelete.qnaSeq}";
 					   /* + "&page=${scri.page}"
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"

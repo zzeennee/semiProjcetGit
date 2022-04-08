@@ -79,37 +79,37 @@ position: absolute;
             
                 <tr>
                     <th id="boardt">제목</th>
-                    <td align="left" colspan="4"><input type="text" name="board_Title"/></td>
+                    <td align="left" colspan="4"><input type="text" name="qnaTitle"/></td>
                     
                 </tr>
                 
                 <tr>
                     <th id="boardt">카테고리</th>
                     <td align="left">
-					<select name="board_Category">
+					<select name="qnaCategory">
 					    <option value="자주묻는 질문">자주묻는 질문</option>
 					    <option value="문의">문의</option>
 					</select>
 					</td>
                     <th id="boardt">작성자</th>
-                    <td align="left"><input type="text" size="10" name="account_Id"/></td>
+                    <td align="left"><input type="text" size="10" name="qnaName"/></td>
                 </tr>
                 <tr >
                     <th id="boardt">문의 내용</th>
-                    <td align="left" colspan="3"><textarea cols="40" rows="10" name="board_Content"></textarea></td>
+                    <td align="left" colspan="3"><textarea cols="40" rows="10" name="qnaContent"></textarea></td>
                 </tr>
                 <tr >
                     <th id="boardt">내용추가</th>
-                    <td align="left" colspan="3"><textarea cols="40" rows="10" name="board_Content2"></textarea></td>
+                    <td align="left" colspan="3"><textarea cols="40" rows="10" name="qnaContent2"></textarea></td>
                 </tr>
                 <!-- 추가항목 시작 -->
 				<tr>
 					<th id="boardt">비밀번호</th>
-					<td align="left" colspan="3"><input type="password" name="board_Password"/></td>
+					<td align="left" colspan="3"><input type="password" name="qnaPassword"/></td>
 				</tr>
 				<tr>
 					<th id="boardt">파일추가</th><td align="left" colspan="3">
-					<input type="file" maxlength="60" size="40" name="board_File" ></td>
+					<input type="file" maxlength="60" size="40" name="qnaFile" ></td>
 				</tr>
 				<!-- 추가항목 끝 -->
 				<tr>

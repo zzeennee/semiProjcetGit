@@ -35,7 +35,7 @@ public class MyPageOrderModifyController {
 	
 	  @RequestMapping("/myPage/orderpage.do")
 	public void getOrderList(MyPageOrderModifyVO vo,Model m) {
-		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getOrderList();
+		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getOrderList(vo);
 		m.addAttribute("orderList",list);
 		
 	}
@@ -63,7 +63,7 @@ public class MyPageOrderModifyController {
 	
 	@RequestMapping("saveMember.do")
 	public void saveMember(MyPageOrderModifyVO vo) {
-		ordermodifyServiceImpl.getOrderList();
+		ordermodifyServiceImpl.getOrderList(vo);
 		
 	}
 	
@@ -81,9 +81,9 @@ public class MyPageOrderModifyController {
 	
 	@RequestMapping("/myPage/canclepage.do")
 	public void selectDelete(HttpServletRequest  req, MyPageOrderModifyVO vo, Model m) {
-		String account_id = req.getParameter("account_id");
-		vo.setAccount_id(account_id);
-		m.addAttribute("board",ordermodifyServiceImpl.selectDelete(account_id));
+		String account_Id = req.getParameter("account_Id");
+		vo.setAccount_Id(account_Id);
+		m.addAttribute("board",ordermodifyServiceImpl.selectDelete(account_Id));
 		
 	}
 	
