@@ -16,7 +16,9 @@
           <li class="nav-item">
             <a href="myPageHome.do?account_Id=${sessionScope.logname }" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
-                마이 페이지        
+                <p>
+                마이 페이지
+              </p>       
             </a>
           </li>
           <li class="nav-item">

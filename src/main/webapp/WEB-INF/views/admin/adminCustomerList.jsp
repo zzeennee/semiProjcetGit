@@ -10,10 +10,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>관리자 페이지</title>
+<title>회원 목록 | 관리자 페이지</title>
 
 <%@ include file="../include/adminInclude/adminCSS.jsp"%>
-
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
@@ -66,26 +65,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											class="table table-bordered table-striped">
 											<thead>
 												<tr>
-													<th>회원 아이디</th>
-													<th>회원 이름</th>
-													<th>회원 이메일</th>
-													<th>회원 전화번호</th>
-													<th>회원 주소</th>
-													<th>회원 가입날짜</th>
-													<th>회원 상태</th>
+													<th width="60px">회원 번호</th>
+													<th width="60px">회원 아이디</th>
+													<th width="60px">회원 이름</th>
+													<th width="110px">회원 이메일</th>
+													<th width="110px">회원 전화번호</th>
+													<th width="400px">회원 주소</th>
+													<th width="100px">회원 가입날짜</th>
+													<th width="60px">회원 상태</th>
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach items="${admin_CustomerList }" var="admin_customerList">
+												<c:forEach items="${admin_CustomerList }"
+													var="admin_customerList">
 													<!-- 프라퍼티이름 변경 -->
 													<tr>
+														<td>${admin_customerList.account_Seq }</td>
 														<td>${admin_customerList.account_Id }</td>
 														<td>${admin_customerList.account_Name }</td>
 														<td>${admin_customerList.account_Email }</td>
 														<td>${admin_customerList.account_Tel }</td>
-														<td>${admin_customerList.account_Addr }</td>
-														<td>${admin_customerList.account_Data }</td>
-														<td>${admin_customerList.account_Leave }</td>
+														<td>우편번호 : ${admin_customerList.account_Addr1 } 주소 :
+															${admin_customerList.account_Addr2 } 상세주소 :
+															${admin_customerList.account_Addr3 }</td>
+														<td>${admin_customerList.account_Date }</td>
+														<td>
+															<c:choose>
+																<c:when
+																	test="${admin_customerList.account_Leave eq '1'}">
+																	회원
+																</c:when>
+																<c:otherwise>
+																	회원탈퇴
+																</c:otherwise>
+															</c:choose>
+														</td>
 													</tr>
 												</c:forEach>
 											</tbody>

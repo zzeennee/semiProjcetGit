@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>관리자 페이지</title>
+  <title>게시글 등록 | 관리자 페이지</title>
 
 <%@ include file="../include/adminInclude/adminCSS.jsp" %> 
   
@@ -49,11 +49,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">게시글 작성</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
             </div>
             <div class="card-body">
               <div class="form-group">
@@ -90,11 +85,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card-title">추가 정보 입력</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
             </div>
             <div class="card-body">
               <div class="form-group">

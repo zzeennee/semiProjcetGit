@@ -18,4 +18,7 @@
   input:invalid {
   border: 1px solid red;
 }
+th {
+	text-align: center;
+}
 </style>
