@@ -24,8 +24,7 @@
 						<li><a href="../myPage/signup.do">회원가입</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><a href="#"> 공지사항</a></li>
-				<li><a href="#"> 이벤트</a></li>
+				<li><a href="/admin/adminBoard.do"> 공지사항/이벤트 </a></li>
 				<li><a href="/homePage/Qna.do"> 고객센터</a></li>
 			</ul>
 		</div>
@@ -40,7 +39,7 @@
 				<!-- LOGO -->
 				<div class="col-md-3 ">
 					<div class="header-logo">
-						<a href="index.jsp" class="logo"> <img width='70'
+						<a href="/admin/index.do" class="logo"> <img width='70'
 							src="../resources/dist/img/logo.png" alt="">
 						</a>
 					</div>
