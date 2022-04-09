@@ -28,8 +28,8 @@
 		product_Category ORDER BY productCnt
 	</select>
 	<!-- 카테고리별 판매 차트 -->
-	<select id="productChart" resultType="AdminChartVO">
-		SELECT pi.product_Category, COUNT(*) AS productPayCnt
+	<select id="productSellChart" resultType="AdminChartVO">
+		SELECT pi.product_Category product_SellCategory, COUNT(*) AS productSellCnt
 		FROM payment pay
 		INNER JOIN orderdata od
 		ON pay.pay_number = od.pay_number

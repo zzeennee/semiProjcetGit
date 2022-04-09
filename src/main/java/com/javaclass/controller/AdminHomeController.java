@@ -32,26 +32,6 @@ public class AdminHomeController {
 
 	@RequestMapping("/adminHome.do")
 	public void adminChart(AdminChartVO chartVO, String account_Id, Model model, HttpSession session) {
-		// 상품 카테고리 차트
-		List<AdminChartVO> adminChartProductCategory = adminchartService.adminChartProductCategory(chartVO);
-
-		Gson productgson = new Gson();
-		JsonArray productjArray = new JsonArray();
-
-		Iterator<AdminChartVO> productit = adminChartProductCategory.iterator();
-		while (productit.hasNext()) {
-			AdminChartVO productCategoryVO = productit.next();
-			JsonObject object = new JsonObject();
-			String product_Category = productCategoryVO.getProduct_Category();
-			int productCnt = productCategoryVO.getProductCnt();
-			object.addProperty("product_Category", product_Category);
-			object.addProperty("productCnt", productCnt);
-			productjArray.add(object);
-		}
-
-		String productjson = productgson.toJson(productjArray);
-		model.addAttribute("prdouct", productjson);
-
 		// 월별 회원가입 차트
 		List<AdminChartVO> accountChart = adminchartService.accountChart(chartVO);
 
@@ -71,6 +51,47 @@ public class AdminHomeController {
 
 		String accountjson = accountgson.toJson(accountjArray);
 		model.addAttribute("account", accountjson);
+		
+		// 카테고리별 등록 차트
+		List<AdminChartVO> adminChartProductCategory = adminchartService.adminChartProductCategory(chartVO);
+
+		Gson productgson = new Gson();
+		JsonArray productjArray = new JsonArray();
+
+		Iterator<AdminChartVO> productit = adminChartProductCategory.iterator();
+		while (productit.hasNext()) {
+			AdminChartVO productCategoryVO = productit.next();
+			JsonObject object = new JsonObject();
+			String product_Category = productCategoryVO.getProduct_Category();
+			int productCnt = productCategoryVO.getProductCnt();
+			object.addProperty("product_Category", product_Category);
+			object.addProperty("productCnt", productCnt);
+			productjArray.add(object);
+		}
+
+		String productjson = productgson.toJson(productjArray);
+		model.addAttribute("prdouct", productjson);
+
+		// 카테고리별 판매 차트
+		List<AdminChartVO> adminChartProductSellCategory = adminchartService.adminChartProductSellCategory(chartVO);
+
+		Gson productSellgson = new Gson();
+		JsonArray productSelljArray = new JsonArray();
+
+		Iterator<AdminChartVO> productSellit = adminChartProductSellCategory.iterator();
+		while (productSellit.hasNext()) {
+			AdminChartVO productSellCategoryVO = productSellit.next();
+			JsonObject object = new JsonObject();
+			String product_SellCategory = productSellCategoryVO.getProduct_SellCategory();
+			int productSellCnt = productSellCategoryVO.getProductSellCnt();
+			object.addProperty("product_SellCategory", product_SellCategory);
+			object.addProperty("productSellCnt", productSellCnt);
+			productSelljArray.add(object);
+		}
+
+		String productSelljson = productSellgson.toJson(productSelljArray);
+		model.addAttribute("prdouctSell", productSelljson);
+
 	}
 
 	@RequestMapping("/adminLogout.do")

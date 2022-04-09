@@ -85,7 +85,40 @@ new Chart(ctx1, {
     type: 'pie',
 	data: data
 });
-
-
+/* 상품 카테고리별 판매 갯수 차트  */
+var jsonDataSellProduct = ${prdouctSell};
+var jsonObjectSellProduct = JSON.stringify(jsonDataSellProduct);
+var jDataSellProduct = JSON.parse(jsonObjectSellProduct);
+		
+var labelListSellProduct = new Array();
+var valueListSellProduct = new Array();
+var colorList = new Array();
+		
+for(var i = 0; i<jDataSellProduct.length; i++) {
+	var dSellProduct = jDataSellProduct[i];
+	labelListSellProduct.push(dSellProduct.product_SellCategory);
+	valueListSellProduct.push(dSellProduct.productSellCnt);
+	colorList.push(colorize());
+}
+		
+var data = {
+				labels: labelListSellProduct,
+				datasets: [{
+					backgroundColor: colorList,
+					data : valueListSellProduct
+				}],
+				options : {
+						title : {
+						display : true,
+						text: '카테고리별 판매 갯수'
+						}
+				}
+};
+		
+var ctx1 = document.getElementById('productSellPiechart').getContext('2d');
+new Chart(ctx1, {
+    type: 'pie',
+	data: data
+});
 
 </script>

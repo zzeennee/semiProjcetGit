@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>차트 | 관리자 페이지</title>
+<title> 차트 | 관리자 페이지</title>
 
 <%@ include file="../include/adminInclude/adminCSS.jsp"%>
 
@@ -123,7 +123,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<div class=""></div>
 										</div>
 									</div>
-									<canvas id="productPiechart2" width="250" height="250"></canvas>
+									<canvas id="productSellPiechart" width="250" height="250"></canvas>
 								</div>
 								<!-- /.card-body -->
 							</div>
