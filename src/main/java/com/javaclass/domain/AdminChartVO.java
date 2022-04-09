@@ -18,9 +18,11 @@ public class AdminChartVO {
 	String product_Category;
 	
 	//카테고리별 판매 갯수
+	int productSellCnt;
 	String pay_number;
 	String buylist_number;
 	String product_Seq;
+	String product_SellCategory;
 	
 	public String getAccountMonth() {
 		return accountMonth;
@@ -46,6 +48,12 @@ public class AdminChartVO {
 	public void setProduct_Category(String product_Category) {
 		this.product_Category = product_Category;
 	}
+	public int getProductSellCnt() {
+		return productSellCnt;
+	}
+	public void setProductSellCnt(int productSellCnt) {
+		this.productSellCnt = productSellCnt;
+	}
 	public String getPay_number() {
 		return pay_number;
 	}
@@ -64,6 +72,17 @@ public class AdminChartVO {
 	public void setProduct_Seq(String product_Seq) {
 		this.product_Seq = product_Seq;
 	}
+	public String getProduct_SellCategory() {
+		return product_SellCategory;
+	}
+	public void setProduct_SellCategory(String product_SellCategory) {
+		this.product_SellCategory = product_SellCategory;
+	}
+	
+	
+	
+	
+	
 	
 	
 }
