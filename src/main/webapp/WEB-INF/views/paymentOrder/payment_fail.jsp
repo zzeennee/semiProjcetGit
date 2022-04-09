@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>장바구니</title>
+<title>결제실패 | 머신킹덤</title>
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
 <!-- Google Font: Source Sans Pro -->
