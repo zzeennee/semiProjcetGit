@@ -20,6 +20,10 @@ public class AdminMailController {
 	@RequestMapping("/adminMail.do")
 	public void mail() {
 	}
+	//어드민이 메일 작성을 위한 폼
+	@RequestMapping("/adminMailWrite.do")
+	public void adminMail() {
+	}
 	
 	@RequestMapping("/adminMailOK.do")
 	public void mailOK() {
