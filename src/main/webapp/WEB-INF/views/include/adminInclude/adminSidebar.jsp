@@ -70,6 +70,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="adminMailWrite.do" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                메일 보내기
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -14,7 +14,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <title>주문상세보기 - 마이페이지 | 머신킹덤</title>
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
+<style>
+#imgSize{
+ border-radius: 4px;
+ width: 75px;
+}
 
+</style>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -30,9 +36,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 		<div class="content-wrapper">
 		
-		<!-- @@@@@@@ 주문번호 order_Seq @@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@ account_Id @@@@@@@@@@@@@@ -->
 		<form action="">
-		<input type="hidden" name="account_id" value="${board.account_id}">
+		<input type="hidden" name="account_Id" value="${sessionScope.logname }">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
@@ -74,13 +80,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</thead>
 										<tbody>
 												<tr>
-			<!--수정 @@@ order_Seq  -->		             <td>${board.order_payselect}</td>
-			<!--수정 @@@ order_Seq  -->											<td>#</td>
-			<!--수정 @@@ product_Name  -->										<td>#</td>
-			<!--수정 @@@ product_Vol  -->											<td>#</td>
-			<!--수정 @@@  product_Price  -->										<td>#</td>
-			<!--수정 @@@  account_Addr1,account_Addr2,account_Addr3 -->			<td>#</td>
-			<!--수정 @@@ accountOrderStatus_Status  -->											<td>#</td>
+				             <td>${board.orderdata_seq}</td>
+		 					<td><img id='imgSize' src="../resources/upload/default.jpg" alt="${board.product_realMainImg}"></td>
+							 <td>${board.product_Name}</td>
+							 <td>${board.product_amount}</td>
+							 <td>${board.pay_price}</td>
+					         <td>${board.account_Addr1},${board.account_Addr2},${board.account_Addr3}</td>
+							  <td>${board.state}</td>
 												</tr>
 										</tbody>
 									</table>
@@ -98,17 +104,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<table class="table table-bordered table-striped">
 										<thead>
 											<tr>
-												<th>카드명</th>
-												<th>카드번호</th>
+												<th>결제자 이름</th>
 												<th>결제금액</th>
+												<th>결제시간</th>
 												
 											</tr>
 										</thead>
 										<tbody>
 												<tr>
-			<!--수정 @@@  pay_CardCop-->			      <td>${board.order_payselect}</td>
-			<!--수정 @@@  pay_Seq-->					<td>#</td>
-													<td>#</td>
+					        <td>${board.pay_name}</td>
+							<td>${board.pay_price}</td>
+							<td>${board.pay_date}</td>
 												</tr>
 										</tbody>
 									</table>
@@ -127,20 +133,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<thead>
 											<tr>
 												
-								<th>배송정보</th>
-	<!-- @@@수정  account_Name-->												<th>이름</th>
-	<!-- @@@수정  account_Tel-->											<th>연락처</th>
-	<!-- @@@수정  account_Addr-->												<th>주소</th>
-	<!-- @@@수정 accountOrderStatus_Delivery-->								<th>배송요청사항</th>
+								
+										<th>받는분 이름</th>
+									    <th>받는분 주소</th>
+									  <th>배송요청사항</th>
 											</tr>
 										</thead>
 										<tbody>
 												<tr>
-													<td>${board.order_payselect}</td>
-													<td>#</td>
-													<td>#</td>
-													<td>#</td>
-													<td>#</td>
+													<td>${board.receiver_name}</td>
+													<td>${board.receiver_zonecode},${board.receiver_address},${board.receiver_daddress}</td>
+													<td>${board.user_require}</td>
 												</tr>
 										</tbody>
 									</table>
@@ -159,7 +162,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			</section>
 			<div class="row">
 					<div class="col-6">
-						<a href="orderpage.do"><input type="button" name="submit" id="submit"
+						<a href="orderpage.do?account_Id=${sessionScope.logname }"><input type="button" name="submit" id="submit"
 							value="확인" class="btn btn-success float-right"></a>
 					</div>
 				</div>

@@ -68,7 +68,7 @@ window.onload = function(){
 
 			<!--******************** form 액션주고 값불려오도록 설정 *********************************************-->
 			<form action='modi.do'>
-			<input type="hidden" name="account_id" value="${board.account_id}">    <!--@@@@@@@ 수정할 부분 주문번호 받아오기 order_Seq @@@@-->
+			<input type="hidden" name="account_Id" value="${sessionScope.logname }">    <!--@@@@@@@ 수정할 부분 주문번호 받아오기 order_Seq @@@@-->
 				<!-- Content Header (Page header) -->
 				<div class="content-header">
 					<div class="container-fluid">
@@ -101,26 +101,26 @@ window.onload = function(){
 					<div class="card-body" style="display: block;">
 						<div class="form-group">
 							<label for="inputName">주문번호</label> <input type="text"
-								id="inputName" class="form-control" name="order_seq" readonly
-								value="${board.account_id}">        <!--@@@@ 수정 order_Seq @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+								id="inputName" class="form-control" name="orderdata_seq" readonly
+								value="${board.orderdata_seq}">        
 						</div>
 
 						<div class="form-group">
 							<label for="inputDescription">배송시 요청사항</label>
 							<textarea id="inputDescription" class="form-control" rows="4"
-								name="order_payselect">${board.order_payselect}</textarea>
-						</div>                                  <!--@@@ 수정  accountOrderStatus_Delivery @@@@@@@@@@@@@@@@@@@@@@@  -->
+								name="user_require">${board.user_require}</textarea>
+						</div>                                  
 
 						<div class="form-group">
 							<label for="inputClientCompany">받는분 이름</label> <input
 								type="text" id="inputClientCompany" class="form-control"
-								name="order_uesrreq" value="${board.order_uesrreq}">    <!-- @@@수정 내가 테이블생성@@@@@@@@@@@@@@@@@@@@@@@@--> 
+								name="receiver_name" value="${board.receiver_name}">     
 						</div>     
 						<div class="form-group">
 							<label for="inputProjectLeader">전화번호</label> <input type="text"
 								id="inputProjectLeader" class="form-control"          
-								name="coupon_number" readonly value="${board.coupon_number}">
-						</div>                               <!-- @@@@@@@@수정   account_Tel@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+								name="receiver_tel" readonly value="${board.account_Tel }">
+						</div>                              
 						
 						
 						<!--*************** 주소 수정 value값으로 보내고 name 값으로 데이터 받기 ***************************************-->
@@ -129,7 +129,7 @@ window.onload = function(){
 						
 						<div class="input-group">
 							<input type="text" id="zonecode_sender" placeholder="우편번호"
-								readonly value="${board }" name="">
+								readonly value="${board.receiver_zonecode }" name="receiver_zonecode">
 							<button type="button" id="address_search_sender"
 								class="btn btn-info float-left">주소수정하기</button>
 						</div>      
@@ -138,13 +138,13 @@ window.onload = function(){
                       <!-- @@@@@@@@@@@@@@@@@수정  account_Addr2 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  -->
 						<div class="input-group">
 							<input type="text" id="address_sender" class="form-control"
-								placeholder="주소" readonly value="${board }" name="">
+								placeholder="주소" readonly value="${board.receiver_address }" name="receiver_address">
 						</div>
 
 
                 <!-- @@@@@@@@@@@@@@@@@@수정   account_Addr3  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="상세주소" value="${board }" name="">
+							<input type="text" class="form-control" placeholder="상세주소" value="${board.receiver_daddress }" name="receiver_daddress">
 						</div>
 
 					</div>
@@ -155,8 +155,8 @@ window.onload = function(){
 				
 				<div class="row">
 					<div class="col-6">
-						<a href=""><input type="submit" name="submit" id="submit"
-							value="확인" class="btn btn-success float-right"></a>
+						<input type="submit" name="submit" id="submit"
+							value="확인" class="btn btn-success float-right">
 					</div>
 				</div>
 			</form>

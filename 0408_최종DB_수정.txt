@@ -18,7 +18,19 @@ CREATE TABLE account (
 );
 
 
-/* 공지사항/이벤트/광고 2번*/
+/* 메일 2-1번 어카운트의 이메일 저장 및 보낼데이터 읽어와서 */
+CREATE TABLE Mail(
+    mail_seq NUMBER PRIMARY KEY,  /* 메일작성 번호 */
+    mail_Title varchar2(250) NOT NULL, /* 메일작성 번호 */
+    mail_ReceiveMail varchar2(250) NOT NULL, /* 메일받는사람 */
+    mail_Category  varchar2(250) NOT NULL, /* 메일카테고리 */ 
+    mail_Content varchar2(4000) NOT NULL, /* 메일 내용 */
+    mail_Date date NOT NULL, /* 메일 내용 */
+    account_Id varchar2(250) NOT NULL, /*메일 작성자 아이디 */
+    
+    CONSTRAINT FK_Mail_account_id FOREIGN KEY (account_Id) REFERENCES account(account_Id) -- 계정
+);
+/* 공지사항/이벤트/광고 2-2번*/
 CREATE TABLE admin_Board (
 	board_Seq NUMBER PRIMARY KEY, /* 공지사항/이벤트/광고 고유 번호 */
 	board_Title varchar2(250) NOT NULL, /* 제목 */
@@ -156,12 +168,15 @@ DROP TABLE buylist;
 --3
 /* 상품 상세정보 삭제 */
 DROP TABLE product_Info;
+/* 메일삭제 */
+DROP TABLE Mail;
 --4
 /* 계정 삭제 */
 DROP TABLE account;
 commit;
 
 --시퀀스 생성
+CREATE SEQUENCE mail_seq; --메일번호 시퀀스
 CREATE SEQUENCE	qnaSeq; --댓글번호 시퀀스
 CREATE SEQUENCE	reply_rno; --댓글번호 시퀀스
 CREATE SEQUENCE account_Seq; --계정번호 시퀀스
@@ -173,6 +188,7 @@ CREATE SEQUENCE buylist_number; --구매리스트번호 시퀀스
 commit;
 
 --시퀀스 삭제
+DROP SEQUENCE Mail_seq;
 DROP SEQUENCE qnaSeq;
 DROP SEQUENCE reply_rno;
 DROP SEQUENCE account_Seq;
