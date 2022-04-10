@@ -3,6 +3,7 @@ package com.javaclass.dao;
 import java.util.List;
 
 import com.javaclass.domain.AccountVO;
+import com.javaclass.domain.MyPageOrderModifyVO;
 
 public interface AccountDAO {
 
@@ -33,5 +34,8 @@ public interface AccountDAO {
 	
 	//아이디 찾기 이메일 중복체크
 	public int idFindCheck(String account_Email);
+	
+	//주문목록 불러오기
+	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo);
 
 }

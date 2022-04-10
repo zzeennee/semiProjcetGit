@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaclass.domain.AccountVO;
+import com.javaclass.domain.MyPageOrderModifyVO;
 
 @Repository("accountDAOImpl")
 public class AccountDAOImpl implements AccountDAO {
@@ -76,5 +77,9 @@ public class AccountDAOImpl implements AccountDAO {
 	public int idFindCheck(String account_Email) {
 		return sqlSession.selectOne("accountMapper.idFindCheck", account_Email);
 	}
+	
+	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo){
+		return sqlSession.selectList("orderMapper.getList", mvo);
+	} 
 
 }

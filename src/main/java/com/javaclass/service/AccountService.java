@@ -3,6 +3,8 @@ package com.javaclass.service;
 import java.util.List;
 
 import com.javaclass.domain.AccountVO;
+import com.javaclass.domain.AdminListVO;
+import com.javaclass.domain.MyPageOrderModifyVO;
 
 public interface AccountService {
 
@@ -32,4 +34,10 @@ public interface AccountService {
 
 	//아이디 찾기 이메일 중복체크
 	public int idFindCheck(String account_Email);
+	
+	//마이홈 주문목록 리스트
+	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo);
+	
+	//마이홈
+  //List<MyPageOrderModifyVO> getList(MyPageOrderModifyVO vo);
 }

@@ -67,4 +67,7 @@ public class MyPageOrderModifyServiceImpl implements MyPageOrderModifyService{
 		return orderModifyDAOImpl.getCancleList(vo);
 	}
 	
+	
+	
+	
 }	

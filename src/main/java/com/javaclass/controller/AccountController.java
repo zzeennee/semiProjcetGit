@@ -1,5 +1,7 @@
 package com.javaclass.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaclass.domain.AccountVO;
+import com.javaclass.domain.MyPageOrderModifyVO;
 import com.javaclass.service.AccountService;
 
 @Controller
@@ -111,9 +114,20 @@ public class AccountController {
 	// 마이페이지 불러오기
 	// @RequestMapping(value="/myPage/myPageHome.do", method=RequestMethod.GET)
 	@RequestMapping("/myPage/myPageHome.do")
-	public void myHomePageView(String account_Id, Model m) {
+	public void myHomePageView(String account_Id, Model m, MyPageOrderModifyVO mvo ) {
 		m.addAttribute("account", accountServiceImpl.myHomePageView(account_Id));
+		System.out.println("1번리스트");
+		m.addAttribute("account_orderList", accountServiceImpl.adminOrderList(mvo));
+		System.out.println("2번리스트");
 	}
+	
+	//	
+//	@RequestMapping("/myPage/myPageHome.do")
+//	public void getList(MyPageOrderModifyVO vo,Model m) {
+//		List<MyPageOrderModifyVO> list= accountServiceImpl.getList(vo);
+//		m.addAttribute("List",list);
+//		
+//	}
 
 	// 마이페이지- 회원정보수정페이지로 이동
 	@RequestMapping("/myPage/myPageUpdate.do")
