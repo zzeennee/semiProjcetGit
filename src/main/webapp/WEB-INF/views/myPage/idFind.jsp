@@ -107,22 +107,23 @@ a:link, a:visited,  a:hover, a:active
 	
 	<!-- 아이디찾기 모달창 -->
 	<%@ include file="../include/myPageInclude/idFindModal.jsp" %>
-	
-		<div class="full">
+
+ 
+ 	<div class="full">
 		<div class="container">
 			<div class="area_inputs wow fadeIn">
-				<div class="sub_title font-weight-bold">
+				<div class="sub_title font-weight-bold ">
 					<h3>아이디/비밀번호 찾기</h3>
 					<p>인증된 이메일만 정보 찾기가 가능합니다 :)</p>
 				</div>
 				<div style="margin-bottom: 10px;"
 					class="custom-control custom-radio custom-control-inline">
 					<input type="radio" class="custom-control-input" id="search_1" name="search_total" onclick="search_check(1)" checked="checked">
-					<label class="custom-control-label font-weight-bold" for="search_1">아이디 찾기</label>
+					<label class="custom-control-label font-weight-bold "	for="search_1">아이디 찾기</label>
 				</div>
 				<div class="custom-control custom-radio custom-control-inline">
 					<input type="radio" class="custom-control-input" id="search_2" name="search_total" onclick="search_check(2)"> 
-					<label class="custom-control-label font-weight-bold" for="search_2">비밀번호 찾기</label>
+					<label class="custom-control-label font-weight-bold " for="search_2">비밀번호 찾기</label>
 				</div>
 				<div id="searchI">
 					<div class="form-group">
@@ -167,7 +168,7 @@ a:link, a:visited,  a:hover, a:active
 
 	<script type="text/javascript">
 	//체크 버튼에 따라 아이디/비밀번호 기능이 달라진다
-	function search_check(num) {
+		function search_check(num) {
 		if (num == '1') {
 			document.getElementById("searchP").style.display = "none";
 			document.getElementById("searchI").style.display = "";	
@@ -176,13 +177,14 @@ a:link, a:visited,  a:hover, a:active
 			document.getElementById("searchP").style.display = "";
 		}
 	}
+
 	
-	//$(document).ready(function() {
+	$(document).ready(function() {
 	
 	/////////모///달///기///능///////////
 	// 1. 모달창 히든 불러오기
-	$('#searchBtn').click(function() {
-		$('#background_modal').modal();});
+  	  $('#searchBtn').click(function() {
+		//$('#background_modal').background_modal();
 		$('#background_modal').show();
 	});
 	// 2. 모달창 닫기 버튼
@@ -194,10 +196,10 @@ a:link, a:visited,  a:hover, a:active
 		if (event.target == $('#background_modal').get(0)) {
             $('#background_modal').hide();
          }
-	});
-	
+	});   
+  
 	// 아이디 & 스토어 값 저장하기 위한 변수
-	var idV = "";
+	 var idV = "";
 	// 아이디 값 받고 출력하는 ajax
 	var idSearch_click = function(){
 		$.ajax({
@@ -214,10 +216,10 @@ a:link, a:visited,  a:hover, a:active
 				}
 			}
 		});
-	}
-
+	} 
+  
 	
-//});//end of $(document).ready(function()
+});//end of $(document).ready(function()
 	
 
 
