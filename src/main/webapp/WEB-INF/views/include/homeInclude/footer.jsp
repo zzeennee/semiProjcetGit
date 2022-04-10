@@ -14,22 +14,18 @@
 								<h3 class="footer-title">회사소개</h3>
 								<p>전자제품 전문 매장 전자랜드입니다.</p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>(153-759)서울시 금천구 가산동 426-5 월드메르디앙 2차 413호</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>02-2025-8523</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>electro@email.com</a></li>
+									<li><i class="fa fa-map-marker"></i>(153-759)서울시 금천구 가산동 426-5 월드메르디앙 2차 413호</li>
+									<li><i class="fa fa-phone"></i>02-2025-8523</li>
+									<li><i class="fa fa-envelope-o"></i>testhjh413@gmail.com</li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">카테고리</h3>
+								<h3 class="footer-title">상품</h3>
 								<ul class="footer-links">
-									<li><a href="#">이벤트</a></li>
-									<li><a href="#">노트북</a></li>
-									<li><a href="#">스마트폰</a></li>
-									<li><a href="#">냉장고</a></li>
-									<li><a href="#">세탁기</a></li>
+									<li><a href="#">목록 가기</a></li>
 								</ul>
 							</div>
 						</div>
