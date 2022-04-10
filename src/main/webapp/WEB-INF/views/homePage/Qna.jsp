@@ -81,7 +81,7 @@ li {list-style: none; float: left; padding: 6px;}
 				</tr> 
 			</c:forEach>
             </tbody>
-        </table> 
+        </table>
         <br><br>
         <div class="qnaSearch">
 			<select name="searchType">

@@ -58,7 +58,7 @@ position: absolute;
 						<h3 class="breadcrumb-header">게시판</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="#">Home</a></li>
-							<li class="active">고객센터</li> 
+							<li class="active">고객센터</li>
 						</ul>
 					</div>
 				</div>

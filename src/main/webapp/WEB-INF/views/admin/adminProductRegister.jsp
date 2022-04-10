@@ -92,8 +92,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									</div>
 									<div class="form-group">
 										<label for="inputDescription">상품 내용</label>
-										<<textarea id="inputEstimatedDuration" class="form-control"
-											rows="20" name="product_Content"></textarea>
+										<textarea id="inputDescription" class="form-control" rows="21"
+											name="product_Content"></textarea>
 									</div>
 
 								</div>
