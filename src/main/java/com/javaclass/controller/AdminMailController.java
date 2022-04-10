@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.javaclass.domain.AdminMailVO;
 import com.javaclass.service.AdminMailServiceImpl;
 
 @Controller
@@ -39,15 +40,15 @@ public class AdminMailController {
     
 	//mailSend 코드
 	@RequestMapping(value = "/adminMailSend.do", method = RequestMethod.POST)
-	public String mailSend(HttpServletRequest request,String name,String email,String phone,String message) {
+	public String mailSend(HttpServletRequest request, AdminMailVO vo) {
 		try {
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
 		    MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
  
 		    messageHelper.setFrom("testhjh413@gmail.com"); // 보내는사람 이메일 여기선 google 메일서버 사용하는 아이디를 작성하면됨
-		    messageHelper.setTo("413hjh413@gmail.com"); // 받는사람 이메일
-		    messageHelper.setSubject("[포트폴리오] 안녕하세요 저는" + name + "입니다."); // 메일제목
-		    messageHelper.setText(message + " 연락처는 " + phone + "입니다. Email은 " + email + "입니다."); // 메일 내용
+		    messageHelper.setTo(vo.getMail_ReceiveMail()); // 받는사람 이메일
+		    messageHelper.setSubject("안녕하세요. 머신킹덤 관리자 : " + vo.getAccount_Name() + "입니다."); // 메일제목
+		    messageHelper.setText(vo.getMail_Content()); // 메일 내용
  
 		    mailSender.send(mimeMessage);
 		} catch (Exception e) {

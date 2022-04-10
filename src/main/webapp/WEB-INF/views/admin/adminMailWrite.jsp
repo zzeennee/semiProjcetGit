@@ -52,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">메일 제목</label>
-                <input type="text" id="inputName" class="form-control" name="Mail_Title" placeholder="메일 제목" required>
+                <input type="text" id="inputName" class="form-control" name="mail_Title" placeholder="메일 제목" required>
               </div>
               <div class="form-group">
                 <label for="inputEstimatedBudget">작성자</label>
@@ -60,11 +60,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="form-group">
                 <label for="inputEstimatedBudget">받는자 이메일</label>
-               	<input type="text" id="inputName" class="form-control" name="Mail_sendMail" placeholder="받는자 이메일" required>
+               	<input type="text" id="inputName" class="form-control" name="mail_ReceiveMail" placeholder="받는자 이메일" required>
               </div>
               <div class="form-group">
                 <label for="inputStatus">메일 카테고리</label>
-                <select id="inputStatus" class="form-control custom-select" name="Mail_Category">
+                <select id="inputStatus" class="form-control custom-select" name="mail_Category">
                   <option selected disabled>카테고리 선택</option>
                   <option>공지사항</option>
                   <option>이벤트</option>
@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="form-group">
                 <label for="inputDescription">메일 내용</label>
-                <textarea id="inputDescription" class="form-control" rows="15" name="Mail_Content" required></textarea>
+                <textarea id="inputDescription" class="form-control" rows="15" name="mail_Content" required></textarea>
               </div>
               <div class="form-group">
                 <a href="adminBoardList.do" class="btn btn-secondary">취소</a>
