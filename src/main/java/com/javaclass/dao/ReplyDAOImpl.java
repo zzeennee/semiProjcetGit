@@ -16,8 +16,8 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	//댓글 조회
 	@Override
-	public List<ReplyVO> readReply(int bno) throws Exception {
-		return sql.selectList("replyMapper.readReply", bno);
+	public List<ReplyVO> readReply(int qnaSeq) throws Exception {
+		return sql.selectList("replyMapper.readReply", qnaSeq);
 	}
 
 	//댓글 작성
@@ -43,8 +43,8 @@ public class ReplyDAOImpl implements ReplyDAO {
 	
 	//선택된 댓글 조회
 	@Override
-	public ReplyVO selectReply(int rno) throws Exception {
-		return sql.selectOne("replyMapper.selectReply", rno);
+	public ReplyVO selectReply(int reply_rno) throws Exception {
+		return sql.selectOne("replyMapper.selectReply", reply_rno);
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.javaclass.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaclass.domain.AccountVO;
@@ -30,11 +32,28 @@ public class AccountController {
 	public void login(AccountVO vo) {
 	}
 
+	
+	//아이디 찾기
+	@RequestMapping("/myPage/idFind.do")
+	public void idFind(AccountVO vo) {
+	}
+	
+	//비밀번호 찾기
+	@RequestMapping("/myPage/pwFind.do")
+	public void pwFind(AccountVO vo) {
+	}
+
+	//회원탈퇴 완료 후 이동 페이지
+	@RequestMapping("/myPage/accountLeave.do")
+	public void accountLeave(AccountVO vo) {
+	System.out.println("회원 탈퇴됨");
+	}
+
 	// 회원가입
 	@RequestMapping("/myPage/insertAccount.do")
 	public String insertAccount(AccountVO vo) {
 		accountServiceImpl.insertAccount(vo);
-		return "redirect:/";
+		return "redirect:login.do";
 	}
 	@RequestMapping(value="/myPage/idCheck.do", produces="application/text;charset=utf-8")
 
@@ -57,23 +76,25 @@ public class AccountController {
 		AccountVO result = accountServiceImpl.loginCheck(vo);
 		AccountVO resultAdmin = accountServiceImpl.adminLogin(vo);
 		if (result == null) {
-			System.out.println("로그인실패" + session.getAttribute("logname"));
-			System.out.println("로그인실패의 숫자는 null" + result);
-			return "/myPage/login";
+			System.out.println("로그인 실패" + session.getAttribute("logname"));
+			return "redirect:/myPage/login.do?password=false";
 		} else if (result != null & resultAdmin == null) {
 			session.setAttribute("logname", result.getAccount_Id());
-			System.out.println("관리자 로그인 실패" + resultAdmin);
-			System.out.println("로그인성공 : " + session.getAttribute("logname"));
+			System.out.println("관리자 로그인 실패");
+			System.out.println("일반 로그인 성공 : " + session.getAttribute("logname"));
 			model.addAttribute("account_list", accountServiceImpl.accountList(vo));
-			return "/myPage/login_ok";
+			session.setAttribute("login", "loginON");
+			return "redirect:/";
+
 		} else {
 			session.setAttribute("logname", result.getAccount_Id());
-			System.out.println("관리자 로그인 성공" + resultAdmin);
-			System.out.println("관리자 로그인성공 : " + session.getAttribute("logname"));
+			System.out.println("관리자 로그인 성공");
+			System.out.println("관리자 로그인 성공 : " + session.getAttribute("logname"));
 			model.addAttribute("account_list", accountServiceImpl.accountList(vo));
+			session.setAttribute("login", "loginON");
 			session.setAttribute("admin", "ok");
-			System.out.println("관리자 로그인성공 : " + session.getAttribute("admin"));
-			return "/myPage/login_ok";
+			System.out.println("관리자 로그인 성공 : " + session.getAttribute("admin"));
+			return "redirect:/";
 		}
 	}
 
@@ -113,14 +134,25 @@ public class AccountController {
 
 	// 회원탈퇴
 	@RequestMapping("/myPage/deleteAccount.do")
-	public String deleteAccount(@ModelAttribute AccountVO vo, Model model, String account_Id) {
+	public String deleteAccount(@ModelAttribute AccountVO vo, Model model, String account_Id, HttpSession session, HttpServletRequest requset) {
 		boolean result = accountServiceImpl.checkPassword(vo.getAccount_Id(), vo.getAccount_Password());
 		if (result) { // 비밀번호가 일치하면 탈퇴 처리 후, 메인페이지로 이동
 			accountServiceImpl.deleteAccount(vo);
-			return "redirect:/";
+			session.invalidate();
+			return "redirect:accountLeave.do";
 		} else { // 비밀번호가 일치하지 않는다면
-			return "redirect:myPageHomeUpdate.do?account_Id=" + account_Id + "&account_Password=false";
+			return "redirect:myPageLeave.do?account_Id="+account_Id+"&password=false";
 		}
 	}
+	
+	//아이디 찾기
+	@RequestMapping(value="/myPage/idFind.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String idFind(@RequestParam("account_Name") String account_Name, @RequestParam("account_Tel") String account_Tel) {
+		String result = accountServiceImpl.idFind(account_Name, account_Tel);
+
+		return result;
+	}
+	
 
 }

@@ -3,7 +3,22 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace='adminChartMapper'>
-
+	<!-- 월별 회원 가입수 차트 -->
+	<select id="accountChart" resultType="AdminChartVO">
+		SELECT SUBSTR(account_date, 4,2 )||'월' accountMonth, COUNT(*) accountCnt
+		FROM account
+		WHERE account_Status=1 AND account_Leave=1
+		GROUP BY SUBSTR(account_date, 4,2)
+		ORDER BY accountMonth ASC
+	</select>
+	<!-- 월별 회원 탈퇴 차트 -->
+	<select id="accountLeaveChart" resultType="AdminChartVO">
+		SELECT SUBSTR(account_date, 4,2 )||'월' accountMonth, COUNT(*) accountCnt
+		FROM account
+		WHERE account_Status=1 AND account_Leave=0
+		GROUP BY SUBSTR(account_date, 4,2)
+		ORDER BY accountMonth ASC
+	</select>
 	<!-- 상품 카테고리별 등록 갯수 차트 -->
 	<select id="countProductCategory" resultType="AdminChartVO">
 		SELECT
@@ -12,12 +27,16 @@
 		GROUP BY
 		product_Category ORDER BY productCnt
 	</select>
-	<select id="accountChart" resultType="AdminChartVO">
-		SELECT SUBSTR(account_date, 4,2 )||'월' accountMonth, COUNT(*) accountCnt
-		FROM account
-		WHERE account_Status=1
-		GROUP BY SUBSTR(account_date, 4,2)
-		ORDER BY accountMonth ASC
+	<!-- 카테고리별 판매 차트 -->
+	<select id="productSellChart" resultType="AdminChartVO">
+		SELECT pi.product_Category product_SellCategory, COUNT(*) AS productSellCnt
+		FROM payment pay
+		INNER JOIN orderdata od
+		ON pay.pay_number = od.pay_number
+		INNER JOIN buylist buy
+		ON od.buylist_number = buy.buylist_number
+		INNER JOIN product_Info pi
+		ON buy.product_Seq = pi.product_Seq
+		GROUP BY pi.product_Category
 	</select>
-
 </mapper>

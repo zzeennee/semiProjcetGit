@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>관리자 페이지</title>
+  <title>상품 목록 | 관리자 페이지</title>
 
 <%@ include file="../include/adminInclude/adminCSS.jsp" %> 
   
@@ -57,12 +57,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>상품 등록 번호</th>
-                    <th>상품명</th>
-                    <th>상품 카테고리</th>
-                    <th>상품 가격</th>
-                    <th>상품 재고량</th>
-                    <th>상품 등록날짜</th>
+                    <th width="40px">상품 번호</th>
+                    <th width="100px">상품명</th>
+                    <th width="100px">상품 모델명</th>
+                    <th width="60px">상품 카테고리</th>
+                    <th width="60px">상품 가격</th>
+                    <th width="200px">상품 간단설명</th>
+                    <th width="60px">상품 재고량</th>
+                    <th width="80px">상품 등록날짜</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -72,8 +74,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						<td>${admin_Product.product_Seq }</td>
 						<td align="left"><a href="adminProductChange.do?product_Seq=${admin_Product.product_Seq }">
 								${admin_Product.product_Name }</a></td>
+						<td>${admin_Product.product_ModelName }</td>			
 						<td>${admin_Product.product_Category }</td>		
 						<td>${admin_Product.product_Price }</td>
+						<td>${admin_Product.product_ShortContent }</td>
 						<td>${admin_Product.product_Vol }</td>
 						<td>${admin_Product.product_Date }</td>
 					</tr>

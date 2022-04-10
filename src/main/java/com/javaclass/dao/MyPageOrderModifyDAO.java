@@ -9,10 +9,10 @@ public interface MyPageOrderModifyDAO {
 	//public int insertMember(OrderModifyVO vo);
 	
     //DB 목록 값 불려오기
-	public List<MyPageOrderModifyVO> getOrderList();
+	public List<MyPageOrderModifyVO> getOrderList(MyPageOrderModifyVO vo);
 	
 	//주문내역 db 주문상세보기 페이지 불려오기
-	public List<MyPageOrderModifyVO> getOrderLoadList();
+	 public MyPageOrderModifyVO selectLoad(MyPageOrderModifyVO vo);
 	
 	//주문수정버튼 누르면 db 업데이트 
     public void updateMember(MyPageOrderModifyVO vo);

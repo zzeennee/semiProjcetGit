@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마이페이지</title>
+<title>마이페이지 | 머신킹덤</title>
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
 
@@ -56,19 +56,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<h3 class="widget-user-username" id='bg-write-color'>내 정보</h3>
 						</div>
 						<div class="widget-user-image">
-						<c:set var="ProfileImg" value="${account.account_realProfileImg }"/>			
-						<c:choose>
-							<c:when test="${account.account_realProfileImg eq '0'}">
-						        <img class="img-circle elevation-2"
-								src="../resources/upload/default.jpg"
-								alt="User Avatar">
-						    </c:when>
-						    <c:when test="${account.account_realProfileImg eq ProfileImg}">
-						        <img class="img-circle elevation-2"
-								src="../resources/upload/${account.account_realProfileImg }"
-								alt="User Avatar">
-						    </c:when>
-						</c:choose>
+							<c:set var="ProfileImg"
+								value="${account.account_realProfileImg }" />
+							<c:choose>
+								<c:when test="${account.account_realProfileImg eq '0'}">
+									<img class="img-circle elevation-2"
+										src="../resources/upload/default.jpg" alt="User Avatar">
+								</c:when>
+								<c:when test="${account.account_realProfileImg eq ProfileImg}">
+									<img class="img-circle elevation-2"
+										src="../resources/upload/${account.account_realProfileImg }"
+										alt="User Avatar">
+								</c:when>
+							</c:choose>
 						</div>
 						<div class="card-footer">
 							<div class="row">
@@ -82,15 +82,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<!-- /.col -->
 								<div class="col-sm-4 border-right">
 									<div class="description-block">
-										<h5 class="description-header">13,000</h5>
-										<span class="description-text">멤버등급</span>
+										<h5 class="description-header"></h5>
+										<span class="description-text"></span>
 									</div>
 									<!-- /.description-block -->
 								</div>
 								<!-- /.col -->
 								<div class="col-sm-4">
 									<div class="description-block">
-										<h5 class="description-header">35</h5>
+										<h5 class="description-header">${account.account_Date }</h5>
 										<span class="description-text">가입날짜</span>
 									</div>
 									<!-- /.description-block -->
@@ -252,5 +252,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<!-- REQUIRED SCRIPTS -->
 	<%@ include
 		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
+	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp"%>
+	
 </body>
 </html>

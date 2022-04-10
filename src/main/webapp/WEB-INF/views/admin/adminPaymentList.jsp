@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>관리자 페이지</title>
+<title>결제 목록 | 관리자 페이지</title>
 
 <%@ include file="../include/adminInclude/adminCSS.jsp"%>
 
@@ -63,24 +63,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<table id="example1" class="table table-bordered table-striped">
 										<thead>
 											<tr>
-												<th>결제 번호</th>
-												<th>회원 이름</th>
-												<th>회원 이메일</th>
-												<th>회원 전화번호</th>
-												<th>회원 결제 방식</th>
-												<th>회원 결제 금액</th>
+												<th width="20px">결제 번호</th>
+												<th width="30px">결제자 이름</th>
+												<th width="30px">결제 방식</th>
+												<th width="120px">결제자 이메일</th>
+												<th width="60px">결제 금액</th>
+												<th width="60px">결제 날짜</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${admin_PayList }" var="admin_payList">
+											<c:forEach items="${admin_PayList }" var="payList">
 												<!-- 프라퍼티이름 변경 -->
 												<tr>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
+													<td>${payList.pay_number }</td>
+													<td>${payList.pay_name }</td>
+													<td>${payList.pay_select }</td>
+													<td>${payList.pay_email }</td>
+													<td>${payList.pay_price }</td>
+													<td>${payList.pay_date }</td>
 												</tr>
 											</c:forEach>
 										</tbody>

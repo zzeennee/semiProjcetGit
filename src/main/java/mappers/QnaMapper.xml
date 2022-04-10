@@ -5,74 +5,74 @@
 
 	<insert id="QnaInsertBoard" parameterType="QnaBoardVO">
 		<!-- INSERT INTO 
-				admin_Board (board_Seq , board_Title, account_id, board_Password, board_Category, board_Content,board_Date)
-	    VALUES (board_Seq.nextval, #{board_Title }, #{account_id} ,#{board_Password }, #{board_Category }, #{board_Content },sysdate)     -->     
+				admin_Board (qnaSeq , qnaTitle, qnaName, qnaPassword, qnaCategory, qnaContent,qnaDate)
+	    VALUES (qnaSeq.nextval, #{qnaTitle }, #{qnaName} ,#{qnaPassword }, #{qnaCategory }, #{qnaContent },sysdate)     -->     
 	    
 	    INSERT INTO
-		qna (board_Seq , board_Title, board_Password, board_Category,
-		board_Content,
-		<if test="board_MainImg != null ">
-			board_MainImg, board_RealMainImg,
+		qna (qnaSeq , qnaTitle, qnaPassword, qnaCategory,
+		qnaContent,
+		<if test="qnaMainImg != null ">
+			qnaMainImg, qnaRealMainImg,
 		</if>
-		board_Content2, board_Date, account_Id
+		qnaContent2, qnaDate, qnaName
 		)
-		VALUES (board_Seq.nextval, #{board_Title }, #{board_Password },
-		#{board_Category }, #{board_Content },
-		<if test="board_MainImg != null ">
-			#{board_MainImg}, #{board_RealMainImg},
+		VALUES (qnaSeq.nextval, #{qnaTitle }, #{qnaPassword },
+		#{qnaCategory }, #{qnaContent },
+		<if test="qnaMainImg != null ">
+			#{qnaMainImg}, #{qnaRealMainImg},
 		</if>
-		#{board_Content2}, sysdate, #{account_Id}
+		#{qnaContent2}, sysdate, #{qnaName}
 		)          
 	</insert>
 	
 	<!-- 목록조회 및 검색 -->
 	<select id="QnaGetBoardList" resultType="QnaBoardVO" parameterType="Criteria">
 		SELECT * FROM qna  
-		 <include refid="search"></include>
-		ORDER BY board_Seq DESC
+		 <include refid="qnaSearch"></include>
+		ORDER BY qnaSeq DESC
 	</select>
 	
 	<!-- 페이징 -->
 	<select id="listPage" resultType="QnaBoardVO" parameterType="Criteria">
-		SELECT  board_Seq, 
-				board_Title, 
-				board_Password, 
-				board_Category, 
-				board_Content, 
-				board_MainImg,
-				board_realMainImg,
-				board_Content2,
-				board_Date,
-				account_id
+		SELECT  qnaSeq, 
+				qnaTitle, 
+				qnaPassword, 
+				qnaCategory, 
+				qnaContent, 
+				qnaMainImg,
+				qnaRealMainImg,
+				qnaContent2,
+				qnaDate,
+				qnaName
 		FROM 		( 
-						SELECT board_Seq, 
-						board_Title, 
-						board_Password, 
-						board_Category, 
-						board_Content, 
-						board_MainImg,
-						board_realMainImg,
-						board_Content2,
-						board_Date,
-						account_id,
-						ROW_NUMBER() OVER(ORDER BY board_Seq DESC) AS RNUM
+						SELECT qnaSeq, 
+						qnaTitle, 
+						qnaPassword, 
+						qnaCategory, 
+						qnaContent, 
+						qnaMainImg,
+						qnaRealMainImg,
+						qnaContent2,
+						qnaDate,
+						qnaName,
+						ROW_NUMBER() OVER(ORDER BY qnaSeq DESC) AS RNUM
 						FROM qna 
 						WHERE 1=1
-						<include refid="search"></include>
+						<include refid="qnaSearch"></include>
 								) MP
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-		ORDER BY board_Seq DESC
+		ORDER BY qnaSeq DESC
 		
 	</select>
 	
 	<!-- 게시물 총 갯수 -->
 	<select id="listCount" parameterType="SearchCriteria" resultType="int">
 		
-		SELECT COUNT(board_Seq)
+		SELECT COUNT(qnaSeq)
 			FROM qna
 			WHERE 1=1
-		<include refid="search"></include>	
-		   AND board_Seq > 0
+		<include refid="qnaSearch"></include>	
+		   AND qnaSeq > 0
 		   
 	</select>
 	
@@ -80,18 +80,18 @@
 	<select id="QnaGetBoard" parameterType="QnaBoardVO" resultType="QnaBoardVO">
 		<![CDATA[
 		SELECT 
-			board_seq           	as board_Seq 
-			, board_title         	as board_Title 
-			, board_password 	   	as board_Password 	
-			, board_category      	as board_Category 
-			, board_content 	   	as board_Content 	
-			, board_mainimg       	as board_MainImg 
-			, board_realmainimg   	as board_realMainImg
-			, board_content2      	as board_Content2 
-			, board_date          	as board_Date 
-			, account_id          	as account_Id
+			qnaSeq 
+			,qnaTitle 
+			,qnaPassword 	
+			,qnaCategory 
+			,qnaContent 	
+			,qnaMainImg 
+			,qnaRealMainImg
+			,qnaContent2 
+			,qnaDate 
+			,qnaName
 		FROM qna
-		WHERE board_Seq = #{board_Seq}
+		WHERE qnaSeq = #{qnaSeq}
 		]]>
 	</select>
 	
@@ -99,20 +99,20 @@
 	<update id="QnaUpdateBoard" parameterType="QnaBoardVO">
 		UPDATE 
 			qna SET
-			board_Title = #{board_Title},
-			account_Id = #{account_Id},
-			board_Category = #{board_Category},
-			board_Content = #{board_Content},
-			board_Content2 = #{board_Content2},
-		<if test="board_MainImg != null "> 
- 			board_MainImg = #{board_MainImg},  
- 			board_RealMainImg = #{board_RealMainImg},
+			qnaTitle = #{qnaTitle},
+			qnaName = #{qnaName},
+			qnaCategory = #{qnaCategory},
+			qnaContent = #{qnaContent},
+			qnaContent2 = #{qnaContent2},
+		<if test="qnaMainImg != null "> 
+ 			qnaMainImg = #{qnaMainImg},  
+ 			qnaRealMainImg = #{qnaRealMainImg},
 		</if> 
-			board_Date = SYSDATE
+			qnaDate = SYSDATE
 		WHERE 
-			board_Seq = #{board_Seq} 
+			qnaSeq = #{qnaSeq} 
 		AND 
-			board_Password = #{board_Password}
+			qnaPassword = #{qnaPassword}
 		
 	</update>
 	
@@ -120,16 +120,16 @@
 	<delete id="QnaDeleteBoard" parameterType="QnaBoardVO">
 	
 		DELETE FROM qna
-		WHERE board_Seq = #{board_Seq} AND board_Password = #{board_Password}
+		WHERE qnaSeq = #{qnaSeq} AND qnaPassword = #{qnaPassword}
 	
 	</delete>
 	
 	<!-- 검색 -->
-	<sql id="search">
+	<sql id="qnaSearch">
 		<if test="searchType != null">
-			<if test="searchType == 't'.toString()">AND board_Title LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'c'.toString()">AND board_Content LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'w'.toString()">AND account_id LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 't'.toString()">AND qnaTitle LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND qnaContent LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND qnaName LIKE '%' || #{keyword} || '%'</if>
 		</if>
 	</sql>
 

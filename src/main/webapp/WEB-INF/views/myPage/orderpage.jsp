@@ -11,10 +11,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마이페이지-주문페이지</title>
+<title>주문페이지 - 마이페이지 | 머신킹덤</title>
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
-
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -62,25 +61,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<tr>
 												<th>주문번호</th>
 												<th>상품명</th>
-												<th>수량</th>
-												<th>금액</th>
 												<th>주소</th>
+												<th>금액</th>
+												<th>수량</th>
+												<th>상태</th>
 												<th>수정/취소</th>
 											</tr>
 										</thead>
 										<tbody>
+										
+									<!--************* 주문내역 보여주기***************************************************  -->	
 											<c:forEach items="${orderList}" var="board">
 												<tr>
-													<td>${board.account_id}</td>
-													<td><a href="orderload.do">${board.order_payselect}</a></td>
-													<td>${board.order_uesrreq}</td>
-													<td>${board.coupon_number}</td>
-													<td></td>
-													<td align="left"><a
-														href="ordermodify.do?account_id=${board.account_id }"><input
-															type="submit" value="수정"
+					    	  <td>${board.orderdata_seq}</td>
+				       <td><a href="#?product_Seq=${board.product_Seq }">${board.product_Name}</a></td>
+					   <td>${board.account_Addr1},${board.account_Addr2},${board.account_Addr3}</td>
+				       <td>${board.pay_price}</td>
+					   <td>${board.product_amount}</td>
+				       <td>${board.state}</td>
+				        <td>${board.order_date}</td>
+									
+								<!-- 주문번호 가져오기 --> <td align="left"><a
+														href="#?orderdata_seq=${board.orderdata_seq }">
+														<input type="submit" value="수정"  
 															class="btn btn-block bg-gradient-primary btn-sm"></a>
-														<a href="canclepage.do?account_id=${board.account_id}"><input
+									<!-- 주문번호 가져오기 -->	<a href="#?account_Id=${board.account_Id}"><input
 															value="취소/교환/반품" type="submit"
 															class="btn btn-block bg-gradient-danger btn-sm"></a>
 													</td>

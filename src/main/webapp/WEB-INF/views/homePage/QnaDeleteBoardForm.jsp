@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%> 
 <!DOCTYPE html>
 <html>
 <style type="text/css">
@@ -58,7 +58,7 @@ position: absolute;
 						<h3 class="breadcrumb-header">게시판</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="#">Home</a></li>
-							<li class="active">게시판</li>
+							<li class="active">고객센터</li>
 						</ul>
 					</div>
 				</div>
@@ -75,12 +75,12 @@ position: absolute;
 		<hr>
 		<!-- 1. 폼태그에 속성 추가  -->
 		<form class="main_blank" name="QnaDeleteForm" action="QnaDeleteBoard.do" method="GET" enctype="multipart/form-data"> 	 
-        <input name="board_Seq" type="hidden" value="${board.board_Seq}" />	 
+        <input name="qnaSeq" type="hidden" value="${board.qnaSeq}" />	 
         <table class="table table-hover">              
                 <!-- 추가항목 시작 -->
 				<tr>
 					<th id="boardt">비밀번호</th>
-					<td align="left" colspan="3"><input type="password" id="password" name="board_Password"/></td>
+					<td align="left" colspan="3"><input type="password" id="password" name="qnaPassword"/></td>
 				</tr>
 				<!-- 추가항목 끝 -->
 				<tr>

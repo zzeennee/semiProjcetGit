@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>관리자 페이지</title>
+  <title>게시글 목록 | 관리자 페이지</title>
 
 <%@ include file="../include/adminInclude/adminCSS.jsp" %> 
   
@@ -58,11 +58,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>게시글 등록 번호</th>
-                    <th>게시글 제목</th>
-                    <th>게시글 카테고리</th>
-                    <th>게시글 등록날짜</th>
-                    <th>게시글 첨부파일</th>
+                    <th width="30px">게시글 등록 번호</th>
+                    <th width="120px">게시글 제목</th>
+                    <th width="30px">게시글 작성자</th>
+                    <th width="30px">게시글 카테고리</th>
+                    <th width="80px">게시글 등록날짜</th>
+                    <th width="80px">게시글 첨부파일</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -72,6 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						<td>${admin_Board.board_Seq }</td>
 						<td align="left"><a href="adminBoardChange.do?board_Seq=${admin_Board.board_Seq }">
 								${admin_Board.board_Title }</a></td>
+						<td>${admin_Board.account_Id }</td>		
 						<td>${admin_Board.board_Category }</td>
 						<td>${admin_Board.board_Date }</td>
 						<td>${admin_Board.board_MainImg }</td>

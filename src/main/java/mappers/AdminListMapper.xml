@@ -10,13 +10,13 @@
 	<!-- ************************************************************************** -->
 	<select id="adminGetOrderList" resultType="AdminListVO">
 		<![CDATA[
-		SELECT * FROM order_product ORDER BY order_Seq DESC
+		SELECT * FROM orderdata ORDER BY orderdata_seq DESC
 		]]>
 	</select>
 	<!-- ************************************************************************** -->
 	<select id="adminGetPayList" resultType="AdminListVO">
 		<![CDATA[
-		SELECT * FROM payment ORDER BY pay_Seq DESC
+		SELECT * FROM payment ORDER BY pay_number DESC
 		]]>
 	</select>
 	<!-- ************************************************************************** -->

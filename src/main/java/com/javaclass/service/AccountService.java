@@ -27,5 +27,8 @@ public interface AccountService {
 	
 	public void deleteAccount(AccountVO vo);
 	
+	//아이디 찾기 
+	public String idFind(String account_Name, String account_Tel); 
 
+	
 }
