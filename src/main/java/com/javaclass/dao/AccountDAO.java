@@ -2,6 +2,8 @@ package com.javaclass.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.javaclass.domain.AccountVO;
 
 public interface AccountDAO {
@@ -29,9 +31,11 @@ public interface AccountDAO {
 	public void deleteAccount(AccountVO vo);
 	
 	//아이디 찾기
-	public List<AccountVO> idFind(String account_Email);
+	public String idConfirm(@Param("account_Name")String account_Name, @Param("account_Tel")String account_Tel);
 	
-	//아이디 찾기 이메일 중복체크
-	public int idFindCheck(String account_Email);
+	//비밀번호 찾기
+	public String userFindPw(AccountVO vo) throws Exception;
+
+	
 
 }

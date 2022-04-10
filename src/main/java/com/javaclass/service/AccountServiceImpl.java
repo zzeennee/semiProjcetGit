@@ -1,7 +1,12 @@
 package com.javaclass.service;
 
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +18,7 @@ import com.javaclass.domain.AccountVO;
 public class AccountServiceImpl implements AccountService {
 
 	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
 	private AccountDAO accountDAOImpl;
 
 	public void insertAccount(AccountVO vo) {
@@ -55,15 +61,26 @@ public class AccountServiceImpl implements AccountService {
 	public void deleteAccount(AccountVO vo) {
 		accountDAOImpl.deleteAccount(vo);
 	}
-	
+
 	//아이디 찾기
-	public List<AccountVO> idFind(String account_Email) {
-		return accountDAOImpl.idFind(account_Email);
-	}
+	/*
+	 * public String idConfirm(String account_Name, String account_Tel){
+	 * accountDAOImpl = SqlSessionTemplate.getMapper(accountDAOImpl.class);
+	 * 
+	 * String result = "";
+	 * 
+	 * try { result = accountDAOImpl.idConfirm(account_Name, account_Tel); } catch
+	 * (Exception e) { e.printStackTrace(); }
+	 * 
+	 * 
+	 * }
+	 */
 	
-	//아이디 찾기 이메일 중복체크
-	public int idFindCheck(String account_Email) {
-		return accountDAOImpl.idFindCheck(account_Email);
+	//비밀번호 찾기
+	public String userFindPw(AccountVO vo) throws Exception {
+		return accountDAOImpl.userFindPw(vo);
 	}
 
 }
+
+	

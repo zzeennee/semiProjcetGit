@@ -1,9 +1,14 @@
 package com.javaclass.dao;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.AbstractQueuedLongSynchronizer;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -67,14 +72,14 @@ public class AccountDAOImpl implements AccountDAO {
 		sqlSession.selectOne("accountMapper.deleteAccount", vo);
 	}
 	
-	//아이디 찾기
-	public List<AccountVO> idFind(String account_Email) {
-		return sqlSession.selectList("accountMApper.idFind", account_Email);
-	}
+	/*
+	 * //아이디 찾기 public String idConfirm(@Param("account_Name")String
+	 * account_Name, @Param("account_Tel")String account_Tel) { return
+	 * sqlSession.selectOne("accountMapper.idConfirm", account_Id); }
+	 */
 	
-	//아이디 찾기 이메일 중복체크
-	public int idFindCheck(String account_Email) {
-		return sqlSession.selectOne("accountMapper.idFindCheck", account_Email);
+	//비밀번호 찾기
+	public String userFindPw(AccountVO vo) throws Exception {
+		return sqlSession.selectOne("accountMApper.userFindPw", vo);
 	}
-
 }

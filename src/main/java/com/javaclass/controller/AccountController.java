@@ -1,6 +1,9 @@
 package com.javaclass.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.javaclass.domain.AccountVO;
 import com.javaclass.service.AccountService;
+import com.javaclass.service.AccountServiceImpl;
 
 @Controller
 //@RequestMapping("/myPage")
@@ -54,7 +60,6 @@ public class AccountController {
 		return "redirect:login.do";
 	}
 	@RequestMapping(value="/myPage/idCheck.do", produces="application/text;charset=utf-8")
-
 	@ResponseBody
 	public String idCheck(AccountVO vo) {
 		AccountVO account = accountServiceImpl.idCheck(vo);
@@ -144,9 +149,35 @@ public class AccountController {
 	}
 	
 	//아이디 찾기
-	@RequestMapping(value="/myPage/idFind.do", method = RequestMethod.POST)
-	public String idFind(String account_Email, Model m) {
-		return "공익";
-	}
+	@RequestMapping("/myPage/idConfirm.do")
+		public String idConfirm(HttpServletRequest request, HttpServletResponse response) {
+			String account_Name = request.getParameter("account_Name");
+			String account_Email = request.getParameter("account_Email");
 
+			AccountServiceImpl member = accountServiceImpl.ge();
+
+			// 해당 이름과 이메일주소를 가진 회원이 존재하는지 확인
+			if (member == null) {
+				request.setAttribute("alertMsg", "일치하는 회원이 존재하지 않습니다.");
+				request.setAttribute("historyBack", true); // historyBack: 뒤로 돌아가기
+				return "common/redirect";
+			}
+
+			// 로그인아이디 알림창 보여주고 로그인화면으로 이동
+			request.setAttribute("alertMsg", name + "회원님의 아이디는 \"" + member.getaccount_Id() + "\"입니다.");
+			request.setAttribute("replaceUrl", "../member/doLoginForm");
+			return "common/redirect";
+		}
+	
+	//비밀번호 찾기
+	/*
+	 * @RequestMapping("myPage/userFindPw.do") public ModelAndView
+	 * userFindPw(@ModelAttribute AccountVO vo) throws Exception { ModelAndView mav
+	 * = new ModelAndView(); String pw = accountServiceImpl.userFindPw(vo);
+	 * mav.setViewName("/myPage/pwFindForm"); mav.addObject("userFindPw", pw);
+	 * return mav; }
+	 */
+
+
+		
 }

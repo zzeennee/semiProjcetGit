@@ -2,6 +2,8 @@ package com.javaclass.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.javaclass.domain.AccountVO;
 
 public interface AccountService {
@@ -28,8 +30,8 @@ public interface AccountService {
 	public void deleteAccount(AccountVO vo);
 	
 	//아이디 찾기 
-	public List<AccountVO> idFind(String account_Email); 
-
-	//아이디 찾기 이메일 중복체크
-	public int idFindCheck(String account_Email);
+	/* public String idConfirm(String account_Name, String account_Tel); */
+	
+	//비밀번호 찾기
+	public String userFindPw(AccountVO vo) throws Exception;
 }
