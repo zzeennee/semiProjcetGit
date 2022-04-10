@@ -14,7 +14,10 @@
 </head>
 <!-- Modal HTML embedded directly into document -->
 <div id="ex1" class="modal">
-  <p>Thanks for clicking. That felt good.</p>
+  <h3>고객님의 아이디는</h3><br>
+  <h3>입니다.</h3>
+  <button type='button' id="pwSearch_btn">비밀번호 찾기</button><br><br><br>
+  
   <a href="#" rel="modal:close">Close</a>
 </div>
 
