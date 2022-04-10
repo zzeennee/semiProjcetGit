@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 
 
-<title>환불 | 머신킹덤</title> 
+<title>Insert title here</title> 
 </head>
 <body>
 	<button onclick="cancelPay()">환불하기</button>

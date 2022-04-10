@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>결제 시스템 | 머신킹덤</title>
+<title>Insert title here</title>
 
 
 </head>
