@@ -8,29 +8,29 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class AdminProductVO {
 	
-	String account_Id;
-	String product_Seq;
-	String product_Name;
-	String product_Password;
-	String product_MainImg;
-	String product_BrandImg;
-	String product_SubImg;
-	String product_realMainImg;
-	String product_realBrandImg;
-	String product_realSubImg;
-	String product_Category;
-	int product_Vol;
-	String product_Content;
-	String product_ModelName;
-	String product_ShortContent;
-	int product_Price;
-	String product_Content2;
-	String product_PlusProduct;
-	String product_Date;
+	private String account_Id;
+	private String product_Seq;
+	private String product_Name;
+	private String product_Password;
+	private String product_MainImg;
+	private String product_BrandImg;
+	private String product_SubImg;
+	private String product_realMainImg;
+	private String product_realBrandImg;
+	private String product_realSubImg;
+	private String product_Category;
+	private int product_Vol;
+	private String product_Content;
+	private String product_ModelName;
+	private String product_ShortContent;
+	private int product_Price;
+	private String product_Content2;
+	private String product_PlusProduct;
+	private String product_Date;
 
-	MultipartFile product1_File;
-	MultipartFile product2_File;
-	MultipartFile product3_File;
+	private MultipartFile product1_File;
+	private MultipartFile product2_File;
+	private MultipartFile product3_File;
 
 	public MultipartFile getProduct1_File() {
 		return product1_File;
@@ -50,7 +50,7 @@ public class AdminProductVO {
 			// ***********************************************
 			// 해당 경로로 변경
 			// 저장 : File - 자바에서 파일과 디렉토리를 생성, 삭제, 관리하는 클래스
-			File f = new File("C:\\springEC\\webwork\\05_semiProject\\src\\main\\webapp\\resources\\upload\\"
+			File f = new File("C:\\spring\\webwork\\semiProjcetGit\\src\\main\\webapp\\resources\\upload\\"
 					+ product_realMainImg);
 
 			try {
@@ -84,7 +84,7 @@ public class AdminProductVO {
 			// ***********************************************
 			// 해당 경로로 변경
 			// 저장 : File - 자바에서 파일과 디렉토리를 생성, 삭제, 관리하는 클래스
-			File f = new File("C:\\springEC\\webwork\\05_semiProject\\src\\main\\webapp\\resources\\upload\\"
+			File f = new File("C:\\spring\\webwork\\semiProjcetGit\\src\\main\\webapp\\resources\\upload\\"
 					+ product_realBrandImg);
 
 			try {
@@ -118,7 +118,7 @@ public class AdminProductVO {
 			// ***********************************************
 			// 해당 경로로 변경
 			// 저장 : File - 자바에서 파일과 디렉토리를 생성, 삭제, 관리하는 클래스
-			File f = new File("C:\\springEC\\webwork\\05_semiProject\\src\\main\\webapp\\resources\\upload\\"
+			File f = new File("C:\\spring\\webwork\\semiProjcetGit\\src\\main\\webapp\\resources\\upload\\"
 					+ product_realSubImg);
 
 			try {
@@ -285,4 +285,20 @@ public class AdminProductVO {
 		this.product_Date = product_Date;
 	}
 
+	@Override
+	public String toString() {
+		return "AdminProductVO [account_Id=" + account_Id + ", product_Seq=" + product_Seq + ", product_Name="
+				+ product_Name + ", product_Password=" + product_Password + ", product_MainImg=" + product_MainImg
+				+ ", product_BrandImg=" + product_BrandImg + ", product_SubImg=" + product_SubImg
+				+ ", product_realMainImg=" + product_realMainImg + ", product_realBrandImg=" + product_realBrandImg
+				+ ", product_realSubImg=" + product_realSubImg + ", product_Category=" + product_Category
+				+ ", product_Vol=" + product_Vol + ", product_Content=" + product_Content + ", product_ModelName="
+				+ product_ModelName + ", product_ShortContent=" + product_ShortContent + ", product_Price="
+				+ product_Price + ", product_Content2=" + product_Content2 + ", product_PlusProduct="
+				+ product_PlusProduct + ", product_Date=" + product_Date + ", product1_File=" + product1_File
+				+ ", product2_File=" + product2_File + ", product3_File=" + product3_File + "]";
+	}
+	
+	
+	
 }
