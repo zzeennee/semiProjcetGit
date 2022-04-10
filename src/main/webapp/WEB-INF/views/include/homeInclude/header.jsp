@@ -24,9 +24,9 @@
 						<li><a href="../myPage/signup.do">회원가입</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><a href="#"> 공지사항</a></li>
-				<li><a href="#"> 이벤트</a></li>
-				<li><a href="/homePage/Qna.do"> 고객센터</a></li>
+				<li><a href="/homePage/notice.do">공지사항</a></li>
+				<li><a href="/homePage/event.do">이벤트</a></li>
+				<li><a href="/homePage/Qna.do">고객센터</a></li>
 			</ul>
 		</div>
 	</div>

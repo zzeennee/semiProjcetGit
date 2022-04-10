@@ -41,7 +41,7 @@ li {list-style: none; float: left; padding: 6px;}
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="breadcrumb-header">고객센터</h3>
+						<h3 class="breadcrumb-header">이벤트</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="/">홈으로</a></li>
 							<li class="active"><a href="/homePage/notice.do">공지사항</a></li>
