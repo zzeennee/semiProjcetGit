@@ -69,8 +69,8 @@ a:link, a:visited,  a:hover, a:active
 		<form class="form-horizontal" action="idConfirm.do" method='post'>
 			<div class="card-body">
 				<div class="form-group row">
-					<label for="acount_Name" class="col-md-8 col-form-label">이름</label>
-					<input type="text" class="form-control" id="acount_Name" name='acount_Name' placeholder="이름">
+					<label for="account_Name" class="col-md-8 col-form-label">이름</label>
+					<input type="text" class="form-control" id="account_Name" name='account_Name' placeholder="이름">
 				</div>
 				<div class="form-group row">
 					<label for="account_Tel" class="col-md-8 col-form-label">전화번호</label>
@@ -97,25 +97,7 @@ a:link, a:visited,  a:hover, a:active
 
 
 <script type="text/javascript">
-//아이디 & 스토어 값 저장하기 위한 변수
-var idV = "";
-// 아이디 값 받고 출력하는 ajax
-var idSearch_click = function(){
-	$.ajax({
-		type:"POST",
-		url:"${pageContext.request.contextPath}/myPage/idFindForm?account_Name="
-				+$('#account_Name').val()+"&account_Tel="+$('#account_Tel').val(),
-		success:function(data){
-			if(data == 0){
-				$('#id_value').text("회원 정보를 확인해주세요!");	
-			} else {
-				$('#id_value').text(data);
-				// 아이디값 별도로 저장
-				idV = data;
-			}
-		}
-	});
-}
+
 
 </script>
 </body>

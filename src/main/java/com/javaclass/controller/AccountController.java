@@ -165,23 +165,15 @@ public class AccountController {
 	
 	//아이디 찾기
 	@RequestMapping("/myPage/idConfirm.do")
-		public String idConfirm(HttpServletRequest request, HttpServletResponse response) {
-			String account_Name = request.getParameter("account_Name");
-			String account_Email = request.getParameter("account_Email");
-
-			AccountServiceImpl member = accountServiceImpl.ge();
-
-			// 해당 이름과 이메일주소를 가진 회원이 존재하는지 확인
-			if (member == null) {
-				request.setAttribute("alertMsg", "일치하는 회원이 존재하지 않습니다.");
-				request.setAttribute("historyBack", true); // historyBack: 뒤로 돌아가기
-				return "common/redirect";
-			}
-
-			// 로그인아이디 알림창 보여주고 로그인화면으로 이동
-			request.setAttribute("alertMsg", name + "회원님의 아이디는 \"" + member.getaccount_Id() + "\"입니다.");
-			request.setAttribute("replaceUrl", "../member/doLoginForm");
-			return "common/redirect";
+		public String idConfirm(AccountVO vo, Model m) {
+		System.out.println("이름"+ vo.getAccount_Name());
+		System.out.println("전화번호" + vo.getAccount_Tel());
+		String accountname = vo.getAccount_Name();
+		String accounttel = vo.getAccount_Tel();
+		String id = accountServiceImpl.idConfirm(vo).getAccount_Id();
+		m.addAttribute("account", id);
+		return "idConfirm";
+	
 		}
 	
 	//비밀번호 찾기

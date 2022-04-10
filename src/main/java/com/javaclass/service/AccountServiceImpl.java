@@ -63,19 +63,13 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	//아이디 찾기
-	/*
-	 * public String idConfirm(String account_Name, String account_Tel){
-	 * accountDAOImpl = SqlSessionTemplate.getMapper(accountDAOImpl.class);
-	 * 
-	 * String result = "";
-	 * 
-	 * try { result = accountDAOImpl.idConfirm(account_Name, account_Tel); } catch
-	 * (Exception e) { e.printStackTrace(); }
-	 * 
-	 * 
-	 * }
-	 */
 	
+	  public AccountVO idConfirm(AccountVO vo){
+		  System.out.println("섭;ㅛ,");
+		  return accountDAOImpl.idConfirm(vo);
+	 
+	  }
+	 
 	//비밀번호 찾기
 	public String userFindPw(AccountVO vo) throws Exception {
 		return accountDAOImpl.userFindPw(vo);
@@ -85,5 +79,11 @@ public class AccountServiceImpl implements AccountService {
 	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo){
 		return accountDAOImpl.adminOrderList(mvo);
 	}
+
+
+
+
+
+
 }
 

@@ -93,7 +93,7 @@
  	</update>
  	
  	<!-- 아이디 찾기 -->
- 	<select id="idConfirm" parameterType="string" resultType="string">
+ 	<select id="idConfirm" parameterType="AccountVO" resultType="AccountVO">
  		SELECT account_Id FROM account
  		WHERE account_Name=#{account_Name} AND account_Tel=#{account_Tel} 
  	</select>

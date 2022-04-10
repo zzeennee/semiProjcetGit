@@ -73,11 +73,13 @@ public class AccountDAOImpl implements AccountDAO {
 		sqlSession.selectOne("accountMapper.deleteAccount", vo);
 	}
 	
-	/*
-	 * //아이디 찾기 public String idConfirm(@Param("account_Name")String
-	 * account_Name, @Param("account_Tel")String account_Tel) { return
-	 * sqlSession.selectOne("accountMapper.idConfirm", account_Id); }
-	 */
+
+	 //아이디 찾기 
+	public AccountVO idConfirm(AccountVO vo) { 
+		System.out.println("다오;ㅛ,");
+		return sqlSession.selectOne("accountMapper.idConfirm", vo); 
+		}
+	 
 	
 	//비밀번호 찾기
 	public String userFindPw(AccountVO vo) throws Exception {

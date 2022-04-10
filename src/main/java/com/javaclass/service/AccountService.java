@@ -32,15 +32,14 @@ public interface AccountService {
 	public void deleteAccount(AccountVO vo);
 	
 	//아이디 찾기 
-	/* public String idConfirm(String account_Name, String account_Tel); */
+	public AccountVO idConfirm(AccountVO vo);
 	
 	//비밀번호 찾기
 	public String userFindPw(AccountVO vo) throws Exception;
 
-	public List<AccountVO> idFind(String account_Email); 
 
 	//아이디 찾기 이메일 중복체크
-	public int idFindCheck(String account_Email);
+	/* public int idFindCheck(String account_Email); */
 	
 	//마이홈 주문목록 리스트
 	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo);
