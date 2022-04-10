@@ -22,12 +22,6 @@ public class BucketController {
 			  
 			  List<BucketVO> list = bucketService.getBucketList();
 			  System.out.println("정상작동");
-			  System.out.println(list.get(0).getId());
-			  System.out.println(list.get(0).getProduct_amount());
-			  System.out.println(list.get(0).getProduct_image());
-			  System.out.println(list.get(0).getProduct_name());
-			  System.out.println(list.get(0).getProduct_number());
-			  System.out.println(list.get(0).getProduct_price());
 			  m.addAttribute("bucketList",list);
 	}
 	
