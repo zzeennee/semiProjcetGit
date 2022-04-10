@@ -10,10 +10,7 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="/">메인으로</a></li>
-						<li><a href="#">SAMSUNG</a></li>
-						<li><a href="#">LG</a></li>
-						<li><a href="#">APPLE</a></li>
-						<li><a href="#">ETC</a></li>
+						<li><a href="store.do">상품</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>

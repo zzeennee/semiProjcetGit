@@ -76,8 +76,9 @@
 							<div class="card-header">
 								<h3 class="card-title">결제정보</h3>
 							</div>
+							
 							<div class="card-body" width='400px'>
-								<label>주문자</label>
+								<label>주문자</label>							
 								<div class="input-group mb-3">							
 									<input type="text" class="form-control" id="sender_name"
 										name="sender_name" placeholder="보내는 사람 이름" required>
@@ -220,9 +221,9 @@
 
 
 								<div class="card-footer">
-									<button type="submit" class="btn btn-info float-left" style="margin-right:40px">이전</button>
-									<button type="submit"
-											class="btn btn-info float-right">다음</button>
+									<a href="bucket.do"><button type="button" class="btn btn-info float-left" style="margin-right:40px">이전</button></a>
+									<a href="savePayment.do"><button type="submit"
+											class="btn btn-info float-right">다음</button></a>
 								</div>
 
 

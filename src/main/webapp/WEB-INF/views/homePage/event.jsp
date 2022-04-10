@@ -45,8 +45,8 @@ li {list-style: none; float: left; padding: 6px;}
 						<ul class="breadcrumb-tree">
 							<li><a href="/">홈으로</a></li>
 							<li class="active"><a href="/homePage/notice.do">공지사항</a></li>
-							<li class="active"><a href="/homePage/notice.do">이벤트</a></li>
-							<li class="active"><a href="/homePage/notice.do">고객센터</a></li>
+							<li class="active"><a href="/homePage/event.do">이벤트</a></li>
+							<li class="active"><a href="/homePage/Qna.do">고객센터</a></li>
 						</ul>
 					</div>
 				</div>
@@ -104,7 +104,7 @@ li {list-style: none; float: left; padding: 6px;}
 		</div><!-- container -->
 	</form>	
         <br><br>
-         <a href="QnaInsertBoard.do"><button type="button" class="btn btn-info float-right">글쓰기</button></a>
+         
 
         <br><br>
         <div>

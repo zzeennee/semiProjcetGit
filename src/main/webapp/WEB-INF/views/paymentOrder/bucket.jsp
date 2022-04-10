@@ -65,7 +65,7 @@ window.onload = function(){
     
     //변경 버튼 클릭시 변경 금액 보여주기
     $(".sChange").click(function(){
-	   	
+    	total();
 	});
 	
     //홈페이지 진입시 총 결제금액 보여주기
@@ -150,7 +150,7 @@ function total(){
 								<td>${bucket.product_image }</td>
 								<td class="project_progress"><small><input
 										type="text" id="pay" class="pay" style="width: 30%"
-										value="${bucket.product_amount }"></input></small>
+										value="${bucket.product_amount}"></input></small>
 									<button type="button" class="sChange">변경</button>
 								<td class="project-state" id="won" class="won"
 									value="${bucket.product_price }"><span> <label
