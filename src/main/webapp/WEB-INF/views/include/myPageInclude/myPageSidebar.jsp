@@ -29,14 +29,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/adminPaymentList.do" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                결제 내역
-              </p>
-            </a>
-          </li> 
          <c:if test="${sessionScope.admin eq 'ok'}">
            <li class="nav-item">
             <a href="../admin/adminHome.do" class="nav-link">
