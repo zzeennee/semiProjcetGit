@@ -33,19 +33,17 @@ public class AdminProductController {
 	}
 
 	// 관리자 상품 목록
-	@RequestMapping(value={"/adminProductList.do","/index.do","/store.do"})
+	@RequestMapping("/adminProductList.do")
 	public void GetProductList(AdminProductVO vo, Model model) {
 		// 뷰 페이지 지정 (1) ModelAndView (2) void (3) String
 		// 뷰로 데이터 전송 (1) ModelAndView (2) /(3) Model
 		model.addAttribute("admin_ProductList", productService.adminGetProductList(vo));
-		System.out.println("여기 들어왔음~`" + productService.adminGetProductList(vo));
 	}
-	
+
 	// 관리자 상품 상세 조회
-	@RequestMapping(value={"/adminProductChange.do","/adminProductGetBoard.do"})
+	@RequestMapping("/adminProductChange.do")
 	public void getProduct(AdminProductVO vo, Model m) {
 		m.addAttribute("admin_Product", productService.adminGetProduct(vo));
-		System.out.println("여기 들어왔음~`" + productService.adminGetProduct(vo));
 	}
 
 	// 관리자 상품 수정
