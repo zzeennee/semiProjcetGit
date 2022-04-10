@@ -1,7 +1,7 @@
 package com.javaclass.domain;
 
 public class PaymentVO {
-	int order_number;
+	int orderdata_seq;
 	int payment_number;
 	String id;
 	String sender_name;
@@ -22,11 +22,12 @@ public class PaymentVO {
 	String state;
 	
 	
-	public int getOrder_number() {
-		return order_number;
+	
+	public int getOrderdata_seq() {
+		return orderdata_seq;
 	}
-	public void setOrder_number(int order_number) {
-		this.order_number = order_number;
+	public void setOrderdata_seq(int orderdata_seq) {
+		this.orderdata_seq = orderdata_seq;
 	}
 	public int getPayment_number() {
 		return payment_number;
@@ -136,4 +137,7 @@ public class PaymentVO {
 	public void setState(String state) {
 		this.state = state;
 	}
+	
+	
+	
 }
