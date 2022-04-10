@@ -15,14 +15,20 @@ public class homeController {
 
 	@Autowired
 	private AdminProductService productService;
-	// 상품 목록
+	
 	@RequestMapping("/")
+	public void homePageJoin() {
+		System.out.println("홈페이지 불러오기");
+	}
+	
+	// 상품 목록
+	@RequestMapping("/homePage.do")
 	public void GetProductListHome(AdminProductVO vo, Model model) {
 		model.addAttribute("admin_ProductList", productService.adminGetProductList(vo));
 		System.out.println("여기 들어왔음~`" + productService.adminGetProductList(vo));
 	}
 	
-	@RequestMapping("/homePage/store.do")
+	@RequestMapping("/store.do")
 	public void GetProductListStrore(AdminProductVO vo, Model model) {
 		// 뷰 페이지 지정 (1) ModelAndView (2) void (3) String
 		// 뷰로 데이터 전송 (1) ModelAndView (2) /(3) Model
