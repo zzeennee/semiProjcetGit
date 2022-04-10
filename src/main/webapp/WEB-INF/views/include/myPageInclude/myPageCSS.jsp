@@ -18,4 +18,36 @@
   input:invalid {
   border: 1px solid red;
 }
+
+#pwSearch_btn {
+	padding: 6px 30px;
+	background:#00c2cb;
+	border: #00c2cb;
+	
+}
+
+.modal {
+	width:300px;
+	height:400px;
+	position:absolute;
+	
+}
+
+.hidden {
+	display: none;
+}
+
+#ex1 {
+	align-items: center;
+}
+
+h3 {
+	text-align: center;
+}
+
+#ex1 #pwSearch_btn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 </style>
