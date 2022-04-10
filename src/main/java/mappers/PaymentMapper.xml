@@ -7,16 +7,16 @@
 	<!-- oracle 인 경우 -->	
 	<!-- 주문정보 생성 -->
 	<insert id="insertPayment" parameterType="PaymentVO">
-	INSERT INTO ORDERDATA(order_number,payment_number,id,
+	INSERT INTO ORDERDATA(ORDERDATA_SEQ,account_id,PAY_NUMBER,
    				 sender_name,sender_email,sender_tel,sender_zonecode,
    				 sender_address,sender_daddress,receiver_name,receiver_email,
     			 receiver_tel,receiver_zonecode, receiver_address,receiver_daddress,
-    			 user_require, buylist_number, price, state, ORDER_DATE)
-		VALUES(ORDERDATA_SEQ.NEXTVAL, null , 'dd33', #{sender_name}, #{sender_email},
+    			 user_require, buylist_number, price, ORDER_DATE, state)
+		VALUES(order_Seq.NEXTVAL,'abc123', null, #{sender_name}, #{sender_email},
 				#{sender_tel}, #{sender_zonecode}, #{sender_address}, #{sender_daddress},
 				#{receiver_name}, #{receiver_email}, #{receiver_tel}, #{receiver_zonecode},
 				#{receiver_address}, #{receiver_daddress}, #{user_require}, null,
-				#{price}, '결제 진행중', sysdate)
+				#{price}, sysdate, '결제 진행중')
 	</insert> 
 	
 	<select id="getPaymentList" resultType="PaymentVO" >
@@ -24,25 +24,26 @@
 		FROM ORDERDATA	
 	</select>
 	
+	<!-- 최종 결제금액 삽입 -->
 	<select id="selectSum" resultType="int" >
-		SELECT SUM(sprice*samount) 
-		FROM BTEST
+		SELECT SUM(p1.product_price*b1.product_amount) 
+		FROM bucket b1 inner join product_info p1 ON b1.product_seq = p1.product_seq
 	</select>  
 	
 	<select id="selectUserInfo" parameterType="int" resultType="PaymentVO">
 		SELECT *
 		FROM ORDERDATA
-		WHERE order_number = #{order_number}
+		WHERE ORDERDATA_SEQ = #{orderdata_seq}
 	</select>
 	
 	<!-- 주문번호 받아오기 -->
 	<select id="orderSeq" resultType="int">
-		SELECT MAX(order_number) FROM ORDERDATA
+		SELECT MAX(ORDERDATA_SEQ) FROM ORDERDATA
 	</select>
 	
 	<!-- 구매리스트 번호 받아오기 -->
 	<select id="orderListSeq" resultType="int">
-		SELECT MAX(LIST_NUMBER) FROM BUYLIST
+		SELECT MAX(BUYLIST_NUMBER) FROM BUYLIST
 	</select>
 	
 	<!-- 구매리스트 임시정보 삭제 -->
@@ -58,17 +59,17 @@
 	
 	<!-- 결제번호 받아오기 -->
 	<select id="selectPayNumber" resultType="int">
-		SELECT MAX(pay_number) FROM PAYMENT 
+		SELECT MAX(PAY_NUMBER) FROM PAYMENT 
 	</select>
 	
 	<!-- 결제번호를 주문정보에 업데이트 -->
 	<update id="updatePaymentNumber" parameterType="PaymentVO">
-		UPDATE ORDERDATA SET payment_number = #{payment_number}, state='결제완료'  WHERE order_number = #{order_number}
+		UPDATE ORDERDATA SET PAY_NUMBER = #{payment_number}, state='결제완료'  WHERE ORDERDATA_SEQ = #{orderdata_seq}
 	</update>
 	
 	<!-- 주문번호를 주문정보에 업데이트 -->
 	<update id="updateBuylistNumber" parameterType="PaymentVO">
-		UPDATE ORDERDATA SET buylist_number = #{buylist_number} WHERE order_number = #{order_number}
+		UPDATE ORDERDATA SET buylist_number = #{buylist_number} WHERE ORDERDATA_SEQ = #{orderdata_seq}
 	</update>	  	  
 	
 	<!-- 결제 실패시 주문정보 삭제 -->
@@ -83,14 +84,14 @@
 	
 	<!-- 빈 구매리스트 번호 생성 -->
 	<insert id="insertBuyListNumber">
-		INSERT INTO BUYLIST(LIST_NUMBER, PRODUCT_NUMBER, PRODUCT_NAME, PRODUCT_IMAGE, PRODUCT_AMOUNT, PRODUCT_PRICE )
-		VALUES(buylist_number.NEXTVAL, 0, '임시', '임시', 0, 0)
+		INSERT INTO BUYLIST(BUYLIST_NUMBER, PRODUCT_SEQ, PRODUCT_AMOUNT )
+		VALUES(buylist_number.NEXTVAL, 1,1)
 	</insert> 
 	
 	<!-- 구매리스트 데이터 삽입 -->
 	<insert id="BuyListinsert" parameterType="BuylistVO">
-		INSERT INTO BUYLIST(LIST_NUMBER, PRODUCT_NUMBER, PRODUCT_NAME, PRODUCT_IMAGE, PRODUCT_AMOUNT, PRODUCT_PRICE )
-		VALUES(#{list_number}, #{product_number}, #{product_name}, #{product_image}, #{product_amount}, #{product_price})
+		INSERT INTO BUYLIST(BUYLIST_NUMBER, PRODUCT_SEQ, PRODUCT_AMOUNT)
+		VALUES(buylist_number.NEXTVAL, #{product_seq}, #{product_amount})
 	</insert> 
 	
 	

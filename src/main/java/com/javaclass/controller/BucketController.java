@@ -22,6 +22,7 @@ public class BucketController {
 			  
 			  List<BucketVO> list = bucketService.getBucketList();
 			  System.out.println("정상작동");
+
 			  m.addAttribute("bucketList",list);
 	}
 	
@@ -32,7 +33,7 @@ public class BucketController {
 			  List<BucketVO> list = bucketService.getBucketList();
 			  System.out.println("정상작동");
 			  
-			  m.addAttribute("bucketList",list);
+			  m.addAttribute("bucketList", list);
 			  
 	}
 	 
