@@ -94,11 +94,15 @@
  	</update>
  	
  	<!-- 아이디 찾기 -->
- 	<select id="idFind" resultType="string">
- 		SELECT infull(account_Id, 0) FROM account
- 		WHERE account_Name=#{account_Name} AND account_Tel=#{account_Tel} 
+ 	<select id="idFind" resultType="AccountVO">
+ 		SELECT * FROM account
+ 		WHERE account_Email = #{account_Email} 
  	</select>
  	
-
+ 	<!-- 아이디 찾기 중복체크 -->
+ 	<select id="idFindCheck" resultType="int">
+ 		SELECT count(*) FROM account
+ 		WHERE account_Email = #{account_Email}
+ 	</select>
 
 </mapper>

@@ -1,7 +1,6 @@
 package com.javaclass.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaclass.domain.AccountVO;
@@ -147,12 +145,8 @@ public class AccountController {
 	
 	//아이디 찾기
 	@RequestMapping(value="/myPage/idFind.do", method = RequestMethod.POST)
-	@ResponseBody
-	public String idFind(@RequestParam("account_Name") String account_Name, @RequestParam("account_Tel") String account_Tel) {
-		String result = accountServiceImpl.idFind(account_Name, account_Tel);
-
-		return result;
+	public String idFind(String account_Email, Model m) {
+		return "공익";
 	}
-	
 
 }
