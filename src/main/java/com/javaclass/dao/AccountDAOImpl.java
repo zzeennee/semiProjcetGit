@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -69,13 +68,13 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 	
 	//아이디 찾기
-	public String idFind(@Param("account_Name")String account_Name, @Param("account_Tel")String account_Tel) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("account_Name", account_Name);
-		map.put("account_Tel", account_Tel);
-		return sqlSession.selectOne("accountMapper.idFind", map);
+	public List<AccountVO> idFind(String account_Email) {
+		return sqlSession.selectList("accountMApper.idFind", account_Email);
 	}
 	
-	
+	//아이디 찾기 이메일 중복체크
+	public int idFindCheck(String account_Email) {
+		return sqlSession.selectOne("accountMapper.idFindCheck", account_Email);
+	}
 
 }

@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -54,12 +53,6 @@ a:link, a:visited,  a:hover, a:active
 </head>
 <body>
 
-	<!-- Cookie가 비어있지 않을 때 checked 속성을 줌 -->
-	<c:if test="${not empty cookie.user_check}">
-		<c:set value="checked" var="checked"/>
-	</c:if>
-
-
 
 	<div class="card card-info">
 		<!-- <div class="card-header">
@@ -77,16 +70,16 @@ a:link, a:visited,  a:hover, a:active
 			<div class="card-body">
 				<div class="form-group row">
 					<label for="userid" class="col-md-8 col-form-label">아이디</label>
-					<input type="text" class="form-control" id="userid" name='account_Id' placeholder="아이디" value="${cookie.user_check.value }" required>
+					<input type="text" class="form-control" id="userid" name='account_Id' placeholder="아이디" required>
 				</div>
 				<div class="form-group row">
-					<label for="inputPassword" class="col-md-8 col-form-label">비밀번호</label>
+					<label for="inputPassword3" class="col-md-8 col-form-label">비밀번호</label>
 					<input type="password" class="form-control" id="inputPassword" name='account_Password' placeholder="비밀번호" required>
 				</div>
 				<div class="form-group row">
 					<div class="offset-sm-2 col-sm-10">
-							<input type="checkbox" class="form-check-input" id="remember_us" name="remember_userId" ${checked}> 
-							<label class="form-check-label" for="remember_us">아이디 저장</label>
+							<input type="checkbox" class="form-check-input" id="exampleCheck2"> 
+							<label class="form-check-label" for="exampleCheck2">아이디 저장</label>
 					</div>
 				</div>
 			</div>
@@ -109,13 +102,10 @@ a:link, a:visited,  a:hover, a:active
 	</div>
 
 	<script type="text/javascript">
-	 var flag = '${param.password}';
+	var flag = '${param.password}';
 	 if(flag=='false'){
 		 alert("아이디 또는 비밀번호가 틀립니다.")
 	 }
-	 
-
-
 	</script>
 </body>
 </html>
