@@ -52,10 +52,10 @@
 					<div class="header-search">
 						<form name="frmSelect" method="post" action="/admin/adminProductList.do">
 							<select class="input-select" name="searchOption">
-								<option value="all" <c:out value="${nn.searchOption == 'all'?'selected':''}"/>>All Categories</option>
+								<option value="all" <c:out value="${nn.searchOption == 'all'?'selected':''}"/>>전체 검색</option>
 								<option value="product_Name" <c:out value="${nn.searchOption == 'product_Name'?'selected':''}"/>>상품명</option>
 								<option value="product_Category" <c:out value="${nn.searchOption == 'product_Category'?'selected':''}"/>>브랜드명</option>
-							</select> <input class="input" placeholder="Search here">
+							</select> <input class="input" placeholder="검색어를 입력하세요.">
 							<button class="search-btn">검색</button>
 						</form>
 					</div>
