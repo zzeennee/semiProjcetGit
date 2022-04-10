@@ -15,13 +15,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script type="text/javascript">
-	
-	
 	$('#change').click(function() {
 		var check = $('#inputStatus').val()
 		console.log(check)
 	})
-
 </script>
 
 
@@ -47,7 +44,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 		<div class="content-wrapper">
 
-			<input type="hidden" name="account_id" value="${board.account_id }">
+			<input type="hidden" name="account_Id"
+				value="${sessionScope.logname }">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
@@ -75,53 +73,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<h3 class="card-title">취소/교환/반품</h3>
 								</div>
 								<!-- /.card-header -->
+								<!-- form action 주고 account_id 값 주기 ************************************** -->
+								<form action="canclepage2.do?account_Id="${sessionScope.logname }">
+									<!-- input 타입에 hidden 값을 불려오도록 설정 ************************************* -->
+									<input type="hidden" name="account_Id"
+										value="${sessionScope.logname }">
+									<div class="card-body">
+										<table id="example1"
+											class="table table-bordered table-striped">
+											<thead>
+												<tr>
+													<th>주문번호</th>
+													<th>상품명</th>
+													<th>금액</th>
+													<th>수량</th>
+													<th>취소/교환/반품</th>
+												</tr>
+											</thead>
 
-								<div class="card-body">
-									<table id="example1" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th>주문번호</th>
-												<th>상품명</th>
-												<th>금액</th>
-												<th>수량</th>
-												<th>취소/교환/반품</th>
-											</tr>
-										</thead>
-										
-						<!-- ******************** 취소/교환 페이지 ************************************************************-->				
-										<tbody>
+											<!-- ******************** 취소/교환 페이지 ************************************************************-->
+											<tbody>
 
-											<tr>
-												<td>${board.account_id}</td>
-												<td>${board.order_payselect}</td>
-												<td>${board.order_uesrreq}</td>
-												<td>${board.coupon_number}</td>
-												<!-- form action 주고 account_id 값 주기 ************************************** -->
-												<form action="canclepage2.do?account_id=${board.account_id}">
-												
-												<!-- input 타입에 hidden 값을 불려오도록 설정 ************************************* -->
-												
-												<input type="hidden" name="account_id" value="${board.account_id }">
-												
-						<!--**********************옵션 취소/교환 선택주기 ******************************************************* -->						
-												
-												<td><select id="inputStatus" name="product_seq">
-														<option selected>${board.product_seq }</option>
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-												</select> <input type="text" name="order_uesrreq" id="changetext" class="form-control"
-													placeholder="변경 사유를 입력하세요." required> <input
-													type="submit" id="change" class="btn btn-info" value="확인"></td>
-												</form>
-											</tr>
+												<tr>
+													<td>${board.orderdata_seq}</td>
+													<td>${board.product_Name}</td>
+													<td>${board.pay_price}</td>
+													<td>${board.product_amount}</td>
+
+													<!--**********************옵션 취소/교환 선택주기 ******************************************************* -->
+
+													<td><select id="inputStatus" name="state">
+															<option selected>${board.state }</option>
+															<option>취소</option>
+															<option>교환</option>
+															<option>반품</option>
+													</select> <input type="text" name="user_require" id="changetext"
+														class="form-control" placeholder="변경 사유를 입력하세요." required>
+														<input type="submit" id="change" class="btn btn-info"
+														value="확인"></td>
+
+												</tr>
 
 
 
-										</tbody>
-									</table>
-								</div>
-
+											</tbody>
+										</table>
+									</div>
+								</form>
 								<!-- /.card-body -->
 							</div>
 							<!-- /.card -->
