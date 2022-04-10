@@ -78,7 +78,7 @@
 							<h3>
 								비싼거<br>고민된다
 							</h3>
-							<a href="#" class="cta-btn">상품 으로<i
+							<a href="admin/adminProductGetBoard.do?product_Seq=1" class="cta-btn">상품 으로<i
 								class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
@@ -95,7 +95,7 @@
 							<h3>
 								적당히 비싸다<br>살만하다
 							</h3>
-							<a href="#" class="cta-btn">상품 으로<i
+							<a href="admin/adminProductGetBoard.do?product_Seq=2" class="cta-btn">상품 으로<i
 								class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
@@ -112,7 +112,7 @@
 							<h3>
 								저렴하다<br>일단사자
 							</h3>
-							<a href="#" class="cta-btn">상품 으로<i
+							<a href="admin/adminProductGetBoard.do?product_Seq=3" class="cta-btn">상품 으로<i
 								class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
@@ -147,7 +147,7 @@
 												</div>
 												<div class="product-body">
 													<p class="product-category"><c:out value="${admin_Product.product_Category }"/></p>
-													<h3 class="product-name"><a href="adminProductGetBoard.do?product_Seq=${admin_Product.product_Seq }"><c:out value="${admin_Product.product_Name }"/></a></h3>
+													<h3 class="product-name"><a href="admin/adminProductGetBoard.do?product_Seq=${admin_Product.product_Seq }"><c:out value="${admin_Product.product_Name }"/></a></h3>
 													<h4 class="product-price"><c:out value="${admin_Product.product_Price }"/>원</h4>
 												</div>
 												<div class="add-to-cart">

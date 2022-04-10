@@ -13,30 +13,6 @@
 	<%@ include file="../include/homeInclude/header.jsp" %>
 	<!-- 여기에 top -->
 	<%@ include file="../include/homeInclude/top.jsp" %>
-		
-		<!-- BREADCRUMB -->
-		<div id="breadcrumb" class="section">
-		
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">All Categories</a></li>
-							<li><a href="#">Accessories</a></li>
-							<li><a href="#">Headphones</a></li>
-							<li class="active">${product_Name }</li>
-						</ul>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /BREADCRUMB -->
-
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -45,106 +21,30 @@
 				<div class="row">
 					<!-- Product main img -->
 					<div class="col-md-5 col-md-push-2">
-						<!-- <div id="product-main-img" class="slick-initialized slick-slider"><button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display: block;">Previous</button>
-							<div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 2880px;"><div class="product-preview slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 720px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1; overflow: hidden;">
-								
-							<img width="300" role="presentation" src="../resources/img/product01.png" class="zoomImg" style="position: absolute; top: 20.1px; left: 118.8px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;"></div><div class="product-preview slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" style="width: 720px; position: relative; left: -720px; top: 0px; z-index: 998; opacity: 0; overflow: hidden;">
-								<img src="../resources/img/product03.png" alt="">
-							<img role="presentation" src="../resources/img/product03.png" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;"></div>
-							</div>
-							</div>
-
-						<button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: block;">Next</button></div> -->
-						<img width="400" src="../resources/upload/${board.board_RealMainImg} " alt="">
+						<img width="400" src="../resources/upload/${admin_Product.product_realMainImg} " alt="${admin_Product.product_MainImg}">
 					</div>
 					<!-- /Product main img -->
 
-					<!-- Product thumb imgs -->
-					<!-- <div class="col-md-2  col-md-pull-5">
-						<div id="product-imgs" class="slick-initialized slick-slider slick-dotted">
-							
-
-							
-
-							
-
-							
-						<div class="slick-list draggable" style="padding: 0px;"><div class="slick-track" style="opacity: 1; width: 2880px; transform: translate3d(-720px, 0px, 0px);"><div class="product-preview slick-slide slick-cloned" tabindex="-1" style="width: 230px;" data-slick-index="-4" aria-hidden="true">
-								<img src="../resources/img/product01.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" tabindex="-1" style="width: 230px;" data-slick-index="-3" aria-hidden="true">
-								<img src="../resources/img/product03.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" tabindex="-1" style="width: 230px;" data-slick-index="-2" aria-hidden="true">
-								<img src="../resources/img/product06.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned slick-active" tabindex="-1" style="width: 230px;" data-slick-index="-1" aria-hidden="false">
-								<img src="../resources/img/product08.png" alt="">
-							</div><div class="product-preview slick-slide slick-current slick-active slick-center" tabindex="0" style="width: 230px;" data-slick-index="0" aria-hidden="false" role="tabpanel" id="slick-slide10" aria-describedby="slick-slide-control10">
-								<img src="../resources/img/product01.png" alt="">
-							</div><div class="product-preview slick-slide slick-active" tabindex="0" style="width: 230px;" data-slick-index="1" aria-hidden="false" role="tabpanel" id="slick-slide11" aria-describedby="slick-slide-control11">
-								<img src="../resources/img/product03.png" alt="">
-							</div><div class="product-preview slick-slide" tabindex="0" style="width: 230px;" data-slick-index="2" aria-hidden="true" role="tabpanel" id="slick-slide12" aria-describedby="slick-slide-control12">
-								<img src="../resources/img/product06.png" alt="">
-							</div><div class="product-preview slick-slide" tabindex="-1" style="width: 230px;" data-slick-index="3" aria-hidden="true" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-								<img src="../resources/img/product08.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned slick-center" tabindex="-1" style="width: 230px;" data-slick-index="4" aria-hidden="true">
-								<img src="../resources/img/product01.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" tabindex="-1" style="width: 230px;" data-slick-index="5" aria-hidden="true">
-								<img src="../resources/img/product03.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" tabindex="-1" style="width: 230px;" data-slick-index="6" aria-hidden="true">
-								<img src="../resources/img/product06.png" alt="">
-							</div><div class="product-preview slick-slide slick-cloned" tabindex="-1" style="width: 230px;" data-slick-index="7" aria-hidden="true">
-								<img src="../resources/img/product08.png" alt="">
-							</div></div></div><ul class="slick-dots" style="display: block;" role="tablist"><li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control10" aria-controls="slick-slide10" aria-label="1 of 2" tabindex="0" aria-selected="true">1</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control11" aria-controls="slick-slide11" aria-label="2 of 2" tabindex="-1">2</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control12" aria-controls="slick-slide12" aria-label="3 of 2" tabindex="-1">3</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control13" aria-controls="slick-slide13" aria-label="4 of 2" tabindex="-1">4</button></li></ul></div>
-					</div> -->
-					<!-- /Product thumb imgs -->
-
 					<!-- Product details -->
 					<div class="col-md-5">
-					
 						<div class="product-details">
-							<form id="frm" method="post" action="#">
+							<form id="frm" method="post" action="">
 							<input name="product_Seq" type="hidden" value="${admin_Product.product_Seq}" />
-							<h2 class="product-name">${product_Name }</h2>
+							<h2 class="product-name">${admin_Product.product_Name }</h2>
+							<p>모델명 : ${admin_Product.product_ModelName}</p>
 							<div>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<a class="review-link" href="#">10 리뷰(s) | 리뷰작성</a>
+								<h3 class="product-price">${admin_Product.product_Price }원</h3>
+								<span class="product-available">남은 수량:${admin_Product.product_Vol}</span>
 							</div>
-							<div>
-								<h3 class="product-price">${admin_Product.product_Price } 원 <del class="product-old-price">${admin_Product.product_Price } 원</del></h3>
-								<span class="product-available">In Stock</span>
-							</div>
-							<p>클릭한 제품의 상세정보 ::: ${admin_Product.product_Content} 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.</p>
-
-							<div class="product-options">
-								<label>
-									Size
-									<select class="input-select">
-										<option value="0">X</option>
-									</select>
-								</label>
-								<label>
-									Color
-									<select class="input-select">
-										<option value="0">Red</option>
-									</select>
-								</label>
-							</div>
-
+							<p>${admin_Product.product_ShortContent}</p>
 							<div class="add-to-cart">
 								<div class="qty-label">
-									${admin_Product.product_Vol }
 									<div class="input-number">
 										<input type="number">
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> 장바구니 추가</button>
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>장바구니 추가</button>
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>구매하기</button>
 							</div>
 							</form>
 						</div>
@@ -157,8 +57,8 @@
 							<!-- product tab nav -->
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">요약</a></li>
-								<li><a data-toggle="tab" href="#tab2">상세정보</a></li>
-								<li><a data-toggle="tab" href="#tab3">리뷰 (3)</a></li>
+								<li><a data-toggle="tab" href="#tab2">상세 정보</a></li>
+								<li><a data-toggle="tab" href="#tab3">리뷰 보기</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -168,7 +68,7 @@
 								<div id="tab1" class="tab-pane fade in active">
 									<div class="row">
 										<div class="col-md-12">
-											<p>요약정보 ::: 제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.</p>
+											<p>${admin_Product.product_ShortContent }</p>
 										</div>
 									</div>
 								</div>
@@ -178,7 +78,18 @@
 								<div id="tab2" class="tab-pane fade in">
 									<div class="row">
 										<div class="col-md-12">
-											<p>상세정보 ::: 제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.제품설명이 들어갑니다.</p>
+											<img width="400" src="../resources/upload/${admin_Product.product_BrandImg} " alt="${admin_Product.product_BrandImg}">
+											<p>${admin_Product.product_Content }</p>
+											<br/>
+											<hr/>
+											<br/>
+											<img width="400" src="../resources/upload/${admin_Product.product_realMainImg} " alt="${admin_Product.product_MainImg}">
+											<img width="400" src="../resources/upload/${admin_Product.product_SubImg} " alt="${admin_Product.product_SubImg}">
+											<p>${admin_Product.product_Content2 }</p>
+											<br/>
+											<hr/>
+											<br/>
+											<p>제품 등록 및 수정 일 : ${admin_Product.product_Date }</p>
 										</div>
 									</div>
 								</div>
@@ -370,146 +281,7 @@
 			</div>
 			<!-- /container -->
 		</div>
-		<!-- /SECTION -->
-
-		<!-- Section -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-
-					<div class="col-md-12">
-						<div class="section-title text-center">
-							<h3 class="title">Related Products</h3>
-						</div>
-					</div>
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="../resources/img/product01.png" alt="">
-								<div class="product-label">
-									<span class="sale">-30%</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">제품이름</a></h3>
-								<h4 class="product-price">1,000,000 원 <del class="product-old-price">1,000,000 원</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="../resources/img/product02.png" alt="">
-								<div class="product-label">
-									<span class="new">NEW</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">제품이름</a></h3>
-								<h4 class="product-price">1,000,000 원 <del class="product-old-price">1,000,000 원</del></h4>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<div class="clearfix visible-sm visible-xs"></div>
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="../resources/img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">제품이름</a></h3>
-								<h4 class="product-price">1,000,000 원 <del class="product-old-price">1,000,000 원</del></h4>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="../resources/img/product04.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">제품이름</a></h3>
-								<h4 class="product-price">1,000,000 원 <del class="product-old-price">1,000,000 원</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /Section -->
-			
+		<!-- /SECTION -->	
 	<!-- 여기에 푸터 -->
 	<%@ include file="../include/homeInclude/footer.jsp" %>
 	<!-- js -->
