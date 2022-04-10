@@ -1,6 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="ko">
 <!-- 여기에 헤드 -->
@@ -145,21 +144,19 @@
 								<!-- tab -->
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
-									asd ${admin_ProductList }
-									<%-- <c:forEach items="${admin_ProductList }" var="admin_Product"> --%>	<!-- 반복을 위해서 필요함 -->
 										<!-- product -->
-										<%-- <div class="product">
+										<div class="product">
 											<div class="product-img">
-												<img src="../resources/dist/img/${admin_ProductList.product_realMainImg }" alt="">
+												<img src="../resources/dist/img/product01.png" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category"><c:out value="${admin_Product.product_Name }"/></p>
-												<h3 class="product-name"><a href="adminProductChange.do?product_Seq=${admin_Product.product_Seq }"><c:out value="${admin_Product.product_Name }"/></a></h3>
-												<h4 class="product-price"><c:out value="${admin_Product.product_Price }"/><del class="product-old-price"><c:out value="${admin_Product.product_Price }"/></del></h4>
+												<p class="product-category">Category</p>
+												<h3 class="product-name"><a href="#">product name goes here</a></h3>
+												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -177,13 +174,10 @@
 												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 											</div>
 										</div>
-									</c:forEach>	 --%>
 										<!-- /product -->
 
-								  
-										 <!-- product -->
-										 <div class="product">
-										<%-- <c:forEach items="${admin_ProductList }" var="admin_Product">  --%> 
+										<!-- product -->
+										<div class="product">
 											<div class="product-img">
 												<img src="../resources/dist/img/product02.png" alt="">
 												<div class="product-label">
@@ -207,14 +201,14 @@
 													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
 												</div>
 											</div>
-								
 											<div class="add-to-cart">
 												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 											</div>
-										<%-- </c:forEach>  --%>
 										</div>
-										
-										<!--<div class="product">
+										<!-- /product -->
+
+										<!-- product -->
+										<div class="product">
 											<div class="product-img">
 												<img src="../resources/dist/img/product03.png" alt="">
 												<div class="product-label">
@@ -236,10 +230,10 @@
 											<div class="add-to-cart">
 												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 											</div>
-										</div> 
-										/product 
+										</div>
+										<!-- /product -->
 
-										<!-- product
+										<!-- product -->
 										<div class="product">
 											<div class="product-img">
 												<img src="../resources/dist/img/product04.png" alt="">
@@ -265,9 +259,9 @@
 												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 											</div>
 										</div>
-										/product
+										<!-- /product -->
 
-										product
+										<!-- product -->
 										<div class="product">
 											<div class="product-img">
 												<img src="../resources/dist/img/product05.png" alt="">
@@ -292,7 +286,7 @@
 											<div class="add-to-cart">
 												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 											</div>
-										</div> -->
+										</div>
 										<!-- /product -->
 									</div>
 									<div id="slick-nav-1" class="products-slick-nav"></div>
