@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MailDAO">
+	<!-- ************************************************************************** -->
+	<!-- 이메일 입력 -->
+	<insert id="adminInsertMail" parameterType="AdminMailVO">
+		INSERT INTO Mail(mail_seq, mail_Title, mail_ReceiveMail, mail_Category, mail_Content, mail_Date, account_Id)
+		VALUES (mail_seq.nextval, #{mail_Title}, #{mail_ReceiveMail}, #{mail_Category}, #{mail_Content}, sysdate, #{account_Id})
+	</insert>
+	
+</mapper>

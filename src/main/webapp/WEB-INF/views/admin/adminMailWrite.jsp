@@ -23,7 +23,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Sidebar -->
 <%@ include file="../include/adminInclude/adminSidebar.jsp" %> 
 
-<form action="adminBoardSave.do" enctype="multipart/form-data" method="post" id="boardForm">
 <!-- main -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -43,6 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </section>
 	
     <!-- Main content -->
+    <form action="adminMailSend.do" method="post">
     <section class="content">
         <div class="col-md-12">
           <div class="card card-primary">
@@ -59,8 +59,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <input type="text" id="inputEstimatedBudget" value="${sessionScope.logname }" class="form-control" name="account_Id" readOnly>
               </div>
               <div class="form-group">
-                <label for="inputEstimatedBudget">받는자 이메일</label>
-               	<input type="text" id="inputName" class="form-control" name="mail_ReceiveMail" placeholder="받는자 이메일" required>
+                <label for="inputEstimatedBudget">받는 사람 이메일</label>
+               	<input type="text" id="inputName" class="form-control" name="mail_ReceiveMail" placeholder="받는 사람 이메일" required>
               </div>
               <div class="form-group">
                 <label for="inputStatus">메일 카테고리</label>
@@ -85,10 +85,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- /.card -->
         </div>
     </section>
+    </form>
     <!-- /.content -->
   </div>
 <!-- main end-->
-</form>
 <!-- Main Footer -->
 <%@ include file="../include/adminInclude/adminFooter.jsp" %>   
 </div>

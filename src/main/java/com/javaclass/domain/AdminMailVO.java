@@ -13,6 +13,7 @@ public class AdminMailVO {
 	String mail_ReceiveMail;
 	String mail_Category;
 	String mail_Content;
+	String mail_Date;
 	
 	public String getAccount_Id() {
 		return account_Id;
@@ -62,5 +63,13 @@ public class AdminMailVO {
 	public void setMail_Content(String mail_Content) {
 		this.mail_Content = mail_Content;
 	}
+	public String getMail_Date() {
+		return mail_Date;
+	}
+	public void setMail_Date(String mail_Date) {
+		this.mail_Date = mail_Date;
+	}
+	
+	
 			
 }
