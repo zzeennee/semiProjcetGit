@@ -20,7 +20,7 @@
 				<!-- row -->
 				<div class="row">
 					<!-- Product main img -->
-					<div class="col-md-5 col-md-push-2">
+					<div class="col-md-5">
 						<img width="400" src="../resources/upload/${admin_Product.product_realMainImg} " alt="${admin_Product.product_MainImg}">
 					</div>
 					<!-- /Product main img -->
@@ -40,10 +40,10 @@
 							<div class="add-to-cart">
 								<div class="qty-label">
 									<div class="input-number">
-										<input type="number">
+										<label>구매 수량 입력:</lable><input type="number">
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>장바구니 추가</button>
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>장바구니</button>
 								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>구매하기</button>
 							</div>
 							</form>

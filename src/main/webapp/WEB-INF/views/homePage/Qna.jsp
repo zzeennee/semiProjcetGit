@@ -43,7 +43,7 @@ li {list-style: none; float: left; padding: 6px;}
 					<div class="col-md-12">
 						<h3 class="breadcrumb-header">고객센터</h3>
 						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
+							<li><a href="/">홈으로</a></li>
 							<li class="active">고객센터</li>
 						</ul>
 					</div>
