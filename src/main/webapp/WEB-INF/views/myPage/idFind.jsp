@@ -7,6 +7,12 @@
 <title>아이디 찾기 | 머신킹덤</title>
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
+<!-- Remember to include jQuery :) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
  <!-- AdminLTE App -->
 <!--<script src="../resources/dist/js/adminlte.min.js"></script> -->
@@ -60,7 +66,8 @@ a:link, a:visited,  a:hover, a:active
 
 </head>
 <body>
-
+<!-- 아이디찾기 모달창 -->
+	<%@ include file="../include/myPageInclude/idFindModal.jsp" %>
 
 	<%-- 
 	<div class="card card-info">
