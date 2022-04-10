@@ -32,12 +32,12 @@ public class AccountController {
 
 	
 	//아이디 찾기
-	@RequestMapping("/myPage/idFind.do")
+	@RequestMapping("/myPage/idFindForm.do")
 	public void idFind(AccountVO vo) {
 	}
 	
 	//비밀번호 찾기
-	@RequestMapping("/myPage/pwFind.do")
+	@RequestMapping("/myPage/pwFindForm.do")
 	public void pwFind(AccountVO vo) {
 	}
 
