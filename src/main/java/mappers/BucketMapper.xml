@@ -7,8 +7,8 @@
 	
 	<!-- 장바구니 목록 불러오기 -->
 	<select id="getBucketList" resultType="BucketVO" >
-		SELECT b1.account_Id id, b1.product_seq product_number, product_Name product_name, product_ShortContent product_image, PRODUCT_AMOUNT product_amount, product_Price product_price
-		FROM bucket b1 INNER JOIN product_info p1  ON b1.product_seq = p1.product_seq
+		SELECT *
+		FROM bucket	
 	</select> 
 	
 	<!-- 장바구니 선택 삭제 -->
