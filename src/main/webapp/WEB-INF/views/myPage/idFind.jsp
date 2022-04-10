@@ -62,6 +62,7 @@ a:link, a:visited,  a:hover, a:active
 <body>
 
 
+	<%-- 
 	<div class="card card-info">
 		<!-- <div class="card-header">
 			<img src='../resources/dist/img/logo.png' width='200' height='200'>
@@ -103,6 +104,121 @@ a:link, a:visited,  a:hover, a:active
 		<a href='/myPage/signup.do'>&nbsp;&nbsp;회원가입</a>
 		</div><br/><br/>
 			
+	</div> --%>
+	
+
+	<%-- 
+		<div class="full">
+		<div class="container">
+			<div class="area_inputs wow fadeIn">
+				<div class="sub_title font-weight-bold">
+					<h3>아이디/비밀번호 찾기</h3>
+					<p>인증된 이메일만 정보 찾기가 가능합니다 :)</p>
+				</div>
+				<div style="margin-bottom: 10px;"
+					class="custom-control custom-radio custom-control-inline">
+					<input type="radio" class="custom-control-input" id="search_1" name="search_total" onclick="idFind_check(1)" checked="checked">
+					<label class="custom-control-label font-weight-bold" for="search_1">아이디 찾기</label>
+				</div>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input type="radio" class="custom-control-input" id="search_2" name="search_total" onclick="idFind_check(2)">
+					<label class="custom-control-label font-weight-bold" for="search_2">비밀번호 찾기</label>
+				</div>
+				<div id="searchI">
+					<div class="form-group">
+						<label class="font-weight-bold" for="inputName_1">이름</label>
+						<div>
+							<input type="text" class="form-control" id="inputName_1" name="account_Name" placeholder="ex) 홍길동">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold" for="inputPhone_1">휴대폰번호</label>
+						<div>
+							<input type="text" class="form-control" id="inputPhone_1" name="account_Tel" placeholder="ex) 01077779999">
+						</div>
+					</div>
+					<div class="form-group">
+						<button id="searchBtn" type="button" onclick="idSearch_click()" class="btn btn-primary btn-block">확인</button>
+					<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}">취소</a>
+					</div>
+				</div>
+				<div id="searchP" style="display: none;">
+					<div class="form-group">
+						<label class="font-weight-bold" for="inputId">아이디</label>
+						<div>
+							<input type="text" class="form-control" id="inputId" name="account_Id" placeholder="ex) gildong">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold" for="inputEmail_2">이메일</label>
+						<div>
+							<input type="email" class="form-control" id="inputEmail_2"	name="account_Email" placeholder="ex) E-mail@gmail.com">
+						</div>
+					</div>
+					<div class="form-group">
+						<button id="searchBtn2" type="button" class="btn btn-primary btn-block">확인</button>
+					<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}">취소</a>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ --%>
+ 
+ 	<div class="full">
+		<div class="container">
+			<div class="area_inputs wow fadeIn">
+				<div class="sub_title font-weight-bold ">
+					<h3>아이디/비밀번호 찾기</h3>
+					<p>인증된 이메일만 정보 찾기가 가능합니다 :)</p>
+				</div>
+				<div style="margin-bottom: 10px;"
+					class="custom-control custom-radio custom-control-inline">
+					<input type="radio" class="custom-control-input" id="search_1" name="search_total" onclick="search_check(1)" checked="checked">
+					<label class="custom-control-label font-weight-bold "	for="search_1">아이디 찾기</label>
+				</div>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input type="radio" class="custom-control-input" id="search_2" name="search_total" onclick="search_check(2)"> 
+					<label class="custom-control-label font-weight-bold " for="search_2">비밀번호 찾기</label>
+				</div>
+				<div id="searchI">
+					<div class="form-group">
+						<label class="font-weight-bold" for="inputName_1">이름</label>
+						<div>
+							<input type="text" class="form-control" id="inputName_1" name="account_Name" placeholder="ex) 홍길동">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold" for="inputPhone_1">휴대폰번호</label>
+						<div>
+							<input type="text" class="form-control" id="inputPhone_1" name="account_Tel" placeholder="ex) 01077779999">
+						</div>
+					</div>
+					<div class="form-group">
+						<button id="searchBtn" type="button" onclick="idSearch_click()" class="btn btn-primary btn-block">확인</button>
+					<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}">취소</a>
+					</div>
+				</div>
+				<div id="searchP" style="display: none;">
+					<div class="form-group">
+						<label class="font-weight-bold" for="inputId">아이디</label>
+						<div>
+							<input type="text" class="form-control" id="inputId" name="account_Id" placeholder="ex) gildong">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold" for="inputEmail_2">이메일</label>
+						<div>
+							<input type="email" class="form-control" id="inputEmail_2"	name="account_Email" placeholder="ex) E-mail@gmail.com">
+						</div>
+					</div>
+					<div class="form-group">
+						<button id="searchBtn2" type="button" class="btn btn-primary btn-block">확인</button>
+					<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}">취소</a>
+				</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<script type="text/javascript">
