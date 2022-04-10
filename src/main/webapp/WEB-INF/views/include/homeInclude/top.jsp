@@ -9,7 +9,7 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
+						<li class="active"><a href="/">메인으로</a></li>
 						<li><a href="#">SAMSUNG</a></li>
 						<li><a href="#">LG</a></li>
 						<li><a href="#">APPLE</a></li>

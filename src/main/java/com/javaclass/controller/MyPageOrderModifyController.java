@@ -25,11 +25,10 @@ public class MyPageOrderModifyController {
     //주문수정 페이지 form action 값 지정 *********************************************************
 	
 	  @RequestMapping("/myPage/modi.do") 
-	  public String modi(MyPageOrderModifyVO vo) {
+	  public String modi(MyPageOrderModifyVO vo, String account_Id) {
 	  ordermodifyServiceImpl.updateMember(vo); 
-	  return "redirect:orderpage.do"; 
+	  return "redirect:orderload.do?account_Id=" + account_Id;
 	  }
-	
 	  
 	//db값 주문내역페이지에 가져오기 ***************************************************************
 	
@@ -45,9 +44,9 @@ public class MyPageOrderModifyController {
 	
 	  @RequestMapping("/myPage/orderload.do")
 	  public void selectLoad(MyPageOrderModifyVO vo, Model m) {
-			m.addAttribute("board",ordermodifyServiceImpl.selectLoad(vo));
+	  m.addAttribute("board",ordermodifyServiceImpl.selectLoad(vo));
 			 
-		}
+	 }
 		
 	
 	
@@ -60,7 +59,8 @@ public class MyPageOrderModifyController {
 		return "/orderpage.do"; 
 	}
 	 
-	
+	  
+	// 보류 *****************************************************************************
 	@RequestMapping("saveMember.do")
 	public void saveMember(MyPageOrderModifyVO vo) {
 		ordermodifyServiceImpl.getOrderList(vo);
@@ -92,9 +92,9 @@ public class MyPageOrderModifyController {
 	//cancle 페이지에서 option 값 가져오기 ***********************************************************
 	
 	@RequestMapping("/myPage/canclepage2.do")
-	public String trainerMyPage(MyPageOrderModifyVO vo) {
+	public String trainerMyPage(MyPageOrderModifyVO vo , String account_Id) {
 		 ordermodifyServiceImpl.updateCancle(vo);
-        return "redirect:/myPage/cancleload.do";
+        return "redirect:/myPage/cancleload.do?account_Id=" + account_Id;
 	}
 	
 
@@ -102,14 +102,15 @@ public class MyPageOrderModifyController {
 	
 	@RequestMapping("/myPage/cancleload.do") 
 	public void getCancleList(MyPageOrderModifyVO vo,Model m) {
-		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getCancleList();
+		List<MyPageOrderModifyVO> list= ordermodifyServiceImpl.getCancleList(vo);
 		m.addAttribute("cancleList",list);
 	}
 	
 	
 	 
-	  
 	 
+
+		
 	 
 }
 	

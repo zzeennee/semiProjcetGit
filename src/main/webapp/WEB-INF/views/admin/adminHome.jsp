@@ -33,12 +33,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						<div class="col-sm-6">
 							<h1>차트</h1>
 						</div>
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">차트</li>
-							</ol>
-						</div>
 					</div>
 				</div>
 				<!-- /.container-fluid -->
@@ -73,7 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<!-- /.card -->
 						</div>
 						<!-- <div class="col-md-4"> -->
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<!-- DONUT CHART -->
 							<div class="card card-danger">
 								<div class="card-header">
@@ -101,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<!-- /.card -->
 						</div>
 						<!-- <div class="col-md-4"> -->
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<!-- DONUT CHART -->
 							<div class="card card-danger">
 								<div class="card-header">
@@ -130,7 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<!-- /.card -->
 						</div>
 						<!-- <div class="col-md-4"> -->
-						<div class="col-md-4">
+						<%-- <div class="col-md-4">
 							<!-- DONUT CHART -->
 							<div class="card card-danger">
 								<div class="card-header">
@@ -157,7 +151,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<!-- /.card-body -->
 							</div>
 							<!-- /.card -->
-						</div>
+						</div> --%>
 						<!-- <div class="col-md-4"> -->
 					</div>
 					<!-- /.row -->

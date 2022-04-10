@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaclass.domain.AccountVO;
+import com.javaclass.domain.MyPageOrderModifyVO;
 
 @Repository("accountDAOImpl")
 public class AccountDAOImpl implements AccountDAO {
@@ -82,4 +83,9 @@ public class AccountDAOImpl implements AccountDAO {
 	public String userFindPw(AccountVO vo) throws Exception {
 		return sqlSession.selectOne("accountMApper.userFindPw", vo);
 	}
+	
+	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo){
+		return sqlSession.selectList("orderMapper.getList", mvo);
+	} 
+
 }

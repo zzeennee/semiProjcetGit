@@ -60,8 +60,9 @@ public class MyPageOrderModifyDAOImpl implements MyPageOrderModifyDAO {
 	}
 	
 	//select 취소/교환/반품 상태 표시 리스트 나타내기
-	public List<MyPageOrderModifyVO> getCancleList(){
-	return sqlSession.selectList("orderMapper.getOrderList");
+	public List<MyPageOrderModifyVO> getCancleList(MyPageOrderModifyVO vo){
+	return sqlSession.selectList("orderMapper.getCancleList",vo);
 	} 
 
+	
 }

@@ -18,28 +18,43 @@
         ORDER BY od.orderdata_seq DESC
 	</select>
 
-	<!-- ****************주문내역 값들 주문상세보기 불려오기 ************************************* -->
+	<!-- ****************주문상세보기************************************* -->
 	<select id="selectLoad" resultType="MyPageOrderModifyVO">
 		SELECT *
-		FROM orderdata
-		WHERE account_Id=#{account_Id}
+		FROM orderdata od
+		INNER JOIN payment pa
+		on od.pay_number = pa.pay_number
+		INNER join buylist buy
+		on od.buylist_number = buy.buylist_number
+		INNER join product_Info pi
+		on buy.product_Seq = pi.product_Seq
+		INNER join account a
+		on pi.account_Id = a.account_Id
+		WHERE a.account_Id= #{account_Id}
 
 	</select>
 
 	<!-- ********주문수정버튼 업데이트 미완성 ****************************************** -->
 	<update id="updateMember" parameterType="MyPageOrderModifyVO">
-		UPDATE orderdata SET
-		order_date = sysdate,
-		user_require = #{user_require}
-		WHERE account_Id = #{account_Id}
+	UPDATE orderdata
+    SET 
+    receiver_name =#{receiver_name},
+    receiver_tel = #{receiver_tel},
+    user_require = #{user_require},
+    receiver_zonecode = #{receiver_zonecode},
+    receiver_address = #{receiver_address},
+    receiver_daddress = #{receiver_daddress}
+    WHERE account_Id = #{account_Id}
 	</update>
 
 
 	<!-- 주문 상세보기 ************************************************************************ -->
 	<select id="selectModify" resultType="MyPageOrderModifyVO">
-		SELECT *
-		FROM orderdata
-		WHERE account_Id=#{account_Id}
+		SELECT
+    * FROM orderdata od
+    INNER join account a
+    on od.account_Id= a.account_Id
+    WHERE a.account_Id = #{account_Id}
 
 	</select>
 
@@ -47,8 +62,16 @@
 	<!-- 주문 취소/반품/교환 리스트 페이지 *********************************************************** -->
 	<select id="selectDelete" parameterType="string" resultType="MyPageOrderModifyVO">
 		SELECT*
-		FROM orderdata
-		WHERE account_Id = #{account_Id}
+		FROM orderdata od
+		INNER JOIN payment pa
+		on od.pay_number = pa.pay_number
+		INNER join buylist buy
+		on od.buylist_number = buy.buylist_number
+		INNER join product_Info pi
+		on buy.product_Seq = pi.product_Seq
+		INNER join account a
+		on pi.account_Id = a.account_Id
+		WHERE a.account_Id= #{account_Id}
 	</select>
 
 
@@ -65,9 +88,32 @@
 
 	<!-- 취소/교환/반품 한 리스트 불려오기 *************************************************************** -->
 	<select id="getCancleList" resultType="MyPageOrderModifyVO">
-		SELECT *
-		FROM orderdata
-		WHERE state != '0'
-	</select>
+		
+SELECT *
+		FROM orderdata od
+		INNER JOIN payment pa
+		on od.pay_number = pa.pay_number
+		INNER join buylist buy
+		on od.buylist_number = buy.buylist_number
+		INNER join product_Info pi
+		on buy.product_Seq = pi.product_Seq
+		INNER join account a
+		on pi.account_Id = a.account_Id
+        WHERE state != '취소'
+   </select>
+   
+   <!-- 마이홈 주문내역 ********************************************************************************-->
+   <select id="getList" resultType="MyPageOrderModifyVO">
+   SELECT *
+		FROM orderdata od
+        INNER JOIN buylist buy
+        ON od.buylist_number = buy.buylist_number
+        INNER JOIN product_Info pi
+        ON buy.product_Seq = pi.product_Seq
+        INNER JOIN account a
+        ON pi.account_Id = a.account_Id
+        WHERE a.account_Id = #{account_Id}
+        ORDER BY od.orderdata_seq DESC
+  </select>
 
 </mapper>

@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaclass.dao.AccountDAO;
-import com.javaclass.dao.AccountDAOImpl;
 import com.javaclass.domain.AccountVO;
+import com.javaclass.domain.MyPageOrderModifyVO;
 
 @Service("accountServiceImpl")
 public class AccountServiceImpl implements AccountService {
@@ -80,7 +80,10 @@ public class AccountServiceImpl implements AccountService {
 	public String userFindPw(AccountVO vo) throws Exception {
 		return accountDAOImpl.userFindPw(vo);
 	}
-
+	
+	//마이홈 주문 목록 불러오기
+	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo){
+		return accountDAOImpl.adminOrderList(mvo);
+	}
 }
 
-	

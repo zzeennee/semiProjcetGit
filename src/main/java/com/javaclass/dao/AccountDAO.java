@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.javaclass.domain.AccountVO;
+import com.javaclass.domain.MyPageOrderModifyVO;
 
 public interface AccountDAO {
 
@@ -35,7 +36,8 @@ public interface AccountDAO {
 	
 	//비밀번호 찾기
 	public String userFindPw(AccountVO vo) throws Exception;
-
 	
+	//주문목록 불러오기
+	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo);
 
 }

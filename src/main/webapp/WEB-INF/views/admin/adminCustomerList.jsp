@@ -92,8 +92,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 														<td>
 															<c:choose>
 																<c:when
-																	test="${admin_customerList.account_Leave eq '1'}">
+																	test="${admin_customerList.account_Leave eq '1' && admin_customerList.account_Status eq '1'}">
 																	회원
+																</c:when>
+																<c:when
+																	test="${admin_customerList.account_Leave eq '1' && admin_customerList.account_Status eq '0'}">
+																	관리자
 																</c:when>
 																<c:otherwise>
 																	회원탈퇴

@@ -115,8 +115,8 @@ var data = {
 				}
 };
 		
-var ctx1 = document.getElementById('productSellPiechart').getContext('2d');
-new Chart(ctx1, {
+var ctx3 = document.getElementById('productSellPiechart').getContext('2d');
+new Chart(ctx3, {
     type: 'pie',
 	data: data
 });

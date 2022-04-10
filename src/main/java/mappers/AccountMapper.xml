@@ -104,4 +104,20 @@
  		FROM account
  		WHERE account_Name=#{account_Name} AND account_Id=#{account_Id} AND account_Tel=#{account_Tel}
  	</select>
+ 	
+ 	<!-- 마이홈 주문내역 ********************************************************************************-->
+   <select id="getList" resultType="MyPageOrderModifyVO">
+   SELECT *
+		FROM orderdata od
+        INNER JOIN buylist buy
+        ON od.buylist_number = buy.buylist_number
+        INNER JOIN product_Info pi
+        ON buy.product_Seq = pi.product_Seq
+        INNER JOIN account a
+        ON pi.account_Id = a.account_Id
+        WHERE a.account_Id = #{account_Id}
+        ORDER BY od.orderdata_seq DESC
+  </select>
+
+
 </mapper>
