@@ -29,6 +29,10 @@ public class AccountController {
 	@RequestMapping("/myPage/login.do")
 	public void login(AccountVO vo) {
 	}
+	// 3.회원탈퇴
+	@RequestMapping("myPage/myPageLeave.do")
+	public void myPageLeave() {
+	}
 
 	
 	//아이디 찾기
