@@ -28,7 +28,7 @@
 									</div>
 								 	<div class="product-body">
 										<p class="product-category"><c:out value="${admin_Product.product_Category }"/></p>
-										<h3 class="product-name"><a href="adminProductGetBoard.do?product_Seq=${admin_Product.product_Seq }"><c:out value="${admin_Product.product_Name }"/></a></h3>
+										<h3 class="product-name"><a href="admin/adminProductGetBoard.do?product_Seq=${admin_Product.product_Seq }"><c:out value="${admin_Product.product_Name }"/></a></h3>
 										<h4 class="product-price">${admin_Product.product_Price }</h4>
 									</div>
 									<div class="add-to-cart">
