@@ -67,7 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<!-- /.card -->
 						</div>
 						<!-- <div class="col-md-4"> -->
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<!-- DONUT CHART -->
 							<div class="card card-danger">
 								<div class="card-header">
@@ -95,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<!-- /.card -->
 						</div>
 						<!-- <div class="col-md-4"> -->
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<!-- DONUT CHART -->
 							<div class="card card-danger">
 								<div class="card-header">
@@ -124,7 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<!-- /.card -->
 						</div>
 						<!-- <div class="col-md-4"> -->
-						<div class="col-md-4">
+						<%-- <div class="col-md-4">
 							<!-- DONUT CHART -->
 							<div class="card card-danger">
 								<div class="card-header">
@@ -151,7 +151,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<!-- /.card-body -->
 							</div>
 							<!-- /.card -->
-						</div>
+						</div> --%>
 						<!-- <div class="col-md-4"> -->
 					</div>
 					<!-- /.row -->
