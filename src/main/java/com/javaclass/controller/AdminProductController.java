@@ -20,7 +20,7 @@ public class AdminProductController {
 	private AdminProductService productService;
 
 	// -------------------------------------------------
-	// 관리자 상품 작성
+	// 관리자 상품 작성 페이지 접속
 	@RequestMapping("/adminProductRegister.do")
 	public void registerProduct() {
 	}

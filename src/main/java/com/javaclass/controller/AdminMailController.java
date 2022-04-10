@@ -33,7 +33,9 @@ public class AdminMailController {
 	// mailSend 코드
 	@RequestMapping(value = "/adminMailSend.do", method = RequestMethod.POST)
 	public String mailSend(HttpServletRequest request, AdminMailVO vo) {
+			adminMailService.adminMailInsert(vo);
 		try {
+			System.out.println("메일저장 호출");
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 

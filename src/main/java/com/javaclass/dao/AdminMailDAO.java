@@ -1,5 +1,8 @@
 package com.javaclass.dao;
 
-public interface AdminMailDAO {
+import com.javaclass.domain.AdminMailVO;
 
+public interface AdminMailDAO {
+	
+	public void adminMailInsert(AdminMailVO vo);
 }
