@@ -6,7 +6,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 <title>주문 상태 변경 - 마이페이지 | 머신킹덤</title>
@@ -15,7 +16,7 @@
 
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+	<div class="wrapper">
 
 		<!-- Navbar -->
 		<%@ include file="../include/myPageInclude/myPageNavbar.jsp"%>
@@ -26,9 +27,6 @@
 		<!-- Sidebar end -->
 
 		<div class="content-wrapper">
-			
-			<form action="load.do"></form>
-			<input type="hidden" name="account_id" value="${board.account_id }">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
@@ -57,33 +55,31 @@
 								</div>
 								<!-- /.card-header -->
 								<form class="form-horizontal" action="cancle.do" method='get'>
-								<div class="card-body">
-									<table id="example1" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th>주문번호</th>
-												<th>상품명</th>
-												<th>상태</th>
-												<th>사유</th>
-												<th>취소</th>
-										   </tr>
-										</thead>
-										
-						<!--*********************** 취소/교환 보여주기 ********************************************************** -->				
-										<tbody>
-											<c:forEach items="${cancleList }" var="board">
+									<input type="hidden" name="account_Id" value="${sessionScope.logname }">
+									<div class="card-body">
+										<table id="example1"
+											class="table table-bordered table-striped">
+											<thead>
 												<tr>
-													<td>${board.account_id}</td>
-													<td>${board.order_payselect}</td>
-													<td>${board.product_seq}</td>
-													<td>${board.order_uesrreq}</td>
-													<td></td>
-						
+													<th>주문번호</th>
+													<th>상품명</th>
+													<th>상태</th>
+													<th>변경 사유</th>
 												</tr>
-										</c:forEach>
-										</tbody>
-									</table>
-								</div>
+											</thead>
+											<!--*********************** 취소/교환 보여주기 ********************************************************** -->
+											<tbody>
+												<c:forEach items="${cancleList }" var="board">
+													<tr>
+														<td>${board.orderdata_seq}</td>
+														<td>${board.product_Name}</td>
+														<td>${board.state}</td>
+														<td>${board.user_require}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</div>
 								</form>
 								<!-- /.card-body -->
 							</div>
@@ -106,4 +102,4 @@
 	<!-- REQUIRED SCRIPTS -->
 	<%@ include
 		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
-	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp" %>
+	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp"%>
