@@ -151,19 +151,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<textarea id="inputEstimatedDuration" class="form-control"
 											rows="20" name="product_Content2">${admin_Product.product_Content2}</textarea>
 									</div>
-								</div>
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-6">
-							<a href="adminProductList.do" class="btn btn-secondary">취소</a> <input
+									<div class="form-group">
+										<a href="adminProductList.do" class="btn btn-secondary">취소</a> <input
 								type="button" id="productDeleteButton" value="삭제"
 								class="btn btn-danger float-right"> <input type="button"
 								id="productUpdateButton" value="수정"
 								class="btn btn-success float-right">
+									</div>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
 						</div>
 					</div>
 				</section>

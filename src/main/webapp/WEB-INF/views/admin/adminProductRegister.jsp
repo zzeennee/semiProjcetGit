@@ -129,42 +129,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											name="product_Price" pattern="^[0-9]+$" placeholder="숫자만 입력"
 											required>
 									</div>
-									<!--<div class="form-group">
-                <label for="inputEstimatedBudget">상품 담당자</label>
-                <input type="text" id="inputEstimatedBudget" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputSpentBudget">상품 담당자 연락처</label>
-                <input type="tel" id="inputSpentBudget" class="form-control">
-              </div>-->
 									<div class="form-group">
 										<label for="inputFile3">상품 추가 이미지</label> <input type="file"
 											id="inputFile3" class="form-control" name="product3_File">
 									</div>
-									<!--  <div class="form-group">
-                <label>추가 상품 선택</label><br/>
-                <label><input type="checkbox" name="addProduct" value="as1" name="product_PlusProduct"> AS 1년 연장 : 15,000원</label>
-                <label><input type="checkbox" name="addProduct" value="as2" name="product_PlusProduct"> AS 2년 연장 : 25,000원</label>
-                <label><input type="checkbox" name="addProduct" value="as3" name="product_PlusProduct"> AS 3년 연장 : 35,000원</label>
-                <label><input type="checkbox" name="addProduct" value="bty" name="product_PlusProduct">보조 배터리</label>
-                <label><input type="checkbox" name="addProduct" value="etc" name="product_PlusProduct">etc</label>
-              </div> -->
 									<div class="form-group">
 										<label for="inputEstimatedDuration">추가 작성내용</label>
 										<textarea id="inputEstimatedDuration" class="form-control"
 											rows="20" name="product_Content2"></textarea>
 									</div>
+									<div class="form-group">
+										<a href="adminProductList.do" class="btn btn-secondary">취소</a> <input
+								type="submit" value="작성" id="productInsertBtn"
+								class="btn btn-success float-right">
+									</div>
 								</div>
 								<!-- /.card-body -->
 							</div>
 							<!-- /.card -->
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-6">
-							<a href="adminProductList.do" class="btn btn-secondary">취소</a> <input
-								type="submit" value="작성" id="productInsertBtn"
-								class="btn btn-success float-right">
 						</div>
 					</div>
 				</section>

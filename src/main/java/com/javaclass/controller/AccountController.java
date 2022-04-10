@@ -83,7 +83,6 @@ public class AccountController {
 			model.addAttribute("account_list", accountServiceImpl.accountList(vo));
 			session.setAttribute("login", "loginON");
 			return "redirect:/";
-
 		} else {
 			session.setAttribute("logname", result.getAccount_Id());
 			System.out.println("관리자 로그인 성공");
