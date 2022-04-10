@@ -222,25 +222,17 @@ a:link, a:visited,  a:hover, a:active
 	</div>
 
 	<script type="text/javascript">
-	$("#userName").focusout(function(){
-			
-	     if($('#userName').val() == ""){
-	   		$('#check').text('이름을 입력해주세요.');
-	   	  	$('#check').css('color', 'red');
-	   
-	     }else{
-	    	 $('#check').hide();
-	     }
-	     });
-	     
- 		$("#email").focusout(function(){
-	     if($('#email').val() == ""){
-	   		$('#check').text('이메일을 입력해주세요');
-	   	  	$('#check').css('color', 'red');
-	     }else{
-	    	 $('#check').hide();
-	     }
-	     });
+	//체크 버튼에 따라 아이디/비밀번호 기능이 달라진다
+	function search_check(num) {
+	if (num == '1') {
+		document.getElementById("searchP").style.display = "none";
+		document.getElementById("searchI").style.display = "";	
+	} else {
+		document.getElementById("searchI").style.display = "none";
+		document.getElementById("searchP").style.display = "";
+	}
+}
+
 	</script>
 </body>
 </html>
