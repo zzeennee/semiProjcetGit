@@ -209,22 +209,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<table class="table table-hover text-nowrap">
 										<thead>
 											<tr>
-												<th>상품정보</th>
-												<th>주문일자</th>
 												<th>주문번호</th>
-												<th>주문수량</th>
+												<th>상품명</th>
+												<th>주문날짜</th>
 												<th>주문상태</th>
 											</tr>
 										</thead>
 										<tbody>
+										<c:forEach items="${account_orderList }" var="board">
 											<tr>
-												<td>183</td>
-												<td>John Doe</td>
-												<td>11-7-2014</td>
-												<td><span class="tag tag-success">Approved</span></td>
-												<td>배송중</td>
+												<td>${board.orderdata_seq}</td>
+												<td>${board.product_Name}</td>
+												<td>${board.order_date}</td>
+												<td>${board.state}</td>
 											</tr>
-
+												</c:forEach>
 										</tbody>
 									</table>
 								</div>

@@ -32,4 +32,6 @@ public interface MyPageOrderModifyService {
 	
 	//select 취소/교환/반품 상태 표시 리스트 나타내기
 	List<MyPageOrderModifyVO> getCancleList(MyPageOrderModifyVO vo);
+	
+	
 }
