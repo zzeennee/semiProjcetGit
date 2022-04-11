@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기 | 머신킹덤</title>
+
 </head>
 <body>
 <div>
