@@ -170,20 +170,31 @@ public class AccountController {
 		System.out.println("전화번호" + vo.getAccount_Tel());
 		String accountname = vo.getAccount_Name();
 		String accounttel = vo.getAccount_Tel();
+		//accountServiceImpl.idConfirm(vo);
 		String id = accountServiceImpl.idConfirm(vo).getAccount_Id();
 		m.addAttribute("account", id);
-		return "idConfirm";
+	
+		return "/myPage/idConfirm";
 	
 		}
+
 	
 	//비밀번호 찾기
-	/*
-	 * @RequestMapping("myPage/userFindPw.do") public ModelAndView
-	 * userFindPw(@ModelAttribute AccountVO vo) throws Exception { ModelAndView mav
-	 * = new ModelAndView(); String pw = accountServiceImpl.userFindPw(vo);
-	 * mav.setViewName("/myPage/pwFindForm"); mav.addObject("userFindPw", pw);
-	 * return mav; }
-	 */
+	  @RequestMapping("myPage/pwFind.do") 
+	  public String pwFind(AccountVO vo, Model m) {
+	  String accountid = vo.getAccount_Id();
+	  String accountname = vo.getAccount_Name();
+	  String accounttel = vo.getAccount_Tel();
+	  System.out.println(accountid+"/");
+	  System.out.println(accountname+"/");
+	  System.out.println(accounttel+"/");
+	  String pw = accountServiceImpl.pwFind(vo).getAccount_Password();
+	  m.addAttribute("account", pw);
+	  
+	  return "/myPage/pwFind"; 
+	  }
+	 
+	
 
 
 		

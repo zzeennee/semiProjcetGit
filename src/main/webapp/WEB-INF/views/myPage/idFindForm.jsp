@@ -66,21 +66,21 @@ a:link, a:visited,  a:hover, a:active
 		</div>
 		<!-- /.card-header -->
 		<!-- form start -->
-		<form class="form-horizontal" action="idConfirm.do" method='post'>
+		<form class="form-horizontal" action="idConfirm.do" method='post' id='form' name='form'>
 			<div class="card-body">
 				<div class="form-group row">
 					<label for="account_Name" class="col-md-8 col-form-label">이름</label>
-					<input type="text" class="form-control" id="account_Name" name='account_Name' placeholder="이름">
+					<input type="text" class="form-control" id="account_Name" name='account_Name' placeholder="이름을 입력해주세요.">
 				</div>
 				<div class="form-group row">
 					<label for="account_Tel" class="col-md-8 col-form-label">전화번호</label>
-					<input type="text" class="form-control" id="account_Tel" name='account_Tel' placeholder="전화번호">
+					<input type="text" class="form-control" id="account_Tel" name='account_Tel' placeholder="전화번호를 입력해주세요.">
 				</div>
 		
 			</div>
 			<!-- /.card-body -->
 			<div class="card-bottom">
-				<button type="submit" class="btn btn-info" id='submit'>확인</button><br/>
+				<button type="submit" class="btn btn-info" id='submit'>찾기</button><br/>
 			</div>
 			<br/>
 			<!-- /.card-footer -->
@@ -97,8 +97,39 @@ a:link, a:visited,  a:hover, a:active
 
 
 <script type="text/javascript">
-
-
+window.onload = finction() {
+function idFind(form) {
+	if(isNowLoading()) {
+		alert('처리중입니다.');
+		return;
+	}
+	
+	form.account_Name.value = form.account_Name.value.trim();
+	form.account_Name.value = form.account_Name.value.replaceAll('-', '');
+	form.account_Name.value = form.account_Name.value.replaceAll('_', '');
+	form.account_Name.value = form.account_Name.value.replaceAll(' ', '');
+	
+	if(form.account_Name.value==0) {
+		form.account_Name.focus();
+		alert('이름을 입력해주세요.');
+		
+		return;
+	}
+	
+	form.account_Tel.value = form.account_Tel.value.trim();
+	form.account_Tel.value = form.account_Tel.value.replaceAll(' ', '');
+	
+	if(form.account_Tel.value==0) {
+		form.account_Email.focus();
+		alert('이메일을 입력해주세요.');
+		
+		return;
+	}
+	
+	form.submit();
+	startLoading();
+}
+}
 </script>
 </body>
 </html>

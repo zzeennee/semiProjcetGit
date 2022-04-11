@@ -99,7 +99,7 @@
  	</select>
  	
  	<!-- 비밀번호 찾기 -->
- 	<select id="userFindPw" resultType="string">
+ 	<select id="pwFind" parameterType="AccountVO" resultType="AccountVO" >
  		SELECT account_Password
  		FROM account
  		WHERE account_Name=#{account_Name} AND account_Id=#{account_Id} AND account_Tel=#{account_Tel}
@@ -118,6 +118,8 @@
         WHERE a.account_Id = #{account_Id}
         ORDER BY od.orderdata_seq DESC
   </select>
+  
+  
 
 
 </mapper>

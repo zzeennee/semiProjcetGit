@@ -10,7 +10,7 @@
 <div>
 <h3>당신의 비밀번호?</h3>
 	<h5 id=''>
-		${account.userFindPw }
+		${account }
 	</h5>
 <h3>입니다.</h3>
 </div>

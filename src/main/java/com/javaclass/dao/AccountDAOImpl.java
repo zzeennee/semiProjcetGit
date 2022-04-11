@@ -82,8 +82,8 @@ public class AccountDAOImpl implements AccountDAO {
 	 
 	
 	//비밀번호 찾기
-	public String userFindPw(AccountVO vo) throws Exception {
-		return sqlSession.selectOne("accountMApper.userFindPw", vo);
+	public AccountVO pwFind(AccountVO vo) {
+		return sqlSession.selectOne("accountMapper.pwFind", vo);
 	}
 	
 	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo){

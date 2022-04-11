@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaclass.dao.AccountDAO;
 import com.javaclass.domain.AccountVO;
@@ -18,7 +20,6 @@ import com.javaclass.domain.MyPageOrderModifyVO;
 public class AccountServiceImpl implements AccountService {
 
 	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
 	private AccountDAO accountDAOImpl;
 
 	public void insertAccount(AccountVO vo) {
@@ -65,15 +66,17 @@ public class AccountServiceImpl implements AccountService {
 	//아이디 찾기
 	
 	  public AccountVO idConfirm(AccountVO vo){
-		  System.out.println("섭;ㅛ,");
+		  System.out.println("서비스");
 		  return accountDAOImpl.idConfirm(vo);
 	 
 	  }
-	 
+	
+	
 	//비밀번호 찾기
-	public String userFindPw(AccountVO vo) throws Exception {
-		return accountDAOImpl.userFindPw(vo);
-	}
+	  public AccountVO pwFind(AccountVO vo) { 
+		  return accountDAOImpl.pwFind(vo); 
+	  }
+	  
 	
 	//마이홈 주문 목록 불러오기
 	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo){

@@ -66,11 +66,11 @@ a:link, a:visited,  a:hover, a:active
 		</div>
 		<!-- /.card-header -->
 		<!-- form start -->
-		<form class="form-horizontal" action="userFindPw.do" method='post'>
+		<form class="form-horizontal" action="pwFind.do" method='post'>
 			<div class="card-body">
 				<div class="form-group row">
-					<label for="acount_Name" class="col-md-8 col-form-label">이름</label>
-					<input type="text" class="form-control" id="acount_Name" name='acount_Name' placeholder="이름">
+					<label for="account_Name" class="col-md-8 col-form-label">이름</label>
+					<input type="text" class="form-control" id="account_Name" name='account_Name' placeholder="이름">
 				</div>
 				<div class="form-group row">
 					<label for="account_Id" class="col-md-8 col-form-label">아이디</label>

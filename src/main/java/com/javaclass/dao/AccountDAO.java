@@ -35,7 +35,7 @@ public interface AccountDAO {
 	public AccountVO idConfirm(AccountVO vo);
 	
 	//비밀번호 찾기
-	public String userFindPw(AccountVO vo) throws Exception;
+	public AccountVO pwFind(AccountVO vo);
 	
 	//주문목록 불러오기
 	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo);
