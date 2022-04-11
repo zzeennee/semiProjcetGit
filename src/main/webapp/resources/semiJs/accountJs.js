@@ -60,10 +60,6 @@ $('#idCheck').click(function(){
 
     $('#signupbtn').click(function() {
 	
-		
-	
-	
-	
 	    if (!checkUsername(form.username.value)) {
             return false;
         }
@@ -127,20 +123,10 @@ $('#idCheck').click(function(){
         	alert('아이디 중복체크를 해주세요.');
         	return false;
         }
-        
-        
-
- 
- 
 		
         return true;
 })
-    
-
-    
    
- 
-     
     // 공백확인 함수
     function checkExistData(value, dataName) {
         if (value == "") {

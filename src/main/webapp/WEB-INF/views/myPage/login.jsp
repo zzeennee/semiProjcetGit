@@ -93,8 +93,8 @@ a:link, a:visited,  a:hover, a:active
 			
 		</form>
 		<div>
-		<a href='/myPage/idFind.do'>아이디 찾기&nbsp;&nbsp;&nbsp;|</a>
-		<a href='/myPage/pwFind.do'>&nbsp;&nbsp;비밀번호 찾기</a>
+		<a href='/myPage/idFindForm.do'>아이디 찾기&nbsp;&nbsp;&nbsp;|</a>
+		<a href='/myPage/pwFindForm.do'>&nbsp;&nbsp;비밀번호 찾기</a>
 		</div><br/><br/>
 			<div>
 				<a href='signup.do'>회원가입</a>

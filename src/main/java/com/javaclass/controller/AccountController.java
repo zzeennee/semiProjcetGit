@@ -3,6 +3,7 @@ package com.javaclass.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.javaclass.domain.AccountVO;
 import com.javaclass.domain.MyPageOrderModifyVO;
 import com.javaclass.service.AccountService;
+import com.javaclass.service.AccountServiceImpl;
 
 @Controller
 //@RequestMapping("/myPage")
@@ -39,12 +43,12 @@ public class AccountController {
 
 	
 	//아이디 찾기
-	@RequestMapping("/myPage/idFind.do")
+	@RequestMapping("/myPage/idFindForm.do")
 	public void idFind(AccountVO vo) {
 	}
 	
 	//비밀번호 찾기
-	@RequestMapping("/myPage/pwFind.do")
+	@RequestMapping("/myPage/pwFindForm.do")
 	public void pwFind(AccountVO vo) {
 	}
 
@@ -61,7 +65,6 @@ public class AccountController {
 		return "redirect:login.do";
 	}
 	@RequestMapping(value="/myPage/idCheck.do", produces="application/text;charset=utf-8")
-
 	@ResponseBody
 	public String idCheck(AccountVO vo) {
 		AccountVO account = accountServiceImpl.idCheck(vo);
@@ -161,9 +164,38 @@ public class AccountController {
 	}
 	
 	//아이디 찾기
-	@RequestMapping(value="/myPage/idFind.do", method = RequestMethod.POST)
-	public String idFind(String account_Email, Model m) {
-		return "공익";
-	}
+	@RequestMapping("/myPage/idConfirm.do")
+		public String idConfirm(AccountVO vo, Model m) {
+		System.out.println("이름"+ vo.getAccount_Name());
+		System.out.println("전화번호" + vo.getAccount_Tel());
+		String accountname = vo.getAccount_Name();
+		String accounttel = vo.getAccount_Tel();
+		//accountServiceImpl.idConfirm(vo);
+		String id = accountServiceImpl.idConfirm(vo).getAccount_Id();
+		m.addAttribute("account", id);
+	
+		return "/myPage/idConfirm";
+	
+		}
 
+	
+	//비밀번호 찾기
+	  @RequestMapping("myPage/pwFind.do") 
+	  public String pwFind(AccountVO vo, Model m) {
+	  String accountid = vo.getAccount_Id();
+	  String accountname = vo.getAccount_Name();
+	  String accounttel = vo.getAccount_Tel();
+	  System.out.println(accountid+"/");
+	  System.out.println(accountname+"/");
+	  System.out.println(accounttel+"/");
+	  String pw = accountServiceImpl.pwFind(vo).getAccount_Password();
+	  m.addAttribute("account", pw);
+	  
+	  return "/myPage/pwFind"; 
+	  }
+	 
+	
+
+
+		
 }
