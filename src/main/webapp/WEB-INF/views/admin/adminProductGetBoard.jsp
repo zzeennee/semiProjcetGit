@@ -12,7 +12,7 @@
 	<!-- 여기에 헤더 -->	
 	<%@ include file="../include/homeInclude/header.jsp" %>
 	<!-- 여기에 top -->
-	<%@ include file="../include/homeInclude/top.jsp" %>
+	<%@ include file="../include/homeInclude/top2.jsp" %>
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -40,12 +40,13 @@
 							<div class="add-to-cart">
 								<div class="qty-label">
 									<div class="input-number">
-										<label>구매 수량 입력:</lable><input type="number">
+										<input type="number"><br/>
 									</div>
 								</div>
+								<br/>
 								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>장바구니</button>
 								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>구매하기</button>
-							</div>
+								</div>
 							</form>
 						</div>
 					</div>

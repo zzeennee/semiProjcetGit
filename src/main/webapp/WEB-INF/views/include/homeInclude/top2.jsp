@@ -10,7 +10,7 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="/">메인으로</a></li>
-						<li><a href="store.do">상품</a></li>
+						<li><a href="../store.do">상품</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>
