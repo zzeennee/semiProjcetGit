@@ -26,26 +26,22 @@
 						<ul class="hot-deal-countdown">
 							<li>
 								<div>
-									<h3>02</h3>
-									<span>Days</span>
+									<h3>특</h3>
 								</div>
 							</li>
 							<li>
 								<div>
-									<h3>10</h3>
-									<span>Hours</span>
+									<h3>별</h3>
 								</div>
 							</li>
 							<li>
 								<div>
-									<h3>34</h3>
-									<span>Mins</span>
+									<h3>판</h3>
 								</div>
 							</li>
 							<li>
 								<div>
-									<h3>60</h3>
-									<span>Secs</span>
+									<h3>매</h3>
 								</div>
 							</li>
 						</ul>

@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 찾기 | 머신킹덤</title>
 
 </head>
 <body>
 <div>
-<h3>당신의 비밀번호?</h3>
+<h3>당신의 아이디는?</h3>
 	<h5 id=''>
-		${account }
+		'${account }'
 	</h5>
 <h3>입니다.</h3>
 </div>
@@ -19,7 +19,5 @@
 				<button type="submit" class="btn btn-info" id='submit'>로그인</button><br/>
 				<a href='/'><button type="button" class="btn btn-info">홈으로</button></a>
 			</div>
-</body>
-
 </body>
 </html>

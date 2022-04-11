@@ -2,6 +2,11 @@ package com.javaclass.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.javaclass.domain.AccountVO;
 import com.javaclass.domain.AdminListVO;
 import com.javaclass.domain.MyPageOrderModifyVO;
@@ -30,14 +35,19 @@ public interface AccountService {
 	public void deleteAccount(AccountVO vo);
 	
 	//아이디 찾기 
-	public List<AccountVO> idFind(String account_Email); 
+	public AccountVO idConfirm(AccountVO vo);
+	
+	//비밀번호 찾기
+	public AccountVO pwFind(AccountVO vo);
+
 
 	//아이디 찾기 이메일 중복체크
-	public int idFindCheck(String account_Email);
+	/* public int idFindCheck(String account_Email); */
 	
 	//마이홈 주문목록 리스트
 	public List<MyPageOrderModifyVO> adminOrderList(MyPageOrderModifyVO mvo);
 	
 	//마이홈
   //List<MyPageOrderModifyVO> getList(MyPageOrderModifyVO vo);
+
 }

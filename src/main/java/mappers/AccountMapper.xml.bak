@@ -93,17 +93,20 @@
  	</update>
  	
  	<!-- 아이디 찾기 -->
- 	<select id="idConfirm" parameterType="AccountVO" resultType="AccountVO">
+ 	<select id="idConfirm" parameterType="string" resultType="string">
  		SELECT account_Id FROM account
  		WHERE account_Name=#{account_Name} AND account_Tel=#{account_Tel} 
  	</select>
  	
  	<!-- 비밀번호 찾기 -->
- 	<select id="pwFind" parameterType="AccountVO" resultType="AccountVO" >
+ 	<select id="userFindPw" resultType="string">
  		SELECT account_Password
  		FROM account
  		WHERE account_Name=#{account_Name} AND account_Id=#{account_Id} AND account_Tel=#{account_Tel}
  	</select>
+<<<<<<< HEAD
+=======
+ 	
  	
  	<!-- 마이홈 주문내역 ********************************************************************************-->
    <select id="getList" resultType="MyPageOrderModifyVO">
@@ -118,8 +121,6 @@
         WHERE a.account_Id = #{account_Id}
         ORDER BY od.orderdata_seq DESC
   </select>
-  
-  
 
-
+>>>>>>> upstream/main-0410ver
 </mapper>
