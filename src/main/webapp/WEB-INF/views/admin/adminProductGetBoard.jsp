@@ -12,7 +12,7 @@
 	<!-- 여기에 헤더 -->	
 	<%@ include file="../include/homeInclude/header.jsp" %>
 	<!-- 여기에 top -->
-	<%@ include file="../include/homeInclude/top.jsp" %>
+	<%@ include file="../include/homeInclude/top2.jsp" %>
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->

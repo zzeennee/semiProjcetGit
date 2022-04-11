@@ -74,24 +74,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<div class="row">
 								<div class="col-sm-4 border-right">
 									<div class="description-block">
-										<h5 class="description-header">3,200</h5>
-										<span class="description-text">총 주문금액</span>
+										<h5 class="description-header">회원이름</h5>
+										<span class="description-text">${account.account_Name }</span>
 									</div>
 									<!-- /.description-block -->
 								</div>
 								<!-- /.col -->
 								<div class="col-sm-4 border-right">
 									<div class="description-block">
-										<h5 class="description-header"></h5>
-										<span class="description-text"></span>
+										<h5 class="description-header">이메일</h5>
+										<span class="description-text">${account.account_Email }</span>
 									</div>
 									<!-- /.description-block -->
 								</div>
 								<!-- /.col -->
 								<div class="col-sm-4">
 									<div class="description-block">
-										<h5 class="description-header">${account.account_Date }</h5>
-										<span class="description-text">가입날짜</span>
+										<h5 class="description-header">가입날짜</h5>
+										<span class="description-text">${account.account_Date }</span>
 									</div>
 									<!-- /.description-block -->
 								</div>
